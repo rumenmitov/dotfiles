@@ -25,6 +25,8 @@ nvm install 19
 # Setup neovim
 echo "Setting up neovim..."
 cp -r dotfiles/nvim ~/.config
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 echo "Neovim complete!"
 
 # Setup paru + clipboard manager + brave
@@ -96,4 +98,5 @@ echo "Fish complete!"
 
 echo "Setup complete! 🥳"
 echo "Here are some other tweaks that can be made at the user's discretion:"
-echo "    → Change shell to fish: sudo usermod -s /usr/bin/fish $USER\n"
+echo "    → Change shell to fish: sudo usermod -s /usr/bin/fish $USER"
+echo "    → To install neovim plugins, open neovim and type: ':PackerSync'\n"

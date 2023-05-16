@@ -1,4 +1,4 @@
-# Arch Post-Installation GUIDE
+# Arch Script GUIDE
 *****************************
 ## Prerequisites
 ✅ You must be running an Arch system with access to internet  
