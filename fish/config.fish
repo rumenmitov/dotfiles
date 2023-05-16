@@ -39,5 +39,6 @@ end
 
 # Custom aliases
 alias vimrc="vim ~/.vim/vimrc"
+alias vim="nvim"
 alias vimwiki="vim ~/Nextcloud/vimwiki/index.wiki"
 alias stop="kill -9 $(lsof -i tcp:443 | grep LISTEN | awk '{print $2}')"
