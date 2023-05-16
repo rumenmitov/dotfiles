@@ -1,0 +1,201 @@
+set shell=bash
+set encoding=utf8
+set nocompatible
+filetype plugin on
+syntax on
+set number
+set rnu
+set is
+set hls
+set ignorecase
+set laststatus=2
+set clipboard=unnamedplus
+set modifiable
+set showmatch
+set softtabstop=2
+set shiftwidth=2
+set scrolloff=5
+set wildmenu
+set cursorline
+set splitright
+set splitbelow
+
+" Custom Keybindings
+  " General
+  inoremap <C-c> <esc>
+
+  " Leader key
+  let mapleader = ' '
+
+  " Terminal
+  nmap <S-t> :terminal ++shell ++rows=4<enter>	
+
+  " Moving vertically
+  nnoremap <C-d> <C-d>zz
+  nnoremap <C-u> <C-u>zz
+
+  " Searching for words
+  nnoremap n nzz 
+  nnoremap <leader>s :nohlsearch<enter>
+
+  " Formatting
+  nnoremap <S-f> gq$==
+
+  " Moving lines
+  inoremap <C-Up> <esc>:m-2<enter>i
+  inoremap <C-Down> <esc>:m+<enter>i
+  vnoremap <S-k> :m '<-2<CR>gv=gv
+  vnoremap <S-j> :m '>+1<CR>gv=gv
+
+  " Replacing multiple words
+  nnoremap <leader>r cgn
+
+  " Access file tree quickly
+  noremap <C-z> <esc>:NERDTreeToggle<CR>	
+
+  " Opening tag definitions in new window
+  noremap <leader>p <C-w>}<C-w>j
+  noremap <leader>c <esc>:pc<CR>
+
+  " Open file in new buffer
+  nnoremap <C-o> <esc>:e 
+
+  " Previous buffer
+  nnoremap <C-p> :bp<CR>
+
+  " Next buffer
+  nnoremap <C-n> :bn<CR> 
+
+  " Quit buffer
+  noremap <C-q> <esc>:bd!<CR>
+  inoremap <C-q> <esc>:bd!<CR>
+
+  " Save
+  noremap <C-s> <esc>:up!<CR>
+  inoremap <C-s> <esc>:up!<CR>
+
+	" Quick server
+	command QuickServer !quickServer %:p 
+
+" Calling plugins
+call plug#begin()
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'https://github.com/sainnhe/everforest.git'
+Plug 'kyuhi/vim-emoji-complete'
+Plug 'vimwiki/vimwiki'
+
+Plug 'mattn/emmet-vim'
+Plug 'https://github.com/tpope/vim-commentary.git'
+Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
+Plug 'https://github.com/ap/vim-css-color.git'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --clangd-completer' }
+Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
+
+call plug#end()
+
+" Airline
+	let g:airline_powerline_fonts = 1 
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline_statusline_ontop=0
+	let g:airline#extensions#whitespace#enabled = 0
+
+	" Theme
+	let g:airline_theme='base16_black_metal_immortal'
+
+" Colorscheme
+        " Important!!
+        if has('termguicolors')
+          set termguicolors
+        endif
+        " For dark version.
+        set background=dark
+        " For light version.
+        " set background=light
+        " Set contrast.
+        " This configuration option should be placed before `colorscheme everforest`.
+        " Available values: 'hard', 'medium'(default), 'soft'
+        let g:everforest_background = 'hard'
+        " For better performance
+        let g:everforest_better_performance = 1
+        colorscheme everforest
+
+" NERDTree
+	" Start NERDTree and put the cursor back in the other window.
+	" autocmd VimEnter * NERDTree | wincmd p
+	
+	" This is for opening files in tabs
+	" let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
+
+	" Exit Vim if NERDTree is the only window remaining in the only tab.
+	autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+	" Git Plugin
+	let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'🔨',
+                \ 'Staged'    :'✹',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+	let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+	let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " a heavy feature too. default: normal
+	let g:NERDTreeGitStatusShowClean = 1 " default: 0
+	" autocmd BufEnter Nerd_tree_* NERDTreeRefreshRoot  experimental
+
+" Vimwiki
+	let g:vimwiki_list = [{'path': '~/Nextcloud/vimwiki'}] 
+
+" Autocompletion
+	" Auto pairs
+	let g:AutoPairsShortcutToggle = '<C-g>'
+	let g:AutoPairsFlyMode = 1
+	let g:AutoPairsShortcutFastWrap = '<C-b>'
+	" Start autocompletion after 2 chars
+	let g:ycm_min_num_of_chars_for_completion = 2 
+	let g:ycm_min_num_identifier_candidate_chars = 2
+	let g:ycm_enable_diagnostic_highlighting = 0
+	let g:ycm_enable_inlay_hints = 1
+	" Don't show YCM's preview window
+	" set completeopt-=preview
+	" let g:ycm_add_preview_to_completeopt = 0
+	set completeopt+=popup
+	set completepopup=height:15,width:60,border:off,highlight:PMenuSbar
+
+" JS Highlighting
+	let g:javascript_plugin_jsdoc = 1
+	let g:javascript_plugin_ngdoc = 1
+	let g:javascript_plugin_flow = 1
+
+
+" Devicons
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+let g:DevIconsDefaultFolderOpenSymbol = ''
+
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
+
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['node_modules'] = ''
+
+
+	" Colors
+        let g:NERDTreeFileExtensionHighlightFullName = 1
+	let g:NERDTreeExactMatchHighlightFullName = 1
+	let g:NERDTreePatternMatchHighlightFullName = 1

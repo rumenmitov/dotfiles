@@ -1,0 +1,127 @@
+" General
+  set shell=bash
+  set encoding=utf8
+  set nocompatible
+  filetype plugin on
+  syntax on
+  set omnifunc=syntaxComplete#Complete
+  set completeopt=menu,preview,noinsert,noselect,popup
+  set pumheight=5
+  set updatetime=1000
+  filetype indent on
+  set number
+  set rnu
+  set is
+  set hls
+  set ignorecase
+  set laststatus=2
+  set modifiable
+  set hidden
+  set showmatch
+  set softtabstop=2
+  set shiftwidth=2
+  set scrolloff=5
+  set wildmenu
+  set cursorline
+  set splitright
+  set splitbelow
+  set foldcolumn=2
+  set foldmethod=indent
+  set foldnestmax=1
+  set tags=tags,../tags,../../tags,../../../tags
+  set previewheight=100
+  set background=dark
+  colorscheme dracula
+
+" Custom Keybindings
+  " General
+  inoremap <C-c> <esc>
+
+  " Leader key
+  let mapleader = ' '
+
+  " Terminal
+  nmap <S-t> :terminal ++shell ++rows=4<enter>	
+
+  " Copying and pasting from clipboard
+  noremap <S-y> "+y
+  noremap <S-p> "+p
+
+  " Moving vertically
+  nnoremap <C-d> <C-d>zz
+  nnoremap <C-u> <C-u>zz
+
+  " Searching for words
+  nnoremap n nzz 
+  nnoremap <leader>s :nohlsearch<enter>
+
+  " Formatting
+  nnoremap <S-f> gq$==
+
+  " Moving lines
+  inoremap <C-Up> <esc>:m-2<enter>i
+  inoremap <C-Down> <esc>:m+<enter>i
+  vnoremap <S-k> :m '<-2<CR>gv=gv
+  vnoremap <S-j> :m '>+1<CR>gv=gv
+
+  " Replacing multiple words
+  nnoremap <leader>r cgn
+
+  " Access file tree quickly
+  noremap <C-z> <esc>:Explore<CR>	
+
+  " Opening tag definitions in new window
+  noremap <leader>p <C-w>}<C-w>j
+  noremap <leader>c <esc>:pc<CR>
+
+  " Open file in new buffer
+  nnoremap <C-o> <esc>:e 
+
+  " Previous buffer
+  nnoremap <C-p> :bp<CR>
+
+  " Next buffer
+  nnoremap <C-n> :bn<CR> 
+
+  " Quit buffer
+  noremap <C-q> <esc>:bd!<CR>
+  inoremap <C-q> <esc>:bd!<CR>
+
+  " Save
+  noremap <C-s> <esc>:up!<CR>
+  inoremap <C-s> <esc>:up!<CR>
+
+  " Auto pairs implementation
+  inoremap [ []<esc>i
+  inoremap ' ''<esc>i
+  inoremap " ""<esc>i
+  inoremap { {}<esc>i
+  inoremap ( ()<esc>i
+  inoremap < <><esc>i
+
+  inoremap [<leader> [  ]<esc>hi
+  inoremap '<leader> '  '<esc>hi
+  inoremap "<leader> "  "<esc>hi
+  inoremap {<leader> {  }<esc>hi
+  inoremap (<leader> (  )<esc>hi
+  inoremap <<leader> <  ><esc>hi
+
+  inoremap [<CR> [<CR><CR>]<esc>kS
+  inoremap '<CR> '<CR><CR>'<esc>kS
+  inoremap "<CR> "<CR><CR>"<esc>kS
+  inoremap {<CR> {<CR><CR>}<esc>kS
+  inoremap (<CR> (<CR><CR>)<esc>kS
+  inoremap <<CR> <<CR><CR>><esc>kS
+
+  " Templates implementation
+  nnoremap <leader>html :-1read $HOME/.vim/templates/skeleton.html.txt<CR>3jwf>a
+  nnoremap <leader>cpp :-1read $HOME/.vim/templates/main.cpp.txt<CR>4jA
+
+" Custom commands
+  " Quick server
+  command QuickServer !quickServer %:p 
+  " Autocomplete
+  au CursorHoldI *.html,*.css,*.js call feedkeys("\<C-x>\<C-o>")
+  au CursorHoldI *.ts,*.py,*.cpp,*.c call feedkeys("\<C-x>\<C-n>")
+  au BufEnter *vimrc,*.ts,*.py,*.cpp,*.c,*.txt,*.md,*.html,*.css,*.js call feedkeys("g;za")
+  au BufWritePost *.ts,*.py,*.cpp,*.c,*.js !ctags -R * --exclude=.git --exclude=node_modules

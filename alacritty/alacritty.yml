@@ -1,0 +1,16 @@
+cursor: 
+  style: 
+    shape: Beam
+    blinking: Always
+
+font:
+  normal:
+    size: 10
+    family: CaskaydiaCove Nerd Font
+    style: Regular
+
+window:
+  opacity: 0.9
+  padding:
+    x: 8
+    y: 8

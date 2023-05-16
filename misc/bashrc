@@ -1,0 +1,21 @@
+# Colors
+red='\[\033[01;31m\]'
+green='\[\033[01;36m\]'
+blue='\[\033[01;34m\]'
+purple='\[\033[01;35m\]'
+white='\[\033[01;37m\]'
+reset='\[\033[00m\]'
+
+# Functions
+function bash_prompt() {
+  PS1='\e'$white'\u\e'$blue'🚀\H\e'$purple' ⇒   \W'$green'$(__git_ps1)  »\e'$reset'  '
+}
+
+# Execution
+source ~/.git-prompt.sh
+bash_prompt
+
+# Aliases
+#alias vimrc='vim ~/.vim/vimrc'
+alias vim='nvim'
+alias ls='ls --color=auto'
