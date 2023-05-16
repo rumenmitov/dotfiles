@@ -34,7 +34,7 @@ function fish_right_prompt
 	#   git fetch > /dev/null
 	# end
 
-	printf "     %s" (fish_git_prompt '%s')
+	printf "     %s" (fish_git_prompt '%s')
 end
 
 # Custom aliases
