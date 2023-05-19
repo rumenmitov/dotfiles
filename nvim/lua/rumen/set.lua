@@ -23,8 +23,10 @@
   vim.opt.foldcolumn = "2"
   vim.opt.foldmethod = "indent"
 
+--- Version control
+  vim.opt.undodir = ".vim/undodir"
+  vim.opt.undofile = true
+
 --- Colorscheme
 	vim.cmd.colorscheme("everforest")
 	vim.opt.termguicolors = true
-
-
