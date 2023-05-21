@@ -20,6 +20,12 @@ end
 	set -g __fish_git_prompt_color_upstream_ahead green
 	set -g __fish_git_prompt_color_upstream_behind red
 
+  # Icons
+  set -g __fish_git_prompt_char_cleanstate 🥳
+  set -g __fish_git_prompt_char_dirtystate 🎱
+  set -g __fish_git_prompt_char_untrackedfiles 🍿
+  set -g __fish_git_prompt_char_stagedstate 🌟
+
 function fish_right_prompt
 	set -g __fish_git_prompt_show_informative_status true
 	set -g __fish_git_prompt_use_informative_chars true
