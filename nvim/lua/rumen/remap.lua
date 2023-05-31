@@ -31,11 +31,15 @@
   vim.keymap.set("v", "<S-k>", ":m '<-2<CR>gv=gv")
   vim.keymap.set("v", "<S-j>", ":m '>+1<CR>gv=gv")
 
--- Replacing multiple words
-  vim.keymap.set("n", "<leader>r", "cgn")
+-- Global search and replace 
+  vim.keymap.set("n", "<leader>sr", function()
+    local search_term = vim.fn.input("Search: ")
+    local replace_term = vim.fn.input("Replace: ")
+    vim.cmd("%s/" .. search_term .. "/" .. replace_term)
+  end)
 
 -- Open file in new buffer
-  vim.keymap.set("n", "<C-o>", "<esc>:e ")
+  vim.keymap.set("n", "<leader>o", "<esc>:e ")
 
 -- Buffers
   vim.keymap.set("n", "<C-p>", ":bp<CR>")
