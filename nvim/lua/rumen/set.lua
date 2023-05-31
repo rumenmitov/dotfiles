@@ -14,11 +14,14 @@
 	vim.opt.expandtab = true
 	vim.opt.smartindent = true
 
+--- Wrap
+  vim.opt.wrap = true
+
 --- Search
 	vim.opt.hlsearch = true
 	vim.opt.incsearch = true
 
---- Folding
+--- Folding (breaks Telescope plugin)
   -- vim.opt.foldnestmax = 1
   -- vim.opt.foldcolumn = "2"
   -- vim.opt.foldmethod = "indent"
