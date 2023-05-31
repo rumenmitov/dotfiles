@@ -75,5 +75,7 @@ git merge <incoming branch>
 
 **TIP:** Use `git commit -a` to be able to write multi-line comments! Just make sure that you set:  
 `git config --global core.editor vim`
-
+  
+**TIP:** Use `git config --global diff.tool vimdiff` to set vim as your diff tool.  
+  
 
