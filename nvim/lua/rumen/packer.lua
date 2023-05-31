@@ -1,45 +1,45 @@
 return require('packer').startup(function(use)
-  --- Pack manager
+  -- Pack manager
   use 'wbthomason/packer.nvim'
 
-  --- Fuzzy finder
+  -- Fuzzy finder
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  --- Icons
+  -- Icons
   use 'nvim-tree/nvim-web-devicons'
 
-  --- Colorscheme
+  -- Colorscheme
   use 'sainnhe/everforest'
   use 'shaunsingh/nord.nvim'
 
-  --- Statusline
+  -- Statusline
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
-  --- Tabline
+  -- Tabline
   use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
-  --- Notifications
+  -- Notifications
   use 'rcarriga/nvim-notify'
 
-  --- Zen mode
+  -- Zen mode
   use "folke/zen-mode.nvim"
 
-  --- Smooth scroll
+  -- Smooth scroll
   use 'karb94/neoscroll.nvim'
 
-  --- Syntax highlighting
+  -- Syntax highlighting
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
-  --- Version manager
+  -- Version manager
   use('mbbill/undotree')
 
-  --- Autocompletion
+  -- Autocompletion
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
@@ -61,16 +61,16 @@ return require('packer').startup(function(use)
     }
   }
 
-  --- Comments
+  -- Comments
   use('tpope/vim-commentary')
 
-  --- Git
+  -- Git
   use('airblade/vim-gitgutter')
 
-  --- HTML boilerplate
+  -- HTML boilerplate
   use('mattn/emmet-vim')
 
-  --- Autopairs
+  -- Autopairs
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end

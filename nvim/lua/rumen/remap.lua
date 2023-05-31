@@ -1,43 +1,43 @@
---- General
+-- General
   vim.keymap.set("i", "<C-c>", "<esc>")
 
---- Leader
+-- Leader
   vim.g.mapleader = " "
 
---- File explorer
+-- File explorer
   vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
---- Terminal
+-- Terminal
   vim.keymap.set("n", "<leader>t", vim.cmd.terminal)
 
---- Copying and pasting from clipboard
+-- Copying and pasting from clipboard
   vim.keymap.set("n", "<S-y>", "\"+y")
   vim.keymap.set("n", "<S-p>", "\"+p")
 
---- Moving vertically
+-- Moving vertically
   vim.keymap.set("n", "<C-d>", "<C-d>zz")
   vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
---- Searching for words
+-- Searching for words
   vim.keymap.set("n", "n", "nzz") 
   vim.keymap.set("n", "<leader>s", vim.cmd.nohlsearch)
 
---- Formatting
+-- Formatting
   vim.keymap.set("n", "<S-f>", "gq$==")
 
---- Moving lines
+-- Moving lines
   vim.keymap.set("i", "<C-Up>", "<esc>:m-2<enter>i")
   vim.keymap.set("i", "<C-Down>", "<esc>:m+<enter>i")
   vim.keymap.set("v", "<S-k>", ":m '<-2<CR>gv=gv")
   vim.keymap.set("v", "<S-j>", ":m '>+1<CR>gv=gv")
 
---- Replacing multiple words
+-- Replacing multiple words
   vim.keymap.set("n", "<leader>r", "cgn")
 
---- Open file in new buffer
+-- Open file in new buffer
   vim.keymap.set("n", "<C-o>", "<esc>:e ")
 
---- Buffers
+-- Buffers
   vim.keymap.set("n", "<C-p>", ":bp<CR>")
   vim.keymap.set("n", "<C-n>", ":bn<CR>")
   vim.keymap.set("n", "<C-q>", ":bd!<CR>")
@@ -45,5 +45,5 @@
   vim.keymap.set("n", "<C-s>", ":up!<CR>")
   vim.keymap.set("i", "<C-s>", ":up!<CR>")
 
---- Zen mode
+-- Zen mode
   vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
