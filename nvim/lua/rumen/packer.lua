@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
 
   --- Colorscheme
   use 'sainnhe/everforest'
+  use 'shaunsingh/nord.nvim'
 
   --- Statusline
   use {

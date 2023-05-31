@@ -19,14 +19,14 @@
 	vim.opt.incsearch = true
 
 --- Folding
-  vim.opt.foldnestmax = 1
-  vim.opt.foldcolumn = "2"
-  vim.opt.foldmethod = "indent"
+  -- vim.opt.foldnestmax = 1
+  -- vim.opt.foldcolumn = "2"
+  -- vim.opt.foldmethod = "indent"
 
 --- Version control
   vim.opt.undodir = ".vim/undodir"
   vim.opt.undofile = true
 
 --- Colorscheme
-	vim.cmd.colorscheme("everforest")
+	vim.cmd.colorscheme("nord")
 	vim.opt.termguicolors = true
