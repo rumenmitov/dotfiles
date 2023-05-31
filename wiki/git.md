@@ -77,5 +77,8 @@ git merge <incoming branch>
 `git config --global core.editor vim`
   
 **TIP:** Use `git config --global diff.tool vimdiff` to set *vim* as your diff tool.  
+    
+**TIP:** To get a cool graphic of your git history enter the following command in a git directory:  
+`git log --graph --decorate --oneline`  
   
-
+   
