@@ -23,7 +23,8 @@
   vim.keymap.set("n", "<leader>s", vim.cmd.nohlsearch)
 
 -- Formatting
-  vim.keymap.set("n", "<S-f>", "gq$==")
+  vim.keymap.set("n", "<leader>nf", "gq$==")
+  vim.keymap.set("n", "<leader>prettier", ":silent %!prettier --stdin-filepath %<CR>")
 
 -- Moving lines
   vim.keymap.set("i", "<C-Up>", "<esc>:m-2<enter>i")
