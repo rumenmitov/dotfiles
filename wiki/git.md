@@ -44,7 +44,7 @@ If it is a brand new repository:
 If you want to download the latest changes (make sure you `cd` into your repository):  
 `git pull`  
 
-*TIP:** If you want to see if there are changes to the codebase without pulling them, use:  
+**TIP:** If you want to see if there are changes to the codebase without pulling them, use:  
 `git fetch`  
 
   
