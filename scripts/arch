@@ -43,6 +43,8 @@ echo "Paru + clipboard manager + brave complete!"
 echo "Setting up misc..."
 cp -r dotfiles/misc/fonts ~/.fonts
 cp dotfiles/misc/bashrc ~/.bashrc
+cp dotfiles/misc/other/tsconfig.json ~/tsconfig.json
+cp dotfiles/misc/other/prettierrc.json ~/.prettierrc.json
 echo "Misc complete!"
 
 # Setup alacritty
