@@ -17,7 +17,7 @@ sudo pacman -S --noconfirm rofimoji xsel xdotool xclip emoji-font nerd-fonts
 sudo pacman -S --noconfirm accountsservice
 sudo pacman -S --noconfirm lightdm-webkit2-greeter
 sudo pacman -S --noconfirm --needed base-devel
-sudo pacman -S --noconfirm cmake python npm prettier
+sudo pacman -S --noconfirm cmake python npm prettier podman podman-compose
 npm install -g --noconfirm npm@latest
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install 19
