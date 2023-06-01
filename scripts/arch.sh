@@ -42,6 +42,7 @@ echo "Paru + clipboard manager + brave complete!"
 # Setup misc
 echo "Setting up misc..."
 cp -r dotfiles/misc/fonts ~/.fonts
+cp -r dotfiles/misc/images/wallpapers ~/Pictures
 cp dotfiles/misc/bashrc ~/.bashrc
 cp dotfiles/misc/other/tsconfig.json ~/tsconfig.json
 cp dotfiles/misc/other/prettierrc.json ~/.prettierrc.json
@@ -64,7 +65,6 @@ chmod +x ~/.config/i3/bar.sh
 chmod +x ~/.config/i3/battery.sh
 sudo rm -r ~/.config/rofi
 cp -r dotfiles/rofi ~/.config/rofi
-cp -r dotfiles/misc/images/wallpaper.jpg ~/Pictures/wallpaper.jpg
 echo "i3 complete!"
 
 # Setup polybar
