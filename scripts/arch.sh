@@ -30,12 +30,13 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 echo "Neovim complete!"
 
 # Setup paru + clipboard manager + brave
-echo "Setting up paru + clipboard manager + brave..."
+echo "Setting up paru + clipboard manager + brave + rm-improved..."
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 paru rofi-greenclip
 paru brave-bin
+paru rm-improved
 cd
 echo "Paru + clipboard manager + brave complete!"
 
