@@ -46,9 +46,6 @@ return require('packer').startup(function(use)
   -- Syntax highlighting
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
-  -- Version manager
-  use('mbbill/undotree')
-
   -- Autocompletion
   use {
     'VonHeikemen/lsp-zero.nvim',

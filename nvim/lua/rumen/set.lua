@@ -27,8 +27,8 @@
   -- vim.opt.foldmethod = "indent"
 
 -- Version control
-  vim.opt.undodir = ".vim/undodir"
-  vim.opt.undofile = true
+  -- vim.opt.undodir = "~/.vim/undodir"
+  -- vim.opt.undofile = true
 
 -- Colorscheme
   vim.opt.background = "dark"
