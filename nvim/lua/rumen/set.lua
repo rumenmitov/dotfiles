@@ -31,5 +31,6 @@
   vim.opt.undofile = true
 
 -- Colorscheme
+  vim.opt.background = "dark"
 	vim.cmd.colorscheme("nord")
 	vim.opt.termguicolors = true

@@ -14,6 +14,16 @@ return require('packer').startup(function(use)
   -- Colorscheme
   use 'sainnhe/everforest'
   use 'shaunsingh/nord.nvim'
+  use {
+    'navarasu/onedark.nvim',
+    config = function() 
+      require('onedark').setup {
+        style = 'warm'
+      }
+    end 
+  }
+  use 'Mofiqul/dracula.nvim'
+  use 'morhetz/gruvbox'
 
   -- Statusline
   use {

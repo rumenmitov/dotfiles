@@ -2,8 +2,8 @@
 
 # General
 cd
-mkdir .config
-mkdir Pictures
+mkdir ~/.config
+mkdir ~/Pictures
 
 # Installing packages
 sudo pacman -S --noconfirm alacritty gvim qutebrowser
@@ -98,6 +98,13 @@ echo "Lightdm complete!"
 echo "Setting up fish..."
 sudo cp -r dotfiles/fish ~/.config
 echo "Fish complete!"
+
+# Setup qutebrowser
+echo "Setting up qutebrowser..."
+mkdir ~/.config/qutebrowser 
+sudo cp -r dotfiles/qutebrowser/themes ~/.config/qutebrowser/
+sudo cp dotfiles/qutebrowser/config.py ~/.config/qutebrowser/
+echo "Qutebrowser complete!"
 
 echo "Setup complete! 🥳"
 echo "Here are some other tweaks that can be made at the user's discretion:"
