@@ -6,7 +6,7 @@ mkdir ~/.config
 mkdir ~/Pictures
 
 # Installing packages
-sudo pacman -S --noconfirm alacritty gvim qutebrowser
+sudo pacman -S --noconfirm alacritty gvim qutebrowser firefox
 sudo pacman -S --noconfirm thunar sxiv gvfs tumbler
 sudo pacman -S --noconfirm lxappearance
 sudo pacman -S --noconfirm neofetch
@@ -106,7 +106,15 @@ sudo cp -r dotfiles/qutebrowser/themes ~/.config/qutebrowser/
 sudo cp dotfiles/qutebrowser/config.py ~/.config/qutebrowser/
 echo "Qutebrowser complete!"
 
+# Setup firefox
+echo "Setting up firefox..."
+mkdir ~/.firefox
+sudo cp -r dotfiles/firefox/user.js ~/.firefox/
+sudo cp -r dotfiles/firefox/chrome ~/.firefox/
+echo "Firefox complete!"
+
 echo "Setup complete! 🥳"
 echo "Here are some other tweaks that can be made at the user's discretion:"
 echo "    → Change shell to fish: sudo usermod -s /usr/bin/fish $USER"
 echo "    → To install neovim plugins, open neovim and type: ':PackerSync'\n"
+echo "    → If firefox theme is not working check out this repo: https://github.com/CristianDragos/FirefoxThemes/tree/master/Simplify%20Silver%20Peach"
