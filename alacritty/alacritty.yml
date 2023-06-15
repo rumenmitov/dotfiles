@@ -5,8 +5,8 @@ cursor:
 
 font:
   normal:
-    size: 10
     family: CaskaydiaCove Nerd Font
+    size: 10
     style: Regular
 
 window:
