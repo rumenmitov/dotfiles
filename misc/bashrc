@@ -17,5 +17,7 @@ bash_prompt
 
 # Aliases
 #alias vimrc='vim ~/.vim/vimrc'
+alias ls='logo-ls'
 alias vim='nvim'
 alias ls='ls --color=auto'
+. "$HOME/.cargo/env"

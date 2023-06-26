@@ -44,6 +44,7 @@ function fish_right_prompt
 end
 
 # Custom aliases
+alias ls="logo-ls"
 alias vimrc="vim ~/.vim/vimrc"
 alias vim="nvim"
 alias vimwiki="vim ~/Nextcloud/vimwiki/index.wiki"
