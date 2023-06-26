@@ -7,7 +7,7 @@ mkdir ~/Pictures
 
 # Installing packages
 sudo pacman -S --noconfirm alacritty gvim qutebrowser firefox
-sudo pacman -S --noconfirm thunar sxiv gvfs tumbler
+sudo pacman -S --noconfirm thunar sxiv gvfs tumbler ripgrep bat
 sudo pacman -S --noconfirm lxappearance
 sudo pacman -S --noconfirm neofetch
 sudo pacman -S --noconfirm fortune-mod
@@ -37,6 +37,7 @@ makepkg -si
 paru rofi-greenclip
 paru brave-bin
 paru rm-improved
+paru logo-ls
 cd
 echo "Paru + clipboard manager + brave complete!"
 
