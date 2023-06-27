@@ -19,6 +19,8 @@ sudo pacman -S --noconfirm lightdm-webkit2-greeter
 sudo pacman -S --noconfirm --needed base-devel
 sudo pacman -S --noconfirm cmake python npm prettier podman podman-compose
 npm install -g --noconfirm npm@latest
+npm install -g --noconfirm next@latest
+npm install -g --noconfirm vercel@latest
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install 19
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
