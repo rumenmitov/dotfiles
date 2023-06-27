@@ -2,8 +2,8 @@
 
 GREEN="\e[32m"
 PURPLE="\e[95m"
-ENDCOLOR="\e[0m"
+BOLD_ENDCOLOR="\e[1;97m"
 
-echo -en "$GREEN Commit Message $PURPLE👉  $ENDCOLOR"
+echo -en "$GREEN Commit Message $PURPLE👉  $BOLD_ENDCOLOR"
 read -r msg
 git commit -m "$msg"
