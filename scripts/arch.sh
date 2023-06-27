@@ -21,6 +21,7 @@ sudo pacman -S --noconfirm cmake python npm prettier podman podman-compose
 npm install -g --noconfirm npm@latest
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install 19
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Setup neovim
 echo "Setting up neovim..."
