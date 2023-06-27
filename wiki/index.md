@@ -15,5 +15,8 @@
     ii) [SSL Encryption](./nginx.md#SSL-Encryption)  
     iii) [Pointing To Localhost](./nginx.md#Pointing-To-Localhost)  
   c) [Starting Nginx](./nginx.md#Starting-Nginx)  
-
-
+3. [Pass](./pass.md)
+  a) [Prerequisites](./pass.md#Prerequisites)    
+  b) [Extracting on New Device](./pass.md#Extracting-on-New-Device)  
+  
+  

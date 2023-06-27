@@ -6,8 +6,8 @@ mkdir ~/.config
 mkdir ~/Pictures
 
 # Installing packages
-sudo pacman -S --noconfirm alacritty gvim qutebrowser firefox
-sudo pacman -S --noconfirm thunar sxiv gvfs tumbler ripgrep bat
+sudo pacman -S --noconfirm alacritty vi qutebrowser firefox neovim
+sudo pacman -S --noconfirm thunar sxiv gvfs tumbler ripgrep bat procs tldr man pass
 sudo pacman -S --noconfirm lxappearance
 sudo pacman -S --noconfirm neofetch
 sudo pacman -S --noconfirm fortune-mod
