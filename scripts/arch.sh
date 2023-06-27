@@ -53,6 +53,7 @@ wget "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-pr
 cp dotfiles/misc/gitconfig ~/.gitconfig
 sudo cp dotfiles/misc/git_commit.sh /usr/local/bin/commit
 sudo chmod +x /usr/local/bin/commit
+cp dotfiles/misc/greenclip.toml ~/.config/greenclip.toml
 cp dotfiles/misc/other/tsconfig.json ~/tsconfig.json
 cp dotfiles/misc/other/prettierrc.json ~/.prettierrc.json
 echo "Misc complete!"

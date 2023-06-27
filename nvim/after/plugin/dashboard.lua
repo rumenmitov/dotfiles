@@ -1,22 +1,26 @@
 local alpha = require'alpha'
 local dashboard = require'alpha.themes.dashboard'
 dashboard.section.header.val = {
-  [[            _                         _             ]],     
-  [[        _==/          i     i          \==          ]],             
-  [[      /XX/            |\___/|            \XX\       ]],                
-  [[    /XXXX\            |XXXXX|            /XXXX\     ]],                    
-  [[   |XXXXXX\_         _XXXXXXX_         _/XXXXXX|    ]],                      
-  [[  XXXXXXXXXXXxxxxxxxXXXXXXXXXXXxxxxxxxXXXXXXXXXXX   ]],                   
-  [[ |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|  ]],            
-  [[ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  ]],          
-  [[ |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|  ]],         
-  [[  XXXXXX/^^^^"\XXXXXXXXXXXXXXXXXXXXX/^^^^^\XXXXXX   ]],             
-  [[   |XXX|       \XXX/^^\XXXXX/^^\XXX/       |XXX|    ]],            
-  [[     \XX\       \X/    \XXX/    \X/       /XX/      ]],             
-  [[        "\       "      \X/      "       /"         ]],                     
-  [[                         !                          ]],
-  [[                                                    ]],
-  [[            ----- Welcome, Rumen  -----             ]],
+
+  [[         _..._             ]],   
+  [[       .'     '.      _    ]],
+  [[      /    .-""-\   _/ \   ]],   
+  [[    .-|   /:.   |  |   |   ]],
+  [[    |  \  |:.   /.-'-./    ]],   
+  [[    | .-'-;:__.'    =/     ]],   
+  [[    .'=  *=|NASA _.='      ]],   
+  [[   /   _.  |    ;          ]],
+  [[  ;-.-'|    \   |          ]],   
+  [[ /   | \    _\  _\         ]],     
+  [[ \__/'._;.  ==' ==\        ]],     
+  [[          \    \   |       ]],            
+  [[          /    /   /       ]],           
+  [[          /-._/-._/        ]],             
+  [[          \   `\  \        ]],         
+  [[           `-._/._/        ]],
+  [[                           ]], 
+  [[ ---- Welcome, Rumen ----  ]],
+
 }
 
 dashboard.section.buttons.val = {
@@ -26,3 +30,23 @@ dashboard.section.buttons.val = {
   dashboard.button( "q", "  Quit NVIM" , ":qa<CR>"),
 }
 alpha.setup(dashboard.config)
+
+
+
+-- More ASCII art
+
+-- [[            _                         _             ]],     
+-- [[        _==/          i     i          \==          ]],             
+-- [[      /XX/            |\___/|            \XX\       ]],                
+-- [[    /XXXX\            |XXXXX|            /XXXX\     ]],                    
+-- [[   |XXXXXX\_         _XXXXXXX_         _/XXXXXX|    ]],                      
+-- [[  XXXXXXXXXXXxxxxxxxXXXXXXXXXXXxxxxxxxXXXXXXXXXXX   ]],                   
+-- [[ |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|  ]],            
+-- [[ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  ]],          
+-- [[ |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|  ]],         
+-- [[  XXXXXX/^^^^"\XXXXXXXXXXXXXXXXXXXXX/^^^^^\XXXXXX   ]],             
+-- [[   |XXX|       \XXX/^^\XXXXX/^^\XXX/       |XXX|    ]],            
+-- [[     \XX\       \X/    \XXX/    \X/       /XX/      ]],             
+-- [[        "\       "      \X/      "       /"         ]],                     
+-- [[                         !                          ]],
+-- [[                                                    ]],
