@@ -83,6 +83,12 @@ return require('packer').startup(function(use)
   -- HTML boilerplate
   use('mattn/emmet-vim')
 
+  -- Color Preview
+  use {
+    'brenoprata10/nvim-highlight-colors',
+    config = function() require('nvim-highlight-colors').setup {} end
+  }
+
   -- Autopairs
   use {
     "windwp/nvim-autopairs",
