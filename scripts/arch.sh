@@ -109,6 +109,7 @@ echo "Qutebrowser complete!"
 
 echo "Setup complete! 🥳"
 echo "Here are some other tweaks that can be made at the user's discretion:"
+echo "    → To use git prompt in bash: 'cd; wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'"
 echo "    → Change shell to fish: sudo usermod -s /usr/bin/fish $USER"
 echo "    → To install neovim plugins, open neovim and type: ':PackerSync'\n"
 echo "    → Firefox config can be found in the 'firefox' directory.\n
@@ -116,3 +117,4 @@ echo "    → Firefox config can be found in the 'firefox' directory.\n
             If you don't know where your profile's config is located search 'about:profiles' on firefox and click on the 'Root Directory'"
 echo "    → If firefox theme is not working check out this repo:\n
             https://github.com/CristianDragos/FirefoxThemes/tree/master/Simplify%20Silver%20Peach"
+echo "    → When making custom commands, make sure to use the '/usr/local/bin directory"
