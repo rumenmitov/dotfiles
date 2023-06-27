@@ -12,7 +12,9 @@
 
 -- Copying and pasting from clipboard
   vim.keymap.set("n", "<S-y>", "\"+y")
+  vim.keymap.set("v", "<S-y>", "\"+y")
   vim.keymap.set("n", "<S-p>", "\"+p")
+  vim.keymap.set("v", "<S-p>", "\"+p")
 
 -- Moving vertically
   vim.keymap.set("n", "<C-d>", "<C-d>zz")

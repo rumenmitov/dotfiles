@@ -95,6 +95,9 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  -- Vim surround
+  use('tpope/vim-surround')
+
   -- Markdown preview
   use({
     "iamcco/markdown-preview.nvim",
