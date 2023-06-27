@@ -1,0 +1,9 @@
+[user]
+	email = rumenmitov@protonmail.com
+	name = Rumen
+[core]
+	editor = nvim
+[diff]
+	tool = nvim -d
+[merge]
+	tool = nvim

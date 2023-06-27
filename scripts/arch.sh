@@ -46,6 +46,10 @@ echo "Setting up misc..."
 cp -r dotfiles/misc/fonts ~/.fonts
 cp -r dotfiles/misc/images/wallpapers ~/Pictures
 cp dotfiles/misc/bashrc ~/.bashrc
+wget "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
+cp dotfiles/misc/gitconfig ~/.gitconfig
+sudo cp dotfiles/misc/git_commit.sh /usr/local/bin/commit
+sudo chmod +x /usr/local/bin/commit
 cp dotfiles/misc/other/tsconfig.json ~/tsconfig.json
 cp dotfiles/misc/other/prettierrc.json ~/.prettierrc.json
 echo "Misc complete!"
@@ -109,7 +113,6 @@ echo "Qutebrowser complete!"
 
 echo "Setup complete! 🥳"
 echo "Here are some other tweaks that can be made at the user's discretion:"
-echo "    → To use git prompt in bash: 'cd; wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'"
 echo "    → Change shell to fish: sudo usermod -s /usr/bin/fish $USER"
 echo "    → To install neovim plugins, open neovim and type: ':PackerSync'\n"
 echo "    → Firefox config can be found in the 'firefox' directory.\n
