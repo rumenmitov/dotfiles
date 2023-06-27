@@ -2,6 +2,15 @@ return require('packer').startup(function(use)
   -- Pack manager
   use 'wbthomason/packer.nvim'
 
+  -- Dashboard
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+  }
+
   -- Fuzzy finder
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -30,9 +39,6 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
-
-  -- Tabline
-  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
   -- Notifications
   use 'rcarriga/nvim-notify'
@@ -72,7 +78,10 @@ return require('packer').startup(function(use)
   use('tpope/vim-commentary')
 
   -- Git
-  use('airblade/vim-gitgutter')
+  use {
+    'airblade/vim-gitgutter',
+    branch = "main"
+  }
 
   -- HTML boilerplate
   use('mattn/emmet-vim')
