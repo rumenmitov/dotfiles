@@ -71,6 +71,10 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Formatting
+  use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
+
   -- Comments
   use('tpope/vim-commentary')
 

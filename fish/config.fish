@@ -1,6 +1,6 @@
 function fish_prompt
 	echo -n \n  
-	echo -n (set_color blue)"$USER"(set_color white)"@$hostname"(set_color yellow) "★ " (set_color cyan)"$PWD"\n
+	echo -n (set_color blue)"$USER"(set_color white)"@$hostname"(set_color yellow) " " (set_color cyan)"$PWD"\n
 	echo -n (set_color red)"➤ " (set_color normal)
 end
 
@@ -25,6 +25,8 @@ end
   set -g __fish_git_prompt_char_dirtystate 🎱
   set -g __fish_git_prompt_char_untrackedfiles 🍿
   set -g __fish_git_prompt_char_stagedstate 🌟
+  set -g __fish_git_prompt_char_upstream_ahead ⬆️
+  set -g __fish_git_prompt_char_upstream_behind ⬇️ 
 
 function fish_right_prompt
 	set -g __fish_git_prompt_show_informative_status true
@@ -45,6 +47,7 @@ end
 
 # Custom aliases
 alias ls="logo-ls"
+alias exa="exa --icons"
 alias vimrc="vim ~/.vim/vimrc"
 alias vim="nvim"
 alias vimwiki="vim ~/Nextcloud/vimwiki/index.wiki"
