@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
 
  -- Fuzzy finder
  use {
-   'nvim-telescope/telescope.nvim', tag = '0.1.1',
+   'nvim-telescope/telescope.nvim', tag = '0.1.x',
    requires = { {'nvim-lua/plenary.nvim'} }
  }
 
@@ -109,6 +109,10 @@ return require('packer').startup(function(use)
  })
 
   -- Better comments
-  use "Djancyp/better-comments.nvim"
+  -- use({
+  --     "folke/todo-comments.nvim",
+  --     requires = { "nvim-lua/plenary.nvim", opts = {} }
+  -- })
+    use "Djancyp/better-comments.nvim"
 
-end)
+  end)

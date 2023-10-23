@@ -19,7 +19,7 @@
   vim.opt.colorcolumn = "80"
 
 -- Search
-	vim.opt.hlsearch = true
+	vim.opt.hlsearch = false
 	vim.opt.incsearch = true
 
 -- Version control

@@ -27,4 +27,3 @@ require('better-comment').Setup({
 
   }
 })
-

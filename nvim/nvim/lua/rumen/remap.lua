@@ -22,7 +22,7 @@
 
 -- Searching for words
   vim.keymap.set("n", "n", "nzz") 
-  vim.keymap.set("n", "<leader>s", vim.cmd.nohlsearch)
+  -- vim.keymap.set("n", "<leader>s", vim.cmd.nohlsearch)
 
 -- Formatting
   vim.keymap.set("n", "<leader>format", "gq$==")
@@ -65,3 +65,9 @@
 
 -- Zen mode
   vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
+
+-- Symbols
+  vim.keymap.set("n", "<leader>s", function()
+      local search_symbol = vim.fn.input("Symbol: ")
+      vim.api.nvim_input("'S/" .. search_symbol .. "<enter>_yiw:bd<enter>p")
+  end)

@@ -1,0 +1,21 @@
+cursor: 
+  style: 
+    shape: Beam
+    blinking: Always
+
+font:
+  normal:
+    family: CaskaydiaCove Nerd Font
+    size: 10
+    style: Regular
+
+window:
+  opacity: 0.2
+  padding:
+    x: 8
+    y: 8
+
+colors:
+  primary:
+    # Fall colorway
+    background: '#bc9c43'
