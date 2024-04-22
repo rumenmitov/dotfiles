@@ -43,7 +43,7 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
 
-  (set-frame-font "DejaVu Sans Mono 12" nil t)
+  (set-frame-font "CaskaydiaCove Nerd Font 12" nil t)
 
   (global-display-line-numbers-mode 1)
 
@@ -55,7 +55,11 @@
 #+begin_src emacs-lisp
   (recentf-mode 1)
   (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+  (setq recentf-max-saved-items 10)
 #+end_src
+
+#+RESULTS:
+: 10
 
 
 ** Autocompletion
