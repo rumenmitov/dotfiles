@@ -8,10 +8,16 @@
 [[file:./assets/emacs_logo.png]]
 
 
+* Requirements
+- GNU Emacs 29+
+- GNU Stow
+- Git
+
+  
 * Installation
 1. =rm -rf ~/.emacs*=
-2. =mkdir -p ~/.config/emacs=
-3. =git clone https://gitlab.com/rumenmitov/emacs.git ~/.config/emacs=
+2. =git clone https://gitlab.com/rumenmitov/dotfiles ~/dotfiles=
+3. =cd ~/dotfiles && stow .=
 4. Open Emacs and navigate to *~/.config/emacs/README.org* (using =C-x C-f=)
 5. Refresh the configuration: =C-c C-c=
 6. Initialize configuration: =C-c C-v t=
