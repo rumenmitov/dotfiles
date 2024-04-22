@@ -1,4 +1,0 @@
-# PSM Certificate Override Settings file
-# This is a generated file!  Do not edit.
-open-assistant.io:443:	OID.2.16.840.1.101.3.4.2.1	BC:92:7E:0F:1D:FB:90:40:D2:C3:7B:34:79:FC:C2:94:3F:A0:60:2A:E5:13:8C:F3:A0:48:29:DC:CD:4F:ED:CA	
-teamwork.constructor.university:443:	OID.2.16.840.1.101.3.4.2.1	B3:B7:BD:0C:0A:0B:33:EF:04:D3:51:2F:23:DF:F2:37:BB:6C:63:D9:2B:AB:D2:27:64:6F:19:4D:48:12:8A:20	
