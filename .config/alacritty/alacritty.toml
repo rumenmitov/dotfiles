@@ -1,0 +1,17 @@
+[cursor.style]
+blinking = "Always"
+shape = "Beam"
+
+[mouse]
+hide_when_typing = true
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "Regular"
+
+[window]
+opacity = 0.8
+
+[window.padding]
+x = 4
+y = 4

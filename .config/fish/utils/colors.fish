@@ -1,0 +1,5 @@
+set -g green (set_color green)
+set -g magenta (set_color magenta)
+set -g normal (set_color normal)
+set -g red (set_color red)
+set -g yellow (set_color yellow)

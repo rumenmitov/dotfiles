@@ -1,0 +1,128 @@
+#+title: Emacs Configuration
+#+author: Rumen Mitov
+#+email: rumenmitov@protonmail.com
+#+options: H:3
+#+property: header-args :tangle init.el
+
+
+[[file:./assets/emacs_logo.png]]
+
+
+* Installation
+1. =rm -rf ~/.emacs*=
+2. =mkdir -p ~/.config/emacs=
+3. =git clone https://gitlab.com/rumenmitov/emacs.git ~/.config/emacs=
+4. Open Emacs and navigate to *~/.config/emacs/README.org* (using =C-x C-f=)
+5. Refresh the configuration: =C-c C-c=
+6. Initialize configuration: =C-c C-v t=
+7. Restart Emacs 🐐
+
+
+* Configuration
+
+
+** Startup Message
+#+begin_src emacs-lisp
+   (setq inhibit-startup-message t)
+   (setq initial-scratch-message ";; -- Welcome to Emacs --\n\n")
+
+   (defun display-startup-echo-area-message ()
+     (message nil))
+#+end_src
+
+
+** GUI Options
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+
+  (set-frame-font "DejaVu Sans Mono 12" nil t)
+
+  (global-display-line-numbers-mode 1)
+
+  (load-theme 'deeper-blue' t)
+#+end_src
+
+
+** Recent Files
+#+begin_src emacs-lisp
+  (recentf-mode 1)
+  (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+#+end_src
+
+
+** Autocompletion
+The following configuration uses Emacs' native features for 10 autocomplete options
+which can be accessed with the =TAB= key and selected with the =RET= key.
+The option =completion-help-at-point= is disabled in the minibuffer as it
+prints a distracting error message.
+
+#+begin_src emacs-lisp
+  (icomplete-vertical-mode)
+  (fido-vertical-mode)
+  (electric-pair-mode)
+
+  (setq completion-auto-select t)
+  (setq completion-auto-help 'always)
+  (setq completion-show-help nil)
+  (setq completion-ignore-case t)
+  (setq read-buffer-completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
+  (setq icomplete-in-buffer t)
+  (setq completions-max-height 10)
+  (setq completions-format "one-column")
+
+  (setopt completion-fail-discreetly t)
+
+  (define-key icomplete-vertical-mode-minibuffer-map (kbd "TAB") 'icomplete-force-complete)
+  (define-key icomplete-vertical-mode-minibuffer-map (kbd "RET") 'icomplete-force-complete-and-exit)
+
+  (add-hook 'post-self-insert-hook 'completion-help-at-point)
+  (add-hook 'minibuffer-mode-hook (lambda () (remove-hook 'post-self-insert-hook 'completion-help-at-point)))
+  (add-hook 'minibuffer-exit-hook (lambda () (add-hook 'post-self-insert-hook 'completion-help-at-point)))
+#+end_src
+
+
+** Programming Utils
+#+begin_src emacs-lisp
+  (setq compile-command "make ")
+  (setq gdb-show-main t)
+
+  (add-hook 'gdb-breakpoints-mode-hook
+            (lambda () (gdb-load-window-configuration "~/.config/emacs/gdb-window-config")))
+#+end_src
+
+
+** Misc
+#+begin_src emacs-lisp
+  (setq use-short-answers t)
+
+  (add-hook 'org-mode-hook 'org-indent-mode)
+#+end_src
+
+
+** Packages
+#+begin_src emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
+  (package-initialize)
+  
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+#+end_src
+
+
+*** LSP
+#+begin_src emacs-lisp
+  (use-package haskell-mode)
+
+  (add-hook 'haskell-mode-hook 'eglot-ensure)
+  (add-hook 'c-mode-hook 'eglot-ensure)
+  (add-hook 'c++-mode-hook 'eglot-ensure)
+
+  (require 'flymake)
+  (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
+  (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
+#+end_src
+

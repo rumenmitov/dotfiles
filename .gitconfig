@@ -1,0 +1,10 @@
+[user]
+	email = rumenmitov@protonmail.com
+	name = Rumen
+	signingkey = /home/rumen/.ssh/id_ed25519.pub
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[merge]
+	tool = nvimdiff3
