@@ -1,19 +1,6 @@
 # Emacs
 *~
 *#
-.config/emacs/eshell/
-.config/emacs/auto-save-list/
-.config/emacs/eln-cache/
-.config/emacs/elpa/
-.config/emacs/init.el
-.config/emacs/recentf
-.config/emacs/image-dired/
-.config/emacs/url/
-.config/emacs/bookmarks
-.config/emacs/projects
-.config/emacs/multisession/
-.config/emacs/transient/
-
 
 # Neovim
 ./config/nvim/lazy-lock.json
