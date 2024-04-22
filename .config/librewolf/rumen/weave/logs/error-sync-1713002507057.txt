@@ -1,0 +1,17 @@
+1713001860251	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=schedule)
+1713002461955	Sync.Service	DEBUG	User-Agent: LibreWolf/124.0.1 (Linux x86_64) FxSync/1.126.0.20240321230221.desktop
+1713002461955	Sync.Service	INFO	Starting sync at 2024-04-13 12:01:01 in browser session YYQHhDZxWf3d
+1713002461955	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1713002461957	Sync.Status	INFO	Resetting Status.
+1713002461957	Sync.Status	DEBUG	Status.service: success.status_ok => success.status_ok
+1713002461957	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1713002461957	FirefoxAccounts	DEBUG	getOAuthToken enter
+1713002461958	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1713002461958	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1713002461958	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1713002507055	Sync.Resource	WARN	GET request to https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/206026008/info/collections failed: [Exception... "The lookup of the hostname failed"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "<unknown>"  data: no] No traceback available
+1713002507055	Sync.Status	DEBUG	Status.sync: success.sync => error.login.reason.network
+1713002507055	Sync.Status	DEBUG	Status.service: success.status_ok => error.sync.failed
+1713002507055	Sync.ErrorHandler	ERROR	Sync encountered an error: [Exception... "The lookup of the hostname failed"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "<unknown>"  data: no] No traceback available
+1713002507055	Sync.SyncScheduler	DEBUG	Next sync in 3600000 ms. (why=reschedule)
+1713002507057	Sync.Service	DEBUG	Exception calling anonymous function: [Exception... "The lookup of the hostname failed"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "<unknown>"  data: no] No traceback available

@@ -1,0 +1,40 @@
+1712907069199	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=schedule)
+1712907072663	Sync.RemoteTabs	INFO	Generating tab list with filter
+1712907072666	Sync.RemoteTabs	DEBUG	Processing client: {"id":"-mumslT4CqbQ","type":"client","name":"Rumen Mitov’s Firefox on DESKTOP-OVOM1E4","clientType":"desktop","lastModified":1712873763950,"tabs":[]}
+1712907072666	Sync.RemoteTabs	DEBUG	Processing client: {"id":"e5965c6151e76205e1c73d995bb26dad","type":"client","name":"Firefox on Xiaomi 23053RN02Y","clientType":"phone","lastModified":1712871303440,"tabs":[]}
+1712907072666	Sync.RemoteTabs	DEBUG	Processing client: {"id":"nWRJbfaZONC7","type":"client","name":"rumen’s Firefox on nixos","clientType":"desktop","lastModified":1712475735690,"tabs":[]}
+1712907072666	Sync.RemoteTabs	INFO	Final tab list has 3 clients with 10 tabs.
+1712907073471	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1712907073474	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1712907073770	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1712907074296	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1712907074644	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1712907078720	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1712907078721	Sync.Engine.Tabs	INFO	Posting 1 records of 535 bytes with batch=true
+1712907078721	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1712907078721	Sync.Collection	DEBUG	POST Length: 535
+1712907096987	Sync.SyncScheduler	DEBUG	Network link status changed to "down". Offline?: false
+1712907096987	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1712907096990	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=schedule)
+1712907096990	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1712907099815	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1712907104816	Sync.Engine.Tabs	INFO	Can't do a quick-write as another tab sync is in progress
+1712907122120	Sync.SyncScheduler	DEBUG	Network link status changed to "up". Offline?: false
+1712907122120	Sync.SyncScheduler	DEBUG	Network link looks up. Syncing.
+1712907122121	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1712907122122	Sync.Service	DEBUG	User-Agent: LibreWolf/124.0.1 (Linux x86_64) FxSync/1.126.0.20240321230221.desktop
+1712907122122	Sync.Service	INFO	Starting sync at 2024-04-12 09:32:02 in browser session pg2W9hgiH3et
+1712907122122	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1712907122123	Sync.Status	INFO	Resetting Status.
+1712907122123	Sync.Status	DEBUG	Status.service: success.status_ok => success.status_ok
+1712907122123	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1712907124624	Sync.SyncScheduler	DEBUG	Network link status changed to "down". Offline?: false
+1712907124624	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1712907124625	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=schedule)
+1712907124625	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1712907127130	Sync.Resource	WARN	GET request to https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/206026008/info/collections failed: [Exception... "The lookup of the hostname failed"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "<unknown>"  data: no] No traceback available
+1712907127130	Sync.Status	DEBUG	Status.sync: success.sync => error.login.reason.network
+1712907127130	Sync.Status	DEBUG	Status.service: success.status_ok => error.sync.failed
+1712907127130	Sync.ErrorHandler	ERROR	Sync encountered an error: [Exception... "The lookup of the hostname failed"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "<unknown>"  data: no] No traceback available
+1712907127131	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=reschedule)
+1712907127132	Sync.Service	DEBUG	Exception calling anonymous function: [Exception... "The lookup of the hostname failed"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "<unknown>"  data: no] No traceback available

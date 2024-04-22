@@ -1,0 +1,205 @@
+1713123615882	Sync.LogManager	DEBUG	Flushing file log
+1713123615883	FirefoxAccounts	INFO	fetching updated device list
+1713123615883	FirefoxAccounts	INFO	Already fetching device list, return existing promise
+1713123615884	FirefoxAccounts	INFO	Already fetching device list, return existing promise
+1713123615884	FirefoxAccounts	INFO	Already fetching device list, return existing promise
+1713123615885	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/devices?filterIdleDevicesTimestamp=1711309215884
+1713123615885	Sync.LogManager	DEBUG	Log cleanup threshold time: 1712259615885
+1713123615886	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/devices?filterIdleDevicesTimestamp=1711309215884 failed: 2152398878 - NS_ERROR_UNKNOWN_HOST
+1713123615886	Hawk	WARN	hawk request error: [Exception... "NS_ERROR_UNKNOWN_HOST"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478"  data: no] Stack trace: onStopRequest()@resource://services-common/rest.sys.mjs:478
+1713123615886	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status code: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatus]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get status :: line 615"  data: no] Stack trace: get status()@resource://services-common/rest.sys.mjs:615
+request()@resource://services-common/hawkclient.sys.mjs:230
+1713123615886	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status text: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatusText]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get statusText :: line 630"  data: no] Stack trace: get statusText()@resource://services-common/rest.sys.mjs:630
+request()@resource://services-common/hawkclient.sys.mjs:238
+1713123615886	Hawk	DEBUG	(Response) /account/devices?filterIdleDevicesTimestamp=1711309215884: code: null - Status text: null
+1713123615886	Services.Common.RESTResponse	DEBUG	Caught exception processing response headers: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.visitResponseHeaders]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get headers :: line 662"  data: no] Stack trace: get headers()@resource://services-common/rest.sys.mjs:662
+_maybeNotifyBackoff()@resource://services-common/hawkclient.sys.mjs:307
+request()@resource://services-common/hawkclient.sys.mjs:246
+1713123615886	Services.Common.RESTResponse	DEBUG	Caught exception processing response headers: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.visitResponseHeaders]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get headers :: line 662"  data: no] Stack trace: get headers()@resource://services-common/rest.sys.mjs:662
+_maybeNotifyBackoff()@resource://services-common/hawkclient.sys.mjs:307
+request()@resource://services-common/hawkclient.sys.mjs:247
+1713123615886	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status text: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatusText]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get statusText :: line 630"  data: no] Stack trace: get statusText()@resource://services-common/rest.sys.mjs:630
+_constructError()@resource://services-common/hawkclient.sys.mjs:113
+request()@resource://services-common/hawkclient.sys.mjs:252
+1713123615886	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status code: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatus]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get status :: line 615"  data: no] Stack trace: get status()@resource://services-common/rest.sys.mjs:615
+_constructError()@resource://services-common/hawkclient.sys.mjs:114
+request()@resource://services-common/hawkclient.sys.mjs:252
+1713123615886	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status code: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatus]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get status :: line 615"  data: no] Stack trace: get status()@resource://services-common/rest.sys.mjs:615
+_constructError()@resource://services-common/hawkclient.sys.mjs:115
+request()@resource://services-common/hawkclient.sys.mjs:252
+1713123615886	Services.Common.RESTResponse	DEBUG	Caught exception processing response headers: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.visitResponseHeaders]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get headers :: line 662"  data: no] Stack trace: get headers()@resource://services-common/rest.sys.mjs:662
+_constructError()@resource://services-common/hawkclient.sys.mjs:121
+request()@resource://services-common/hawkclient.sys.mjs:252
+1713123615886	FirefoxAccounts	ERROR	error GETing /account/devices?filterIdleDevicesTimestamp=1711309215884: {"error":{},"errorString":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]","message":null,"code":null,"errno":null}
+1713123615886	Sync.Browser	ERROR	Refreshing device list failed.: {"error":{},"errorString":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]","message":null,"code":null,"errno":null}
+1713123615886	Sync.Browser	ERROR	Refreshing device list failed.: {"error":{},"errorString":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]","message":null,"code":null,"errno":null}
+1713123615886	Sync.Browser	ERROR	Refreshing device list failed.: {"error":{},"errorString":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]","message":null,"code":null,"errno":null}
+1713123615886	Sync.Browser	ERROR	Refreshing device list failed.: {"error":{},"errorString":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]","message":null,"code":null,"errno":null}
+1713123615889	Sync.LogManager	DEBUG	Done deleting files.
+1713123620286	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1713123626045	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123627639	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123639075	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123642101	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123644022	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123723639	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123726248	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123728247	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123729475	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1713123729534	FirefoxAccounts	INFO	fetching updated device list
+1713123729543	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/devices?filterIdleDevicesTimestamp=1711309329535
+1713123729548	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/devices?filterIdleDevicesTimestamp=1711309329535 failed: 2152398878 - NS_ERROR_UNKNOWN_HOST
+1713123729549	Hawk	WARN	hawk request error: [Exception... "NS_ERROR_UNKNOWN_HOST"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478"  data: no] Stack trace: onStopRequest()@resource://services-common/rest.sys.mjs:478
+1713123729549	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status code: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatus]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get status :: line 615"  data: no] Stack trace: get status()@resource://services-common/rest.sys.mjs:615
+request()@resource://services-common/hawkclient.sys.mjs:230
+1713123729549	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status text: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatusText]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get statusText :: line 630"  data: no] Stack trace: get statusText()@resource://services-common/rest.sys.mjs:630
+request()@resource://services-common/hawkclient.sys.mjs:238
+1713123729550	Hawk	DEBUG	(Response) /account/devices?filterIdleDevicesTimestamp=1711309329535: code: null - Status text: null
+1713123729550	Services.Common.RESTResponse	DEBUG	Caught exception processing response headers: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.visitResponseHeaders]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get headers :: line 662"  data: no] Stack trace: get headers()@resource://services-common/rest.sys.mjs:662
+_maybeNotifyBackoff()@resource://services-common/hawkclient.sys.mjs:307
+request()@resource://services-common/hawkclient.sys.mjs:246
+1713123729550	Services.Common.RESTResponse	DEBUG	Caught exception processing response headers: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.visitResponseHeaders]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get headers :: line 662"  data: no] Stack trace: get headers()@resource://services-common/rest.sys.mjs:662
+_maybeNotifyBackoff()@resource://services-common/hawkclient.sys.mjs:307
+request()@resource://services-common/hawkclient.sys.mjs:247
+1713123729550	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status text: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatusText]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get statusText :: line 630"  data: no] Stack trace: get statusText()@resource://services-common/rest.sys.mjs:630
+_constructError()@resource://services-common/hawkclient.sys.mjs:113
+request()@resource://services-common/hawkclient.sys.mjs:252
+1713123729550	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status code: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatus]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get status :: line 615"  data: no] Stack trace: get status()@resource://services-common/rest.sys.mjs:615
+_constructError()@resource://services-common/hawkclient.sys.mjs:114
+request()@resource://services-common/hawkclient.sys.mjs:252
+1713123729550	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status code: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatus]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get status :: line 615"  data: no] Stack trace: get status()@resource://services-common/rest.sys.mjs:615
+_constructError()@resource://services-common/hawkclient.sys.mjs:115
+request()@resource://services-common/hawkclient.sys.mjs:252
+1713123729550	Services.Common.RESTResponse	DEBUG	Caught exception processing response headers: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.visitResponseHeaders]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get headers :: line 662"  data: no] Stack trace: get headers()@resource://services-common/rest.sys.mjs:662
+_constructError()@resource://services-common/hawkclient.sys.mjs:121
+request()@resource://services-common/hawkclient.sys.mjs:252
+1713123729550	FirefoxAccounts	ERROR	error GETing /account/devices?filterIdleDevicesTimestamp=1711309329535: {"error":{},"errorString":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]","message":null,"code":null,"errno":null}
+1713123729550	Sync.Browser	ERROR	Refreshing device list failed.: {"error":{},"errorString":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]","message":null,"code":null,"errno":null}
+1713123734477	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1713123771641	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123774280	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123775671	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123819651	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123822239	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123823670	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713123867634	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124167701	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124169078	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124212648	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124215213	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124217078	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124260638	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124263260	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124264567	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124308653	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124311568	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124313271	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124356651	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124656696	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124658359	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124701641	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124704226	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124705463	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124749641	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124751351	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124795649	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124798240	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124800118	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713124843648	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125143685	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125145655	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125188591	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125191297	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125192567	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125236650	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125241738	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125243382	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125286649	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125289247	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125290294	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125334640	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125634692	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125636598	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125679655	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125681654	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125725644	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125728256	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125729526	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125773644	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125776567	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125778230	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713125821648	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126121687	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126123511	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126166593	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126169230	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126171254	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126214648	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126217230	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126218742	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126262650	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126265244	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126266678	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126310634	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126610694	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126612662	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126655648	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126658248	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126659510	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126703646	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126706253	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126707766	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126751647	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126754333	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126756087	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713126799676	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713127099699	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713127101175	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713127144646	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713127147257	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713127149174	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713127192645	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713127195553	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713127196662	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1713127215882	Sync.Service	DEBUG	User-Agent: LibreWolf/124.0.2 (Linux x86_64) FxSync/1.126.0.20240401114208.desktop
+1713127215882	Sync.Service	INFO	Starting sync at 2024-04-14 22:40:15 in browser session fHMrorsXKvcL
+1713127215882	Sync.Service	DEBUG	In sync: should login.
+1713127215883	Sync.Service	INFO	User logged in successfully - verifying login.
+1713127215883	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1713127215883	FirefoxAccounts	DEBUG	getOAuthToken enter
+1713127215883	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1713127215883	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1713127215883	Sync.SyncAuthManager	DEBUG	unlockAndVerifyAuthState already has (or can fetch) sync keys
+1713127215884	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1713127215884	Sync.Status	DEBUG	Status.login: error.login.reason.network => success.status_ok
+1713127215884	Sync.Status	DEBUG	Status.service: error.login.failed => error.login.failed
+1713127215884	Sync.Service	DEBUG	Fetching unlocked auth state returned success.status_ok
+1713127215885	Sync.SyncAuthManager	INFO	Getting sync key
+1713127215885	Sync.SyncAuthManager	INFO	Getting a sync token from: https://token.services.mozilla.com/1.0/sync/1.5
+1713127215885	Sync.SyncAuthManager	DEBUG	Getting a token using OAuth
+1713127215885	FirefoxAccounts	DEBUG	getOAuthToken enter
+1713127215885	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1713127215885	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1713127215885	Services.Common.TokenServerClient	DEBUG	Beginning OAuth token exchange: https://token.services.mozilla.com/1.0/sync/1.5
+1713127215885	Services.Common.RESTRequest	DEBUG	GET request to https://token.services.mozilla.com/1.0/sync/1.5
+1713127215886	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile failed: 2152398878 - NS_ERROR_UNKNOWN_HOST
+1713127215886	FirefoxAccounts	ERROR	Background refresh of profile failed: {"name":"FxAccountsProfileClientError","code":null,"errno":998,"error":"NETWORK_ERROR","message":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]"}
+1713127215886	FirefoxAccounts	ERROR	Background refresh of profile failed: {"name":"FxAccountsProfileClientError","code":null,"errno":998,"error":"NETWORK_ERROR","message":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]"}
+1713127215886	Services.Common.RESTRequest	DEBUG	GET https://token.services.mozilla.com/1.0/sync/1.5 failed: 2152398878 - NS_ERROR_UNKNOWN_HOST
+1713127215886	Sync.SyncAuthManager	ERROR	Non-authentication error in _fetchTokenForUser: TokenServerClientNetworkError({"error":{}})(resource://services-common/tokenserverclient.sys.mjs:28:36) JS Stack trace: TokenServerClientNetworkError@tokenserverclient.sys.mjs:51:16
+_tokenServerExchangeRequest@tokenserverclient.sys.mjs:235:13
+1713127215886	Sync.Status	DEBUG	Status.login: success.status_ok => error.login.reason.network
+1713127215886	Sync.Status	DEBUG	Status.service: error.login.failed => error.login.failed
+1713127215886	Sync.SyncAuthManager	INFO	Failed to fetch the cluster URL: TokenServerClientNetworkError({"error":{}})(resource://services-common/tokenserverclient.sys.mjs:28:36) JS Stack trace: TokenServerClientNetworkError@tokenserverclient.sys.mjs:51:16
+_tokenServerExchangeRequest@tokenserverclient.sys.mjs:235:13
+1713127215886	Sync.Service	DEBUG	verifyLogin failed: TokenServerClientNetworkError({"error":{}})(resource://services-common/tokenserverclient.sys.mjs:28:36) JS Stack trace: TokenServerClientNetworkError@tokenserverclient.sys.mjs:51:16
+_tokenServerExchangeRequest@tokenserverclient.sys.mjs:235:13
+1713127215886	Sync.Status	DEBUG	Status.login: error.login.reason.network => error.login.reason.network
+1713127215886	Sync.Status	DEBUG	Status.service: error.login.failed => error.login.failed
+1713127215887	Sync.ErrorHandler	ERROR	Sync encountered a login error
+1713127215887	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1713127215887	Sync.SyncScheduler	DEBUG	Next sync in 3600000 ms. (why=schedule)
+1713127215887	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1713127215887	Sync.Service	DEBUG	Exception calling WrappedLock: Error: Login failed: error.login.reason.network(resource://services-sync/service.sys.mjs:1041:15) JS Stack trace: onNotify@service.sys.mjs:1041:15
+1713127215888	Sync.Service	DEBUG	Not syncing: login returned false.
+1713127215888	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
