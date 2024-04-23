@@ -126,8 +126,10 @@ prints a distracting error message.
 *** LSP
 #+begin_src emacs-lisp
   (use-package haskell-mode)
+  (use-package go-mode)
 
   (add-hook 'haskell-mode-hook 'eglot-ensure)
+  (add-hook 'go-mode-hook 'eglot-ensure)
   (add-hook 'c-mode-hook 'eglot-ensure)
   (add-hook 'c++-mode-hook 'eglot-ensure)
 
