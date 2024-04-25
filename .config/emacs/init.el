@@ -60,24 +60,16 @@
 
 (use-package haskell-mode)
 (use-package go-mode)
+(use-package rust-mode)
+
+(setq rust-cargo-bin "/nix/store/3kx3456vvdnp8p28glgf8lbzgw1lb7s4-system-path/bin/cargo")
 
 (add-hook 'haskell-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
+(add-hook 'rust-mode-hook 'eglot-ensure)
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 
 (require 'flymake)
 (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(go-mode haskell-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

@@ -58,9 +58,6 @@
   (setq recentf-max-saved-items 10)
 #+end_src
 
-#+RESULTS:
-: 10
-
 
 ** Autocompletion
 The following configuration uses Emacs' native features for 10 autocomplete options

@@ -105,14 +105,15 @@ return {
                         maxwidth = 50,
                         ellipsis_char = '...',
                         show_labelDetails = true,
-                    })
+                    }),
+                    fields = {'abbr', 'kind', 'menu'},
+                    expandable_indicator = true
                 },
 
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
                     { name = 'path' },
-                    { name = 'digraphs' },
                 }, {
                     { name = 'buffer' },
                 }),
