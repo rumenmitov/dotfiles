@@ -124,9 +124,11 @@ prints a distracting error message.
 #+begin_src emacs-lisp
   (use-package haskell-mode)
   (use-package go-mode)
+  (use-package rust-mode)
 
   (add-hook 'haskell-mode-hook 'eglot-ensure)
   (add-hook 'go-mode-hook 'eglot-ensure)
+  (add-hook 'rust-mode-hook 'eglot-ensure)
   (add-hook 'c-mode-hook 'eglot-ensure)
   (add-hook 'c++-mode-hook 'eglot-ensure)
 

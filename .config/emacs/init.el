@@ -62,8 +62,6 @@
 (use-package go-mode)
 (use-package rust-mode)
 
-(setq rust-cargo-bin "/nix/store/3kx3456vvdnp8p28glgf8lbzgw1lb7s4-system-path/bin/cargo")
-
 (add-hook 'haskell-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'rust-mode-hook 'eglot-ensure)
