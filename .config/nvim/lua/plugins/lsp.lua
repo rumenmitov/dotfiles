@@ -72,7 +72,6 @@ return {
     'hrsh7th/cmp-buffer',
     'sar/cmp-lsp.nvim',
     'hrsh7th/cmp-path',
-    'dmitmel/cmp-digraphs',
 
     {
         'hrsh7th/nvim-cmp',
