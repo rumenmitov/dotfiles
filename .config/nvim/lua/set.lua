@@ -2,6 +2,8 @@
 vim.opt.updatetime = 50
 vim.opt.scrolloff = 5
 vim.opt.laststatus = 2
+vim.opt.splitright = true;
+vim.opt.splitbelow = true;
 
 -- Line numbers
 vim.opt.nu = true
@@ -32,4 +34,3 @@ vim.opt.undofile = true
 vim.opt.background = "dark"
 vim.cmd.colorscheme("tokyonight-storm")
 vim.opt.termguicolors = true
-vim.api.nvim_notify("hi from nvim", 1, {})
