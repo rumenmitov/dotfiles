@@ -20,7 +20,6 @@
 
 (icomplete-vertical-mode)
 (fido-vertical-mode)
-(electric-pair-mode)
 
 (setq completion-auto-select t)
 (setq completion-auto-help 'always)
@@ -49,7 +48,11 @@
 
 (setq use-short-answers t)
 
+(setq org-directory "~/Other/Nextcloud/org")
 (add-hook 'org-mode-hook 'org-indent-mode)
+(setq org-hide-emphasis-markers t)
+
+(add-to-list 'default-frame-alist '(alpha-background . 90))
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)

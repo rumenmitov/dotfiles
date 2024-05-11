@@ -68,7 +68,6 @@ prints a distracting error message.
 #+begin_src emacs-lisp
   (icomplete-vertical-mode)
   (fido-vertical-mode)
-  (electric-pair-mode)
 
   (setq completion-auto-select t)
   (setq completion-auto-help 'always)
@@ -105,7 +104,11 @@ prints a distracting error message.
 #+begin_src emacs-lisp
   (setq use-short-answers t)
 
+  (setq org-directory "~/Other/Nextcloud/org")
   (add-hook 'org-mode-hook 'org-indent-mode)
+  (setq org-hide-emphasis-markers t)
+
+  (add-to-list 'default-frame-alist '(alpha-background . 90))
 #+end_src
 
 
