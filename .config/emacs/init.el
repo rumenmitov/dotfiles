@@ -52,7 +52,7 @@
 (add-hook 'org-mode-hook 'org-indent-mode)
 (setq org-hide-emphasis-markers t)
 
-(add-to-list 'default-frame-alist '(alpha-background . 90))
+(add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
