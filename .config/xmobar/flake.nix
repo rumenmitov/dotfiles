@@ -8,19 +8,20 @@
   outputs = { self, nixpkgs }: 
   let
     system = "x86_64-linux";
-    pkgs   = nixos.legacyPackages.${system};
+    pkgs   = nixpkgs.legacyPackages.${system};
   in
   {
 
-    let xmobar_lib = pkgs.haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [
+    xmobar_lib = pkgs.haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [
       xmobar
     ]);
-    in
-    packages.x86_64-linux.default = stdenv.mkDerivation {
+
+    packages.x86_64-linux.default = pkgs.stdenv.mkDerivation {
         name = "xmobar";
         src = self;
-        buildInputs = [ xmobar_lib ];
-    }
+        buildInputs = [ self.xmobar_lib ];
+        builder = "${pkgs.ghc}/bin/ghc --make -- ${./xmobar.hs}";
+    };
 
   };
 }
