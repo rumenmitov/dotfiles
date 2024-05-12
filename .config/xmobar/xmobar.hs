@@ -1,6 +1,8 @@
-Config { 
+import Xmobar
 
-   -- appearance
+config :: Config
+config = defaultCondig {
+     -- appearance
      font =         "Caskaydia Cove Nerd Font 12"
    , bgColor =      "black"
    , fgColor =      "#dadada"
@@ -10,12 +12,12 @@ Config {
    , alpha =        70
 
    -- layout
-   , sepChar =  "%"   -- delineator between plugin names and straight text
-   , alignSep = "}{"  -- separator between left-right alignment
+   , sepChar =  "%"
+   , alignSep = "}{"
    , template = "%XMonadLog% } %date% { %battery% "
 
    -- general behavior
-   , overrideRedirect = False    -- set the Override Redirect flag (Xlib)
+   , overrideRedirect = False
 
    , commands = [
                 Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
