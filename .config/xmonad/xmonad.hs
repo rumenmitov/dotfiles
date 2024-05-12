@@ -105,7 +105,7 @@ main :: IO ()
 main = xmonad
     $ ewmhFullscreen
     $ ewmh
-    $ withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobar.hs" (pure _xmobarPP)) toggleStrutsKey
+    $ withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure _xmobarPP)) toggleStrutsKey
     $ keybinds
       where
         toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
