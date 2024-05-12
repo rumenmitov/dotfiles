@@ -3,6 +3,7 @@ import XMonad.Operations
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.SpawnOnce (spawnOnce)
+import XMonad.Util.NamedScratchpad
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
@@ -10,6 +11,8 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Renamed
 import XMonad.Actions.CycleWS
+import XMonad.StackSet as W
+import XMonad.ManageHook
 
 _startupHook :: X ()
 _startupHook = do
@@ -53,13 +56,22 @@ _layoutHook = renamed [Replace ""] $  ThreeCol tiles_in_master delta master_rati
     delta            = 3/100     -- by how much to change the size of the tile
     master_ratio     = 1/2       -- master size compared to screen
 
+_scratchpads = [
+    NS "quick-term" "alacritty --title \"Alacritty - Float\"" (title =? "Alacritty - Float")
+      (customFloating $ W.RationalRect (1/16) (1/16) (7/8) (7/8))
+
+  , NS "file-manager" "nautilus" (className =? "org.gnome.Nautilus")
+      (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
+  ]
+
 _keybinds =
 
   -- Applications
-  [ ("M-e",          spawn "emacs")
-  , ("M-b",          spawn "librewolf")
-  , ("M-<Return>",   spawn "alacritty")
-  , ("M-f",          spawn "nautilus")
+  [ ("M-e",           spawn "emacs")
+  , ("M-b",           spawn "librewolf")
+  , ("M-<Return>",    spawn "alacritty")
+  , ("M-f",           namedScratchpadAction _scratchpads "file-manager")
+  , ("M-S-<Return>",  namedScratchpadAction _scratchpads "quick-term")
 
   -- System
   , ("M-c",          kill)
@@ -85,8 +97,8 @@ _keybinds =
   ]
 
 _removeKeybinds =
-  [ "M-S-<Return>"
-  , "M-S-c"
+  [
+   "M-S-c"
   ]
 
 xmonadConfig = def
@@ -95,6 +107,7 @@ xmonadConfig = def
   , normalBorderColor  = "#000000"
   , startupHook        = _startupHook
   , layoutHook         = _layoutHook
+  , manageHook         = namedScratchpadManageHook _scratchpads
   , terminal           = "alacritty"
   }
 
