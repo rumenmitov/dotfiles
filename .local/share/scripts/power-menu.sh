@@ -12,9 +12,9 @@ case $op in
                 systemctl "$op"
                 ;;
         lock)
-		        hyprlock
+		        i3lock -c 000000
                 ;;
         logout)
-                hyprctl dispatch exit
+                pkill xmonad
                 ;;
 esac
