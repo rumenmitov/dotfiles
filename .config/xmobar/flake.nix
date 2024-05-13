@@ -13,7 +13,7 @@
   {
     packages.${system}.default = pkgs.stdenv.mkDerivation {
       name = "xmobar";
-      src  = ./src;
+      src  = ./.;
 
       buildInputs = with pkgs; [
         (haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [
