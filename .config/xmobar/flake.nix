@@ -13,14 +13,22 @@
   {
     packages.${system}.default = pkgs.stdenv.mkDerivation {
       name = "xmobar";
-      src  = self;
+      src  = ./src;
 
       buildInputs = with pkgs; [
-        haskellPackages.xmobar
+        (haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [
+          xmonad
+        ]))
       ];
 
       buildPhase = ''
-		    ghc --make xmobar.hs
+		    ghc --make $src/xmobar.hs
+      '';
+
+      installPhase = ''
+        mkdir $out/bin
+        cp xmobar $out/bin
+        echo done
       '';
 
       
