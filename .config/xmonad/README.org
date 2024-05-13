@@ -4,9 +4,9 @@
 #+property: header-args :tangle xmonad.hs
 
 * Requirements
-- Xorg
-- Xmonad
-- Xmobar
+- xorg
+- xmonad
+- xmobar
 - xrandr
 - xwallpaper
 - greenclip
@@ -16,7 +16,10 @@
 - xclip
 - brightnessctl
 - pamixer
+- picom
 - shutter
+- xwallpaper
+- i3lock
 
 
 * Imports
@@ -137,7 +140,7 @@ that Xmonad will send regarding the workspaces.
       , ("<XF86AudioRaiseVolume>",  spawn "pamixer -i 10")
       , ("<XF86AudioLowerVolume>",  spawn "pamixer -d 10")
       , ("<XF86AudioMute>",         spawn "pamixer -t")
-      , ("M-S-s",                   spawn "shutter -s")
+      , ("M-S-s",                   spawn "shutter -s --output=~/Pictures/Screenshots/$(date +%s).png")
 
 
       -- Various popup menus

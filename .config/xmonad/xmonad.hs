@@ -85,7 +85,7 @@ _keybinds =
     , ("<XF86AudioRaiseVolume>",  spawn "pamixer -i 10")
     , ("<XF86AudioLowerVolume>",  spawn "pamixer -d 10")
     , ("<XF86AudioMute>",         spawn "pamixer -t")
-    , ("M-S-s",                   spawn "shutter -s")
+    , ("M-S-s",                   spawn "shutter -s --output=~/Pictures/Screenshots/$(date +%s).png")
 
 
     -- Various popup menus
