@@ -1,8 +1,6 @@
-import Xmobar
+Config { 
 
-config :: Config
-config = defaultConfig {
-     -- appearance
+   -- appearance
      font =         "Caskaydia Cove Nerd Font 12"
    , bgColor =      "black"
    , fgColor =      "#dadada"
@@ -21,9 +19,9 @@ config = defaultConfig {
    , pickBroadest =     True
 
    , commands = [
-                Run $ Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
-                , Run $ XMonadLog
-                , Run $ Battery [
+                Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
+                , Run XMonadLog
+                , Run Battery [
                       "--template", "🔋 <left>%"
                     , "--Low",      "10"
                     , "--High",     "80"
@@ -33,6 +31,3 @@ config = defaultConfig {
                 ] 50
    ]
 }
-
-main :: IO ()
-main = configFromArgs config >>= xmobar
