@@ -27,7 +27,7 @@ _startupHook = do
   spawnOnce "emacs --daemon"
 
 _xmobarPP :: PP
-_xmobarPP = def
+_xmobarPP = filterOutWsPP ["NSP"] def
   { ppSep             = magenta " • "
   , ppTitleSanitize   = xmobarStrip
   , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2
