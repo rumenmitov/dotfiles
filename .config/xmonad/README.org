@@ -33,8 +33,10 @@
   import XMonad.Util.NamedScratchpad
   import XMonad.Hooks.EwmhDesktops
   import XMonad.Hooks.DynamicLog
+  import XMonad.Hooks.DynamicIcons
   import XMonad.Hooks.StatusBar
   import XMonad.Hooks.StatusBar.PP
+  import XMonad.Layout.Spacing
   import XMonad.Layout.ThreeColumns
   import XMonad.Layout.Renamed
   import XMonad.Actions.CycleWS
@@ -46,17 +48,54 @@
 
 * Daemons
 
-#+begin_src haskell
+#+begin_src haskell 
   _startupHook :: X ()
   _startupHook = do
     adjustEventInput
     spawnOnce "xrandr --output eDP --primary --mode 1920x1200"
     spawnOnce "xrandr --output HDMI-A-0 --mode 1920x1080 --right-of eDP"
-    spawnOnce "xwallpaper --zoom ~/.local/share/wallpapers/2.jpg"
+    spawnOnce "xwallpaper --zoom ~/.local/share/wallpapers/5.jpg"
     spawnOnce "xsetroot -cursor_name left_ptr"
     spawnOnce "xinput --set-prop 9 310 0.8"
     spawnOnce "greenclip daemon"
     spawnOnce "emacs --daemon"
+#+end_src
+
+
+* Workspaces
+
+#+begin_src haskell
+  _iconConfig = IconConfig
+    { iconConfigIcons  = _icons
+    , iconConfigFmt    = iconsFmtReplace (wrapUnwords "| " " |" . addSep )
+    , iconConfigFilter = iconsGetAll
+    }
+    where
+        _icons :: Query [String]
+        _icons = composeAll
+          [ className =? "librewolf"            --> appIcon "\983609"
+          , className =? "firefox"              --> appIcon "\983609"
+          , className =? "Alacritty"            --> appIcon "\60362"
+          , className =? "Emacs"                --> appIcon "\58930"
+          , className =? "org.gnome.Nautilus"   --> appIcon "\62675"
+          , className =? "Gimp"                 --> appIcon "\62264"
+          , className =? "rnote"                --> appIcon "\986953"
+          , className =? "Spotube"              --> appIcon "\61441"
+          ]
+
+        -- This is a custom function that adds a space between two or more icons.
+        -- Additionally if there are more than 2 icons, the rest (and earliest icons)
+        -- are discarded and replaced with `...`.
+        addSep :: [String] -> [String]
+        addSep []     = []
+        addSep [w]    = [w]
+        addSep (w:ws) 
+          | length res > 4 = (take 4 res) ++ ["..."] -- checking for 4, because each icon
+                                                     -- comes with a space
+          | otherwise      = res
+            where
+              res = w : " " : addSep ws
+
 #+end_src
 
 
@@ -68,14 +107,16 @@ that Xmonad will send regarding the workspaces.
 #+begin_src haskell
   _xmobarPP :: PP
   _xmobarPP = filterOutWsPP ["NSP"] def
-    { ppSep             = magenta " • "
-    , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2
-    , ppHidden          = white . wrap " " ""
-    , ppHiddenNoWindows = lowWhite . wrap " " ""
-    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
-    , ppExtras          = [logTitles formatFocused formatUnfocused]
+    { ppSep              = magenta " • "
+    , ppTitleSanitize    = xmobarStrip
+    , ppCurrent          = wrap " " "" . magenta
+    , ppVisible          = wrap " " "" . xmobarBorder "Top" "#ff79c6" 2
+    , ppVisibleNoWindows = Just (\_ -> lowWhite " ○")
+    , ppHidden           = white . wrap " " ""
+    , ppHiddenNoWindows  = \_ -> lowWhite " ○"
+    , ppUrgent           = red . wrap (orange "!") (orange "!")
+    , ppOrder            = \[ws, _, _, wins] -> [ws, wins]
+    , ppExtras           = [logTitles formatFocused formatUnfocused]
     }
       where
         formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
@@ -84,13 +125,14 @@ that Xmonad will send regarding the workspaces.
         ppWindow :: String -> String
         ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
 
-        blue, lowWhite, magenta, red, white, yellow :: String -> String
+        blue, lowWhite, magenta, red, white, yellow, orange :: String -> String
         magenta  = xmobarColor "#ff79c6" ""
         blue     = xmobarColor "#bd93f9" ""
         white    = xmobarColor "#f8f8f2" ""
         yellow   = xmobarColor "#f1fa8c" ""
         red      = xmobarColor "#ff5555" ""
         lowWhite = xmobarColor "#bbbbbb" ""
+        orange   = xmobarColor "#F5660A" ""
 #+end_src
 
 
@@ -114,6 +156,9 @@ that Xmonad will send regarding the workspaces.
 
     , NS "file-manager" "nautilus" (className =? "org.gnome.Nautilus")
         (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
+
+    , NS "music" "spotube" (className =? "Spotube")
+        (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
     ]
 #+end_src
 
@@ -129,6 +174,7 @@ that Xmonad will send regarding the workspaces.
       , ("M-<Return>",    spawn "alacritty")
       , ("M-f",           namedScratchpadAction _scratchpads "file-manager")
       , ("M-S-<Return>",  namedScratchpadAction _scratchpads "quick-term")
+      , ("M-m",           namedScratchpadAction _scratchpads "music")
 
       -- System
       , ("M-c",          kill)
@@ -169,21 +215,24 @@ that Xmonad will send regarding the workspaces.
     , normalBorderColor  = "#000000"
     , startupHook        = _startupHook
     , handleEventHook    = focusOnMouseMove
-    , layoutHook         = _layoutHook
+    , layoutHook         = smartSpacingWithEdge 3 $ _layoutHook
     , manageHook         = namedScratchpadManageHook _scratchpads
     , terminal           = "alacritty"
     }
 
 
   main :: IO ()
-  main = xmonad
+  main = do
+    xmonad
       $ ewmhFullscreen
       $ ewmh
-      $ withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure _xmobarPP)) toggleStrutsKey
-      $ keybinds
+      $ withEasySB (statusBarProp "xmobar" (dynamicIconsPP _iconConfig _xmobarPP)) toggleStrutsKey
+      $ configureKeybinds
+      $ xmonadConfig
         where
           toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
           toggleStrutsKey XConfig{ modMask = m } = (m, xK_d)
-          keybinds                               = additionalKeysP remove _keybinds
-          remove                                 = removeKeysP xmonadConfig _removeKeybinds
+          configureKeybinds conf = flip additionalKeysP _keybinds
+                              $ flip removeKeysP _removeKeybinds conf
+
 #+end_src

@@ -4,8 +4,8 @@ Config {
      font =         "Caskaydia Cove Nerd Font 12"
    , bgColor =      "black"
    , fgColor =      "#dadada"
-   , position =     Top
-   , border =       BottomB
+   , position =     TopH 30
+   , border =       NoBorder
    , borderColor =  "#646464"
    , alpha =        70
 

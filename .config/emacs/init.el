@@ -64,10 +64,12 @@
 (use-package haskell-mode)
 (use-package go-mode)
 (use-package rust-mode)
+(use-package nix-mode)
 
 (add-hook 'haskell-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'rust-mode-hook 'eglot-ensure)
+(add-hook 'nix-mode-hook 'eglot-ensure)
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 
@@ -80,7 +82,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(nix-mode xterm-color spinner rust-mode markdown-mode haskell-mode go-mode f)))
+   '(nix-mode xterm-color spinner rust-mode markdown-mode haskell-mode go-mode f compat)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

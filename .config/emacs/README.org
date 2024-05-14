@@ -128,10 +128,12 @@ prints a distracting error message.
   (use-package haskell-mode)
   (use-package go-mode)
   (use-package rust-mode)
+  (use-package nix-mode)
 
   (add-hook 'haskell-mode-hook 'eglot-ensure)
   (add-hook 'go-mode-hook 'eglot-ensure)
   (add-hook 'rust-mode-hook 'eglot-ensure)
+  (add-hook 'nix-mode-hook 'eglot-ensure)
   (add-hook 'c-mode-hook 'eglot-ensure)
   (add-hook 'c++-mode-hook 'eglot-ensure)
 
