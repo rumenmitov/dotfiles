@@ -10,7 +10,6 @@ import XMonad.Hooks.DynamicIcons
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.Spacing
-import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Renamed
 import XMonad.Actions.CycleWS
 import XMonad.Actions.UpdateFocus
@@ -88,7 +87,7 @@ _xmobarPP = filterOutWsPP ["NSP"] def
       lowWhite = xmobarColor "#bbbbbb" ""
       orange   = xmobarColor "#F5660A" ""
 
-_layoutHook = renamed [Replace ""] $  ThreeCol tiles_in_master delta master_ratio
+_layoutHook = renamed [Replace ""] $  Tall tiles_in_master delta master_ratio
   where
     tiles_in_master  = 1         -- number of master tiles
     delta            = 3/100     -- by how much to change the size of the tile
@@ -145,7 +144,7 @@ _removeKeybinds =
 
 xmonadConfig = def
   { modMask            = mod4Mask
-  , focusedBorderColor = "#ededed"
+  , focusedBorderColor = "#ff79c6"
   , normalBorderColor  = "#000000"
   , startupHook        = _startupHook
   , handleEventHook    = focusOnMouseMove
