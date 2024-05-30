@@ -13,6 +13,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Renamed
 import XMonad.Actions.CycleWS
 import XMonad.Actions.UpdateFocus
+import XMonad.Actions.NoBorders
 import XMonad.StackSet as W
 import XMonad.ManageHook
 
@@ -21,6 +22,7 @@ _startupHook = do
   adjustEventInput
   spawnOnce "xrandr --output eDP --primary --mode 1920x1200"
   spawnOnce "xrandr --output HDMI-A-0 --mode 1920x1080 --right-of eDP"
+  spawnOnce "xset dpms 0 0 0 && xset s noblank  && xset s off"
   spawnOnce "xwallpaper --zoom ~/.local/share/wallpapers/5.jpg"
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "xinput --set-prop 9 310 0.8"
@@ -42,7 +44,7 @@ _iconConfig = IconConfig
         , className =? "org.gnome.Nautilus"   --> appIcon "\62675"
         , className =? "Gimp"                 --> appIcon "\62264"
         , className =? "rnote"                --> appIcon "\986953"
-        , className =? "Spotube"              --> appIcon "\61441"
+        , className =? "nuclear"              --> appIcon "\61441"
         ]
 
       -- This is a custom function that adds a space between two or more icons.
@@ -100,7 +102,7 @@ _scratchpads = [
   , NS "file-manager" "nautilus" (className =? "org.gnome.Nautilus")
       (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
 
-  , NS "music" "spotube" (className =? "Spotube")
+  , NS "music" "nuclear" (className =? "nuclear")
       (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
   ]
 
@@ -117,6 +119,7 @@ _keybinds =
     -- System
     , ("M-c",          kill)
     , ("M-<Tab>", nextScreen)
+    , ("M-S-b", withFocused toggleBorder)
 
     -- Utils
     , ("<XF86MonBrightnessUp>",   spawn "brightnessctl set +5")

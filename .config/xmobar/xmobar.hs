@@ -16,18 +16,18 @@ Config {
 
    -- general behavior
    , overrideRedirect = False
-   , pickBroadest =     True
+   , allDesktops      = True
 
    , commands = [
                 Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
                 , Run XMonadLog
                 , Run Battery [
-                      "--template", "🔋 <left>%"
+                      "--template", "<action=`/home/rumen/.local/share/scripts/battery-info.sh`>🔋 <left>%</action>"
                     , "--Low",      "10"
                     , "--High",     "80"
-                    , "--low",      "#ff1212"
-                    , "--normal",   "#646464"
-                    , "--high",     "#12ff12"
+                    , "--low",      "red"
+                    , "--normal",   "yellow"
+                    , "--high",     "green"
                 ] 50
    ]
 }
