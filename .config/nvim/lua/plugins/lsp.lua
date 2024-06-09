@@ -6,6 +6,7 @@ local LspServers = {
     'lua_ls',
     'gopls',
     'html',
+    'nil_ls'
 }
 
 
