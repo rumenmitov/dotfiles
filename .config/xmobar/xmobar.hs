@@ -1,4 +1,7 @@
-Config { 
+import Xmobar
+
+config :: Config
+config = defaultConfig { 
 
    -- appearance
      font =         "Caskaydia Cove Nerd Font 12"
@@ -21,13 +24,19 @@ Config {
    , commands = [
                 Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
                 , Run XMonadLog
-                , Run Battery [
-                      "--template", "<action=`/home/rumen/.local/share/scripts/battery-info.sh`>🔋 <left>%</action>"
-                    , "--Low",      "15"
-                    , "--High",     "80"
-                    , "--low",      "red"
-                    , "--normal",   "yellow"
-                    , "--high",     "green"
-                ] 50
+                , Run Battery
+                      [ "--template", "<action=`/home/rumen/.local/share/scripts/battery-info.sh`>🔋 <left>%</action>"
+                      , "--Low",      "15"
+                      , "--High",     "80"
+                      , "--low",      "red"
+                      , "--normal",   "yellow"
+                      , "--high",     "green"
+                      , "--"
+                      , "-A",         "15"
+                      , "-a",         "/home/rumen/.local/share/scripts/battery-warning.sh"
+                      ] 50
    ]
 }
+
+main :: IO ()
+main = xmobar config
