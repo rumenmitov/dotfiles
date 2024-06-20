@@ -1,7 +1,4 @@
-import Xmobar
-
-config :: Config
-config = defaultConfig { 
+Config { 
 
    -- appearance
      font =         "Caskaydia Cove Nerd Font 12"
@@ -21,8 +18,8 @@ config = defaultConfig {
    , overrideRedirect = False
    , allDesktops      = True
 
-   , commands = [
-                Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
+   , commands =
+                [ Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
                 , Run XMonadLog
                 , Run Battery
                       [ "--template", "<action=`/home/rumen/.local/share/scripts/battery-info.sh`>🔋 <left>%</action>"
@@ -37,6 +34,3 @@ config = defaultConfig {
                       ] 50
    ]
 }
-
-main :: IO ()
-main = xmobar config

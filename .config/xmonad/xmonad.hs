@@ -24,7 +24,7 @@ _startupHook = do
   spawnOnce "xrandr --output HDMI-A-0 --mode 1920x1080 --right-of eDP"
   spawnOnce "xset dpms 0 0 0 && xset s noblank  && xset s off"
   spawnOnce "~/.local/share/scripts/battery-warning.sh"
-  spawnOnce "xwallpaper --zoom ~/.local/share/wallpapers/static/8.jpg"
+  spawnOnce "nitrogen --restore &"
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "xinput --set-prop 9 310 0.8"
   spawnOnce "greenclip daemon"
