@@ -7,7 +7,7 @@ Config {
    , position =     TopH 30
    , border =       NoBorder
    , borderColor =  "#646464"
-   , alpha =        70
+   , alpha =        170
 
    -- layout
    , sepChar =  "%"
@@ -23,7 +23,7 @@ Config {
                 , Run XMonadLog
                 , Run Battery [
                       "--template", "<action=`/home/rumen/.local/share/scripts/battery-info.sh`>🔋 <left>%</action>"
-                    , "--Low",      "10"
+                    , "--Low",      "15"
                     , "--High",     "80"
                     , "--low",      "red"
                     , "--normal",   "yellow"

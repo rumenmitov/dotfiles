@@ -5,7 +5,7 @@
 #+property: header-args :tangle init.el
 
 
-[[file:./assets/emacs_logo.png]]
+[[~/dotfiles/.config/emacs/assets/emacs_logo.png]]
 
 
 * Requirements
@@ -29,25 +29,30 @@
 
 ** Startup Message
 #+begin_src emacs-lisp
-   (setq inhibit-startup-message t)
-   (setq initial-scratch-message ";; -- Welcome to Emacs --\n\n")
+  (setq inhibit-startup-message t)
+  (setq initial-scratch-message ";; -- Welcome to Emacs --\n\n")
 
-   (defun display-startup-echo-area-message ()
-     (message nil))
+  (defun display-startup-echo-area-message ()
+    (message nil))
+
+  (setq server-client-instructions nil)
 #+end_src
 
 
 ** GUI Options
 #+begin_src emacs-lisp
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
+        (menu-bar-mode -1)
+        (tool-bar-mode -1)
+        (scroll-bar-mode -1)
 
-  (set-frame-font "CaskaydiaCove Nerd Font 12" nil t)
+        (setq default-frame-alist '(
+                                    (font . "CaskaydiaCove Nerd Font 18")
+                                    (vertical-scroll-bars . nil)
+                                    ))
 
-  (global-display-line-numbers-mode 1)
+        (global-display-line-numbers-mode 1)
 
-  (load-theme 'deeper-blue' t)
+        (load-theme 'deeper-blue' t)
 #+end_src
 
 
@@ -100,14 +105,23 @@ prints a distracting error message.
 #+end_src
 
 
+** Organization
+#+begin_src emacs-lisp
+  (setq org-directory "~/Other/Nextcloud/org")
+  (setq org-agenda-files '("~/Other/Nextcloud/org/agenda"))
+  (setq org-agenda-include-diary t)
+  (setq diary-file "~/Other/Nextcloud/org/agenda/diary")
+  (setq calendar-date-style 'european)
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (add-hook 'org-mode-hook 'visual-line-mode)
+  (add-hook 'org-mode-hook 'org-toggle-inline-images)
+  (setq org-hide-emphasis-markers t)
+#+end_src
+
 ** Misc
 #+begin_src emacs-lisp
+  (setq visible-bell 1)
   (setq use-short-answers t)
-
-  (setq org-directory "~/Other/Nextcloud/org")
-  (add-hook 'org-mode-hook 'org-indent-mode)
-  (setq org-hide-emphasis-markers t)
-
   (add-to-list 'default-frame-alist '(alpha-background . 80))
 #+end_src
 

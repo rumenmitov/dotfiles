@@ -4,11 +4,16 @@
 (defun display-startup-echo-area-message ()
   (message nil))
 
+(setq server-client-instructions nil)
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-(set-frame-font "CaskaydiaCove Nerd Font 12" nil t)
+(setq default-frame-alist '(
+                            (font . "CaskaydiaCove Nerd Font 18")
+                            (vertical-scroll-bars . nil)
+                            ))
 
 (global-display-line-numbers-mode 1)
 
@@ -46,12 +51,18 @@
 (add-hook 'gdb-breakpoints-mode-hook
           (lambda () (gdb-load-window-configuration "~/.config/emacs/gdb-window-config")))
 
-(setq use-short-answers t)
-
 (setq org-directory "~/Other/Nextcloud/org")
+(setq org-agenda-files '("~/Other/Nextcloud/org/agenda"))
+(setq org-agenda-include-diary t)
+(setq diary-file "~/Other/Nextcloud/org/agenda/diary")
+(setq calendar-date-style 'european)
 (add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'org-toggle-inline-images)
 (setq org-hide-emphasis-markers t)
 
+(setq visible-bell 1)
+(setq use-short-answers t)
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (require 'package)
@@ -76,16 +87,3 @@
 (require 'flymake)
 (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(nix-mode xterm-color spinner rust-mode markdown-mode haskell-mode go-mode f compat)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

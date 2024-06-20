@@ -23,6 +23,7 @@ _startupHook = do
   spawnOnce "xrandr --output eDP --primary --mode 1920x1200"
   spawnOnce "xrandr --output HDMI-A-0 --mode 1920x1080 --right-of eDP"
   spawnOnce "xset dpms 0 0 0 && xset s noblank  && xset s off"
+  spawnOnce "~/.local/share/scripts/battery-warning.sh"
   spawnOnce "xwallpaper --zoom ~/.local/share/wallpapers/static/8.jpg"
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "xinput --set-prop 9 310 0.8"
@@ -109,7 +110,7 @@ _scratchpads = [
 _keybinds =
 
     -- Applications
-    [ ("M-e",           spawn "emacs")
+    [ ("M-e",           spawn "emacsclient -c")
     , ("M-b",           spawn "librewolf")
     , ("M-<Return>",    spawn "alacritty")
     , ("M-f",           namedScratchpadAction _scratchpads "file-manager")
@@ -128,6 +129,7 @@ _keybinds =
     , ("<XF86AudioLowerVolume>",  spawn "pamixer -d 10")
     , ("<XF86AudioMute>",         spawn "pamixer -t")
     , ("M-S-s",                   spawn "shutter -s --output=~/Pictures/Screenshots/$(date +%s).png")
+    , ("M-S-c",                   spawn "xkill")
 
 
     -- Various popup menus
@@ -141,13 +143,11 @@ _keybinds =
     ]
 
 _removeKeybinds =
-    [
-     "M-S-c"
-    ]
+    [ ]
 
 xmonadConfig = def
   { modMask            = mod4Mask
-  , focusedBorderColor = "#ff79c6"
+  , focusedBorderColor = "#000000"
   , normalBorderColor  = "#000000"
   , startupHook        = _startupHook
   , handleEventHook    = focusOnMouseMove
