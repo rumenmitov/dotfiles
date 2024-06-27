@@ -108,6 +108,7 @@ prints a distracting error message.
 ** Organization
 #+begin_src emacs-lisp
   (setq org-directory "~/Other/Nextcloud/org")
+  (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
   (setq org-agenda-files '("~/Other/Nextcloud/org/agenda"))
   (setq org-agenda-include-diary t)
   (setq diary-file "~/Other/Nextcloud/org/agenda/diary")
@@ -156,3 +157,8 @@ prints a distracting error message.
   (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
 #+end_src
 
+*** Misc
+#+begin_src emacs-lisp
+  (use-package beacon)
+  (beacon-mode 1)
+#+end_src

@@ -134,11 +134,12 @@ _keybinds =
 
     -- Various popup menus
     , ("M-S-q",   spawn "~/.local/share/scripts/power-menu.sh")
-    , ("M-r",     spawn "rofi -i -show-icons -show combi -combi-modes \"window,drun,run,ssh\"")
-    , ("M-.",     spawn "cat ~/.local/share/emojis/emojis.csv | rofi -i -dmenu | awk '{print $1}' | tr -d \"\n\" | xclip -selection c")
-    , ("M-,",     spawn "cat ~/.local/share/emojis/math.csv | rofi -i -dmenu | awk '{print $1}' | tr -d \"\n\" | xclip -selection c")
-    , ("M-S-v",   spawn "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'")
-    , ("M-p",     spawn "rofi-pass >/dev/null | xclip -selection c")
+    --, ("M-r",     spawn "rofi -i -show-icons -show combi -combi-modes \"window,drun,run,ssh\"")
+    , ("M-r", spawn "dmenu_run -i")
+    , ("M-.",     spawn "cat ~/.local/share/emojis/emojis.csv | dmenu -i -l 4 | awk '{print $1}' | tr -d \"\n\" | xclip -selection c")
+    , ("M-,",     spawn "cat ~/.local/share/emojis/math.csv | dmenu -i -l 4 | awk '{print $1}' | tr -d \"\n\" | xclip -selection c")
+    , ("M-S-v",   spawn "greenclip print | grep . | dmenu -i -l 4 | xargs -r -d'\n' -I '{}' greenclip print '{}'")
+    , ("M-p",     spawn "passmenu")
     , ("M-w",     spawn "~/.local/share/scripts/wallpaper.sh")
     ]
 

@@ -52,6 +52,7 @@
           (lambda () (gdb-load-window-configuration "~/.config/emacs/gdb-window-config")))
 
 (setq org-directory "~/Other/Nextcloud/org")
+(setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
 (setq org-agenda-files '("~/Other/Nextcloud/org/agenda"))
 (setq org-agenda-include-diary t)
 (setq diary-file "~/Other/Nextcloud/org/agenda/diary")
@@ -87,3 +88,6 @@
 (require 'flymake)
 (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
+
+(use-package beacon)
+(beacon-mode 1)

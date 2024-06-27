@@ -11,8 +11,7 @@
 - nitrogen
 - greenclip
 - alacritty
-- rofi
-- rofi-pass
+- dmenu
 - xclip
 - brightnessctl
 - pamixer
@@ -167,43 +166,44 @@ that Xmonad will send regarding the workspaces.
 * Keybinds
 
 #+begin_src haskell
-  _keybinds =
+    _keybinds =
 
-      -- Applications
-      [ ("M-e",           spawn "emacsclient -c")
-      , ("M-b",           spawn "librewolf")
-      , ("M-<Return>",    spawn "alacritty")
-      , ("M-f",           namedScratchpadAction _scratchpads "file-manager")
-      , ("M-S-<Return>",  namedScratchpadAction _scratchpads "quick-term")
-      , ("M-m",           namedScratchpadAction _scratchpads "music")
+        -- Applications
+        [ ("M-e",           spawn "emacsclient -c")
+        , ("M-b",           spawn "librewolf")
+        , ("M-<Return>",    spawn "alacritty")
+        , ("M-f",           namedScratchpadAction _scratchpads "file-manager")
+        , ("M-S-<Return>",  namedScratchpadAction _scratchpads "quick-term")
+        , ("M-m",           namedScratchpadAction _scratchpads "music")
 
-      -- System
-      , ("M-c",          kill)
-      , ("M-<Tab>", nextScreen)
-      , ("M-S-b", withFocused toggleBorder)
+        -- System
+        , ("M-c",          kill)
+        , ("M-<Tab>", nextScreen)
+        , ("M-S-b", withFocused toggleBorder)
 
-      -- Utils
-      , ("<XF86MonBrightnessUp>",   spawn "brightnessctl set +5")
-      , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 5-")
-      , ("<XF86AudioRaiseVolume>",  spawn "pamixer -i 10")
-      , ("<XF86AudioLowerVolume>",  spawn "pamixer -d 10")
-      , ("<XF86AudioMute>",         spawn "pamixer -t")
-      , ("M-S-s",                   spawn "shutter -s --output=~/Pictures/Screenshots/$(date +%s).png")
-      , ("M-S-c",                   spawn "xkill")
+        -- Utils
+        , ("<XF86MonBrightnessUp>",   spawn "brightnessctl set +5")
+        , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 5-")
+        , ("<XF86AudioRaiseVolume>",  spawn "pamixer -i 10")
+        , ("<XF86AudioLowerVolume>",  spawn "pamixer -d 10")
+        , ("<XF86AudioMute>",         spawn "pamixer -t")
+        , ("M-S-s",                   spawn "shutter -s --output=~/Pictures/Screenshots/$(date +%s).png")
+        , ("M-S-c",                   spawn "xkill")
 
 
-      -- Various popup menus
-      , ("M-S-q",   spawn "~/.local/share/scripts/power-menu.sh")
-      , ("M-r",     spawn "rofi -i -show-icons -show combi -combi-modes \"window,drun,run,ssh\"")
-      , ("M-.",     spawn "cat ~/.local/share/emojis/emojis.csv | rofi -i -dmenu | awk '{print $1}' | tr -d \"\n\" | xclip -selection c")
-      , ("M-,",     spawn "cat ~/.local/share/emojis/math.csv | rofi -i -dmenu | awk '{print $1}' | tr -d \"\n\" | xclip -selection c")
-      , ("M-S-v",   spawn "rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'")
-      , ("M-p",     spawn "rofi-pass >/dev/null | xclip -selection c")
-      , ("M-w",     spawn "~/.local/share/scripts/wallpaper.sh")
-      ]
+        -- Various popup menus
+        , ("M-S-q",   spawn "~/.local/share/scripts/power-menu.sh")
+        --, ("M-r",     spawn "rofi -i -show-icons -show combi -combi-modes \"window,drun,run,ssh\"")
+        , ("M-r", spawn "dmenu_run -i")
+        , ("M-.",     spawn "cat ~/.local/share/emojis/emojis.csv | dmenu -i -l 4 | awk '{print $1}' | tr -d \"\n\" | xclip -selection c")
+        , ("M-,",     spawn "cat ~/.local/share/emojis/math.csv | dmenu -i -l 4 | awk '{print $1}' | tr -d \"\n\" | xclip -selection c")
+        , ("M-S-v",   spawn "greenclip print | grep . | dmenu -i -l 4 | xargs -r -d'\n' -I '{}' greenclip print '{}'")
+        , ("M-p",     spawn "passmenu")
+        , ("M-w",     spawn "~/.local/share/scripts/wallpaper.sh")
+        ]
 
-  _removeKeybinds =
-      [ ]
+    _removeKeybinds =
+        [ ]
 #+end_src
 
 
