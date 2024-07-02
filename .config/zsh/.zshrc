@@ -4,10 +4,19 @@ source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/misc.zsh
 
 
+# History
 setopt HIST_SAVE_NO_DUPS
 
-bindkey -e
 
+# Keybinds
+autoload -z edit-command-line
+zle -N edit-command-line
+
+bindkey -e
+bindkey '^e' edit-command-line
+
+
+# Completion
 autoload -Uz compinit
 compinit
 
