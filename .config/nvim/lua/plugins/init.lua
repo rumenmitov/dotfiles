@@ -1,5 +1,4 @@
 return {
-    'tpope/vim-commentary',
     'airblade/vim-gitgutter',
     'tpope/vim-surround',
 
@@ -7,13 +6,6 @@ return {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         config = true
-    },
-
-    {
-        'tigion/nvim-asciidoc-preview',
-        cmd = { 'AsciiDocPreview' },
-        ft = { 'asciidoc' },
-        build = 'cd server && npm install',
     },
 
     {
