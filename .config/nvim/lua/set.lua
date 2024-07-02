@@ -35,7 +35,7 @@ vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
 if (os.getenv("SERVER") == nil) then
-    vim.cmd.colorscheme("tokyonight-storm")
-else
     vim.cmd.colorscheme("sorbet")
+else
+    vim.cmd.colorscheme("evening")
 end
