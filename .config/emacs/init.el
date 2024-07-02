@@ -9,6 +9,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(setq-default mode-line-format nil)
 
 (setq default-frame-alist '(
                             (font . "CaskaydiaCove Nerd Font 18")
@@ -17,7 +18,7 @@
 
 (global-display-line-numbers-mode 1)
 
-(load-theme 'deeper-blue' t)
+(load-theme 'deeper-blue 1)
 
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
@@ -73,6 +74,19 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(use-package beacon)
+(beacon-mode 1)
+
+(use-package undo-tree)
+(global-undo-tree-mode)
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/undo")))
+(setq undo-tree-visualizer-diff t)
+
+(use-package yasnippet)
+(global-set-key (kbd "C-c n") 'yas-next-field)
+(global-set-key (kbd "C-c p") 'yas-prev-field)
+
 (use-package haskell-mode)
 (use-package go-mode)
 (use-package rust-mode)
@@ -88,6 +102,3 @@
 (require 'flymake)
 (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
-
-(use-package beacon)
-(beacon-mode 1)

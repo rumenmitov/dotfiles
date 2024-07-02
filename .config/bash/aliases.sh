@@ -1,1 +1,1 @@
-alias fast='fast.sh'
+alias nv='nvim'

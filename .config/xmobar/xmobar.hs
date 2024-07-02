@@ -27,7 +27,7 @@ Config {
                       , "--High",     "80"
                       , "--low",      "red"
                       , "--normal",   "yellow"
-                      , "--high",     "green"
+                      , "--high",     "#13ec1f"
                       , "--"
                       , "-A",         "15"
                       , "-a",         "/home/rumen/.local/share/scripts/battery-warning.sh"
