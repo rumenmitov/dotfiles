@@ -153,6 +153,8 @@ return {
                 },
             })
 
+            vim.lsp.inlay_hint.enable()
+
             vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
             vim.keymap.set('n', 'gf', vim.lsp.buf.format, {})
