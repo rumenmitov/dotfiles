@@ -13,7 +13,7 @@ autoload -z edit-command-line
 zle -N edit-command-line
 
 bindkey -e
-bindkey '^e' edit-command-line
+bindkey '^x' edit-command-line
 
 
 # Completion
@@ -27,3 +27,5 @@ zstyle ':completion:*:default' list-colors \
                             ${(s.:.)LS_COLORS}
 
 
+# Plugins
+# source 
