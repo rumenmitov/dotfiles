@@ -32,5 +32,10 @@ vim.opt.undofile = true
 
 -- Colorscheme
 vim.opt.background = "dark"
-vim.cmd.colorscheme("tokyonight-storm")
 vim.opt.termguicolors = true
+
+if (os.getenv("SERVER") == nil) then
+    vim.cmd.colorscheme("tokyonight-storm")
+else
+    vim.cmd.colorscheme("sorbet")
+end

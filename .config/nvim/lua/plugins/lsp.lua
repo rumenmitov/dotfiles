@@ -148,6 +148,7 @@ return {
                         workspace = {
                             library = vim.api.nvim_get_runtime_file("", true),
                         },
+                        telemetry = false
                     },
                 },
             })
@@ -162,8 +163,15 @@ return {
             vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, {})
             vim.keymap.set({ 'n', 'v' }, '<leader>fx', vim.lsp.buf.code_action, {})
 
-            vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = "single"})
-            vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = "single"})
+            vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(
+                vim.lsp.handlers.hover,
+                {border = "single"}
+                )
+
+            vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(
+                vim.lsp.handlers.signature_help,
+                {border = "single"}
+                )
 
             vim.diagnostic.config{
                 float = { border = "single" }
