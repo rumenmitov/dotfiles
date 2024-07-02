@@ -4,4 +4,9 @@
 
 # Neovim
 ./config/nvim/lazy-lock.json
+./config/nvim/lazy-lock.json
+
+# Zsh
+./config/zsh/.zhistory
+./config/zsh/.zcompdump
 
