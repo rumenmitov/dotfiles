@@ -11,3 +11,5 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 export LS_COLORS="*.py=33:di=34:*.h=35:*.pdf=4;37"
+
+export TERM=screen-256color

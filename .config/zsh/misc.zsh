@@ -1,1 +1,1 @@
-eval "$(zoxide init zsh)"
+zoxide --version >/dev/null && eval "$(zoxide init zsh)"
