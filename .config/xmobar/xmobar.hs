@@ -1,7 +1,7 @@
 Config { 
 
    -- appearance
-     font =         "Caskaydia Cove Nerd Font 12"
+     font =         "Hack Nerd Font Mono 14"
    , bgColor =      "black"
    , fgColor =      "#dadada"
    , position =     TopH 30

@@ -12,7 +12,7 @@
 (setq-default mode-line-format nil)
 
 (setq default-frame-alist '(
-                            (font . "CaskaydiaCove Nerd Font 18")
+                            (font . "Hack Nerd Font Mono 18")
                             (vertical-scroll-bars . nil)
                             ))
 
