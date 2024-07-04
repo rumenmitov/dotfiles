@@ -21,6 +21,7 @@ import XMonad.Actions.NoBorders
 import XMonad.Actions.Promote
 import XMonad.Actions.WithAll
 import XMonad.Actions.Submap
+import XMonad.Actions.Search
 import XMonad.StackSet as W
 import XMonad.ManageHook
 import XMonad.Prompt
@@ -50,7 +51,7 @@ _iconConfig = IconConfig
   , iconConfigFilter = iconsGetAll
   }
   where
-      _icons :: Query [String]
+      _icons :: XMonad.Query [String]
       _icons = composeAll
         [ className =? "librewolf"            --> appIcon "\983609"
         , className =? "firefox"              --> appIcon "\983609"
@@ -152,15 +153,16 @@ _helpWinConfig = def
   , winFont = "xft:monospace-20"
   }
 
+
 _keybinds =
 
     -- Applications
     [ ("M-x", visualSubmap _helpWinConfig . Map.fromList $
-        [ ((0, xK_e)  , subName "Emacs"                $ spawn "emacsclient -c")
-        , ((0, xK_b)  , subName "Browser"              $ spawn "librewolf")
-        , ((0, xK_f)  , subName "File Manager"         $ namedScratchpadAction _scratchpads "file-manager")
-        , ((0, xK_m)  , subName "Music"                $ namedScratchpadAction _scratchpads "music")
-        , ((0, xK_x)  , subName "Application Launcher" $ runOrRaisePrompt _promptConfig)
+        [ ((0, xK_Return)  , subName "Emacs"                $ spawn "emacsclient -c")
+        , ((0, xK_b)       , subName "Browser"              $ spawn "librewolf")
+        , ((0, xK_f)       , subName "File Manager"         $ namedScratchpadAction _scratchpads "file-manager")
+        , ((0, xK_m)       , subName "Music"                $ namedScratchpadAction _scratchpads "music")
+        , ((0, xK_x)       , subName "Application Launcher" $ runOrRaisePrompt _promptConfig)
         ])
 
 
@@ -170,16 +172,16 @@ _keybinds =
     , ("M-n"           , orgPrompt _promptConfig {
                                                   defaultPrompter = \_ -> "Note: "
                                                 } "TODO" "~/Other/Nextcloud/org/agenda/notes.org")
-    , ("M-S-h"           , manPrompt _promptConfig)
 
     -- System
     , ("M-c", visualSubmap _helpWinConfig . Map.fromList $
-        [ ((0, xK_c)   , subName "Kill Focused"            $ kill)
-        , ((0, xK_Tab) , subName "Next Screen"             $ nextScreen)
-        , ((0, xK_b)   , subName "Toggle Border"           $ withFocused toggleBorder)
-        , ((0, xK_f)   , subName "Toggle Fullscreen"       $ withFocused toggleFullFloat)
-        , ((0, xK_p)   , subName "Promote Focused"         $ promote)
-        , ((0, xK_x)   , subName "Kill All Except Focused" $ killOthers)
+        [ ((0, xK_Return)   , subName "Kill Focused"            $ kill)
+        , ((0, xK_Tab)      , subName "Next Screen"             $ nextScreen)
+        , ((0, xK_b)        , subName "Toggle Border"           $ withFocused toggleBorder)
+        , ((0, xK_f)        , subName "Toggle Fullscreen"       $ withFocused toggleFullFloat)
+        , ((0, xK_p)        , subName "Promote Focused"         $ promote)
+        , ((0, xK_c)        , subName "Clear Clipboard"         $ spawn "pkill greenclip && greenclip clear && greenclip daemon &")
+        , ((0, xK_x)        , subName "Kill All Except Focused" $ killOthers)
         ])
 
     -- Utils
@@ -200,12 +202,23 @@ _keybinds =
     , ("M-w"    , spawn "~/.local/share/scripts/wallpaper.sh")
 
 
+    -- Search Engines
+    , ("M-s", visualSubmap _helpWinConfig . Map.fromList $
+        [ ((0, xK_Return)       , subName "Web Search"    $ promptSearchBrowser' _promptConfig "librewolf" duckduckgo)
+        , ((0, xK_n)            , subName "NixOS"         $ promptSearchBrowser' _promptConfig "librewolf" nixos)
+        , ((0, xK_y)            , subName "Youtube"       $ promptSearchBrowser' _promptConfig "librewolf" youtube)
+        , ((0, xK_g)            , subName "Github"        $ promptSearchBrowser' _promptConfig "librewolf" github)
+        , ((0, xK_h)            , subName "Man Pages"     $ manPrompt _promptConfig)          
+        ])
+
+
     -- Password Manager
     , ("M-p", visualSubmap _helpWinConfig . Map.fromList $
-        [ ((0, xK_Return)       ,subName "Passwords"     $ passPrompt _promptConfig)
-        , ((0, xK_g)            ,subName "Generate New"  $ passGeneratePrompt _promptConfig)
-        , ((0, xK_e)            ,subName "Edit"          $ passEditPrompt _promptConfig)
-        , ((0, xK_BackSpace)    ,subName "Remove"        $ passRemovePrompt _promptConfig)
+        [ ((0, xK_Return)       , subName "Passwords"     $ passPrompt _promptConfig)
+        , ((0, xK_g)            , subName "Generate New"  $ passGeneratePrompt _promptConfig)
+        , ((0, xK_e)            , subName "Edit"          $ passEditPrompt _promptConfig)
+        , ((0, xK_BackSpace)    , subName "Remove"        $ passRemovePrompt _promptConfig)
+
         ])
 
     ]

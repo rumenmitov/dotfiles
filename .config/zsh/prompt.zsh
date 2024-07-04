@@ -2,7 +2,7 @@ function host_prompt() {
     if [[ $(git status 2>/dev/null) != "" ]]; then
         echo " %F{202}%f %F{green}$(git_prompt)%f"
     else 
-        echo "%F{45}🥷%m🏯%f"
+        echo "%F{45}@%m%f"
     fi
 }
 

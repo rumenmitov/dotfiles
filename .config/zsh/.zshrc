@@ -9,24 +9,25 @@ source $ZDOTDIR/misc.zsh
 setopt HIST_SAVE_NO_DUPS
 
 
-# Keybinds
+# Editting command line
 autoload -z edit-command-line
 zle -N edit-command-line
 
 bindkey -e
-bindkey '^x' edit-command-line
+bindkey '^x^e' edit-command-line
 
 
 # Completion
 autoload -Uz compinit
-compinit
+compinit 
 
 _comp_options+=(globdots)
+
+bindkey '^n' menu-complete
+bindkey '^p' reverse-menu-complete
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*:default' list-colors \
                             ${(s.:.)LS_COLORS}
-
-
-# Plugins
-# source 
+zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
