@@ -1,6 +1,6 @@
 wallpaper=$( ls "$HOME/.local/share/wallpapers/static/" |          \
     dmenu                                                          \
-    -i -l 4 -sb \#000000 -sf \#d000ff -fn 'Hack Nerd Font Mono 18'
+    -i -l 4 -sb \#000000 -sf \#d000ff -fn 'Hack Nerd Font Mono 18' )
 
 wallpaper_path="$HOME/.local/share/wallpapers/static/$wallpaper"
 
