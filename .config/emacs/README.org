@@ -57,7 +57,7 @@
 
   (global-display-line-numbers-mode 1)
 
-  (load-theme 'deeper-blue 1)
+  (load-theme 'modus-vivendi 1)
 #+end_src
 
 

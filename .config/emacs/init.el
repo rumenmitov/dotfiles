@@ -18,7 +18,7 @@
 
 (global-display-line-numbers-mode 1)
 
-(load-theme 'deeper-blue 1)
+(load-theme 'modus-vivendi 1)
 
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
