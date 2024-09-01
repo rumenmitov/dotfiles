@@ -6,7 +6,7 @@ local LspServers = {
     'lua_ls',
     'gopls',
     'html',
-    'nil_ls'
+    'nil_ls',
 }
 
 
@@ -25,7 +25,8 @@ return {
                 "typescript",
                 "html",
                 "haskell",
-                "nix"
+                "nix",
+                "tree-sitter-hyprlang"
             },
 
             sync_install = false,
