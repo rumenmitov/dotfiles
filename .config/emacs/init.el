@@ -46,11 +46,22 @@
 (add-hook 'minibuffer-mode-hook (lambda () (remove-hook 'post-self-insert-hook 'completion-help-at-point)))
 (add-hook 'minibuffer-exit-hook (lambda () (add-hook 'post-self-insert-hook 'completion-help-at-point)))
 
+(setq tab-width 4)
+(setq c-default-style "bsd"
+      c-basic-offset tab-width)
+
 (setq compile-command "make ")
 (setq gdb-show-main t)
 
 (add-hook 'gdb-breakpoints-mode-hook
           (lambda () (gdb-load-window-configuration "~/.config/emacs/gdb-window-config")))
+
+
+(add-hook 'c-mode-hook (lambda ()
+                         (c-toggle-auto-newline 1)))
+
+(add-hook 'c++-mode-hook (lambda ()
+                         (c-toggle-auto-newline 1)))
 
 (setq org-directory "~/Other/Nextcloud/org")
 (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
@@ -91,6 +102,7 @@
 (use-package go-mode)
 (use-package rust-mode)
 (use-package nix-mode)
+(use-package php-mode)
 
 (add-hook 'haskell-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
@@ -98,7 +110,21 @@
 (add-hook 'nix-mode-hook 'eglot-ensure)
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
+(add-hook 'php-mode-hook 'eglot-ensure)
 
 (require 'flymake)
 (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(yasnippet xterm-color undo-tree spinner rust-mode php-mode nix-mode haskell-mode go-mode f dired-preview beacon)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -55,7 +55,7 @@ _iconConfig = IconConfig
       _icons = composeAll
         [ className =? "librewolf"            --> appIcon "\983609"
         , className =? "firefox"              --> appIcon "\983609"
-        , className =? "Alacritty"            --> appIcon "\60362"
+        , className =? "St"            --> appIcon "\60362"
         , className =? "Emacs"                --> appIcon "\58930"
         , className =? "org.gnome.Nautilus"   --> appIcon "\62675"
         , className =? "Gimp"                 --> appIcon "\62264"
@@ -116,7 +116,7 @@ _layoutHook =
     master_ratio     = 1/2       -- master size compared to screen
 
 _scratchpads = [
-    NS "quick-term" "alacritty --title \"Alacritty - Float\"" (title =? "Alacritty - Float")
+    NS "quick-term" "st --title \"St - Float\"" (title =? "St - Float")
       (customFloating $ W.RationalRect (1/16) (1/16) (7/8) (7/8))
 
   , NS "file-manager" "nautilus" (className =? "org.gnome.Nautilus")
@@ -167,7 +167,7 @@ _keybinds =
 
 
     -- Quick Launches
-    , ("M-<Return>"    , spawn "alacritty")
+    , ("M-<Return>"    , spawn "st")
     , ("M-S-<Return>"  , namedScratchpadAction _scratchpads "quick-term")
     , ("M-n"           , orgPrompt _promptConfig {
                                                   defaultPrompter = \_ -> "Note: "
@@ -234,7 +234,7 @@ xmonadConfig = def
   , handleEventHook    = focusOnMouseMove
   , layoutHook         = _layoutHook
   , manageHook         = namedScratchpadManageHook _scratchpads
-  , terminal           = "alacritty"
+  , terminal           = "st"
   }
 
 
