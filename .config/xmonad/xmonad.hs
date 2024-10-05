@@ -39,11 +39,14 @@ _startupHook = do
   spawnOnce "xrandr --output HDMI-A-0 --mode 1920x1080 --right-of eDP"
   spawnOnce "xset dpms 0 0 0 && xset s noblank  && xset s off"
   spawnOnce "~/.local/share/scripts/battery-warning.sh"
-  spawnOnce "nitrogen --restore &"
+  spawnOnce "~/.fehbg"
+  spawnOnce "pipewire"
+  spawnOnce "picom"    
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "xinput --set-prop 9 310 0.8"
   spawnOnce "greenclip daemon"
   spawnOnce "emacs --daemon"
+  spawnOnce "/usr/libexec/polkit-gnome-authentication-agent-1"
 
 _iconConfig = IconConfig
   { iconConfigIcons  = _icons
@@ -55,9 +58,9 @@ _iconConfig = IconConfig
       _icons = composeAll
         [ className =? "librewolf"            --> appIcon "\983609"
         , className =? "firefox"              --> appIcon "\983609"
-        , className =? "St"            --> appIcon "\60362"
+        , className =? "Alacritty"            --> appIcon "\60362"
         , className =? "Emacs"                --> appIcon "\58930"
-        , className =? "org.gnome.Nautilus"   --> appIcon "\62675"
+        , className =? "Thunar"   --> appIcon "\62675"
         , className =? "Gimp"                 --> appIcon "\62264"
         , className =? "rnote"                --> appIcon "\986953"
         , className =? "nuclear"              --> appIcon "\61441"
@@ -116,10 +119,10 @@ _layoutHook =
     master_ratio     = 1/2       -- master size compared to screen
 
 _scratchpads = [
-    NS "quick-term" "st --title \"St - Float\"" (title =? "St - Float")
+    NS "quick-term" "alacritty --title \"Alacritty - Float\"" (title =? "Alacritty - Float")
       (customFloating $ W.RationalRect (1/16) (1/16) (7/8) (7/8))
 
-  , NS "file-manager" "nautilus" (className =? "org.gnome.Nautilus")
+  , NS "file-manager" "thunar" (className =? "Thunar")
       (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
 
   , NS "music" "nuclear" (className =? "nuclear")
@@ -159,7 +162,7 @@ _keybinds =
     -- Applications
     [ ("M-x", visualSubmap _helpWinConfig . Map.fromList $
         [ ((0, xK_Return)  , subName "Emacs"                $ spawn "emacsclient -c")
-        , ((0, xK_b)       , subName "Browser"              $ spawn "librewolf")
+        , ((0, xK_b)       , subName "Browser"              $ spawn "flatpak run io.github.zen_browser.zen")
         , ((0, xK_f)       , subName "File Manager"         $ namedScratchpadAction _scratchpads "file-manager")
         , ((0, xK_m)       , subName "Music"                $ namedScratchpadAction _scratchpads "music")
         , ((0, xK_x)       , subName "Application Launcher" $ runOrRaisePrompt _promptConfig)
@@ -167,7 +170,7 @@ _keybinds =
 
 
     -- Quick Launches
-    , ("M-<Return>"    , spawn "st")
+    , ("M-<Return>"    , spawn "alacritty")
     , ("M-S-<Return>"  , namedScratchpadAction _scratchpads "quick-term")
     , ("M-n"           , orgPrompt _promptConfig {
                                                   defaultPrompter = \_ -> "Note: "
@@ -190,7 +193,7 @@ _keybinds =
     , ("<XF86AudioRaiseVolume>"  , spawn "pamixer -i 10")
     , ("<XF86AudioLowerVolume>"  , spawn "pamixer -d 10")
     , ("<XF86AudioMute>"         , spawn "pamixer -t")
-    , ("M-S-s"                   , spawn "shutter -s --output=~/Pictures/Screenshots/$(date +%s).png")
+    , ("M-S-s"                   , spawn "flameshot gui")
     , ("M-S-c"                   , spawn "xkill")
 
 
@@ -204,10 +207,9 @@ _keybinds =
 
     -- Search Engines
     , ("M-s", visualSubmap _helpWinConfig . Map.fromList $
-        [ ((0, xK_Return)       , subName "Web Search"    $ promptSearchBrowser' _promptConfig "librewolf" duckduckgo)
-        , ((0, xK_n)            , subName "NixOS"         $ promptSearchBrowser' _promptConfig "librewolf" nixos)
-        , ((0, xK_y)            , subName "Youtube"       $ promptSearchBrowser' _promptConfig "librewolf" youtube)
-        , ((0, xK_g)            , subName "Github"        $ promptSearchBrowser' _promptConfig "librewolf" github)
+        [ ((0, xK_Return)       , subName "Web Search"    $ promptSearchBrowser' _promptConfig "firefox" duckduckgo)
+        , ((0, xK_y)            , subName "Youtube"       $ promptSearchBrowser' _promptConfig "firefox" youtube)
+        , ((0, xK_g)            , subName "Github"        $ promptSearchBrowser' _promptConfig "firefox" github)
         , ((0, xK_h)            , subName "Man Pages"     $ manPrompt _promptConfig)          
         ])
 
@@ -234,7 +236,7 @@ xmonadConfig = def
   , handleEventHook    = focusOnMouseMove
   , layoutHook         = _layoutHook
   , manageHook         = namedScratchpadManageHook _scratchpads
-  , terminal           = "st"
+  , terminal           = "alacritty"
   }
 
 

@@ -1,7 +1,7 @@
 Config { 
 
    -- appearance
-     font =         "Hack Nerd Font Mono 14"
+     font =         "xft:CaskaydiaCove Nerd Font Mono:pixelsize=20"
    , bgColor =      "black"
    , fgColor =      "#dadada"
    , position =     TopH 30
@@ -22,7 +22,7 @@ Config {
                 [ Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
                 , Run XMonadLog
                 , Run Battery
-                      [ "--template", "<action=`/home/rumen/.local/share/scripts/battery-info.sh`>🔋 <left>%</action>"
+                      [ "--template", "<action=`/home/rumen/.local/share/scripts/battery-info.sh`> <left>%</action>"
                       , "--Low",      "15"
                       , "--High",     "80"
                       , "--low",      "red"

@@ -1,15 +1,15 @@
 # NOTE: Source is https://gist.github.com/mxdevmanuel/a2229d427b39a9e40f2198979caa40c1
-op=$( echo -e " poweroff\n reboot\n suspend\n lock\n logout"    \
+op=$( echo "  poweroff\n  reboot\n  suspend\n  lock\n  logout"    \
     | dmenu                                                          \
     -i -l 5 -sb \#000000 -sf \#d000ff -fn 'Hack Nerd Font Mono 18'   \
     | awk '{print tolower($2)}' )
 
 case $op in 
         poweroff)
-                poweroff -i
+                loginctl poweroff -i
                 ;;
         reboot)
-                reboot -i
+                loginctl reboot -i
                 ;;
         suspend)
                 systemctl "$op"
@@ -18,6 +18,6 @@ case $op in
 		        i3lock -c 000000
                 ;;
         logout)
-                pkill xmonad
+                ecryptfs-umount-private && pkill xmonad
                 ;;
 esac

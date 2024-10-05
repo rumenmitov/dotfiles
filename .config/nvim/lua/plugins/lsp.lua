@@ -7,6 +7,7 @@ local LspServers = {
     'gopls',
     'html',
     'nil_ls',
+    'hls'
 }
 
 
@@ -66,7 +67,6 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         opts = {
-            ensure_installed = LspServers,
         }
     },
 
@@ -159,11 +159,11 @@ return {
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
             vim.keymap.set('n', 'gf', vim.lsp.buf.format, {})
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, {})
-            vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, {})
-            vim.keymap.set({ 'n', 'v' }, '<leader>fx', vim.lsp.buf.code_action, {})
+            vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, {})
+            vim.keymap.set('n', 'grR', vim.lsp.buf.references, {})
+            vim.keymap.set('n', 'grs', vim.lsp.buf.signature_help, {})
+            vim.keymap.set('n', 'grr', vim.lsp.buf.rename, {})
+            vim.keymap.set({ 'n', 'v' }, 'gra', vim.lsp.buf.code_action, {})
 
             vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(
                 vim.lsp.handlers.hover,

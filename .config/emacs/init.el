@@ -71,6 +71,7 @@
 (setq calendar-date-style 'european)
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'ispell-minor-mode)
 (add-hook 'org-mode-hook 'org-toggle-inline-images)
 (setq org-hide-emphasis-markers t)
 
@@ -115,16 +116,3 @@
 (require 'flymake)
 (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(yasnippet xterm-color undo-tree spinner rust-mode php-mode nix-mode haskell-mode go-mode f dired-preview beacon)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

@@ -9,3 +9,5 @@
 #./config/zsh/.zhistory
 #./config/zsh/.zcompdump
 
+# Zen
+./.config/zen/

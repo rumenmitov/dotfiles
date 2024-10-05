@@ -138,6 +138,7 @@ prints a distracting error message.
   (setq calendar-date-style 'european)
   (add-hook 'org-mode-hook 'org-indent-mode)
   (add-hook 'org-mode-hook 'visual-line-mode)
+  (add-hook 'org-mode-hook 'ispell-minor-mode)
   (add-hook 'org-mode-hook 'org-toggle-inline-images)
   (setq org-hide-emphasis-markers t)
 #+end_src

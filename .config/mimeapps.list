@@ -1,0 +1,7 @@
+[Default Applications]
+application/pdf=org.gnome.Papers.desktop
+image/png=org.gnome.eog.desktop
+
+[Added Associations]
+application/pdf=org.gnome.Papers.desktop;
+image/png=org.gnome.eog.desktop;

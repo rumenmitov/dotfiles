@@ -6,7 +6,7 @@ shape = "Beam"
 hide_when_typing = true
 
 [font.normal]
-family = "Hack Nerd Font Mono"
+family = "CaskaydiaCove Nerd Font"
 style = "Regular"
 
 [window]
