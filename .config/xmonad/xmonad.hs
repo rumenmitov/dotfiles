@@ -56,11 +56,11 @@ _iconConfig = IconConfig
   where
       _icons :: XMonad.Query [String]
       _icons = composeAll
-        [ className =? "librewolf"            --> appIcon "\983609"
+        [ className =? "zen-alpha"            --> appIcon "\983609"
         , className =? "firefox"              --> appIcon "\983609"
         , className =? "Alacritty"            --> appIcon "\60362"
         , className =? "Emacs"                --> appIcon "\58930"
-        , className =? "Thunar"   --> appIcon "\62675"
+        , className =? "Thunar"               --> appIcon "\62675"
         , className =? "Gimp"                 --> appIcon "\62264"
         , className =? "rnote"                --> appIcon "\986953"
         , className =? "nuclear"              --> appIcon "\61441"
