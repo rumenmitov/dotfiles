@@ -20,6 +20,7 @@
 - picom
 - flameshot
 - polkit-gnome
+- numlockx
 - i3lock
 
 
@@ -76,7 +77,8 @@
     spawnOnce "~/.local/share/scripts/battery-warning.sh"
     spawnOnce "~/.fehbg"
     spawnOnce "pipewire"
-    spawnOnce "picom"    
+    spawnOnce "picom"
+    spawnOnce "numlockx"    
     spawnOnce "xsetroot -cursor_name left_ptr"
     spawnOnce "xinput --set-prop 9 310 0.8"
     spawnOnce "greenclip daemon"

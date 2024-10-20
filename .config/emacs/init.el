@@ -1,5 +1,5 @@
 (setq inhibit-startup-message t)
-(setq initial-scratch-message ";; -- Welcome to Emacs --\n\n")
+(setq initial-scratch-message ";; -- Welcome to Emacs--\n\n")
 
 (defun display-startup-echo-area-message ()
   (message nil))
@@ -77,6 +77,7 @@
 (setq org-hide-emphasis-markers t)
 (setq org-pretty-entities t)
 (setq org-pretty-entities-include-sub-superscripts t)
+(setq org-clock-sound "~/.config/emacs/org-clock-sound.wav")
 
 (setq visible-bell 1)
 (setq use-short-answers t)
