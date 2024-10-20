@@ -181,6 +181,7 @@ _keybinds =
     , ("M-c", visualSubmap _helpWinConfig . Map.fromList $
         [ ((0, xK_Return)   , subName "Kill Focused"            $ kill)
         , ((0, xK_Tab)      , subName "Next Screen"             $ nextScreen)
+        , ((0, xK_m)        , subName "Swap Master"             $ windows W.swapMaster)
         , ((0, xK_b)        , subName "Toggle Border"           $ withFocused toggleBorder)
         , ((0, xK_f)        , subName "Toggle Fullscreen"       $ withFocused toggleFullFloat)
         , ((0, xK_p)        , subName "Promote Focused"         $ promote)
