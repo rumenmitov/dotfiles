@@ -17,3 +17,5 @@ ls
 tldr magick
 magick git_fire.png -resize 800x600 git_fire.png
 ls
+make clean
+cd

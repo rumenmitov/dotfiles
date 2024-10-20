@@ -53,9 +53,8 @@
 
 (setq compile-command "make ")
 (setq gdb-show-main t)
-
-(add-hook 'gdb-breakpoints-mode-hook
-          (lambda () (gdb-load-window-configuration "~/.config/emacs/gdb-window-config")))
+(setq gdb-many-windows t)
+(setq gdb-default-window-configuration-file "~/.config/emacs/gdb-window-config")
 
 
 (add-hook 'c-mode-hook (lambda ()
