@@ -36,6 +36,7 @@
 (setq icomplete-in-buffer t)
 (setq completions-max-height 10)
 (setq completions-format "one-column")
+(setq imenu-auto-rescan t)
 
 (setopt completion-fail-discreetly t)
 
@@ -63,17 +64,19 @@
 (add-hook 'c++-mode-hook (lambda ()
                          (c-toggle-auto-newline 1)))
 
-(setq org-directory "~/Other/Nextcloud/org")
+(setq org-directory "~/org")
 (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
-(setq org-agenda-files '("~/Other/Nextcloud/org/agenda"))
+(setq org-agenda-files '("~/org/agenda"))
 (setq org-agenda-include-diary t)
-(setq diary-file "~/Other/Nextcloud/org/agenda/diary")
+(setq diary-file "~/org/agenda/diary")
 (setq calendar-date-style 'european)
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'ispell-minor-mode)
 (add-hook 'org-mode-hook 'org-toggle-inline-images)
 (setq org-hide-emphasis-markers t)
+(setq org-pretty-entities t)
+(setq org-pretty-entities-include-sub-superscripts t)
 
 (setq visible-bell 1)
 (setq use-short-answers t)
@@ -96,6 +99,10 @@
 (setq undo-tree-visualizer-diff t)
 
 (use-package yasnippet)
+(yas-global-mode)
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "C-c y") yas-maybe-expand)
 (global-set-key (kbd "C-c n") 'yas-next-field)
 (global-set-key (kbd "C-c p") 'yas-prev-field)
 

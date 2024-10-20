@@ -5,9 +5,8 @@
 # Neovim
 ./config/nvim/lazy-lock.json
 
-# Zsh
-#./config/zsh/.zhistory
-#./config/zsh/.zcompdump
+# Kdeconnect
+./.config/kdeconnect/
 
 # Zen
 ./.config/zen/

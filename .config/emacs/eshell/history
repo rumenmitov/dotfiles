@@ -11,3 +11,9 @@ echo hi | ./build/debug/xargs
 echo hi | ./build/debug/xargs 
 ./build/debug/xargs 
 cd ../
+ls
+cd assets/
+ls
+tldr magick
+magick git_fire.png -resize 800x600 git_fire.png
+ls
