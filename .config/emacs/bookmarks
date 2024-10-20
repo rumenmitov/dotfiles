@@ -2,10 +2,16 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/org/agenda/notes.org")
- (front-context-string . "* TODO create sm")
+(("emacs"
+ (filename . "~/.dotfiles/.config/emacs/README.org")
+ (front-context-string . "#+title: Emacs C")
  (rear-context-string)
- (position . 9)
- (last-modified 26388 49091 770791 419000))
+ (position . 1)
+ (last-modified 26388 63898 531816 83000))
+("xmonad"
+ (filename . "~/.dotfiles/.config/xmonad/README.org")
+ (front-context-string . "#+title: Xmonad ")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26388 63873 975249 869000))
 )
