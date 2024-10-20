@@ -57,7 +57,7 @@
 
   (global-display-line-numbers-mode 1)
 
-  (load-theme 'modus-vivendi 1)
+  (load-theme 'deeper-blue 1)
 #+end_src
 
 
@@ -168,6 +168,9 @@ prints a distracting error message.
 
   (use-package beacon)
   (beacon-mode 1)
+
+  (use-package ace-window)
+  (global-set-key (kbd "M-o") 'ace-window)
 
   (use-package undo-tree)
   (global-undo-tree-mode)

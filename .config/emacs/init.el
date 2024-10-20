@@ -18,7 +18,7 @@
 
 (global-display-line-numbers-mode 1)
 
-(load-theme 'modus-vivendi 1)
+(load-theme 'deeper-blue 1)
 
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
@@ -91,6 +91,9 @@
 
 (use-package beacon)
 (beacon-mode 1)
+
+(use-package ace-window)
+(global-set-key (kbd "M-o") 'ace-window)
 
 (use-package undo-tree)
 (global-undo-tree-mode)
