@@ -38,6 +38,7 @@ _startupHook = do
   spawnOnce "xrandr --output eDP --primary --mode 1920x1200"
   spawnOnce "xrandr --output HDMI-A-0 --mode 1920x1080 --right-of eDP"
   spawnOnce "xset dpms 0 0 0 && xset s noblank  && xset s off"
+  spawnOnce "setxkbmap -layout us,de,bg -variant ,,phonetic -option 'grp:shift_caps_toggle'"
   spawnOnce "~/.local/share/scripts/battery-warning.sh"
   spawnOnce "~/.fehbg"
   spawnOnce "pipewire"

@@ -3,10 +3,10 @@
 *#
 
 # Neovim
-./config/nvim/lazy-lock.json
+.config/nvim/lazy-lock.json
 
 # Kdeconnect
-./.config/kdeconnect/
+.config/kdeconnect/
 
 # Zen
-./.config/zen/
+.config/zen/
