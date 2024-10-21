@@ -3,6 +3,7 @@
 *#
 .config/emacs/*~
 .config/emacs/README.el
+.config/emacs/.org-id-locations
 .config/emacs/image-dired/
 .config/emacs/eln-cache/
 .config/emacs/elpa/
