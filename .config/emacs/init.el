@@ -59,12 +59,11 @@
 (setq gdb-many-windows t)
 (setq gdb-default-window-configuration-file "~/.config/emacs/gdb-window-config")
 
-
 (add-hook 'c-mode-hook (lambda ()
                          (c-toggle-auto-newline 1)))
 
 (add-hook 'c++-mode-hook (lambda ()
-                         (c-toggle-auto-newline 1)))
+                           (c-toggle-auto-newline 1)))
 
 (setq org-directory "~/org")
 (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
@@ -72,16 +71,35 @@
 (setq org-agenda-include-diary t)
 (setq diary-file "~/org/agenda/diary")
 (setq calendar-date-style 'european)
+
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'ispell-minor-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'org-toggle-inline-images)
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (setq prettify-symbols-alist
+                          '(("[#A]"        . ?🔴)
+                            ("[#B]"        . ?🔵)
+                            ("[#C]"        . ?🟢)
+                            ("#+author:"   . ?)
+                            ("#+title:"    . ?)
+                            ("#+email:"    . ?) 
+                            ("#+begin_src" . ?)
+                            ("#+end_src"   . ?)
+                            ("- [ ]"       . ?)
+                            ("- [-]"       . ?)
+                            ("- [X]"       . ?)))
+            (prettify-symbols-mode 1)))
+
 (setq org-hide-emphasis-markers t)
 (setq org-pretty-entities t)
 (setq org-pretty-entities-include-sub-superscripts t)
 (setq org-use-sub-superscripts '{})
 (setq org-export-with-sub-superscripts '{})
+
 (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
 
 (setq visible-bell 1)
