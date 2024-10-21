@@ -146,7 +146,7 @@ prints a distracting error message.
     (setq org-hide-emphasis-markers t)
     (setq org-pretty-entities t)
     (setq org-pretty-entities-include-sub-superscripts t)
-    (setq org-clock-sound "~/.config/emacs/org-clock-sound.wav")
+    (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
 #+end_src
 
 
