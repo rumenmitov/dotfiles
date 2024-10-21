@@ -1,6 +1,7 @@
 # Emacs
 *~
 *#
+.config/emacs/README.el
 
 # Neovim
 .config/nvim/lazy-lock.json
