@@ -2,7 +2,6 @@
 #+author: Rumen Mitov
 #+email: rumenmitov@protonmail.com
 #+options: H:3
-#+property: header-args :tangle init.el
 #+startup: overview
 
 
@@ -60,6 +59,7 @@
   (setq display-line-numbers-current-absolute nil)
 
   (load-theme 'deeper-blue 1)
+  (add-to-list 'default-frame-alist '(alpha-background . 80))
 #+end_src
 
 
@@ -155,7 +155,6 @@ prints a distracting error message.
 #+begin_src emacs-lisp
   (setq visible-bell 1)
   (setq use-short-answers t)
-  (add-to-list 'default-frame-alist '(alpha-background . 80))
 #+end_src
 
 
@@ -174,6 +173,9 @@ prints a distracting error message.
 
   (use-package ace-window)
   (global-set-key (kbd "M-o") 'ace-window)
+
+  (use-package golden-ratio)
+  (golden-ratio-mode 1)
 
   (use-package undo-tree)
   (global-undo-tree-mode)
