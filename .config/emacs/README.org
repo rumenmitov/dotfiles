@@ -21,10 +21,7 @@
 1. =rm -rf ~/.emacs*=
 2. =git clone https://gitlab.com/rumenmitov/dotfiles ~/dotfiles=
 3. =cd ~/dotfiles && stow .=
-4. Open Emacs and navigate to *~/.config/emacs/README.org* (using =C-x C-f=)
-5. Refresh the configuration: =C-c C-c=
-6. Initialize configuration: =C-c C-v t=
-7. Restart Emacs 🐐
+4. Start Emacs 🐐
 
 
 * Configuration
