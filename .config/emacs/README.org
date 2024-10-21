@@ -21,8 +21,9 @@
 1. =rm -rf ~/.emacs*=
 2. =git clone https://gitlab.com/rumenmitov/dotfiles ~/dotfiles=
 3. =cd ~/dotfiles && stow .=
-4. Start Emacs 🐐
-
+5. Refresh the configuration: =C-c C-c=
+6. Initialize configuration: =C-c C-v t=
+7. Restart Emacs 🐐
 
 * Configuration
 
@@ -57,6 +58,7 @@
   (setq display-line-numbers-current-absolute nil)
 
   (load-theme 'deeper-blue 1)
+  (add-to-list 'default-frame-alist '(alpha-background . 80))
 #+end_src
 
 
@@ -129,21 +131,23 @@ prints a distracting error message.
 ** Organization
 
 #+begin_src emacs-lisp
-    (setq org-directory "~/org")
-    (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
-    (setq org-agenda-files '("~/org/agenda"))
-    (setq org-agenda-include-diary t)
-    (setq diary-file "~/org/agenda/diary")
-    (setq calendar-date-style 'european)
-    (add-hook 'org-mode-hook 'org-indent-mode)
-    (add-hook 'org-mode-hook 'visual-line-mode)
-    (add-hook 'org-mode-hook 'ispell-minor-mode)
-    (add-hook 'org-mode-hook 'flyspell-mode)
-    (add-hook 'org-mode-hook 'org-toggle-inline-images)
-    (setq org-hide-emphasis-markers t)
-    (setq org-pretty-entities t)
-    (setq org-pretty-entities-include-sub-superscripts t)
-    (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
+  (setq org-directory "~/org")
+  (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
+  (setq org-agenda-files '("~/org/agenda"))
+  (setq org-agenda-include-diary t)
+  (setq diary-file "~/org/agenda/diary")
+  (setq calendar-date-style 'european)
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (add-hook 'org-mode-hook 'visual-line-mode)
+  (add-hook 'org-mode-hook 'ispell-minor-mode)
+  (add-hook 'org-mode-hook 'flyspell-mode)
+  (add-hook 'org-mode-hook 'org-toggle-inline-images)
+  (setq org-hide-emphasis-markers t)
+  (setq org-pretty-entities t)
+  (setq org-pretty-entities-include-sub-superscripts t)
+  (setq org-use-sub-superscripts '{})
+  (setq org-export-with-sub-superscripts '{})
+  (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
 #+end_src
 
 
@@ -152,7 +156,6 @@ prints a distracting error message.
 #+begin_src emacs-lisp
   (setq visible-bell 1)
   (setq use-short-answers t)
-  (add-to-list 'default-frame-alist '(alpha-background . 80))
 #+end_src
 
 

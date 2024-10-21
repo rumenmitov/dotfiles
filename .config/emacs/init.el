@@ -21,6 +21,7 @@
 (setq display-line-numbers-current-absolute nil)
 
 (load-theme 'deeper-blue 1)
+(add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
@@ -79,11 +80,12 @@
 (setq org-hide-emphasis-markers t)
 (setq org-pretty-entities t)
 (setq org-pretty-entities-include-sub-superscripts t)
-(setq org-clock-sound "~/.config/emacs/org-clock-sound.wav")
+(setq org-use-sub-superscripts '{})
+(setq org-export-with-sub-superscripts '{})
+(setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
 
 (setq visible-bell 1)
 (setq use-short-answers t)
-(add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
