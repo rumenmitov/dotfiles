@@ -81,17 +81,19 @@
 (add-hook 'org-mode-hook
           (lambda ()
             (setq prettify-symbols-alist
-                          '(("[#A]"        . ?🔴)
-                            ("[#B]"        . ?🔵)
-                            ("[#C]"        . ?🟢)
-                            ("#+author:"   . ?)
-                            ("#+title:"    . ?)
-                            ("#+email:"    . ?) 
-                            ("#+begin_src" . ?)
-                            ("#+end_src"   . ?)
-                            ("- [ ]"       . ?)
-                            ("- [-]"       . ?)
-                            ("- [X]"       . ?)))
+                  '(("[#A]"        . ?🔴)
+                    ("[#B]"        . ?🔵)
+                    ("[#C]"        . ?🟢)
+                    ("#+author:"   . ?)
+                    ("#+title:"    . ?)
+                    ("#+email:"    . ?) 
+                    ("#+begin_src" . ?)
+                    ("#+end_src"   . ?)
+                    ("- [ ]"       . ?)
+                    ("- [-]"       . ?)
+                    ("- [X]"       . ?)
+                    ("BUG"         . ?🪳)
+                    ("INFO"        . ?💡)))
             (prettify-symbols-mode 1)))
 
 (setq org-hide-emphasis-markers t)
@@ -101,6 +103,23 @@
 (setq org-export-with-sub-superscripts '{})
 
 (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
+
+(setq org-capture-templates
+      '(("t"
+         "Todo"
+         entry
+         (file "~/org/agenda/notes.org")
+         (file "~/.config/emacs/templates/todo.tmpl"))
+        ("j"
+         "Journal"
+         plain
+         (file+datetree "~/org/journal.org")
+         (file "~/.config/emacs/templates/journal.tmpl"))
+        ("p"
+         "Programming"
+         entry
+         (file "~/org/programming.org")
+         (file "~/.config/emacs/templates/programming.tmpl"))))
 
 (setq visible-bell 1)
 (setq use-short-answers t)

@@ -175,8 +175,8 @@ _keybinds =
     , ("M-<Return>"    , spawn "alacritty")
     , ("M-S-<Return>"  , namedScratchpadAction _scratchpads "quick-term")
     , ("M-n"           , orgPrompt _promptConfig {
-                                                  defaultPrompter = \_ -> "Note: "
-                                                } "TODO" "~/Other/Nextcloud/org/agenda/notes.org")
+                                                  defaultPrompter = \_ -> "Task: "
+                                                } "TODO" "~/org/agenda/notes.org")
 
     -- System
     , ("M-c", visualSubmap _helpWinConfig . Map.fromList $
