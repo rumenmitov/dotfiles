@@ -65,6 +65,9 @@
 (add-hook 'c++-mode-hook (lambda ()
                            (c-toggle-auto-newline 1)))
 
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+
 (setq org-directory "~/org")
 (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
 (setq org-agenda-files '("~/org/agenda"))

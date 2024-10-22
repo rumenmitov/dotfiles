@@ -123,44 +123,47 @@ prints a distracting error message.
 ** Organization
 
 #+begin_src emacs-lisp
-      (setq org-directory "~/org")
-      (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
-      (setq org-agenda-files '("~/org/agenda"))
-      (setq org-agenda-include-diary t)
-      (setq diary-file "~/org/agenda/diary")
-      (setq calendar-date-style 'european)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture)
 
-      (add-hook 'org-mode-hook 'org-indent-mode)
-      (add-hook 'org-mode-hook 'visual-line-mode)
-      (add-hook 'org-mode-hook 'ispell-minor-mode)
-      (add-hook 'org-mode-hook 'flyspell-mode)
-      (add-hook 'org-mode-hook 'org-toggle-inline-images)
+  (setq org-directory "~/org")
+  (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
+  (setq org-agenda-files '("~/org/agenda"))
+  (setq org-agenda-include-diary t)
+  (setq diary-file "~/org/agenda/diary")
+  (setq calendar-date-style 'european)
 
-      (add-hook 'org-mode-hook
-                (lambda ()
-                  (setq prettify-symbols-alist
-                        '(("[#A]"        . ?🔴)
-                          ("[#B]"        . ?🔵)
-                          ("[#C]"        . ?🟢)
-                          ("#+author:"   . ?)
-                          ("#+title:"    . ?)
-                          ("#+email:"    . ?) 
-                          ("#+begin_src" . ?)
-                          ("#+end_src"   . ?)
-                          ("- [ ]"       . ?)
-                          ("- [-]"       . ?)
-                          ("- [X]"       . ?)
-                          ("BUG"         . ?🪳)
-                          ("INFO"        . ?💡)))
-                  (prettify-symbols-mode 1)))
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (add-hook 'org-mode-hook 'visual-line-mode)
+  (add-hook 'org-mode-hook 'ispell-minor-mode)
+  (add-hook 'org-mode-hook 'flyspell-mode)
+  (add-hook 'org-mode-hook 'org-toggle-inline-images)
 
-      (setq org-hide-emphasis-markers t)
-      (setq org-pretty-entities t)
-      (setq org-pretty-entities-include-sub-superscripts t)
-      (setq org-use-sub-superscripts '{})
-      (setq org-export-with-sub-superscripts '{})
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (setq prettify-symbols-alist
+                    '(("[#A]"        . ?🔴)
+                      ("[#B]"        . ?🔵)
+                      ("[#C]"        . ?🟢)
+                      ("#+author:"   . ?)
+                      ("#+title:"    . ?)
+                      ("#+email:"    . ?) 
+                      ("#+begin_src" . ?)
+                      ("#+end_src"   . ?)
+                      ("- [ ]"       . ?)
+                      ("- [-]"       . ?)
+                      ("- [X]"       . ?)
+                      ("BUG"         . ?🪳)
+                      ("INFO"        . ?💡)))
+              (prettify-symbols-mode 1)))
 
-      (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
+  (setq org-hide-emphasis-markers t)
+  (setq org-pretty-entities t)
+  (setq org-pretty-entities-include-sub-superscripts t)
+  (setq org-use-sub-superscripts '{})
+  (setq org-export-with-sub-superscripts '{})
+
+  (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
 #+end_src
 
 ** Templates
