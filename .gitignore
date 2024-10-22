@@ -10,7 +10,7 @@
 .config/emacs/projects
 .config/emacs/recentf
 .config/emacs/viper
-./config/emacs/bookmarks
+.config/emacs/bookmarks
 .config/emacs/url/
 ./config/emacs/undo/
 ./config/emacs/transient/
