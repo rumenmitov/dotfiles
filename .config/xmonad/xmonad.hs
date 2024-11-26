@@ -42,7 +42,7 @@ _startupHook = do
   spawnOnce "~/.local/share/scripts/battery-warning.sh"
   spawnOnce "~/.fehbg"
   spawnOnce "pipewire"
-  spawnOnce "picom"
+  spawnOnce "picom --backend glx"
   spawnOnce "numlockx"    
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "xinput --set-prop 9 310 0.8"
@@ -65,7 +65,7 @@ _iconConfig = IconConfig
         , className =? "Thunar"               --> appIcon "\62675"
         , className =? "Gimp"                 --> appIcon "\62264"
         , className =? "rnote"                --> appIcon "\986953"
-        , className =? "nuclear"              --> appIcon "\61441"
+        , className =? "Spotube"              --> appIcon "\61441"
         ]
 
       -- This is a custom function that adds a space between two or more icons.
@@ -126,9 +126,6 @@ _scratchpads = [
 
   , NS "file-manager" "thunar" (className =? "Thunar")
       (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
-
-  , NS "music" "nuclear" (className =? "nuclear")
-      (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
   ]
 
 _promptConfig :: XPConfig
@@ -166,7 +163,7 @@ _keybinds =
         [ ((0, xK_Return)  , subName "Emacs"                $ spawn "emacsclient -c")
         , ((0, xK_b)       , subName "Browser"              $ spawn "flatpak run io.github.zen_browser.zen")
         , ((0, xK_f)       , subName "File Manager"         $ namedScratchpadAction _scratchpads "file-manager")
-        , ((0, xK_m)       , subName "Music"                $ namedScratchpadAction _scratchpads "music")
+        , ((0, xK_m)       , subName "Music"                $ spawn "flatpak run com.github.KRTirtho.Spotube")
         , ((0, xK_x)       , subName "Application Launcher" $ runOrRaisePrompt _promptConfig)
         ])
 

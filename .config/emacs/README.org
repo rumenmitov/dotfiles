@@ -65,6 +65,7 @@
   (recentf-mode 1)
   (global-set-key (kbd "C-x C-r") 'recentf-open-files)
   (setq recentf-max-saved-items 10)
+  (save-place-mode 1)
 #+end_src
 
 ** Autocompletion
@@ -134,6 +135,7 @@ prints a distracting error message.
   (setq calendar-date-style 'european)
 
   (add-hook 'org-mode-hook 'org-indent-mode)
+  (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
   (add-hook 'org-mode-hook 'visual-line-mode)
   (add-hook 'org-mode-hook 'ispell-minor-mode)
   (add-hook 'org-mode-hook 'flyspell-mode)

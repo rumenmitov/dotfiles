@@ -26,6 +26,7 @@
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (setq recentf-max-saved-items 10)
+(save-place-mode 1)
 
 (icomplete-vertical-mode)
 (fido-vertical-mode)
@@ -76,6 +77,7 @@
 (setq calendar-date-style 'european)
 
 (add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'diary-list-entries-hook 'diary-sort-entries t)
 (add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'ispell-minor-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
@@ -171,3 +173,16 @@
 (require 'flymake)
 (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(tree-sitter-langs cmake-font-lock cmake-mode yasnippet-snippets undo-tree rust-mode php-mode nix-mode haskell-mode go-mode beacon ace-window)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

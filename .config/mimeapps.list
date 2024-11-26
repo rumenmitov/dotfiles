@@ -4,7 +4,10 @@ image/png=org.gnome.eog.desktop
 x-scheme-handler/http=io.github.zen_browser.zen
 x-scheme-handler/https=io.github.zen_browser.zen
 text/html=io.github.zen_browser.zen.desktop
+application/pgp-encrypted=org.gnome.Papers.desktop
 
 [Added Associations]
 application/pdf=org.gnome.Papers.desktop;
 image/png=org.gnome.eog.desktop;
+text/plain=org.gnome.Papers.desktop;
+application/pgp-encrypted=org.gnome.Papers.desktop;
