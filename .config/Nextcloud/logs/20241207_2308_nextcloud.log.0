@@ -1,0 +1,125 @@
+2024-12-07 23:08:26:595 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:1165 ]:	<========== Sync finished for folder [Nextcloud] of account [rumenmitov@nc.rumen.crabdance.com] with remote [https://nc.rumen.crabdance.com/remote.php/dav/files/rumenmitov/]
+2024-12-07 23:08:35:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:08:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:08:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:08:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:09:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:09:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:09:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:09:37:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:09:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:09:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:09:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:10:25:170 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:10:25:170 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:10:25:170 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:10:39:172 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:10:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:10:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:10:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:11:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:11:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:11:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:11:41:172 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:11:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:11:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:11:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:12:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:12:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:12:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:12:43:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:12:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:12:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:12:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:13:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:13:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:13:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:13:45:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:13:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:13:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:13:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:14:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:14:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:14:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:14:47:172 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:14:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:14:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:14:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:15:25:170 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:15:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:15:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:15:49:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:15:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:15:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:15:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:16:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:16:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:16:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:16:51:172 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:16:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:16:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:16:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:17:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:17:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:17:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:17:53:172 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:17:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:17:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:17:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:18:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:18:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:18:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:18:55:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:18:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:18:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:18:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:19:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:19:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:19:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:19:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:19:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:19:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:19:57:172 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:20:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:20:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:20:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:20:55:170 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:20:55:170 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:20:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:20:59:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:21:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:21:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:21:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:21:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:21:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:21:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:22:01:172 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:22:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:22:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:22:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:22:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:22:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:22:55:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:23:03:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:23:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:23:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:23:25:172 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:23:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:23:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:23:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:24:05:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:24:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:24:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:24:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:24:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:24:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:24:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:25:07:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:25:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:25:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:25:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:25:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout
+2024-12-07 23:25:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:963 ]:	Folders to sync: 1
+2024-12-07 23:25:55:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:973 ]:	Number of folders that don't use push notifications: 0
+2024-12-07 23:26:09:171 [ info nextcloud.gui.account.state ../src/gui/accountstate.cpp:560 ]:	Skipping server availability check for account "rumenmitov" with state 2
+2024-12-07 23:26:25:171 [ info nextcloud.gui.folder.manager ../src/gui/folderman.cpp:959 ]:	Etag poll timer timeout

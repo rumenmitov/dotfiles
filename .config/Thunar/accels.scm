@@ -1,6 +1,7 @@
-; Thunar GtkAccelMap rc-file         -*- scheme -*-
+; thunar GtkAccelMap rc-file         -*- scheme -*-
 ; this file is an automated accelerator map dump
 ;
+; (gtk_accel_path "<Actions>/ThunarBookmarks/4ecd741347df1a2e9b908e2696652cba" "")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/restore" "")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/undo" "<Primary>z")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/select-all-files" "<Primary>a")
@@ -8,11 +9,10 @@
 ; (gtk_accel_path "<Actions>/ThunarStatusBar/toggle-last-modified" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/invert-selection" "")
 ; (gtk_accel_path "<Actions>/ThunarStatusBar/toggle-display-name" "")
-; (gtk_accel_path "<Actions>/ThunarStandardView/sort-ascending" "")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/cut" "<Primary>x")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/restore-show" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/zoom-in" "<Primary>plus")
-; (gtk_accel_path "<Actions>/ThunarBookmarks/6fba989371ad36dfaea76b31db96671c" "")
+; (gtk_accel_path "<Actions>/ThunarStandardView/sort-ascending" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/empty-trash" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/reload" "<Primary>r")
 ; (gtk_accel_path "<Actions>/ThunarWindow/toggle-image-preview" "")
@@ -115,3 +115,4 @@
 ; (gtk_accel_path "<Actions>/ThunarWindow/zoom-reset" "<Primary>0")
 ; (gtk_accel_path "<Actions>/ThunarStatusBar/toggle-filetype" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/detach-tab" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/08f60c909daa0053dc9734767f181de4" "")
