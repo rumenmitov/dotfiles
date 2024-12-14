@@ -92,7 +92,7 @@ _xmobarPP = filterOutWsPP ["NSP"] def
   , ppHidden           = white . wrap " " ""
   , ppHiddenNoWindows  = \_ -> lowWhite " ○"
   , ppUrgent           = red . wrap (orange "!") (orange "!")
-  , ppOrder            = \[ws, _, _, wins] -> [ws, wins]
+  , ppOrder            = \[ws, _, _, _] -> [ws]
   , ppExtras           = [logTitles formatFocused formatUnfocused]
   }
     where
@@ -236,7 +236,7 @@ xmonadConfig = def
   , normalBorderColor  = "#000000"
   , startupHook        = _startupHook
   , handleEventHook    = focusOnMouseMove
-  , layoutHook         = _layoutHook ||| noBorders Float
+  , layoutHook         = _layoutHook
   , manageHook         = namedScratchpadManageHook _scratchpads
   , terminal           = "alacritty"
   }

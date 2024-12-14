@@ -1,4 +1,4 @@
-#+title: Xmonad Config
+#+title: Xmonad Configuration
 #+author: Rumen Mitov
 #+options: H:3
 #+property: header-args :tangle xmonad.hs
@@ -142,7 +142,7 @@ that Xmonad will send regarding the workspaces.
     , ppHidden           = white . wrap " " ""
     , ppHiddenNoWindows  = \_ -> lowWhite " ○"
     , ppUrgent           = red . wrap (orange "!") (orange "!")
-    , ppOrder            = \[ws, _, _, wins] -> [ws, wins]
+    , ppOrder            = \[ws, _, _, _] -> [ws]
     , ppExtras           = [logTitles formatFocused formatUnfocused]
     }
       where

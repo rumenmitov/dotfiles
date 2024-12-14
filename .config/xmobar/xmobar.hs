@@ -19,7 +19,7 @@ Config {
    , allDesktops      = True
 
    , commands =
-                [ Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
+                [ Run Date "<action=`emacsclient -c -e '(calendar)'`> %a %Y-%m-%d <fc=#8be9fd>%H:%M</fc></action>" "date" 10
                 , Run XMonadLog
                 , Run Battery
                       [ "--template", "<action=`/home/rumen/.local/share/scripts/battery-info.sh`> <left>%</action>"
