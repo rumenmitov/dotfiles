@@ -168,6 +168,31 @@ prints a distracting error message.
   (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
 #+end_src
 
+** Mail
+#+begin_src emacs-lisp
+  (setq gnus-use-dribble-file nil)
+  (setq gnus-directory "~/.news")
+  (setq message-directory "~/.mail")
+  (setq nnfolder-directory "~/.mail/archive")
+
+
+  (setq user-mail-address "rumenmitov@ikmail.com"
+        user-full-name    "Rumen Mitov")
+
+  (setq gnus-select-method '(nnimap "mail.infomaniak.com"
+                                    (nnimap-address "mail.infomaniak.com")
+                                    (nnimap-server-port 993)
+                                    (nnimap-stream ssl)))
+
+  (setq smtpmail-smtp-server 		     "mail.infomaniak.com"
+        smtpmail-smtp-user                       "rumenmitov@ikmail.com"
+        smtpmail-servers-requiring-authorization "mail.infomaniak.com"
+        send-mail-function   		     'smtpmail-send-it
+        smtpmail-smtp-service                    465
+        smtpmail-stream-type                     'ssl)
+
+  (setq auth-sources '("~/.authinfo.gpg"))
+#+end_src
 ** Templates
 
 #+begin_src elisp
