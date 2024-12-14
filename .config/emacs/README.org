@@ -59,6 +59,13 @@
   (add-to-list 'default-frame-alist '(alpha-background . 80))
 #+end_src
 
+** Windows
+Be careful when using escape characters (single backslash would just escape the string).
+#+begin_src emacs-lisp
+  (setq display-buffer-alist
+        '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
+#+end_src
+
 ** Recent Files
 
 #+begin_src emacs-lisp
@@ -129,9 +136,9 @@ prints a distracting error message.
 
   (setq org-directory "~/Nextcloud/org")
   (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
-  (setq org-agenda-files '("~/Nextcloud/org/agenda"))
+  (setq org-agenda-files (list (concat org-directory "/agenda/")))
   (setq org-agenda-include-diary t)
-  (setq diary-file "~/Nextcloud/org/agenda/diary")
+  (setq diary-file (concat org-directory "/agenda/diary"))
   (setq calendar-date-style 'european)
 
   (add-hook 'org-mode-hook 'org-indent-mode)
@@ -205,12 +212,12 @@ prints a distracting error message.
           ("j"
            "Journal"
            plain
-           (file+datetree "~/Nextcloud/org/journal.org")
+           (file+datatree "~/Nextcloud/org/agenda/journal.org")
            (file "~/.config/emacs/templates/journal.tmpl"))
           ("p"
            "Programming"
            entry
-           (file "~/Nextcloud/org/programming.org")
+           (file "~/Nextcloud/org/agenda/programming.org")
            (file "~/.config/emacs/templates/programming.tmpl"))))
 #+end_src
 

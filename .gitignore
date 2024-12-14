@@ -14,6 +14,9 @@
 .config/emacs/url/
 ./config/emacs/undo/
 ./config/emacs/transient/
+.config/emacs/games/
+.config/emacs/places
+.config/emacs/timeplog
 ./config/emacs/eshell/
 ./config/emacs/auto-save-list/
 

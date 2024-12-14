@@ -23,6 +23,9 @@
 (load-theme 'deeper-blue 1)
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
+(setq display-buffer-alist
+      '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
+
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (setq recentf-max-saved-items 10)
@@ -71,9 +74,9 @@
 
 (setq org-directory "~/Nextcloud/org")
 (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
-(setq org-agenda-files '("~/Nextcloud/org/agenda"))
+(setq org-agenda-files (list (concat org-directory "/agenda/")))
 (setq org-agenda-include-diary t)
-(setq diary-file "~/Nextcloud/org/agenda/diary")
+(setq diary-file (concat org-directory "/agenda/diary"))
 (setq calendar-date-style 'european)
 
 (add-hook 'org-mode-hook 'org-indent-mode)
@@ -141,12 +144,12 @@
         ("j"
          "Journal"
          plain
-         (file+datetree "~/Nextcloud/org/journal.org")
+         (file+datatree "~/Nextcloud/org/agenda/journal.org")
          (file "~/.config/emacs/templates/journal.tmpl"))
         ("p"
          "Programming"
          entry
-         (file "~/Nextcloud/org/programming.org")
+         (file "~/Nextcloud/org/agenda/programming.org")
          (file "~/.config/emacs/templates/programming.tmpl"))))
 
 (setq visible-bell 1)
