@@ -18,6 +18,7 @@
 .config/emacs/places
 .config/emacs/timeplog
 .config/emacs/multisession/
+.config/emacs/network/
 ./config/emacs/eshell/
 ./config/emacs/auto-save-list/
 
