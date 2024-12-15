@@ -18,7 +18,7 @@
 
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
-(setq display-line-numbers-current-absolute nil)
+(setq display-line-numbers-current-absolute t)
 
 (load-theme 'deeper-blue 1)
 (add-to-list 'default-frame-alist '(alpha-background . 80))
@@ -82,6 +82,10 @@
 (setq gdb-many-windows t)
 (setq gdb-default-window-configuration-file "~/.config/emacs/gdb-window-config")
 
+(setq comment-auto-fill-only-comments t)
+
+(add-hook 'prog-mode-hook 'auto-fill-mode)
+
 (add-hook 'c-mode-hook (lambda ()
                          (c-toggle-auto-newline 1)))
 
@@ -90,6 +94,8 @@
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
+
+(appt-activate 1)
 
 (setq org-directory "~/Nextcloud/org")
 (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
@@ -200,12 +206,11 @@
 (setq undo-tree-visualizer-diff t)
 
 (use-package yasnippet)
+(use-package yasnippet-snippets)
 (yas-global-mode)
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "C-c y") yas-maybe-expand)
-(global-set-key (kbd "C-c n") 'yas-next-field)
-(global-set-key (kbd "C-c p") 'yas-prev-field)
+(define-key yas-minor-mode-map (kbd "C-c y") 'yas-insert-snippet)
 
 (use-package haskell-mode)
 (use-package go-mode)
