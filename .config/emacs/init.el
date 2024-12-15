@@ -24,6 +24,7 @@
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (custom-set-faces
+ '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(org-block ((t (:inherit shadow :extend t :background "black" :slant italic))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
  '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
@@ -31,8 +32,18 @@
  '(org-inline-src-block ((t (:inherit nil))))
  '(org-meta-line ((t (:inherit font-lock-comment-face :foreground "white smoke")))))
 
+(winner-mode 1)
+(global-set-key (kbd "C-<") 'winner-undo)
+(global-set-key (kbd "C->") 'winner-redo)
+
+(windmove-default-keybindings)
+(global-set-key (kbd "C-c C-w h") 'windmove-left)
+(global-set-key (kbd "C-c C-w l") 'windmove-right)
+(global-set-key (kbd "C-c C-w k") 'windmove-up)
+(global-set-key (kbd "C-c C-w j") 'windmove-down)
+
 (setq display-buffer-alist
-      '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
+        '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
 
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
@@ -87,12 +98,13 @@
 (setq diary-file (concat org-directory "/agenda/diary"))
 (setq calendar-date-style 'european)
 
+(setq org-startup-with-inline-images t)
+
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
 (add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'ispell-minor-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
-(add-hook 'org-mode-hook 'org-toggle-inline-images)
 
 (add-hook 'org-mode-hook
           (lambda ()
@@ -121,11 +133,18 @@
 
 (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
 
+(org-babel-do-load-languages
+    'org-babel-load-languages
+    '((shell . t)
+      (python . t)
+      (C .t)
+      (haskell .t)
+      (js .t)))
+
 (setq gnus-use-dribble-file nil)
 (setq gnus-directory "~/.news")
 (setq message-directory "~/.mail")
 (setq nnfolder-directory "~/.mail/archive")
-
 
 (setq user-mail-address "rumenmitov@ikmail.com"
       user-full-name    "Rumen Mitov")
