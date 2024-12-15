@@ -127,9 +127,21 @@
                     ("- [ ]"       . ?)
                     ("- [-]"       . ?)
                     ("- [X]"       . ?)
+                    ("RESEARCH"    . ?📜)
                     ("BUG"         . ?🪳)
                     ("INFO"        . ?💡)))
             (prettify-symbols-mode 1)))
+
+(setq org-tag-persistent-alist '((:startgroup . nil)
+                    ("@work" . ?w) ("@home" . ?h)
+                    (:endgroup . nil)))
+
+(setq org-agenda-custom-commands
+      '(("p" "Programming"
+         ((todo "TODO"))
+         ((org-agenda-files (list (concat org-directory "/programming.org")))))))
+
+(setq org-archive-location (concat org-directory "/archive/%s_archive::datetree/"))
 
 (setq org-hide-emphasis-markers t)
 (setq org-pretty-entities t)
@@ -140,12 +152,12 @@
 (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
 
 (org-babel-do-load-languages
-    'org-babel-load-languages
-    '((shell . t)
-      (python . t)
-      (C .t)
-      (haskell .t)
-      (js .t)))
+ 'org-babel-load-languages
+ '((shell . t)
+   (python . t)
+   (C .t)
+   (haskell .t)
+   (js .t)))
 
 (setq gnus-use-dribble-file nil)
 (setq gnus-directory "~/.news")
