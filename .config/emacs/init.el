@@ -23,6 +23,14 @@
 (load-theme 'deeper-blue 1)
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
+(custom-set-faces
+ '(org-block ((t (:inherit shadow :extend t :background "black" :slant italic))))
+ '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
+ '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
+ '(org-code ((t (:inherit shadow :extend t :background "black"))))
+ '(org-inline-src-block ((t (:inherit nil))))
+ '(org-meta-line ((t (:inherit font-lock-comment-face :foreground "white smoke")))))
+
 (setq display-buffer-alist
       '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
 
@@ -97,6 +105,7 @@
                     ("#+email:"    . ?) 
                     ("#+begin_src" . ?)
                     ("#+end_src"   . ?)
+                    ("#+RESULTS:"  . ?)                      
                     ("- [ ]"       . ?)
                     ("- [-]"       . ?)
                     ("- [X]"       . ?)
