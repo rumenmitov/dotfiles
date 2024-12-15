@@ -12,15 +12,15 @@
 .config/emacs/viper
 .config/emacs/bookmarks
 .config/emacs/url/
-./config/emacs/undo/
-./config/emacs/transient/
+.config/emacs/undo/
+.config/emacs/transient/
 .config/emacs/games/
 .config/emacs/places
 .config/emacs/timeplog
 .config/emacs/multisession/
 .config/emacs/network-security.data
-./config/emacs/eshell/
-./config/emacs/auto-save-list/
+.config/emacs/eshell/
+.config/emacs/auto-save-list/
 
 # Neovim
 .config/nvim/lazy-lock.json
