@@ -92,17 +92,16 @@
 (add-hook 'c++-mode-hook (lambda ()
                            (c-toggle-auto-newline 1)))
 
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
+(defun c/based/comments ()
+  (font-lock-add-keywords nil
+                          '(("\\<\\(BUG\\)" 1 font-lock-warning-face t)
+                            ("\\<\\(TODO\\)" 1 font-lock-doc-face t)
+                            ("\\<\\(INFO\\)" 1 font-lock-keyword-face t))))
+
+(add-hook 'c-mode-hook 'c/based/comments)
+(add-hook 'c++-mode-hook 'c/based/comments)
 
 (appt-activate 1)
-
-(setq org-directory "~/Nextcloud/org")
-(setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
-(setq org-agenda-files (list (concat org-directory "/agenda/")))
-(setq org-agenda-include-diary t)
-(setq diary-file (concat org-directory "/agenda/diary"))
-(setq calendar-date-style 'european)
 
 (setq org-startup-with-inline-images t)
 
@@ -111,6 +110,16 @@
 (add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'ispell-minor-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
+
+(setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell . t)
+   (python . t)
+   (C .t)
+   (haskell .t)
+   (js .t)))
 
 (add-hook 'org-mode-hook
           (lambda ()
@@ -132,9 +141,24 @@
                     ("INFO"        . ?💡)))
             (prettify-symbols-mode 1)))
 
+(setq org-hide-emphasis-markers t)
+(setq org-pretty-entities t)
+(setq org-pretty-entities-include-sub-superscripts t)
+(setq org-use-sub-superscripts '{})
+(setq org-export-with-sub-superscripts '{})
+
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+(setq org-directory "~/Nextcloud/org")
+(setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
+(setq org-agenda-files (list (concat org-directory "/agenda/")))
+(setq org-agenda-include-diary t)
+(setq diary-file (concat org-directory "/agenda/diary"))
+(setq calendar-date-style 'european)
+
 (setq org-tag-persistent-alist '((:startgroup . nil)
-                    ("@work" . ?w) ("@home" . ?h)
-                    (:endgroup . nil)))
+                                 ("@work" . ?w) ("@home" . ?h)
+                                 (:endgroup . nil)))
 
 (setq org-agenda-custom-commands
       '(("p" "Programming"
@@ -143,60 +167,58 @@
 
 (setq org-archive-location (concat org-directory "/archive/%s_archive::datetree/"))
 
-(setq org-hide-emphasis-markers t)
-(setq org-pretty-entities t)
-(setq org-pretty-entities-include-sub-superscripts t)
-(setq org-use-sub-superscripts '{})
-(setq org-export-with-sub-superscripts '{})
+(global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((shell . t)
-   (python . t)
-   (C .t)
-   (haskell .t)
-   (js .t)))
+(setq org-capture-templates
+        '(("t"
+           "Todo"
+           entry
+           (file "~/Nextcloud/org/agenda/notes.org")
+           (file "~/.config/emacs/templates/todo.tmpl"))
+          ("e"
+           "Email"
+           entry
+           (file "~/Nextcloud/org/agenda/notes.org")
+           (file "~/.config/emacs/templates/email.tmpl"))
+          ("j"
+           "Journal"
+           plain
+           (file+datatree "~/Nextcloud/org/agenda/journal.org")
+           (file "~/.config/emacs/templates/journal.tmpl"))
+          ("p"
+           "Programming"
+           entry
+           (file "~/Nextcloud/org/agenda/programming.org")
+           (file "~/.config/emacs/templates/programming.tmpl"))))
 
 (setq gnus-use-dribble-file nil)
 (setq gnus-directory "~/.news")
 (setq message-directory "~/.mail")
 (setq nnfolder-directory "~/.mail/archive")
 
-(setq user-mail-address "rumenmitov@ikmail.com"
+(require 'gnus-demon)
+(add-hook 'gnus-startup-hook
+          (apply-partially #'gnus-demon-add-handler 'gnus-demon-scan-news 5 t))
+
+(setq gnus-select-method '(nnnil nil))
+
+(setq gnus-secondary-select-methods
+      '((nnimap "gmail"
+                (nnimap-address "imap.gmail.com")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl))))
+
+(setq user-mail-address "rumen.valmitov@gmail.com"
       user-full-name    "Rumen Mitov")
 
-(setq gnus-select-method '(nnimap "mail.infomaniak.com"
-                                  (nnimap-address "mail.infomaniak.com")
-                                  (nnimap-server-port 993)
-                                  (nnimap-stream ssl)))
-
-(setq smtpmail-smtp-server 		     "mail.infomaniak.com"
-      smtpmail-smtp-user                       "rumenmitov@ikmail.com"
-      smtpmail-servers-requiring-authorization "mail.infomaniak.com"
+(setq smtpmail-smtp-server 		     "smtp.gmail.com"
+      smtpmail-smtp-user                       "rumen.valmitov@gmail.com"
+      smtpmail-servers-requiring-authorization "smtp.gmail.com"
       send-mail-function   		     'smtpmail-send-it
       smtpmail-smtp-service                    465
       smtpmail-stream-type                     'ssl)
 
 (setq auth-sources '("~/.authinfo.gpg"))
-
-(setq org-capture-templates
-      '(("t"
-         "Todo"
-         entry
-         (file "~/Nextcloud/org/agenda/notes.org")
-         (file "~/.config/emacs/templates/todo.tmpl"))
-        ("j"
-         "Journal"
-         plain
-         (file+datatree "~/Nextcloud/org/agenda/journal.org")
-         (file "~/.config/emacs/templates/journal.tmpl"))
-        ("p"
-         "Programming"
-         entry
-         (file "~/Nextcloud/org/agenda/programming.org")
-         (file "~/.config/emacs/templates/programming.tmpl"))))
 
 (setq visible-bell 1)
 (setq use-short-answers t)
