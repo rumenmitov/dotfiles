@@ -9,6 +9,10 @@ source $ZDOTDIR/misc.zsh
 setopt HIST_SAVE_NO_DUPS
 
 
+# Auto-Correct
+setopt CORRECT_ALL
+
+
 # Editting command line
 autoload -z edit-command-line
 zle -N edit-command-line
