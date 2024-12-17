@@ -265,7 +265,7 @@ prints a distracting error message.
             ("j"
              "Journal"
              plain
-             (file+datatree "~/Nextcloud/org/agenda/journal.org")
+             (file+datetree "~/Nextcloud/org/journal.org")
              (file "~/.config/emacs/templates/journal.tmpl"))
             ("p"
              "Programming"

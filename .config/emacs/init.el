@@ -24,6 +24,10 @@
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(org-block ((t (:inherit shadow :extend t :background "black" :slant italic))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
@@ -183,7 +187,7 @@
           ("j"
            "Journal"
            plain
-           (file+datatree "~/Nextcloud/org/agenda/journal.org")
+           (file+datetree "~/Nextcloud/org/journal.org")
            (file "~/.config/emacs/templates/journal.tmpl"))
           ("p"
            "Programming"
@@ -263,3 +267,10 @@
 (require 'flymake)
 (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
 (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(yasnippet-snippets undo-tree tree-sitter tempel-collection s rust-mode php-mode nix-mode levenshtein haskell-mode go-mode cmake-mode beacon avy)))

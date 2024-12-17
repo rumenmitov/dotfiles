@@ -14,7 +14,7 @@ import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.Spacing
 import XMonad.Layout.Renamed
-import XMonad.Layout.NoBorders    
+import XMonad.Layout.NoBorders as NB
 import XMonad.Actions.ToggleFullFloat
 import XMonad.Actions.CycleWS
 import XMonad.Actions.UpdateFocus
@@ -115,7 +115,7 @@ _xmobarPP = filterOutWsPP ["NSP"] def
 _layoutHook =
   smartSpacingWithEdge 3
   $ renamed [Replace ""]
-  $ noBorders
+  $ smartBorders
   $ Tall tiles_in_master delta master_ratio
   where
     tiles_in_master  = 1         -- number of master tiles
@@ -236,7 +236,7 @@ xmonadConfig = def
   , normalBorderColor  = "#000000"
   , startupHook        = _startupHook
   , handleEventHook    = focusOnMouseMove
-  , layoutHook         = _layoutHook
+  , layoutHook         = lessBorders (Combine Union NB.Screen OnlyFloat) (_layoutHook ||| noBorders Full)
   , manageHook         = namedScratchpadManageHook _scratchpads
   , terminal           = "alacritty"
   }

@@ -7,4 +7,5 @@
 [gpg]
 	format = ssh
 [merge]
-	tool = nvimdiff3
+	tool = nvimdiff
+    layout = LOCAL,MERGED,REMOTE
