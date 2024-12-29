@@ -161,7 +161,7 @@
 (setq calendar-date-style 'european)
 
 (setq org-tag-persistent-alist '((:startgroup . nil)
-                                 ("@work" . ?w) ("@home" . ?h)
+                                 ("@work" . ?W) ("@home" . ?H)
                                  (:endgroup . nil)))
 
 (setq org-agenda-custom-commands
@@ -273,4 +273,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets undo-tree tree-sitter tempel-collection s rust-mode php-mode nix-mode levenshtein haskell-mode go-mode cmake-mode beacon avy)))
+   '(eglot yasnippet-snippets undo-tree tree-sitter tempel-collection s rust-mode php-mode nix-mode levenshtein haskell-mode go-mode cmake-mode beacon avy)))

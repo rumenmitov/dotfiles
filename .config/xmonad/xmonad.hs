@@ -59,14 +59,14 @@ _iconConfig = IconConfig
   where
       _icons :: XMonad.Query [String]
       _icons = composeAll
-        [ className =? "zen-alpha"            --> appIcon "\983609"
-        , className =? "firefox"              --> appIcon "\983609"
-        , className =? "Alacritty"            --> appIcon "\60362"
-        , className =? "Emacs"                --> appIcon "\58930"
-        , className =? "Thunar"               --> appIcon "\62675"
-        , className =? "Gimp"                 --> appIcon "\62264"
-        , className =? "rnote"                --> appIcon "\986953"
-        , className =? "Spotube"              --> appIcon "\61441"
+        [ className =? "zen-alpha"                --> appIcon "\983609"
+        , className =? "firefox"                  --> appIcon "\983609"
+        , className =? "com.mitchellh.ghostty"    --> appIcon "\60362"
+        , className =? "Emacs"                    --> appIcon "\58930"
+        , className =? "Thunar"                   --> appIcon "\62675"
+        , className =? "Gimp"                     --> appIcon "\62264"
+        , className =? "rnote"                    --> appIcon "\986953"
+        , className =? "Spotube"                  --> appIcon "\61441"
         ]
 
       -- This is a custom function that adds a space between two or more icons.
@@ -122,12 +122,12 @@ _layoutHook =
     delta            = 3/100     -- by how much to change the size of the tile
     master_ratio     = 1/2       -- master size compared to screen
 
-_scratchpads = [
-    NS "quick-term" "alacritty --title \"Alacritty - Float\"" (title =? "Alacritty - Float")
+_scratchpads =
+  [ NS "quick-term" "alacritty --title \"Alacritty - Float\"" (title =? "Alacritty - Float")
       (customFloating $ W.RationalRect (1/16) (1/16) (7/8) (7/8))
 
   , NS "file-manager" "thunar" (className =? "Thunar")
-      (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
+        (customFloating $ W.RationalRect (1/8) (1/8) (3/4) (3/4))
   ]
 
 _promptConfig :: XPConfig
@@ -171,7 +171,7 @@ _keybinds =
 
 
     -- Quick Launches
-    , ("M-<Return>"    , spawn "alacritty")
+    , ("M-<Return>"    , spawn "ghostty")
     , ("M-S-<Return>"  , namedScratchpadAction _scratchpads "quick-term")
     , ("M-n"           , orgPrompt _promptConfig {
                                                   defaultPrompter = \_ -> "Task: "
@@ -238,7 +238,7 @@ xmonadConfig = def
   , handleEventHook    = focusOnMouseMove
   , layoutHook         = lessBorders (Combine Union NB.Screen OnlyFloat) (_layoutHook ||| noBorders Full)
   , manageHook         = namedScratchpadManageHook _scratchpads
-  , terminal           = "alacritty"
+  , terminal           = "ghostty"
   }
 
 

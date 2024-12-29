@@ -235,7 +235,7 @@ prints a distracting error message.
   (setq calendar-date-style 'european)
 
   (setq org-tag-persistent-alist '((:startgroup . nil)
-                                   ("@work" . ?w) ("@home" . ?h)
+                                   ("@work" . ?W) ("@home" . ?H)
                                    (:endgroup . nil)))
 
   (setq org-agenda-custom-commands
