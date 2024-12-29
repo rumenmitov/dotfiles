@@ -16,7 +16,7 @@
 .config/emacs/transient/
 .config/emacs/games/
 .config/emacs/places
-.config/emacs/timeplog
+.config/emacs/timelog
 .config/emacs/multisession/
 .config/emacs/network-security.data
 .config/emacs/eshell/
