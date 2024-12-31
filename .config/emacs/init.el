@@ -24,10 +24,6 @@
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(org-block ((t (:inherit shadow :extend t :background "black" :slant italic))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
@@ -90,11 +86,10 @@
 
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 
-(add-hook 'c-mode-hook (lambda ()
+(add-hook 'c-mode-common-hook (lambda ()
                          (c-toggle-auto-newline 1)))
 
-(add-hook 'c++-mode-hook (lambda ()
-                           (c-toggle-auto-newline 1)))
+(add-hook 'c-mode-common-hook 'electric-pair-mode)
 
 (defun c/based/comments ()
   (font-lock-add-keywords nil
@@ -102,8 +97,7 @@
                             ("\\<\\(TODO\\)" 1 font-lock-doc-face t)
                             ("\\<\\(INFO\\)" 1 font-lock-keyword-face t))))
 
-(add-hook 'c-mode-hook 'c/based/comments)
-(add-hook 'c++-mode-hook 'c/based/comments)
+(add-hook 'c-mode-common-hook 'c/based/comments)
 
 (appt-activate 1)
 
@@ -265,12 +259,5 @@
 (add-hook 'php-mode-hook 'eglot-ensure)
 
 (require 'flymake)
-(define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
-(define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(eglot yasnippet-snippets undo-tree tree-sitter tempel-collection s rust-mode php-mode nix-mode levenshtein haskell-mode go-mode cmake-mode beacon avy)))
+(define-key flymake-mode-map (kbd "C-x .") 'flymake-goto-next-error)
+(define-key flymake-mode-map (kbd "C-x ,") 'flymake-goto-prev-error)

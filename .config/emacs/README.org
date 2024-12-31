@@ -134,6 +134,7 @@ prints a distracting error message.
 #+end_src
 
 ** Programming
+=c-mode-common-hook= is used for all C-style modes.
 
 #+begin_src emacs-lisp
   (setq tab-width 4)
@@ -149,11 +150,10 @@ prints a distracting error message.
 
   (add-hook 'prog-mode-hook 'auto-fill-mode)
 
-  (add-hook 'c-mode-hook (lambda ()
+  (add-hook 'c-mode-common-hook (lambda ()
                            (c-toggle-auto-newline 1)))
 
-  (add-hook 'c++-mode-hook (lambda ()
-                             (c-toggle-auto-newline 1)))
+  (add-hook 'c-mode-common-hook 'electric-pair-mode)
 #+end_src
 
 *** Comment Keywords
@@ -164,8 +164,7 @@ prints a distracting error message.
                               ("\\<\\(TODO\\)" 1 font-lock-doc-face t)
                               ("\\<\\(INFO\\)" 1 font-lock-keyword-face t))))
 
-  (add-hook 'c-mode-hook 'c/based/comments)
-  (add-hook 'c++-mode-hook 'c/based/comments)
+  (add-hook 'c-mode-common-hook 'c/based/comments)
 #+end_src
 
 ** Organization
@@ -359,6 +358,6 @@ prints a distracting error message.
   (add-hook 'php-mode-hook 'eglot-ensure)
 
   (require 'flymake)
-  (define-key flymake-mode-map (kbd "C-x M-]") 'flymake-goto-next-error)
-  (define-key flymake-mode-map (kbd "C-x M-[") 'flymake-goto-prev-error)
+  (define-key flymake-mode-map (kbd "C-x .") 'flymake-goto-next-error)
+  (define-key flymake-mode-map (kbd "C-x ,") 'flymake-goto-prev-error)
 #+end_src
