@@ -113,10 +113,12 @@
                                                :slant italic)))
   "INFO face")
 
-(font-lock-add-keywords 'c-mode
-                        '(("\\<\\(TODO\\)" 1 'font-lock/todo-face prepend)
+(defvar custom/font/faces '(("\\<\\(TODO\\)" 1 'font-lock/todo-face prepend)
                           ("\\<\\(BUG\\)" 1 'font-lock/bug-face prepend)
                           ("\\<\\(INFO\\)" 1 'font-lock/info-face prepend)))
+
+(font-lock-add-keywords 'c-mode custom/font/faces)
+(font-lock-add-keywords 'c++-mode custom/font/faces)
 
 (appt-activate 1)
 

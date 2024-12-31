@@ -164,7 +164,7 @@ prints a distracting error message.
                                                  :underline t
                                                  :weight bold)))
     "TODO face")
-  
+
   (defface font-lock/bug-face '(
                                 (t (:background "red"
                                                 :foreground "white"
@@ -180,10 +180,12 @@ prints a distracting error message.
                                                  :slant italic)))
     "INFO face")
 
-  (font-lock-add-keywords 'c-mode
-                          '(("\\<\\(TODO\\)" 1 'font-lock/todo-face prepend)
+  (defvar custom/font/faces '(("\\<\\(TODO\\)" 1 'font-lock/todo-face prepend)
                             ("\\<\\(BUG\\)" 1 'font-lock/bug-face prepend)
                             ("\\<\\(INFO\\)" 1 'font-lock/info-face prepend)))
+
+  (font-lock-add-keywords 'c-mode custom/font/faces)
+  (font-lock-add-keywords 'c++-mode custom/font/faces)
 #+end_src
 
 ** Organization
