@@ -1,35 +1,34 @@
+/.config/
+
 # Emacs
-*~
-*#
-.config/emacs/*~
-.config/emacs/README.el
-.config/emacs/.org-id-locations
-.config/emacs/image-dired/
-.config/emacs/eln-cache/
-.config/emacs/elpa/
-.config/emacs/projects
-.config/emacs/recentf
-.config/emacs/viper
-.config/emacs/bookmarks
-.config/emacs/url/
-.config/emacs/undo/
-.config/emacs/transient/
-.config/emacs/games/
-.config/emacs/places
-.config/emacs/timelog
-.config/emacs/multisession/
-.config/emacs/network-security.data
-.config/emacs/eshell/
-.config/emacs/auto-save-list/
+!/.config/emacs/README.org
+!/.config/emacs/init.el
+!/.config/emacs/assets/
+!/.config/emacs/gdb-window-config
+!/.config/emacs/templates/
 
 # Neovim
-.config/nvim/lazy-lock.json
+!/.config/nvim/init.lua
+!/.config/nvim/lua/
+!/.config/nvim/snippets/
 
-# Kdeconnect
-.config/kdeconnect/
+# Terminals and Shells
+!/.config/alacritty/
+!/.config/ghostty/
+!/.config/st/
+!/.config/tmux/
+!/.config/zsh/
+!/.config/bash/
+!/.config/fish/
+!/.config/lsd/
 
-# Zen
-.config/zen/
-
-# Nextcloud
-.config/Nextcloud/
+# Window Managers and Utils
+!/.config/dwm/
+!/.config/hypr/
+!/.config/xmonad/
+!/.config/xmobar/
+!/.config/picom/
+!/.config/dunst/
+!/.config/flameshot/
+!/.config/greenclip.toml
+!/.config/mimeapps.list
