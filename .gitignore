@@ -32,3 +32,6 @@
 !/.config/flameshot/
 !/.config/greenclip.toml
 !/.config/mimeapps.list
+
+# Misc
+!/.config/librewolf/prefs.js
