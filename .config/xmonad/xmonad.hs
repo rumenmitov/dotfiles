@@ -50,6 +50,7 @@ _startupHook = do
   spawnOnce "greenclip daemon"
   spawnOnce "emacs --daemon"
   spawnOnce "/usr/libexec/polkit-gnome-authentication-agent-1"
+  spawnOnce "kdeconnectd"
 
 _iconConfig = IconConfig
   { iconConfigIcons  = _icons

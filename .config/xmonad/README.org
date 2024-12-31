@@ -4,28 +4,54 @@
 #+property: header-args :tangle xmonad.hs
 
 * Requirements
+** X-Server
 - xorg
+- xclip
+- xsel
+- xterm
+- xtools
+- xrandr
+- brightnessctl
+- numlockx
+- NetworkManager
+- acpi
+
+** Audio and Bluetooth
+- pamixer
+- pipewire
+- wireplumber
+- alsa-utils
+- bluez
+- bluez-utils
+- blueman-manager
+  
+** Authentication
+- polkit-gnome
+- gnome-keyring
+- gnome-ssh-askpass
+- pinentry-gtk
+- pass
+
+** Window Manager
 - xmonad
 - xmobar
-- xrandr
-- nitrogen
+- feh
 - greenclip
+- dmenu
+- picom
+- flameshot
+- i3lock
+- xdg-desktop-portal
+- xdg-desktop-portal-gtk
+- xdg-desktop-portal-kde  
+
+** Applications
 - ghostty
 - alacritty (ghostty does not work with scratchpads yet)
 - thunar
-- dmenu
-- xclip
-- brightnessctl
-- pamixer
-- pipewire (and wireplumber)
-- picom
-- flameshot
-- polkit-gnome
-- numlockx
-- i3lock
 - spotube
-
-
+- kdeconnect
+  
 * Imports
 
 #+begin_src haskell
@@ -86,7 +112,8 @@
     spawnOnce "xinput --set-prop 9 310 0.8"
     spawnOnce "greenclip daemon"
     spawnOnce "emacs --daemon"
-    spawnOnce "/usr/libexec/polkit-gnome-authentication-agent-1"    
+    spawnOnce "/usr/libexec/polkit-gnome-authentication-agent-1"
+    spawnOnce "kdeconnectd"        
 #+end_src
 
 
