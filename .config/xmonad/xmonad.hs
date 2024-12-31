@@ -133,7 +133,7 @@ _scratchpads =
 
 _promptConfig :: XPConfig
 _promptConfig = def
-  { font                   = "xft:Hack:pixelsize=18"
+  { font                   = "xft:CaskaydiaCove Nerd Font:pixelsize=18"
   , height                 = 25
   , bgColor                = "#000114"
   , fgColor                = "#adadad"
