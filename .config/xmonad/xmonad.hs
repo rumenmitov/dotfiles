@@ -51,6 +51,7 @@ _startupHook = do
   spawnOnce "emacs --daemon"
   spawnOnce "/usr/libexec/polkit-gnome-authentication-agent-1"
   spawnOnce "kdeconnectd"
+  spawnOnce "nextcloud --background"
 
 _iconConfig = IconConfig
   { iconConfigIcons  = _icons

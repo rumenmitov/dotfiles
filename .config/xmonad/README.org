@@ -2,6 +2,7 @@
 #+author: Rumen Mitov
 #+options: H:3
 #+property: header-args :tangle xmonad.hs
+#+startup: overview
 
 * Requirements
 ** X-Server
@@ -51,6 +52,7 @@
 - thunar
 - spotube
 - kdeconnect
+- nextcloud
   
 * Imports
 
@@ -113,7 +115,8 @@
     spawnOnce "greenclip daemon"
     spawnOnce "emacs --daemon"
     spawnOnce "/usr/libexec/polkit-gnome-authentication-agent-1"
-    spawnOnce "kdeconnectd"        
+    spawnOnce "kdeconnectd"
+    spawnOnce "nextcloud --background"    
 #+end_src
 
 
