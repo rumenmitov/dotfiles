@@ -91,13 +91,32 @@
 
 (add-hook 'c-mode-common-hook 'electric-pair-mode)
 
-(defun c/based/comments ()
-  (font-lock-add-keywords nil
-                          '(("\\<\\(BUG\\)" 1 font-lock-warning-face t)
-                            ("\\<\\(TODO\\)" 1 font-lock-doc-face t)
-                            ("\\<\\(INFO\\)" 1 font-lock-keyword-face t))))
+(defface font-lock/todo-face '(
+                               (t (:foreground "deep sky blue"
+                                               :overline t
+                                               :underline t
+                                               :weight bold)))
+  "TODO face")
 
-(add-hook 'c-mode-common-hook 'c/based/comments)
+(defface font-lock/bug-face '(
+                              (t (:background "red"
+                                              :foreground "white"
+                                              :overline "white"
+                                              :underline "white"
+                                              :weight bold)))
+  "BUG face")
+
+(defface font-lock/info-face '(
+                               (t (:foreground "white"
+                                               :overline "white"
+                                               :underline "white"
+                                               :slant italic)))
+  "INFO face")
+
+(font-lock-add-keywords 'c-mode
+                        '(("\\<\\(TODO\\)" 1 'font-lock/todo-face prepend)
+                          ("\\<\\(BUG\\)" 1 'font-lock/bug-face prepend)
+                          ("\\<\\(INFO\\)" 1 'font-lock/info-face prepend)))
 
 (appt-activate 1)
 
