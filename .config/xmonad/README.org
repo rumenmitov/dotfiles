@@ -38,7 +38,7 @@
 - xmobar
 - feh
 - greenclip
-- dmenu
+- [[https://github.com/rumenmitov/dmenu.git][dmenu]]
 - picom
 - flameshot
 - i3lock
@@ -47,7 +47,7 @@
 - xdg-desktop-portal-kde  
 
 ** Applications
-- st
+- [[https://github.com/rumenmitov/st.git][st]]
 - alacritty (for scratchpads)
 - thunar
 - spotube
