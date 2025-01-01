@@ -241,6 +241,7 @@
 
 (setq visible-bell 1)
 (setq use-short-answers t)
+(setq use-dialog-box nil)
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
@@ -261,9 +262,9 @@
 (use-package yasnippet)
 (use-package yasnippet-snippets)
 (yas-global-mode)
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
 (define-key yas-minor-mode-map (kbd "C-c y") 'yas-insert-snippet)
+(global-set-key (kbd "M-/") 'hippie-expand)
+(add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand t)
 
 (use-package haskell-mode)
 (use-package go-mode)

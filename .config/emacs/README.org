@@ -332,6 +332,7 @@ prints a distracting error message.
 #+begin_src emacs-lisp
   (setq visible-bell 1)
   (setq use-short-answers t)
+  (setq use-dialog-box nil)
 #+end_src
 
 ** Packages
@@ -356,9 +357,9 @@ prints a distracting error message.
   (use-package yasnippet)
   (use-package yasnippet-snippets)
   (yas-global-mode)
-  (define-key yas-minor-mode-map (kbd "<tab>") nil)
-  (define-key yas-minor-mode-map (kbd "TAB") nil)
   (define-key yas-minor-mode-map (kbd "C-c y") 'yas-insert-snippet)
+  (global-set-key (kbd "M-/") 'hippie-expand)
+  (add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand t)
 #+end_src
 
 *** LSP
