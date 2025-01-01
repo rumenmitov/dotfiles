@@ -47,8 +47,8 @@
 - xdg-desktop-portal-kde  
 
 ** Applications
-- ghostty
-- alacritty (ghostty does not work with scratchpads yet)
+- st
+- alacritty (for scratchpads)
 - thunar
 - spotube
 - kdeconnect
@@ -94,7 +94,6 @@
 
 #+end_src
 
-
 * Daemons
 
 #+begin_src haskell 
@@ -119,7 +118,6 @@
     spawnOnce "nextcloud --background"    
 #+end_src
 
-
 * Workspaces
 
 #+begin_src haskell
@@ -131,9 +129,9 @@
     where
         _icons :: XMonad.Query [String]
         _icons = composeAll
-          [ className =? "zen-alpha"                --> appIcon "\983609"
+          [ className =? "zen-beta"                 --> appIcon "\983609"
           , className =? "firefox"                  --> appIcon "\983609"
-          , className =? "com.mitchellh.ghostty"    --> appIcon "\60362"
+          , className =? "st-256color"              --> appIcon "\60362"
           , className =? "Emacs"                    --> appIcon "\58930"
           , className =? "Thunar"                   --> appIcon "\62675"
           , className =? "Gimp"                     --> appIcon "\62264"
@@ -155,7 +153,6 @@
               res = w : " " : addSep ws
 
 #+end_src
-
 
 * Xmobar
 
@@ -194,7 +191,6 @@ that Xmonad will send regarding the workspaces.
         orange   = xmobarColor "#F5660A" ""
 #+end_src
 
-
 * Layout
 
 #+begin_src haskell
@@ -209,7 +205,6 @@ that Xmonad will send regarding the workspaces.
       master_ratio     = 1/2       -- master size compared to screen
 #+end_src
 
-
 * Scratchpads
 
 #+begin_src haskell
@@ -222,13 +217,12 @@ that Xmonad will send regarding the workspaces.
     ]
 #+end_src
 
-
 * Keybinds
 
 #+begin_src haskell
   _promptConfig :: XPConfig
   _promptConfig = def
-    { font                   = "xft:CaskaydiaCove Nerd Font:pixelsize=18"
+    { font                   = "xft:Noto Color Emoji"
     , height                 = 25
     , bgColor                = "#000114"
     , fgColor                = "#adadad"
@@ -267,7 +261,7 @@ that Xmonad will send regarding the workspaces.
 
 
       -- Quick Launches
-      , ("M-<Return>"    , spawn "ghostty")
+      , ("M-<Return>"    , spawn "st -n ''")
       , ("M-S-<Return>"  , namedScratchpadAction _scratchpads "quick-term")
       , ("M-n"           , orgPrompt _promptConfig {
                                                     defaultPrompter = \_ -> "Task: "
@@ -327,7 +321,6 @@ that Xmonad will send regarding the workspaces.
       [ ]
 #+end_src
 
-
 * Putting it all together...
 
 #+begin_src haskell
@@ -339,7 +332,7 @@ that Xmonad will send regarding the workspaces.
     , handleEventHook    = focusOnMouseMove
     , layoutHook         = lessBorders (Combine Union NB.Screen OnlyFloat) (_layoutHook ||| noBorders Full)
     , manageHook         = namedScratchpadManageHook _scratchpads
-    , terminal           = "ghostty"
+    , terminal           = "st"
     }
 
 

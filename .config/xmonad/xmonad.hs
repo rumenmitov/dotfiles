@@ -61,9 +61,9 @@ _iconConfig = IconConfig
   where
       _icons :: XMonad.Query [String]
       _icons = composeAll
-        [ className =? "zen-alpha"                --> appIcon "\983609"
+        [ className =? "zen-beta"                 --> appIcon "\983609"
         , className =? "firefox"                  --> appIcon "\983609"
-        , className =? "com.mitchellh.ghostty"    --> appIcon "\60362"
+        , className =? "st-256color"              --> appIcon "\60362"
         , className =? "Emacs"                    --> appIcon "\58930"
         , className =? "Thunar"                   --> appIcon "\62675"
         , className =? "Gimp"                     --> appIcon "\62264"
@@ -134,7 +134,7 @@ _scratchpads =
 
 _promptConfig :: XPConfig
 _promptConfig = def
-  { font                   = "xft:CaskaydiaCove Nerd Font:pixelsize=18"
+  { font                   = "xft:Noto Color Emoji"
   , height                 = 25
   , bgColor                = "#000114"
   , fgColor                = "#adadad"
@@ -173,7 +173,7 @@ _keybinds =
 
 
     -- Quick Launches
-    , ("M-<Return>"    , spawn "ghostty")
+    , ("M-<Return>"    , spawn "st -n ''")
     , ("M-S-<Return>"  , namedScratchpadAction _scratchpads "quick-term")
     , ("M-n"           , orgPrompt _promptConfig {
                                                   defaultPrompter = \_ -> "Task: "
@@ -240,7 +240,7 @@ xmonadConfig = def
   , handleEventHook    = focusOnMouseMove
   , layoutHook         = lessBorders (Combine Union NB.Screen OnlyFloat) (_layoutHook ||| noBorders Full)
   , manageHook         = namedScratchpadManageHook _scratchpads
-  , terminal           = "ghostty"
+  , terminal           = "st"
   }
 
 
