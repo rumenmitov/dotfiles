@@ -134,7 +134,7 @@ _scratchpads =
 
 _promptConfig :: XPConfig
 _promptConfig = def
-  { font                   = "xft:Noto Color Emoji"
+  { font                   = "xft:Hack Nerd Font"
   , height                 = 25
   , bgColor                = "#000114"
   , fgColor                = "#adadad"
