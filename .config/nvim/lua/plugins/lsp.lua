@@ -1,5 +1,5 @@
 local LspServers = {
-    'tsserver',
+    'ts_ls',
     'rust_analyzer',
     'cssls',
     'clangd',
