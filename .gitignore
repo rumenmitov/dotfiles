@@ -24,6 +24,8 @@
 
 # Window Managers and Utils
 !/.config/dwm/
+!/.config/slstatus/
+!/.config/dmenu/
 !/.config/hypr/
 !/.config/xmonad/
 !/.config/xmobar/

@@ -17,6 +17,6 @@ case $op in
 		        i3lock -c 000000
                 ;;
         logout)
-                ecryptfs-umount-private && pkill xmonad
+                loginctl kill-user $USER
                 ;;
 esac
