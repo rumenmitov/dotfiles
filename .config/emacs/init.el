@@ -212,14 +212,16 @@
 
 (setq gnus-use-dribble-file nil)
 (setq gnus-directory "~/.news")
-(setq message-directory "~/.mail")
-(setq nnfolder-directory "~/.mail/archive")
+(setq message-directory "~/Nextcloud/mail")
+(setq nnfolder-directory "~/Nextcloud/mail/archive")
 
 (require 'gnus-demon)
 (add-hook 'gnus-startup-hook
           (apply-partially #'gnus-demon-add-handler 'gnus-demon-scan-news 5 t))
 
-(setq gnus-select-method '(nnnil nil))
+(setq
+ gnus-select-method '(nntp "news.gmane.io")
+ gnus-newsgroup-maximum-articles 50)
 
 (setq gnus-secondary-select-methods
       '((nnimap "gmail"
