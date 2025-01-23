@@ -16,3 +16,4 @@ text/plain=org.gnome.Papers.desktop;
 application/pgp-encrypted=org.gnome.Papers.desktop;
 text/org=emacsclient.desktop;
 application/x-zerosize=com.github.flxzt.rnote.desktop;
+image/jpeg=org.gnome.eog.desktop;

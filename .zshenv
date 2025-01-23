@@ -16,4 +16,8 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 export LS_COLORS="*.py=33:di=34:*.h=35:*.pdf=4;37:ex=32"
+
 . "$HOME/.cargo/env"
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin

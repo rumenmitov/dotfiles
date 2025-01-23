@@ -182,7 +182,7 @@
 (setq org-agenda-custom-commands
       '(("p" "Programming"
          ((todo "TODO"))
-         ((org-agenda-files (list (concat org-directory "/programming.org")))))))
+         ((org-agenda-files (list (concat org-directory "/agenda/programming.org")))))))
 
 (setq org-archive-location (concat org-directory "/archive/%s_archive::datetree/"))
 
