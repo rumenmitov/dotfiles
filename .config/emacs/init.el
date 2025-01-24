@@ -77,6 +77,9 @@
 (setq c-default-style "bsd"
       c-basic-offset tab-width)
 
+(define-key c-mode-map (kbd "TAB") 'eglot-format)
+(define-key c++-mode-map (kbd "TAB") 'eglot-format)
+
 (setq compile-command "make ")
 (setq gdb-show-main t)
 (setq gdb-many-windows t)

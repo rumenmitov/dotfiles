@@ -1,2 +1,4 @@
-BasedOnStyle: GNU
+BasedOnStyle: Mozilla
 IndentWidth: 4
+UseTab: Never
+NamespaceIndentation: All
