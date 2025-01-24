@@ -139,10 +139,8 @@ prints a distracting error message.
 #+begin_src emacs-lisp
   (setq tab-width 4)
   (setq c-default-style "bsd"
-        c-basic-offset tab-width)
+	c-basic-offset tab-width)
 
-  (define-key c-mode-map (kbd "TAB") 'eglot-format)
-  (define-key c++-mode-map (kbd "TAB") 'eglot-format)
 
   (setq compile-command "make ")
   (setq gdb-show-main t)
@@ -154,9 +152,10 @@ prints a distracting error message.
   (add-hook 'prog-mode-hook 'auto-fill-mode)
 
   (add-hook 'c-mode-common-hook (lambda ()
-                           (c-toggle-auto-newline 1)))
-
-  (add-hook 'c-mode-common-hook 'electric-pair-mode)
+				  (electric-pair-mode 1)
+				  (c-toggle-auto-newline 1)
+				  (define-key c-mode-map (kbd "TAB") 'eglot-format)
+				  (define-key c++-mode-map (kbd "TAB") 'eglot-format)))
 #+end_src
 
 *** Comment Keywords
@@ -330,6 +329,16 @@ prints a distracting error message.
         smtpmail-stream-type                     'ssl)
 
   (setq auth-sources '("~/.authinfo.gpg"))
+#+end_src
+
+** Newsticker
+
+#+begin_src emacs-lisp
+  (setq newsticker-url-list '(
+                                ("HackerNews" "https://hnrss.org/frontpage" nil nil nil)
+                                ("Guardian - Tech" "https://www.theguardian.com/uk/technology/rss" nil nil nil)))
+
+  (add-hook 'newsticker-mode-hook 'imenu-add-menubar-index)
 #+end_src
 
 ** Misc

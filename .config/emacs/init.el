@@ -77,8 +77,6 @@
 (setq c-default-style "bsd"
       c-basic-offset tab-width)
 
-(define-key c-mode-map (kbd "TAB") 'eglot-format)
-(define-key c++-mode-map (kbd "TAB") 'eglot-format)
 
 (setq compile-command "make ")
 (setq gdb-show-main t)
@@ -90,9 +88,10 @@
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 
 (add-hook 'c-mode-common-hook (lambda ()
-                         (c-toggle-auto-newline 1)))
-
-(add-hook 'c-mode-common-hook 'electric-pair-mode)
+				(electric-pair-mode 1)
+				(c-toggle-auto-newline 1)
+				(define-key c-mode-map (kbd "TAB") 'eglot-format)
+				(define-key c++-mode-map (kbd "TAB") 'eglot-format)))
 
 (defface font-lock/todo-face '(
                                (t (:foreground "deep sky blue"
@@ -243,6 +242,12 @@
       smtpmail-stream-type                     'ssl)
 
 (setq auth-sources '("~/.authinfo.gpg"))
+
+(setq newsticker-url-list '(
+                              ("HackerNews" "https://hnrss.org/frontpage" nil nil nil)
+                              ("Guardian - Tech" "https://www.theguardian.com/uk/technology/rss" nil nil nil)))
+
+(add-hook 'newsticker-mode-hook 'imenu-add-menubar-index)
 
 (setq visible-bell 1)
 (setq use-short-answers t)
