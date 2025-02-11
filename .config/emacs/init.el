@@ -132,6 +132,9 @@
 (add-hook 'org-mode-hook 'ispell-minor-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
 
+(setq org-clock-persist t)
+(org-clock-persistence-insinuate)
+
 (setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
 
 (org-babel-do-load-languages
@@ -172,7 +175,10 @@
 
 (setq org-directory "~/Nextcloud/org")
 (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
-(setq org-agenda-files (list (concat org-directory "/agenda/")))
+(setq org-agenda-files (list
+                        (concat org-directory "/agenda/")
+                        "~/Nextcloud/university/semester_4/software-engineering/"))
+
 (setq org-agenda-include-diary t)
 (setq diary-file (concat org-directory "/agenda/diary"))
 (setq calendar-date-style 'european)
@@ -245,6 +251,7 @@
 
 (setq newsticker-url-list '(
                               ("HackerNews" "https://hnrss.org/frontpage" nil nil nil)
+                              ("Suckless" "https://suckless.org/atom.xml" nil nil nil)                                
                               ("Guardian - Tech" "https://www.theguardian.com/uk/technology/rss" nil nil nil)))
 
 (add-hook 'newsticker-mode-hook 'imenu-add-menubar-index)

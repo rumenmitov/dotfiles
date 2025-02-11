@@ -12,7 +12,7 @@ text/plain=nvim.desktop
 [Added Associations]
 application/pdf=org.gnome.Papers.desktop;
 image/png=org.gnome.eog.desktop;
-text/plain=org.gnome.Papers.desktop;
+text/plain=firefox.desktop;org.gnome.Papers.desktop;
 application/pgp-encrypted=org.gnome.Papers.desktop;
 text/org=emacsclient.desktop;
 application/x-zerosize=com.github.flxzt.rnote.desktop;
