@@ -72,6 +72,7 @@
 (add-hook 'post-self-insert-hook 'completion-help-at-point)
 (add-hook 'minibuffer-mode-hook (lambda () (remove-hook 'post-self-insert-hook 'completion-help-at-point)))
 (add-hook 'minibuffer-exit-hook (lambda () (add-hook 'post-self-insert-hook 'completion-help-at-point)))
+(add-hook 'artist-mode-hook (lambda () (remove-hook 'post-self-insert-hook 'completion-help-at-point)))
 
 (setq tab-width 4)
 (setq c-default-style "bsd"
