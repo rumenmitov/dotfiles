@@ -52,7 +52,6 @@
   (global-display-line-numbers-mode 1)
   (setq display-line-numbers-type 'relative)
   (setq display-line-numbers-current-absolute t)
-
 #+end_src
 
 *** Theme
@@ -92,6 +91,12 @@ Be careful when using escape characters (single backslash would just escape the 
           '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
 #+end_src
 
+** Key Help
+
+#+begin_src emacs-lisp
+  (which-key-mode 1)
+#+end_src
+
 ** Recent Files
 
 #+begin_src emacs-lisp
@@ -109,8 +114,9 @@ The option =completion-help-at-point= is disabled in the minibuffer as it
 prints a distracting error message.
 
 #+begin_src emacs-lisp
-  (icomplete-vertical-mode)
-  (fido-vertical-mode)
+  (icomplete-vertical-mode t)
+  (fido-vertical-mode t)
+  (global-completion-preview-mode t)
 
   (setq completion-auto-select t)
   (setq completion-auto-help 'always)
@@ -127,11 +133,8 @@ prints a distracting error message.
 
   (define-key icomplete-vertical-mode-minibuffer-map (kbd "TAB") 'icomplete-force-complete)
   (define-key icomplete-vertical-mode-minibuffer-map (kbd "RET") 'icomplete-force-complete-and-exit)
-
-  (add-hook 'post-self-insert-hook 'completion-help-at-point)
-  (add-hook 'minibuffer-mode-hook (lambda () (remove-hook 'post-self-insert-hook 'completion-help-at-point)))
-  (add-hook 'minibuffer-exit-hook (lambda () (add-hook 'post-self-insert-hook 'completion-help-at-point)))
-  (add-hook 'artist-mode-hook (lambda () (remove-hook 'post-self-insert-hook 'completion-help-at-point)))
+  (global-set-key (kbd "M-n") 'completion-preview-next-candidate)
+  (global-set-key (kbd "M-p") 'completion-preview-prev-candidate)  
 #+end_src
 
 ** Programming
@@ -140,7 +143,7 @@ prints a distracting error message.
 #+begin_src emacs-lisp
   (setq tab-width 4)
   (setq c-default-style "bsd"
-	c-basic-offset tab-width)
+  	c-basic-offset tab-width)
 
 
   (setq compile-command "make ")
@@ -148,15 +151,18 @@ prints a distracting error message.
   (setq gdb-many-windows t)
   (setq gdb-default-window-configuration-file "~/.config/emacs/gdb-window-config")
 
-  (setq comment-auto-fill-only-comments t)
+  (global-set-key (kbd "C-x g.") 'flymake-goto-next-error)
+  (global-set-key (kbd "C-x g,") 'flymake-goto-prev-error)
+  (global-set-key (kbd "C-x gf") 'eglot-format)
+  (global-set-key (kbd "C-x gr") 'eglot-rename)
+  (global-set-key (kbd "C-x ga") 'eglot-code-actions)
 
+  (setq comment-auto-fill-only-comments t)
   (add-hook 'prog-mode-hook 'auto-fill-mode)
 
   (add-hook 'c-mode-common-hook (lambda ()
-				  (electric-pair-mode 1)
-				  (c-toggle-auto-newline 1)
-				  (define-key c-mode-map (kbd "TAB") 'eglot-format)
-				  (define-key c++-mode-map (kbd "TAB") 'eglot-format)))
+  				  (electric-pair-mode 1)
+  				  (c-toggle-auto-newline 1)))
 #+end_src
 
 *** Comment Keywords
@@ -229,7 +235,9 @@ prints a distracting error message.
                       ("[#C]"        . ?🟢)
                       ("#+author:"   . ?)
                       ("#+title:"    . ?)
-                      ("#+email:"    . ?) 
+                      ("#+date:"     . ?)                      
+                      ("#+email:"    . ?)
+                      ("#+options:"  . ?)                      
                       ("#+begin_src" . ?)
                       ("#+end_src"   . ?)
                       ("#+RESULTS:"  . ?)                      
@@ -378,30 +386,29 @@ prints a distracting error message.
 
   (use-package yasnippet)
   (use-package yasnippet-snippets)
+  (use-package yasnippet-capf
+    :config
+    (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+
   (yas-global-mode)
   (define-key yas-minor-mode-map (kbd "C-c y") 'yas-insert-snippet)
   (global-set-key (kbd "M-/") 'hippie-expand)
-  (add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand t)
 #+end_src
 
 *** LSP
 
 #+begin_src emacs-lisp
-  (use-package haskell-mode)
-  (use-package go-mode)
-  (use-package rust-mode)
-  (use-package nix-mode)
-  (use-package php-mode)
+   (use-package haskell-mode)
+   (use-package go-mode)
+   (use-package rust-mode)
+   (use-package nix-mode)
+   (use-package php-mode)
 
-  (add-hook 'haskell-mode-hook 'eglot-ensure)
-  (add-hook 'go-mode-hook 'eglot-ensure)
-  (add-hook 'rust-mode-hook 'eglot-ensure)
-  (add-hook 'nix-mode-hook 'eglot-ensure)
-  (add-hook 'c-mode-hook 'eglot-ensure)
-  (add-hook 'c++-mode-hook 'eglot-ensure)
-  (add-hook 'php-mode-hook 'eglot-ensure)
-
-  (require 'flymake)
-  (define-key flymake-mode-map (kbd "C-x .") 'flymake-goto-next-error)
-  (define-key flymake-mode-map (kbd "C-x ,") 'flymake-goto-prev-error)
+   (add-hook 'haskell-mode-hook 'eglot-ensure)
+   (add-hook 'go-mode-hook 'eglot-ensure)
+   (add-hook 'rust-mode-hook 'eglot-ensure)
+   (add-hook 'nix-mode-hook 'eglot-ensure)
+   (add-hook 'c-mode-hook 'eglot-ensure)
+   (add-hook 'c++-mode-hook 'eglot-ensure)
+   (add-hook 'php-mode-hook 'eglot-ensure)
 #+end_src

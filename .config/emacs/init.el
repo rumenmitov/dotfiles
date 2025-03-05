@@ -45,13 +45,16 @@
 (setq display-buffer-alist
         '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
 
+(which-key-mode 1)
+
 (recentf-mode 1)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (setq recentf-max-saved-items 10)
 (save-place-mode 1)
 
-(icomplete-vertical-mode)
-(fido-vertical-mode)
+(icomplete-vertical-mode t)
+(fido-vertical-mode t)
+(global-completion-preview-mode t)
 
 (setq completion-auto-select t)
 (setq completion-auto-help 'always)
@@ -68,15 +71,12 @@
 
 (define-key icomplete-vertical-mode-minibuffer-map (kbd "TAB") 'icomplete-force-complete)
 (define-key icomplete-vertical-mode-minibuffer-map (kbd "RET") 'icomplete-force-complete-and-exit)
-
-(add-hook 'post-self-insert-hook 'completion-help-at-point)
-(add-hook 'minibuffer-mode-hook (lambda () (remove-hook 'post-self-insert-hook 'completion-help-at-point)))
-(add-hook 'minibuffer-exit-hook (lambda () (add-hook 'post-self-insert-hook 'completion-help-at-point)))
-(add-hook 'artist-mode-hook (lambda () (remove-hook 'post-self-insert-hook 'completion-help-at-point)))
+(global-set-key (kbd "M-n") 'completion-preview-next-candidate)
+(global-set-key (kbd "M-p") 'completion-preview-prev-candidate)
 
 (setq tab-width 4)
 (setq c-default-style "bsd"
-      c-basic-offset tab-width)
+	c-basic-offset tab-width)
 
 
 (setq compile-command "make ")
@@ -84,15 +84,18 @@
 (setq gdb-many-windows t)
 (setq gdb-default-window-configuration-file "~/.config/emacs/gdb-window-config")
 
-(setq comment-auto-fill-only-comments t)
+(global-set-key (kbd "C-x g.") 'flymake-goto-next-error)
+(global-set-key (kbd "C-x g,") 'flymake-goto-prev-error)
+(global-set-key (kbd "C-x gf") 'eglot-format)
+(global-set-key (kbd "C-x gr") 'eglot-rename)
+(global-set-key (kbd "C-x ga") 'eglot-code-actions)
 
+(setq comment-auto-fill-only-comments t)
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 
 (add-hook 'c-mode-common-hook (lambda ()
-				(electric-pair-mode 1)
-				(c-toggle-auto-newline 1)
-				(define-key c-mode-map (kbd "TAB") 'eglot-format)
-				(define-key c++-mode-map (kbd "TAB") 'eglot-format)))
+				  (electric-pair-mode 1)
+				  (c-toggle-auto-newline 1)))
 
 (defface font-lock/todo-face '(
                                (t (:foreground "deep sky blue"
@@ -154,7 +157,9 @@
                     ("[#C]"        . ?🟢)
                     ("#+author:"   . ?)
                     ("#+title:"    . ?)
-                    ("#+email:"    . ?) 
+                    ("#+date:"     . ?)                      
+                    ("#+email:"    . ?)
+                    ("#+options:"  . ?)                      
                     ("#+begin_src" . ?)
                     ("#+end_src"   . ?)
                     ("#+RESULTS:"  . ?)                      
@@ -279,10 +284,13 @@
 
 (use-package yasnippet)
 (use-package yasnippet-snippets)
+(use-package yasnippet-capf
+  :config
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+
 (yas-global-mode)
 (define-key yas-minor-mode-map (kbd "C-c y") 'yas-insert-snippet)
 (global-set-key (kbd "M-/") 'hippie-expand)
-(add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand t)
 
 (use-package haskell-mode)
 (use-package go-mode)
@@ -297,7 +305,3 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
-
-(require 'flymake)
-(define-key flymake-mode-map (kbd "C-x .") 'flymake-goto-next-error)
-(define-key flymake-mode-map (kbd "C-x ,") 'flymake-goto-prev-error)
