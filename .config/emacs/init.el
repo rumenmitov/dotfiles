@@ -183,7 +183,8 @@
 (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
 (setq org-agenda-files (list
                         (concat org-directory "/agenda/")
-                        "~/Nextcloud/university/semester_4/software-engineering/"))
+                        "~/Nextcloud/university/semester_4/software-engineering/"
+			"~/Nextcloud/rasdaman/"))
 
 (setq org-agenda-include-diary t)
 (setq diary-file (concat org-directory "/agenda/diary"))

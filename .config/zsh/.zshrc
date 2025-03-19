@@ -7,7 +7,8 @@ source $ZDOTDIR/misc.zsh
 
 # History
 setopt HIST_SAVE_NO_DUPS
-
+export HISTFILE=~/.zsh_history
+export HISTSIZE=100000
 
 # Auto-Correct
 setopt CORRECT_ALL

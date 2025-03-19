@@ -1,17 +1,5 @@
 /.config/
 
-# Emacs
-!/.config/emacs/README.org
-!/.config/emacs/init.el
-!/.config/emacs/assets/
-!/.config/emacs/gdb-window-config
-!/.config/emacs/templates/
-
-# Neovim
-!/.config/nvim/init.lua
-!/.config/nvim/lua/
-!/.config/nvim/snippets/
-
 # Terminals and Shells
 !/.config/alacritty/
 !/.config/ghostty/
