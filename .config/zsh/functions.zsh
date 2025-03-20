@@ -5,6 +5,5 @@ function gac() {
 
 function kpass() {
     local DB=$HOME/Nextcloud/other/passwords.kdbx
-    local ENTRY=$(keepassxc-cli search $DB $1 | head -n 1)
-    test -z $ENTRY || keepassxc-cli clip $DB $ENTRY
+    keepassxc-cli clip --best-match $DB $1 0
 }
