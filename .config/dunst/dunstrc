@@ -1,7 +1,7 @@
 [global]
     follow = mouse
 
-    width = (0, 300)
+    width = 300
     height = 300
 
     origin = top-center
@@ -48,7 +48,7 @@
 
     format = "<b>%s</b>\n%b"
 
-    alignment = left
+    alignment = center
 
     vertical_alignment = center
 
@@ -67,7 +67,7 @@
     timeout = 10
 
 [urgency_normal]
-    background = "#ffffff54"
+    background = "#00000054"
     foreground = "#ffffffed"
     timeout = 10
     override_pause_level = 30
