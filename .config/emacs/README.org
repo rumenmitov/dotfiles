@@ -159,10 +159,11 @@ prints a distracting error message.
 Proper formatting:
 
 #+begin_src emacs-lisp
-  (setq tab-width 4)
-  (setq c-default-style "bsd"
+  (setq-default tab-width 4)
+  (setq-default indent-tabs-mode nil)
+  (setq-default c-default-style "bsd"
   	c-basic-offset tab-width)
-  (setq comment-auto-fill-only-comments t)
+  (setq-default comment-auto-fill-only-comments t)
 #+end_src
 
 GDB:
@@ -421,7 +422,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
   (use-package yasnippet-snippets)
   (use-package yasnippet-capf
     :config
-    (setq completion-at-point-functions #'yasnippet-capf))
+    (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
   (yas-global-mode)
   (define-key yas-minor-mode-map (kbd "C-c y") 'yas-insert-snippet)

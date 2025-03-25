@@ -83,10 +83,11 @@
 (global-set-key (kbd "M-n") 'completion-preview-next-candidate)
 (global-set-key (kbd "M-p") 'completion-preview-prev-candidate)
 
-(setq tab-width 4)
-(setq c-default-style "bsd"
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default c-default-style "bsd"
 	c-basic-offset tab-width)
-(setq comment-auto-fill-only-comments t)
+(setq-default comment-auto-fill-only-comments t)
 
 (setq compile-command "make ")
 (setq gdb-show-main t)
@@ -294,7 +295,7 @@
 (use-package yasnippet-snippets)
 (use-package yasnippet-capf
   :config
-  (setq completion-at-point-functions #'yasnippet-capf))
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 (yas-global-mode)
 (define-key yas-minor-mode-map (kbd "C-c y") 'yas-insert-snippet)
