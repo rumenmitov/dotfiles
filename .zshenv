@@ -21,3 +21,4 @@ export LS_COLORS="*.py=33:di=34:*.h=35:*.pdf=4;37:ex=32"
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$HOME/.nimble/bin:$PATH

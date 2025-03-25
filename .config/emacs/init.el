@@ -1,3 +1,11 @@
+(setq emacs-directory "~/.config/emacs")
+(setq org-directory "~/Nextcloud/org")
+
+(auto-save-visited-mode 1)
+
+(setq backup-directory-alist `((".*" . ,(concat emacs-directory "/backups/"))))
+(setq auto-save-file-name-transforms `((".*" ,(concat emacs-directory "/auto-saves/") t)))
+
 (setq inhibit-startup-message t)
 (setq initial-scratch-message ";; -- Welcome to Emacs--\n\n")
 
@@ -20,14 +28,10 @@
 (setq display-line-numbers-type 'relative)
 (setq display-line-numbers-current-absolute t)
 
-(load-theme 'deeper-blue 1)
+(load-theme 'modus-vivendi-tinted 1)
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(org-block ((t (:inherit shadow :extend t :background "black" :slant italic))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
@@ -60,6 +64,7 @@
 (fido-vertical-mode t)
 (global-completion-preview-mode t)
 
+(setq completion-preview-minimum-symbol-length 1)
 (setq completion-auto-select t)
 (setq completion-auto-help 'always)
 (setq completion-show-help nil)
@@ -81,7 +86,7 @@
 (setq tab-width 4)
 (setq c-default-style "bsd"
 	c-basic-offset tab-width)
-
+(setq comment-auto-fill-only-comments t)
 
 (setq compile-command "make ")
 (setq gdb-show-main t)
@@ -94,7 +99,6 @@
 (global-set-key (kbd "C-x gr") 'eglot-rename)
 (global-set-key (kbd "C-x ga") 'eglot-code-actions)
 
-(setq comment-auto-fill-only-comments t)
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 
 (add-hook 'c-mode-common-hook (lambda ()
@@ -143,7 +147,7 @@
 (setq org-clock-persist t)
 (org-clock-persistence-insinuate)
 
-(setq org-clock-sound "~/.config/emacs/assets/org-clock-sound.wav")
+(setq org-clock-sound (concat emacs-directory "/assets/org-clock-sound.wav"))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -183,15 +187,16 @@
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 
-(setq org-directory "~/Nextcloud/org")
-(setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
 (setq org-agenda-files (list
                         (concat org-directory "/agenda/")
                         "~/Nextcloud/university/semester_4/software-engineering/"
 			"~/Nextcloud/rasdaman/"))
 
-(setq org-agenda-include-diary t)
+(setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
 (setq diary-file (concat org-directory "/agenda/diary"))
+(setq org-archive-location (concat org-directory "/archive/%s_archive::datetree/"))
+
+(setq org-agenda-include-diary t)
 (setq calendar-date-style 'european)
 
 (setq org-tag-persistent-alist '((:startgroup . nil)
@@ -199,35 +204,33 @@
                                  (:endgroup . nil)))
 
 (setq org-agenda-custom-commands
-      '(("p" "Programming"
+      `(("p" "Programming"
          ((todo "TODO"))
-         ((org-agenda-files (list (concat org-directory "/agenda/programming.org")))))))
-
-(setq org-archive-location (concat org-directory "/archive/%s_archive::datetree/"))
+         ((org-agenda-files (list ,(concat org-directory "/agenda/programming.org")))))))
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
-        '(("t"
+        `(("t"
            "Todo"
            entry
-           (file "~/Nextcloud/org/agenda/notes.org")
-           (file "~/.config/emacs/templates/todo.tmpl"))
+           (file ,(concat org-directory "/agenda/notes.org"))
+           (file ,(concat emacs-directory "/templates/todo.tmpl")))
           ("e"
            "Email"
            entry
-           (file "~/Nextcloud/org/agenda/notes.org")
-           (file "~/.config/emacs/templates/email.tmpl"))
+           (file ,(concat org-directory "/agenda/notes.org"))
+           (file ,(concat emacs-directory "/templates/email.tmpl")))
           ("j"
            "Journal"
            plain
-           (file+datetree "~/Nextcloud/org/journal.org")
-           (file "~/.config/emacs/templates/journal.tmpl"))
+           (file+datetree ,(concat org-directory "/agenda/journal.org"))
+           (file ,(concat emacs-directory "/templates/journal.tmpl")))
           ("p"
            "Programming"
            entry
-           (file "~/Nextcloud/org/agenda/programming.org")
-           (file "~/.config/emacs/templates/programming.tmpl"))))
+           (file ,(concat org-directory "/agenda/programming.org"))
+           (file ,(concat emacs-directory "/templates/journal.tmpl")))))
 
 (setq gnus-use-dribble-file nil)
 (setq gnus-directory "~/.news")
@@ -284,18 +287,30 @@
 (use-package undo-tree)
 (global-undo-tree-mode)
 (setq undo-tree-auto-save-history t)
-(setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/undo")))
+(setq undo-tree-history-directory-alist `(("." . ,(concat emacs-directory "/emacs/undo"))))
 (setq undo-tree-visualizer-diff t)
 
 (use-package yasnippet)
 (use-package yasnippet-snippets)
 (use-package yasnippet-capf
   :config
-  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+  (setq completion-at-point-functions #'yasnippet-capf))
 
 (yas-global-mode)
 (define-key yas-minor-mode-map (kbd "C-c y") 'yas-insert-snippet)
 (global-set-key (kbd "M-/") 'hippie-expand)
+
+(defun config/load-yas-after-eglot ()
+  "Loads yasnippets-capf after eglot, because eglot overrides the hook."
+  (if (eglot-managed-p)
+      ;; if eglot stops managing remove the hook,
+      ;; otherwise when eglot restarts it will place its hook ahead
+      ;; in the list.
+      (add-hook 'completion-at-point-functions #'yasnippet-capf nil t)
+    (remove-hook 'completion-at-point-functions #'yasnippet-capf t)))
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-managed-mode-hook 'config/load-yas-after-eglot))
 
 (use-package haskell-mode)
 (use-package go-mode)
@@ -310,12 +325,3 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(avy beacon cmake-mode eglot go-mode haskell-mode levenshtein
-	 nix-mode php-mode rust-mode s tempel-collection tree-sitter
-	 undo-tree yasnippet-capf yasnippet-snippets)))
