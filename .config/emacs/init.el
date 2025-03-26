@@ -231,7 +231,7 @@
            "Programming"
            entry
            (file ,(concat org-directory "/agenda/programming.org"))
-           (file ,(concat emacs-directory "/templates/journal.tmpl")))))
+           (file ,(concat emacs-directory "/templates/programming.tmpl")))))
 
 (setq gnus-use-dribble-file nil)
 (setq gnus-directory "~/.news")

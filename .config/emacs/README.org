@@ -338,7 +338,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
              "Programming"
              entry
              (file ,(concat org-directory "/agenda/programming.org"))
-             (file ,(concat emacs-directory "/templates/journal.tmpl")))))
+             (file ,(concat emacs-directory "/templates/programming.tmpl")))))
 #+end_src
 
 ** Gnus
