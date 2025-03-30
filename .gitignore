@@ -1,8 +1,8 @@
 /.config/
 
 # Editors
-!/.config/nvim
-!/.config/emacs
+!/.config/nvim/
+!/.config/emacs/
 
 # Terminals and Shells
 !/.config/alacritty/
