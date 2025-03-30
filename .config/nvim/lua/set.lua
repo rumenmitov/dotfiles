@@ -2,8 +2,9 @@
 vim.opt.updatetime = 50
 vim.opt.scrolloff = 5
 vim.opt.laststatus = 2
-vim.opt.splitright = true;
-vim.opt.splitbelow = true;
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.winborder = "rounded"
 
 -- Line numbers
 vim.opt.nu = true

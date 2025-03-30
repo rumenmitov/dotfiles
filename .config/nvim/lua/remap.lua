@@ -32,3 +32,22 @@ vim.keymap.set("n", "<C-p>", ":bp<CR>")
 vim.keymap.set("n", "<C-n>", ":bn<CR>")
 vim.keymap.set("n", "<C-q>", ":bd!<CR>")
 vim.keymap.set("n", "<C-s>", ":up!<CR>")
+
+-- Autocomplete + Snippets
+vim.keymap.set({ "i", "s" }, "<Tab>", function()
+    local ls = require("luasnip")
+
+    if ls.expandable() then
+        vim.schedule(function() ls.expand() end)
+        return
+    end
+
+    if vim.fn.pumvisible() ~= 0 then
+        return "<C-y>"
+    elseif vim.snippet.active({ direction = 1 }) then
+        return "<esc>:lua vim.snippet.jump(1)<enter>"
+    elseif ls.jumpable(1) then
+        ls.jump(1)
+    else return "<Tab>"
+    end
+end, { expr = true, silent = true })
