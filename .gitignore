@@ -1,4 +1,5 @@
 /.config/
+!/**/.gitignore
 
 # Terminals and Shells
 !/.config/alacritty/
