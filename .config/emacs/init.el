@@ -235,8 +235,6 @@
 
 (setq gnus-use-dribble-file nil)
 (setq gnus-directory "~/.news")
-(setq message-directory "~/Nextcloud/mail")
-(setq nnfolder-directory "~/Nextcloud/mail/archive")
 
 (require 'gnus-demon)
 (add-hook 'gnus-startup-hook

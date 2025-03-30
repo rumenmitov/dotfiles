@@ -346,9 +346,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 #+begin_src emacs-lisp
   (setq gnus-use-dribble-file nil)
   (setq gnus-directory "~/.news")
-  (setq message-directory "~/Nextcloud/mail")
-  (setq nnfolder-directory "~/Nextcloud/mail/archive")
-
+  
   (require 'gnus-demon)
   (add-hook 'gnus-startup-hook
             (apply-partially #'gnus-demon-add-handler 'gnus-demon-scan-news 5 t))
