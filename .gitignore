@@ -1,5 +1,8 @@
 /.config/
-!/**/.gitignore
+
+# Editors
+!/.config/nvim
+!/.config/emacs
 
 # Terminals and Shells
 !/.config/alacritty/
