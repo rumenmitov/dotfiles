@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+exec dbus-launch /home/rumen/.local/bin/xmonad
