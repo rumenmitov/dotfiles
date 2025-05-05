@@ -1,28 +1,47 @@
 /.config/
 
 # Editors
+!/.config/nvim/
 !/.config/nvim/**
+!/.config/emacs/
 !/.config/emacs/**
 
 # Terminals and Shells
+!/.config/alacritty/
 !/.config/alacritty/**
+!/.config/ghostty/
 !/.config/ghostty/**
+!/.config/st/
 !/.config/st/**
+!/.config/tmux/
 !/.config/tmux/**
+!/.config/zsh/
 !/.config/zsh/**
+!/.config/bash/
 !/.config/bash/**
+!/.config/fish/
 !/.config/fish/**
+!/.config/lsd/
 !/.config/lsd/**
 
 # Window Managers and Utils
 !/.config/dwm/
+!/.config/dwm/**
+!/.config/slstatus/
 !/.config/slstatus/**
+!/.config/dmenu/
 !/.config/dmenu/**
+!/.config/hypr/
 !/.config/hypr/**
+!/.config/xmonad/
 !/.config/xmonad/**
+!/.config/xmobar/
 !/.config/xmobar/**
+!/.config/picom/
 !/.config/picom/**
+!/.config/dunst/
 !/.config/dunst/**
+!/.config/flameshot/
 !/.config/flameshot/**
 !/.config/greenclip.toml
 !/.config/mimeapps.list
