@@ -2,7 +2,7 @@ function host_prompt() {
     if [[ $(git status 2>/dev/null) != "" ]]; then
         echo " %F{202}%f %F{green}$(git_prompt)%f"
     else 
-        echo "%F{45}@%m%f"
+        echo "%F{45}$(nix_shell)%m%f"
     fi
 }
 
@@ -44,9 +44,15 @@ function git_others_files() {
     fi
 }
 
+function nix_shell() {
+    local nix_path=$(echo $PATH | grep /nix/store)
+    if [[ $IN_NIX_SHELL || $nix_path ]]; then
+        echo " 󱄅 "
+    else
+        echo "@"
+    fi
+}
+
 function precmd() {
     PS1="%F{white}%n$(host_prompt)%f%F{201}  %~%f%F{green}%f »%F{white}  "
 }
-
-
-
