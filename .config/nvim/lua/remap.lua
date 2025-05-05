@@ -48,6 +48,7 @@ vim.keymap.set({ "i", "s" }, "<Tab>", function()
         return "<esc>:lua vim.snippet.jump(1)<enter>"
     elseif ls.jumpable(1) then
         ls.jump(1)
-    else return "<Tab>"
+    else
+        return "<Tab>"
     end
 end, { expr = true, silent = true })

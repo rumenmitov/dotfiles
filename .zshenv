@@ -22,3 +22,5 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$HOME/.nimble/bin:$PATH
+
+if [ -e /home/rumen/.nix-profile/etc/profile.d/nix.sh ]; then . /home/rumen/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

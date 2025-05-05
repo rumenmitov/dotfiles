@@ -225,7 +225,7 @@
           ("j"
            "Journal"
            plain
-           (file+datetree ,(concat org-directory "/agenda/journal.org"))
+           (file+datetree ,(concat org-directory "/journal.org"))
            (file ,(concat emacs-directory "/templates/journal.tmpl")))
           ("p"
            "Programming"
