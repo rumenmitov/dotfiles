@@ -1,4 +1,4 @@
-wallpaper=$( ls "$HOME/.local/share/wallpapers/Static/" | dmenu )
+wallpaper=$( ls "$HOME/.local/share/wallpapers/Static/" | dmenu -p "🖼️" )
 test -z $wallpaper && exit
 
 wallpaper_path="$HOME/.local/share/wallpapers/Static/$wallpaper"

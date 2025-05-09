@@ -2,5 +2,5 @@
 
 greenclip print                                                    \
     | grep .                                                       \
-    | dmenu                                                        \
+    | dmenu -p "📋"                                                \
     | xargs -r -d'\n' -I '{}' greenclip print '{}'

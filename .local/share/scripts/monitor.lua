@@ -14,7 +14,14 @@ local config = {
     mirror = string.format("xrandr --output %s --same-as eDP --auto", external),
 }
 
-res = io.popen("echo 'double\nsolo\nmirror' | dmenu")
+local cmd = "echo '"
+for k, _ in pairs(config) do
+    cmd = cmd .. k .. "\\n"
+end
+
+cmd = cmd:sub(1, -3) .. "' | dmenu"
+
+res = io.popen(cmd)
 if res == nil then
     return
 end

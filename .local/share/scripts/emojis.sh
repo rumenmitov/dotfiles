@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 cat ~/.local/share/emojis/emojis.csv                                 \
-    | dmenu                                                          \
+    | dmenu -p "Emoji:"                                              \
     | awk '{print $1}'                                               \
     | tr -d "\\n\\r\\t"                                              \
     | xclip -selection c
