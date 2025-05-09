@@ -19,7 +19,7 @@ for k, _ in pairs(config) do
     cmd = cmd .. k .. "\\n"
 end
 
-cmd = cmd:sub(1, -3) .. "' | dmenu"
+cmd = cmd:sub(1, -3) .. "' | dmenu -p '🖥️'"
 
 res = io.popen(cmd)
 if res == nil then
