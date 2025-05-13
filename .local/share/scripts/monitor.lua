@@ -1,12 +1,27 @@
 #!/usr/bin/env lua
 
+local function cleanmon()
+    for i = 0, 5 do
+        io.popen("xrandr --output DisplayPort-" .. i .. " --off")
+    end
+
+    io.popen("xrandr --output HDMI-A-0 --off")
+    io.popen("~/.fehbg")
+end
+
 local res = io.popen("xrandr | grep -w connected | awk 'NR==2{print $1}'")
 if res == nil then
+    cleanmon()
     return
 end
 
 local external = res:read()
 res:close()
+
+if not external then
+    cleanmon()
+    return
+end
 
 local config = {
     double = string.format("xrandr --output %s --right-of eDP --auto", external),
