@@ -53,6 +53,10 @@
 (setq display-buffer-alist
         '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
 
+(setq viper-expert-level 5)
+(setq viper-mode t)
+(require 'viper)
+
 (which-key-mode 1)
 
 (recentf-mode 1)
@@ -83,7 +87,7 @@
 (global-set-key (kbd "M-n") 'completion-preview-next-candidate)
 (global-set-key (kbd "M-p") 'completion-preview-prev-candidate)
 
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq-default c-default-style "bsd"
 	c-basic-offset tab-width)
@@ -171,7 +175,7 @@
                     ("#+options:"  . ?)                      
                     ("#+begin_src" . ?)
                     ("#+end_src"   . ?)
-                    ("#+RESULTS:"  . ?)                      
+                    ("#+RESULTS:"  . ?)
                     ("- [ ]"       . ?)
                     ("- [-]"       . ?)
                     ("- [X]"       . ?)
@@ -237,6 +241,7 @@
 (setq gnus-directory "~/.news")
 
 (require 'gnus-demon)
+(gnus-demon-init)
 (add-hook 'gnus-startup-hook
           (apply-partially #'gnus-demon-add-handler 'gnus-demon-scan-news 5 t))
 

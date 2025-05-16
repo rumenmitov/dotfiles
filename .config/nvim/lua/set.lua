@@ -11,10 +11,10 @@ vim.opt.nu = true
 vim.opt.rnu = true
 
 -- Indenting
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.tabstop = 2      -- display tab as 2 spaces
+vim.opt.softtabstop = 2  -- tab = 2 spaces
+vim.opt.shiftwidth = 2   -- autoindent 2 spaces
+vim.opt.expandtab = true -- spaces, no tabs
 vim.opt.smartindent = true
 
 -- Wrap
@@ -36,7 +36,5 @@ vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
 if (os.getenv("SERVER") == nil) then
-    vim.cmd.colorscheme("tokyonight-storm")
-else
-    vim.cmd.colorscheme("evening")
+    vim.cmd.colorscheme("everforest")
 end

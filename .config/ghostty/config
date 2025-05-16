@@ -2,13 +2,16 @@
 # Rumen's  Ghostty Config #
 ###########################
 
+theme = Everforest Dark - Hard
+
 font-family = "CaskaydiaCove Nerd Font"
 font-size = 18
-background = #121212
-background-opacity = 0.8
+#background = #121212
+background-opacity = 0.9
 
 gtk-titlebar = false
 confirm-close-surface = false
+gtk-tabs-location = left
 
 shell-integration = zsh
 
@@ -18,13 +21,16 @@ keybind = ctrl+b>r=reload_config
 keybind = ctrl+b>c=new_tab
 keybind = ctrl+b>n=next_tab
 keybind = ctrl+b>p=previous_tab
+keybind = alt+tab=toggle_tab_overview
 
-keybind = ctrl+b>\=new_split:left
-keybind = ctrl+b>shift+5=new_split:up
+keybind = ctrl+b>shift+5=new_split:right
+keybind = ctrl+b>shift+'=new_split:down
 keybind = ctrl+b>z=toggle_split_zoom
 
-keybind = ctrl+b>shift+p=goto_split:left
-keybind = ctrl+b>shift+n=goto_split:right
+keybind = ctrl+b>h=goto_split:left
+keybind = ctrl+b>l=goto_split:right
+keybind = ctrl+b>j=goto_split:down
+keybind = ctrl+b>k=goto_split:up
 
 keybind = ctrl+b>equal=equalize_splits
 
@@ -33,4 +39,4 @@ keybind = ctrl+shift+k=resize_split:up,15
 keybind = ctrl+shift+h=resize_split:left,15
 keybind = ctrl+shift+l=resize_split:right,15
 
-keybind = ctrl+b>x=close_window
+keybind = ctrl+b>x=close_surface

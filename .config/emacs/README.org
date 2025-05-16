@@ -18,22 +18,22 @@
 1. =rm -rf ~/.emacs*=
 2. =git clone https://gitlab.com/rumenmitov/dotfiles ~/dotfiles=
 3. =cd ~/dotfiles && stow .=
-5. Refresh the configuration: =C-c C-c=
-6. Initialize configuration: =C-c C-v t=
-7. Restart Emacs 🐐
+4. Refresh the configuration: =C-c C-c=
+5. Initialize configuration: =C-c C-v t=
+6. Restart Emacs 🐐
 
 * Configuration
 
 Common directories:
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (setq emacs-directory "~/.config/emacs")
   (setq org-directory "~/Nextcloud/org")
 #+end_src
 
 ** Auto-Save
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (auto-save-visited-mode 1)
 
   (setq backup-directory-alist `((".*" . ,(concat emacs-directory "/backups/"))))
@@ -42,7 +42,7 @@ Common directories:
 
 ** Startup Message
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (setq inhibit-startup-message t)
   (setq initial-scratch-message ";; -- Welcome to Emacs--\n\n")
 
@@ -54,7 +54,7 @@ Common directories:
 
 ** GUI Options
 *** Menus and Bars
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
@@ -71,7 +71,7 @@ Common directories:
 #+end_src
 
 *** Theme
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (load-theme 'modus-vivendi-tinted 1)
   (add-to-list 'default-frame-alist '(alpha-background . 80))
 #+end_src
@@ -79,7 +79,7 @@ Common directories:
 *** Custom Faces
 
 There should be only *one* definition to =custom-set-faces=! This is best managed by the Emacs GUI Customization.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (custom-set-faces
    '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
    '(org-block ((t (:inherit shadow :extend t :background "black" :slant italic))))
@@ -91,8 +91,9 @@ There should be only *one* definition to =custom-set-faces=! This is best manage
 #+end_src
 
 ** Windows
+
 Be careful when using escape characters (single backslash would just escape the string).
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (winner-mode 1)
   (global-set-key (kbd "C-<") 'winner-undo)
   (global-set-key (kbd "C->") 'winner-redo)
@@ -107,15 +108,24 @@ Be careful when using escape characters (single backslash would just escape the 
           '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
 #+end_src
 
-** Key Help
+** Keys
+*** Viper
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
+  (setq viper-expert-level 5)
+  (setq viper-mode t)
+  (require 'viper)
+#+end_src
+
+*** Key Help
+
+#+begin_src emacs-lisp :results silent
   (which-key-mode 1)
 #+end_src
 
 ** Recent Files
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (recentf-mode 1)
   (global-set-key (kbd "C-x C-r") 'recentf-open-files)
   (setq recentf-max-saved-items 10)
@@ -129,7 +139,7 @@ which can be accessed with the =TAB= key and selected with the =RET= key.
 The option =completion-help-at-point= is disabled in the minibuffer as it
 prints a distracting error message.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (icomplete-vertical-mode t)
   (fido-vertical-mode t)
   (global-completion-preview-mode t)
@@ -158,8 +168,8 @@ prints a distracting error message.
 
 Proper formatting:
 
-#+begin_src emacs-lisp
-  (setq-default tab-width 4)
+#+begin_src emacs-lisp :results silent
+  (setq-default tab-width 2)
   (setq-default indent-tabs-mode nil)
   (setq-default c-default-style "bsd"
   	c-basic-offset tab-width)
@@ -168,7 +178,7 @@ Proper formatting:
 
 GDB:
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (setq compile-command "make ")
   (setq gdb-show-main t)
   (setq gdb-many-windows t)
@@ -177,7 +187,7 @@ GDB:
 
 Useful keyboard shortcuts:
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (global-set-key (kbd "C-x g.") 'flymake-goto-next-error)
   (global-set-key (kbd "C-x g,") 'flymake-goto-prev-error)
   (global-set-key (kbd "C-x gf") 'eglot-format)
@@ -187,7 +197,7 @@ Useful keyboard shortcuts:
 
 Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style modes):
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (add-hook 'prog-mode-hook 'auto-fill-mode)
   
   (add-hook 'c-mode-common-hook (lambda ()
@@ -196,7 +206,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 #+end_src
 
 *** Comment Keywords
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (defface font-lock/todo-face '(
                                  (t (:foreground "deep sky blue"
                                                  :overline t
@@ -229,7 +239,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 ** Organization
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (appt-activate 1)
 
   (setq org-startup-with-inline-images t)
@@ -256,7 +266,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 *** Pretty Symbols
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (add-hook 'org-mode-hook
             (lambda ()
               (setq prettify-symbols-alist
@@ -270,7 +280,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
                       ("#+options:"  . ?)                      
                       ("#+begin_src" . ?)
                       ("#+end_src"   . ?)
-                      ("#+RESULTS:"  . ?)                      
+                      ("#+RESULTS:"  . ?)
                       ("- [ ]"       . ?)
                       ("- [-]"       . ?)
                       ("- [X]"       . ?)
@@ -288,7 +298,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 *** Agenda
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (global-set-key (kbd "C-c a") 'org-agenda)
 
   (setq org-agenda-files (list
@@ -315,7 +325,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 ** Templates
 
-#+begin_src elisp
+#+begin_src elisp :results silent
   (global-set-key (kbd "C-c c") 'org-capture)
   
   (setq org-capture-templates
@@ -343,11 +353,12 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 ** Gnus
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (setq gnus-use-dribble-file nil)
   (setq gnus-directory "~/.news")
-  
+
   (require 'gnus-demon)
+  (gnus-demon-init)
   (add-hook 'gnus-startup-hook
             (apply-partially #'gnus-demon-add-handler 'gnus-demon-scan-news 5 t))
 
@@ -376,7 +387,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 ** Newsticker
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (setq newsticker-url-list '(
                                 ("HackerNews" "https://hnrss.org/frontpage" nil nil nil)
                                 ("Suckless" "https://suckless.org/atom.xml" nil nil nil)                                
@@ -387,7 +398,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 ** Misc
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (setq visible-bell 1)
   (setq use-short-answers t)
   (setq use-dialog-box nil)
@@ -395,7 +406,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 ** Packages
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (require 'package)
   (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
   (package-initialize)
@@ -415,7 +426,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 *** Snippets
 
-#+begin_src emacs-lisp  
+#+begin_src emacs-lisp  :results silent
   (use-package yasnippet)
   (use-package yasnippet-snippets)
   (use-package yasnippet-capf
@@ -431,7 +442,7 @@ In order to get completion suggestions for yasnippet, the ~yasnippet-capf~ must 
 
 In order to prevent the case where eglot disconnects and then connects again (pushing ~yasnippet-capf~ to the back) ~yasnippet-capf~ must be removed when eglot disconnects and reintroduced once eglot reconnects.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (defun config/load-yas-after-eglot ()
     "Loads yasnippets-capf after eglot, because eglot overrides the hook."
     (if (eglot-managed-p)
@@ -447,7 +458,7 @@ In order to prevent the case where eglot disconnects and then connects again (pu
 
 *** LSP
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
   (use-package haskell-mode)
   (use-package go-mode)
   (use-package rust-mode)

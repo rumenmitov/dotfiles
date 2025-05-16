@@ -36,6 +36,9 @@ vim.keymap.set("n", "<C-s>", ":up!<CR>")
 -- LSP
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition)
 
+-- Formatting
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
 -- Autocomplete + Snippets
 vim.keymap.set({ "i", "s" }, "<Tab>", function()
     local ls = require("luasnip")
