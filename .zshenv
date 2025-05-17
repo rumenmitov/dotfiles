@@ -17,10 +17,13 @@ export SAVEHIST=10000
 
 export LS_COLORS="*.py=33:di=34:*.h=35:*.pdf=4;37:ex=32"
 
-. "$HOME/.cargo/env"
+cargo -V &>/dev/null && . "$HOME/.cargo/env"
+
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/.go
+export GOBIN=$HOME/.go/bin
 export PATH=$PATH:$GOPATH/bin
+
 export PATH=$HOME/.nimble/bin:$PATH
 
 if [ -e /home/rumen/.nix-profile/etc/profile.d/nix.sh ]; then . /home/rumen/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
