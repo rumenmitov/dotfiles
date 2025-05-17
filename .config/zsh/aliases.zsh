@@ -7,3 +7,5 @@ alias ll='ls -l'
 alias la='ls -a'
 
 rip -V &>/dev/null && alias rm='rip'
+
+systemctl &>/dev/null && alias sc='sudo systemctl'
