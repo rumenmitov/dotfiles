@@ -1,0 +1,73 @@
+keybinds clear-defaults=true {
+    locked {
+        bind "Ctrl p" { SwitchToMode "pane"; }
+        bind "Ctrl t" { SwitchToMode "tab"; }
+    }
+    pane {
+        bind "h" { MoveFocus "left"; }
+        bind "j" { MoveFocus "down"; }
+        bind "k" { MoveFocus "up"; }
+        bind "l" { MoveFocus "right"; }
+        bind "-" { NewPane "down"; SwitchToMode "locked"; }
+        bind "'" { NewPane "right"; SwitchToMode "locked"; }
+        bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
+        bind "H" { Resize "Increase left"; }
+        bind "K" { Resize "Increase down"; }
+        bind "J" { Resize "Increase up"; }
+        bind "L" { Resize "Increase right"; }
+        bind "left" { MovePane "left"; }
+        bind "down" { MovePane "down"; }
+        bind "up" { MovePane "up"; }
+        bind "right" { MovePane "right"; }
+        bind "/" { SwitchToMode "entersearch"; }
+        bind "esc" { SwitchToMode "locked"; }
+    }
+    tab {
+        bind "p" { GoToPreviousTab; }
+        bind "n" { GoToNextTab; }
+        bind "1" { GoToTab 1; SwitchToMode "locked"; }
+        bind "2" { GoToTab 2; SwitchToMode "locked"; }
+        bind "3" { GoToTab 3; SwitchToMode "locked"; }
+        bind "4" { GoToTab 4; SwitchToMode "locked"; }
+        bind "5" { GoToTab 5; SwitchToMode "locked"; }
+        bind "6" { GoToTab 6; SwitchToMode "locked"; }
+        bind "7" { GoToTab 7; SwitchToMode "locked"; }
+        bind "8" { GoToTab 8; SwitchToMode "locked"; }
+        bind "9" { GoToTab 9; SwitchToMode "locked"; }
+        bind "o" { NewTab; SwitchToMode "locked"; }
+        bind "esc" { SwitchToMode "locked"; }
+    }
+    search {
+        bind "c" { SearchToggleOption "CaseSensitivity"; }
+        bind "n" { Search "down"; }
+        bind "N" { Search "up"; }
+        bind "Ctrl c" "esc" { SwitchToMode "locked"; }
+    }
+    entersearch {
+        bind "enter" { SwitchToMode "search"; }
+        bind "Ctrl c" "esc" { SwitchToMode "locked"; }
+    }
+}
+
+ 
+theme "catppuccin-macchiato"
+styled_underlines true
+pane_frames true
+
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
+ 
+default_mode "locked"
+default_shell "zsh"
+mouse_mode true
+ 
+ 
+copy_command "xclip -selection clipboard" // x11
+
+attach_to_session true
+ 
+show_startup_tips false
+show_release_notes false

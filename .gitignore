@@ -16,6 +16,8 @@
 !/.config/st/**
 !/.config/tmux/
 !/.config/tmux/**
+!/.config/zellij/
+!/.config/zellij/**
 !/.config/zsh/
 !/.config/zsh/**
 !/.config/bash/
