@@ -35,6 +35,6 @@ vim.opt.undofile = true
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
-if (os.getenv("SERVER") == nil) then
-    vim.cmd.colorscheme("everforest")
+if vim.version.gt(vim.version(), {0, 10, 0}) then
+    vim.cmd.colorscheme("sorbet")
 end
