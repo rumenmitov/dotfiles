@@ -12,7 +12,7 @@ setopt CORRECT_ALL
 autoload -z edit-command-line
 zle -N edit-command-line
 
-bindkey -v
+bindkey -e
 bindkey '^e' edit-command-line
 
 
@@ -22,8 +22,8 @@ compinit
 
 _comp_options+=(globdots)
 
-bindkey '<tab>' menu-complete
-bindkey '^[[Z' reverse-menu-complete
+bindkey '^n' menu-complete
+bindkey '^p' reverse-menu-complete
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*:default' list-colors \
