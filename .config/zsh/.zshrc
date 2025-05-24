@@ -1,16 +1,12 @@
 source $HOME/.zshenv
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/prompt.zsh
-source $ZDOTDIR/misc.zsh
 
 # History
 setopt HIST_SAVE_NO_DUPS
-export HISTFILE=~/.zsh_history
-export HISTSIZE=100000
 
 # Auto-Correct
 setopt CORRECT_ALL
-
 
 # Editting command line
 autoload -z edit-command-line
