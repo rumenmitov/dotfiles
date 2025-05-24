@@ -13,7 +13,7 @@ autoload -z edit-command-line
 zle -N edit-command-line
 
 bindkey -e
-bindkey '^e' edit-command-line
+bindkey '^x^e' edit-command-line
 
 
 # Completion
