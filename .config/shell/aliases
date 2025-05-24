@@ -1,3 +1,5 @@
+#!/bin/sh
+
 alias nv='nvim'
 alias vim='SERVER=1 nvim'
 
@@ -5,8 +7,6 @@ lsd -V &>/dev/null && alias ls='lsd'
 alias l='ls'
 alias ll='ls -l'
 alias la='ls -a'
-
-bat -V &>/dev/null && alias less='bat'
 
 rip -V &>/dev/null && alias rm='rip'
 

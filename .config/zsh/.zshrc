@@ -1,9 +1,7 @@
 source $HOME/.zshenv
-source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/misc.zsh
-
 
 # History
 setopt HIST_SAVE_NO_DUPS
@@ -34,5 +32,6 @@ bindkey '^p' reverse-menu-complete
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*:default' list-colors \
                             ${(s.:.)LS_COLORS}
+
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 zstyle ':autocomplete:*complete*:*' insert-unambiguous yes

@@ -8,6 +8,8 @@
 !/.config/emacs/**
 
 # Terminals and Shells
+!/.config/shell/
+!/.config/shell/**
 !/.config/alacritty/
 !/.config/alacritty/**
 !/.config/ghostty/

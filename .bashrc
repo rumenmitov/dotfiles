@@ -1,9 +1,8 @@
-source $HOME/.config/bash/colors.sh
-source /home/rumen/.config/bash/aliases.sh
-source /home/rumen/.config/bash/environment.sh
-source /home/rumen/.config/bash/prompt.sh
+source "$HOME/.config/shell/env"
 
-[ -f "/home/rumen/.ghcup/env" ] && . "/home/rumen/.ghcup/env" # ghcup-env
+source $XDG_CONFIG_HOME/bash/colors.sh
+source $XDG_CONFIG_HOME/bash/prompt.sh
+
 export PATH=$PATH:$(pwd)/goa/bin
 alias gdb=$HOME/Coding/phantomuserland/gdb-13.1/gdb/gdb
 
