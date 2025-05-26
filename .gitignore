@@ -53,3 +53,5 @@
 
 # Misc
 !/.config/librewolf/prefs.js
+!/.config/nix/
+!/.config/nix/**
