@@ -61,7 +61,7 @@ _iconConfig = IconConfig
   where
       _icons :: XMonad.Query [String]
       _icons = composeAll
-        [ className =? "zen-beta"                 --> appIcon "\983609"
+        [ className =? "zen"                 --> appIcon "\983609"
         , className =? "firefox"                  --> appIcon "\983609"
         , className =? "st-256color"              --> appIcon "\60362"
         , className =? "Emacs"                    --> appIcon "\58930"
@@ -165,7 +165,7 @@ _keybinds =
     -- Applications
     [ ("M-x", visualSubmap _helpWinConfig . Map.fromList $
         [ ((0, xK_Return)  , subName "Emacs"                $ spawn "emacsclient -c")
-        , ((0, xK_b)       , subName "Browser"              $ spawn "flatpak run io.github.zen_browser.zen")
+        , ((0, xK_b)       , subName "Browser"              $ spawn "zen")
         , ((0, xK_f)       , subName "File Manager"         $ namedScratchpadAction _scratchpads "file-manager")
         , ((0, xK_m)       , subName "Music"                $ spawn "flatpak run com.github.KRTirtho.Spotube")
         , ((0, xK_x)       , subName "Application Launcher" $ runOrRaisePrompt _promptConfig)
