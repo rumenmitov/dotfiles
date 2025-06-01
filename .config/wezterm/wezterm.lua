@@ -10,7 +10,7 @@ config = {
     'JetBrains Mono',
   },
 
-  color_scheme = 'Abernathy',
+  color_scheme = 'Argonaut (Gogh)',
 
   colors = {
     background = "rgba(0, 0, 0, 0.5)"

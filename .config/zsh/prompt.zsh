@@ -1,6 +1,6 @@
 function host_prompt() {
     if [[ $(git status 2>/dev/null) != "" ]]; then
-        echo " %F{202}%f %F{green}$(git_prompt)%f"
+        echo " %F{202}%f %F{82}$(git_prompt)%f"
     else 
         echo "%F{45}$(nix_shell)%m%f"
     fi
@@ -9,7 +9,7 @@ function host_prompt() {
 function git_prompt() {
     if [[ $(git status 2>/dev/null) != "" ]]; then
         echo -e "$(git branch --show-current)" \
-            "%F{white}$(git_others_files) $(git_modified_files) $(git_deleted_files)%f"
+            "%F{231}$(git_others_files) $(git_modified_files) $(git_deleted_files)%f"
 
     else
         echo ""
@@ -54,5 +54,5 @@ function nix_shell() {
 }
 
 function precmd() {
-    PS1="%F{white}%n$(host_prompt)%f%F{201}  %~%f%F{green}%f »%F{white}  "
+    PS1="%F{231}%n$(host_prompt)%f%F{201}  %~%f »%F{231}  "
 }
