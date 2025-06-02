@@ -34,7 +34,7 @@ for k, _ in pairs(config) do
     cmd = cmd .. k .. "\\n"
 end
 
-cmd = cmd:sub(1, -3) .. "' | dmenu -p '🖥️'"
+cmd = cmd:sub(1, -3) .. "' | dmenu -c -p '🖥️'"
 
 res = io.popen(cmd)
 if res == nil then
