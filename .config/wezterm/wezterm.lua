@@ -10,11 +10,10 @@ config = {
     'JetBrains Mono',
   },
 
-  color_scheme = 'Argonaut (Gogh)',
+  color_scheme = 'Horizon Dark (base16)',
+  window_background_opacity = 0.9,
 
-  colors = {
-    background = "rgba(0, 0, 0, 0.5)"
-  },
+  default_cursor_style = "BlinkingBar",
 
   window_padding = {
     left = 5,
