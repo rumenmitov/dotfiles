@@ -31,6 +31,10 @@
 # Window Managers and Utils
 !/.config/hypr/
 !/.config/hypr/**
+!/.config/xmonad/
+!/.config/xmonad/**
+!/.config/xmobar/
+!/.config/xmobar/**
 !/.config/picom/
 !/.config/picom/**
 !/.config/dunst/
