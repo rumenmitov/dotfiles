@@ -1,14 +1,20 @@
 [Default Applications]
 application/pdf=okularApplication_pdf.desktop
 image/png=org.gnome.eog.desktop
-x-scheme-handler/http=io.github.zen_browser.zen
-x-scheme-handler/https=io.github.zen_browser.zen
-text/html=io.github.zen_browser.zen.desktop
+x-scheme-handler/http=zen.desktop
+x-scheme-handler/https=zen.desktop
+text/html=zen.desktop
 application/pgp-encrypted=org.gnome.Papers.desktop
 text/org=emacsclient.desktop
 application/x-zerosize=com.github.flxzt.rnote.desktop
 text/plain=nvim.desktop
-application/xhtml+xml=app.zen_browser.zen.desktop
+application/xhtml+xml=zen.desktop
+x-scheme-handler/chrome=zen.desktop
+application/x-extension-htm=zen.desktop
+application/x-extension-html=zen.desktop
+application/x-extension-shtml=zen.desktop
+application/x-extension-xhtml=zen.desktop
+application/x-extension-xht=zen.desktop
 
 [Added Associations]
 application/pdf=app.zen_browser.zen.desktop;chromium.desktop;org.gnome.Papers.desktop;okularApplication_pdf.desktop;
@@ -18,4 +24,13 @@ application/pgp-encrypted=org.gnome.Papers.desktop;
 text/org=emacsclient.desktop;
 application/x-zerosize=com.github.flxzt.rnote.desktop;
 image/jpeg=org.gnome.eog.desktop;
-application/xhtml+xml=firefox.desktop;app.zen_browser.zen.desktop;
+application/xhtml+xml=firefox.desktop;app.zen_browser.zen.desktop;zen.desktop;
+x-scheme-handler/http=zen.desktop;
+x-scheme-handler/https=zen.desktop;
+x-scheme-handler/chrome=zen.desktop;
+text/html=zen.desktop;
+application/x-extension-htm=zen.desktop;
+application/x-extension-html=zen.desktop;
+application/x-extension-shtml=zen.desktop;
+application/x-extension-xhtml=zen.desktop;
+application/x-extension-xht=zen.desktop;

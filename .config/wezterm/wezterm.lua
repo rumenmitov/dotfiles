@@ -2,6 +2,8 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config = {
+  enable_wayland = true,
+
   font_size = 20,
   font = wezterm.font_with_fallback {
     'Fira Code',

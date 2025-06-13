@@ -1,8 +1,17 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-cat ~/.local/share/emojis/emojis.csv                                 \
-    | dmenu -p "Emoji:"                                           \
-    | awk '{print $1}'                                               \
-    | tr -d "\\n\\r\\t"                                              \
+emojifile=$HOME/.local/share/emojis/emojis.csv 
+
+if $(wl-copy -v &>/dev/null); then
+cat  $emojifile                       \
+  | rofi -i -dmenu                    \
+  | awk '{print $1}'                  \
+  | tr -d "\n"                        \
+  | wl-copy
+else
+  cat $emojifile                                                        \
+    | dmenu -p "Emoji:"                                                 \
+    | awk '{print $1}'                                                  \
+    | tr -d "\\n\\r\\t"                                                 \
     | xclip -selection c
-    #-i -l 4 -sb \#000000 -sf \#d000ff -fn 'xft:CaskaydiaCove Nerd Font:pixelsize=24:antialias=true:autohint=true'   \
+fi
