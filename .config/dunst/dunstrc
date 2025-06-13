@@ -2,7 +2,7 @@
     follow = mouse
 
     width = 300
-    height = 300
+    height = (0,300)
 
     origin = top-center
 
@@ -61,7 +61,7 @@
 
 
 [urgency_low]
-    background = "#00ff0054"
+    background = "#00000054"
     foreground = "#00ff00ed"
     frame_color = "#00ff00"    
     timeout = 10
@@ -73,7 +73,7 @@
     override_pause_level = 30
 
 [urgency_critical]
-    background = "#ff000054"
+    background = "#00000054"
     foreground = "#ff0000ed"
     frame_color = "#ff0000"
     timeout = 0
