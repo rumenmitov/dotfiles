@@ -19,6 +19,7 @@
 !/.config/tmux/**
 !/.config/zellij/
 !/.config/zellij/**
+!/.zshenv
 !/.config/zsh/
 !/.config/zsh/**
 !/.config/bash/

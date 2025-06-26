@@ -338,4 +338,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(beacon go-mode haskell-mode nix-mode php-mode rust-mode undo-tree
+            yasnippet-capf yasnippet-snippets yuck-mode)))
