@@ -42,6 +42,7 @@
 !/.config/dunst/**
 !/.config/greenclip.toml
 !/.config/mimeapps.list
+!/.config/systemd/battery.*
 
 # Wallpapers and Scripts
 !/.local/share/wallpapers/
