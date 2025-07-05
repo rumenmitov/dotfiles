@@ -1,0 +1,6 @@
+[Unit]
+Description="Warn user of low battery."
+
+[Service]
+Type=oneshot
+ExecStart=/home/rumen/.local/share/scripts/battery-warning.sh

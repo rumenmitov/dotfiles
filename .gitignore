@@ -44,7 +44,8 @@
 !/.config/greenclip.toml
 !/.config/mimeapps.list
 !/.config/systemd/
-!/.config/systemd/battery.*
+!/.config/systemd/user/
+!/.config/systemd/user/battery.*
 
 # Wallpapers and Scripts
 !/.local/share/wallpapers/
