@@ -1,0 +1,15 @@
+*
+!/.gitignore
+
+!/README.org
+
+!/gdb-window-config
+
+!/assets/
+!/assets/**
+
+!/templates/
+!/templates/**
+
+!/snippets/
+!/snippets/**

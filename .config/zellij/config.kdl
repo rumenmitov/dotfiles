@@ -4,6 +4,7 @@ keybinds clear-defaults=true {
         bind "Ctrl t" { SwitchToMode "tab"; }
     }
     pane {
+        bind "x" { CloseFocus; }
         bind "h" { MoveFocus "left"; }
         bind "j" { MoveFocus "down"; }
         bind "k" { MoveFocus "up"; }
@@ -25,6 +26,7 @@ keybinds clear-defaults=true {
     tab {
         bind "p" { GoToPreviousTab; }
         bind "n" { GoToNextTab; }
+        bind "x" { CloseFocus; }
         bind "1" { GoToTab 1; SwitchToMode "locked"; }
         bind "2" { GoToTab 2; SwitchToMode "locked"; }
         bind "3" { GoToTab 3; SwitchToMode "locked"; }
@@ -52,7 +54,7 @@ keybinds clear-defaults=true {
  
 theme "catppuccin-macchiato"
 styled_underlines true
-pane_frames true
+pane_frames false
 
 ui {
     pane_frames {
@@ -65,7 +67,7 @@ default_shell "zsh"
 mouse_mode true
  
  
-copy_command "xclip -selection clipboard" // x11
+copy_command "wl-clip"
 
 attach_to_session true
  
