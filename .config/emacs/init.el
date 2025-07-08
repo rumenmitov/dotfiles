@@ -20,11 +20,13 @@
 (setq-default mode-line-format nil)
 
 (setq default-frame-alist '(
-                            (font . "Hack Nerd Font Mono 18")
+                            (font . "Hack Nerd Font Mono 12")
                             (vertical-scroll-bars . nil)
                             ))
 
 (global-display-line-numbers-mode 1)
+(set-fringe-mode 0)
+
 (setq display-line-numbers-type 'relative)
 (setq display-line-numbers-current-absolute t)
 
@@ -32,10 +34,8 @@
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ '(line-number ((t (:inherit default :background nil))))
+ '(line-number-current-line ((t (:inherit default :background nil))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(org-block ((t (:inherit shadow :extend t :background "black" :slant italic))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
@@ -152,6 +152,11 @@
 (add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'ispell-minor-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
+(add-hook 'org-mode-hook (lambda ()
+                           (display-line-numbers-mode 0)
+                           (setq left-margin-width 20)
+                           (setq right-margin-width 20)))
+
 
 (setq org-clock-persist t)
 (org-clock-persistence-insinuate)
@@ -333,9 +338,3 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
