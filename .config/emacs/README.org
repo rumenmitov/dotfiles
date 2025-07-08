@@ -9,15 +9,15 @@
 
 * Requirements
 
-- GNU Emacs 29+
+- GNU Emacs 30+
 - GNU Stow
 - Git
 
 * Installation
 
 1. =rm -rf ~/.emacs*=
-2. =git clone https://gitlab.com/rumenmitov/dotfiles ~/dotfiles=
-3. =cd ~/dotfiles && stow .=
+2. =git clone https://gitlab.com/rumenmitov/dotfiles ~/.dotfiles=
+3. =cd ~/.dotfiles && stow .=
 4. Refresh the configuration: =C-c C-c=
 5. Initialize configuration: =C-c C-v t=
 6. Restart Emacs 🐐
@@ -61,7 +61,7 @@ Common directories:
   (setq-default mode-line-format nil)
 
   (setq default-frame-alist '(
-                              (font . "Hack Nerd Font Mono 12")
+                              (font . "FiraCode Nerd Font Mono 12")
                               (vertical-scroll-bars . nil)
                               ))
 

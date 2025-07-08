@@ -20,7 +20,7 @@
 (setq-default mode-line-format nil)
 
 (setq default-frame-alist '(
-                            (font . "Hack Nerd Font Mono 12")
+                            (font . "FiraCode Nerd Font Mono 12")
                             (vertical-scroll-bars . nil)
                             ))
 
