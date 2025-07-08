@@ -12,7 +12,7 @@ setopt CORRECT_ALL
 autoload -z edit-command-line
 zle -N edit-command-line
 
-bindkey -e
+bindkey -v
 bindkey '^x^e' edit-command-line
 
 

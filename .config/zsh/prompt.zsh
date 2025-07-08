@@ -53,6 +53,27 @@ function nix_shell() {
     fi
 }
 
+autoload -U promptinit && promptinit
+setopt PROMPT_SUBST
+
+VIMODE=""
+
+function vi_mode_indicator () {
+  case ${KEYMAP} in
+    (vicmd)      echo "🔒" ;;
+    (main|viins) echo "💬" ;;
+    (*)          ;;
+  esac
+}
+
+function zle-line-init zle-keymap-select() {
+  VIMODE="$(vi_mode_indicator)"
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 function precmd() {
-    PS1="%F{white}%n$(host_prompt)%f%F{magenta}  %~%f »%F{white}  "
+    PS1='%F{white}%n$(host_prompt)%f%F{magenta}  %~%f $VIMODE%F{white}  '
 }
