@@ -2,7 +2,7 @@
 
 wallpapersdir=$HOME/.local/share/wallpapers
 
-if $(swww -V &>/dev/null); then
+if [ -f /bin/mpvpaper ]; then
   type=$( echo -e "Static\nLive" | rofi -dmenu | awk '{print $1}' )
 
   if [ -z "$type" ]; then
@@ -13,7 +13,14 @@ if $(swww -V &>/dev/null); then
 
   wallpaper_path="$wallpapersdir/$type/$wallpaper"
 
-  swww img "$wallpaper_path" 
+
+  if [ -f /bin/swww ] && [ $type == "Static" ]; then
+    swww img -t none $wallpaper_path
+    pkill mpvpaper
+  else 
+    pkill mpvpaper
+    mpvpaper -s -o "no-audio --loop --panscan=1" ALL "$wallpaper_path" 
+  fi
 else
   wallpaper=$( ls "$wallpapersdir/Static/" | dmenu -c -p "🖼️" )
   test -z $wallpaper && exit
