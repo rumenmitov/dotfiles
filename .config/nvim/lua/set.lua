@@ -5,6 +5,7 @@ vim.opt.laststatus  = 2
 vim.opt.splitright  = true
 vim.opt.splitbelow  = true
 vim.opt.winborder   = "rounded"
+vim.opt.fillchars   = { eob = " " }
 
 -- Window Properties
 local focused_area   = 7 / 10 -- desired area that the focused window holds
