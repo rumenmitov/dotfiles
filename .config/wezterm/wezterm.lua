@@ -63,7 +63,7 @@ config = {
     { key = 'v', mods = 'CTRL|SHIFT', action = wezterm.action.PasteFrom("Clipboard") },
     { key = 'v', mods = 'ALT', action = wezterm.action.ScrollByPage(-1) },
     { key = 'v', mods = 'CTRL|ALT', action = wezterm.action.ScrollByPage(1) },
-    { key = 'f', mods = 'CTRL', action = wezterm.action.EmitEvent 'toggle-theme' }
+    { key = 'c', mods = 'ALT', action = wezterm.action.EmitEvent 'toggle-theme' }
   },
 
   mouse_bindings = {
