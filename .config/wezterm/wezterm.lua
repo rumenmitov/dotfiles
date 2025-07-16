@@ -1,6 +1,19 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+local colorschemes = { 'Horizon Dark (base16)',  'rose-pine-dawn' }
+
+wezterm.on('toggle-theme', function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  if not overrides.color_scheme or overrides.color_scheme == colorschemes[2] then
+    overrides.color_scheme = colorschemes[1]
+  else
+    overrides.color_scheme = colorschemes[2]
+  end
+
+  window:set_config_overrides(overrides)
+end)
+
 config = {
   enable_wayland = true,
 
@@ -12,7 +25,7 @@ config = {
     'JetBrains Mono',
   },
 
-  color_scheme = 'Horizon Dark (base16)',
+  color_scheme = colorschemes[1],
   window_background_opacity = 0.9,
 
   default_cursor_style = "BlinkingBar",
@@ -49,7 +62,8 @@ config = {
     { key = 'c', mods = 'CTRL|SHIFT', action = wezterm.action.CopyTo("Clipboard") },
     { key = 'v', mods = 'CTRL|SHIFT', action = wezterm.action.PasteFrom("Clipboard") },
     { key = 'v', mods = 'ALT', action = wezterm.action.ScrollByPage(-1) },
-    { key = 'v', mods = 'CTRL|ALT', action = wezterm.action.ScrollByPage(1) }
+    { key = 'v', mods = 'CTRL|ALT', action = wezterm.action.ScrollByPage(1) },
+    { key = 'f', mods = 'CTRL', action = wezterm.action.EmitEvent 'toggle-theme' }
   },
 
   mouse_bindings = {
