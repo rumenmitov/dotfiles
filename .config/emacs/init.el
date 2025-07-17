@@ -279,9 +279,23 @@
 (setq newsticker-url-list '(
                               ("HackerNews" "https://hnrss.org/frontpage" nil nil nil)
                               ("Suckless" "https://suckless.org/atom.xml" nil nil nil)                                
+                              ("Guardian - Europe" "https://www.theguardian.com/europe/rss" nil nil nil)
+                              ("The Atlantic" "https://www.theatlantic.com/feed/all/" nil nil nil)
+                              ("The Verge" "https://theverge.com/rss/index.xml" nil nil nil)
+                              ("EndGadget" "https://engadget.com/rss.xml" nil nil nil)
+                              ("AlternativeTo" "https://feed.alternativeto.net/news/all" nil nil nil)
                               ("Guardian - Tech" "https://www.theguardian.com/uk/technology/rss" nil nil nil)))
 
+(setq newsticker-groups '(
+                          "News"
+                          ("World News" "Guardian - Europe" "The Atlantic")
+                          ("Tech News" "The Verge" "EndGadget" "AlternativeTo" "Guardian - Tech")
+                          ("Mailing Lists" "HackerNews" "Suckless")))
+
+
 (add-hook 'newsticker-mode-hook 'imenu-add-menubar-index)
+(add-hook 'newsticker-treeview-mode-hook (lambda ()
+                                           (setq-local browse-url-browser-function 'eww-browse-url)))
 
 (setq visible-bell 1)
 (setq use-short-answers t)
