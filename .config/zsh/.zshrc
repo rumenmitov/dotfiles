@@ -13,6 +13,7 @@ autoload -z edit-command-line
 zle -N edit-command-line
 
 bindkey -v
+KEYTIMEOUT=1
 bindkey '^x^e' edit-command-line
 
 
