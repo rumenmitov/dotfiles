@@ -19,9 +19,9 @@ config = {
 
   font_size = 12,
   font = wezterm.font_with_fallback {
-    'Fira Code',
+    'FiraCode Nerd Font',
+    'CaskaydiaCove Nerd Font Propo',
     'Noto Color Emoji',
-    'CaskaydiaCove',
     'JetBrains Mono',
   },
 
