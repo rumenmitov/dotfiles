@@ -61,6 +61,10 @@
 (setq viper-mode t)
 (require 'viper)
 
+(define-key viper-vi-global-user-map (kbd "C-h") 'help)
+(define-key viper-vi-global-user-map (kbd "v") 'set-mark-command)
+(define-key viper-vi-global-user-map (kbd "x") 'delete-forward-char)
+
 (which-key-mode 1)
 
 (recentf-mode 1)
@@ -203,8 +207,10 @@
 
 (setq org-agenda-files (list
                         (concat org-directory "/agenda/")
-                        "~/Nextcloud/university/semester_4/software-engineering/"
-			"~/Nextcloud/rasdaman/"))
+                        "~/Nextcloud/phantomOS/org/phantomos.org"))
+
+(setq org-refile-targets '((org-agenda-files . (:maxlevel . 1))))
+(advice-add 'org-refile :after 'org-save-all-org-buffers)
 
 (setq org-default-notes-file (concat org-directory "/agenda/notes.org"))
 (setq diary-file (concat org-directory "/agenda/diary"))
@@ -220,7 +226,10 @@
 (setq org-agenda-custom-commands
       `(("p" "Programming"
          ((todo "TODO"))
-         ((org-agenda-files (list ,(concat org-directory "/agenda/programming.org")))))))
+         ((org-agenda-files (list ,(concat org-directory "/agenda/programming.org")))))
+        ("w" "Work"
+         ((todo "TODO"))
+         ((org-agenda-files (list "~/Nextcloud/phantomOS/org/phantomos.org"))))))
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
