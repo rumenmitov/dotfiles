@@ -58,14 +58,6 @@
 (setopt display-buffer-alist
         '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
 
-(setopt viper-expert-level 5)
-(setopt viper-mode t)
-(require 'viper)
-
-(define-key viper-vi-global-user-map (kbd "C-h") 'help)
-(define-key viper-vi-global-user-map (kbd "v") 'set-mark-command)
-(define-key viper-vi-global-user-map (kbd "x") 'delete-forward-char)
-
 (which-key-mode 1)
 
 (recentf-mode 1)
@@ -348,6 +340,9 @@
 
 (require 'use-package-ensure)
 (setopt use-package-always-ensure t)
+
+(use-package evil)
+(evil-mode 1)
 
 (use-package beacon)
 (beacon-mode 1)
