@@ -325,30 +325,53 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
   (global-set-key (kbd "C-c a") 'org-agenda)
 
   (setopt org-agenda-files (list
-                          (concat org-directory "/agenda/")
-                          "~/Nextcloud/phantomOS/org/phantomos.org"))
+                            (concat org-directory "/agenda/")
+                            "~/Nextcloud/phantomOS/org/phantomos.org"))
 
   (setopt org-refile-targets '((org-agenda-files . (:maxlevel . 1))))
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
 
-  (setopt org-default-notes-file (concat org-directory "/agenda/notes.org"))
-  (setopt diary-file (concat org-directory "/agenda/diary"))
-  (setopt org-archive-location (concat org-directory "/archive/%s_archive::datetree/"))
+  (setopt org-default-notes-file (concat org-directory "/agenda/notes.org")
+  				diary-file (concat org-directory "/agenda/diary")
+  				org-archive-location (concat org-directory "/archive/%s_archive::datetree/"))
 
-  (setopt org-agenda-include-diary t)
-  (setopt calendar-date-style 'european)
+  (setopt org-agenda-include-diary t
+          calendar-date-style 'european)
+
+  (setopt org-todo-keywords
+          '((sequence "TODO(t)" "|" "DONE(d)")
+            (sequence "|" "AXED(a)")))
+
+  (setopt org-stuck-projects
+          '("+LEVEL=2/-DONE-AXED" ("TODO" "NEXT" "NEXTACTION") nil ""))
+
+  (setopt org-enforce-todo-dependencies t
+          org-enforce-todo-checkbox-dependencies t)
 
   (setopt org-tag-persistent-alist '((:startgroup . nil)
-                                   ("@work" . ?W) ("@home" . ?H)
-                                   (:endgroup . nil)))
+                                     ("@work" . ?W) ("@home" . ?H)
+                                     (:endgroup . nil)))
 
   (setopt org-agenda-custom-commands
-        `(("p" "Programming"
-           ((todo "TODO"))
-           ((org-agenda-files (list ,(concat org-directory "/agenda/programming.org")))))
-          ("w" "Work"
-           ((todo "TODO"))
-           ((org-agenda-files (list "~/Nextcloud/phantomOS/org/phantomos.org"))))))
+          `(("p" "Programming"
+             ((todo "TODO"))
+             ((org-agenda-files (list ,(concat org-directory "/agenda/programming.org")))))
+            ("h" "Home"
+             ((tags "@home /+TODO"
+                    ((org-agenda-overriding-header "Home Tasks")))
+              (tags "@home /+DONE"
+                    ((org-agenda-overriding-header "Completed")
+                     (org-agenda-max-entries 3)))
+              (tags "@home /+AXED"
+                    ((org-agenda-overriding-header "Cancelled")))))
+            ("w" "Work"
+             ((tags "@work /+TODO"
+                    ((org-agenda-overriding-header "Work Tasks")))
+              (tags "@work /+DONE"
+                    ((org-agenda-overriding-header "Completed")
+                     (org-agenda-max-entries 3)))
+              (tags "@work /+AXED"
+                    ((org-agenda-overriding-header "Cancelled")))))))
   #+end_src
 
 ** Templates
