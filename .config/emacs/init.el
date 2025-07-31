@@ -147,7 +147,8 @@
 
 (appt-activate 1)
 
-(setopt org-startup-with-inline-images t)
+(setopt org-startup-with-inline-images t
+        org-tags-column 90)
 
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'diary-list-entries-hook 'diary-sort-entries t)

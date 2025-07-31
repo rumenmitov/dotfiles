@@ -243,36 +243,37 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 ** Organization
 
 #+begin_src emacs-lisp 
-  (appt-activate 1)
+    (appt-activate 1)
 
-  (setopt org-startup-with-inline-images t)
+    (setopt org-startup-with-inline-images t
+            org-tags-column 90)
 
-  (add-hook 'org-mode-hook 'org-indent-mode)
-  (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
-  (add-hook 'org-mode-hook 'visual-line-mode)
-  (add-hook 'org-mode-hook 'ispell-minor-mode)
-  (add-hook 'org-mode-hook 'flyspell-mode)
-  (add-hook 'org-mode-hook (lambda ()
-                             (display-line-numbers-mode 0)
-                             (setq-local left-margin-width 20)
-                             (setq-local right-margin-width 20)))
+    (add-hook 'org-mode-hook 'org-indent-mode)
+    (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
+    (add-hook 'org-mode-hook 'visual-line-mode)
+    (add-hook 'org-mode-hook 'ispell-minor-mode)
+    (add-hook 'org-mode-hook 'flyspell-mode)
+    (add-hook 'org-mode-hook (lambda ()
+                               (display-line-numbers-mode 0)
+                               (setq-local left-margin-width 20)
+                               (setq-local right-margin-width 20)))
 
 
-  (setopt org-clock-persist t)
-  (org-clock-persistence-insinuate)
+    (setopt org-clock-persist t)
+    (org-clock-persistence-insinuate)
 
-  (setopt org-clock-sound (concat emacs-directory "/assets/org-clock-sound.wav"))
+    (setopt org-clock-sound (concat emacs-directory "/assets/org-clock-sound.wav"))
 
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((shell . t)
-     (python . t)
-     (C .t)
-     (plantuml .t)
-     (haskell .t)
-     (js .t)))
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((shell . t)
+       (python . t)
+       (C .t)
+       (plantuml .t)
+       (haskell .t)
+       (js .t)))
 
-  (setopt org-plantuml-exec-mode 'plantuml)
+    (setopt org-plantuml-exec-mode 'plantuml)
 #+end_src
 
 *** Pretty Symbols
