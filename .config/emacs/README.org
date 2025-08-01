@@ -99,6 +99,7 @@ There should be only *one* definition to =custom-set-faces=! This is best manage
 ** Windows
 
 Be careful when using escape characters (single backslash would just escape the string).
+
 #+begin_src emacs-lisp 
   (winner-mode 1)
   (global-set-key (kbd "C-<") 'winner-undo)
@@ -112,6 +113,39 @@ Be careful when using escape characters (single backslash would just escape the 
 
   (setopt display-buffer-alist
           '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
+#+end_src
+
+*** Auto-Magic Resizing
+
+This will make the selected window larger. The minimum height and width are set to make sure windows do not get too small. 
+
+
+#+begin_src emacs-lisp
+  (setopt window-min-height 10)
+  (setopt window-min-width 10)
+
+  ;; The desired ratio of the focused window's size.
+  (setopt auto-resize-ratio 0.7)
+
+  (defun win/auto-resize ()
+    (let* (
+           (height (floor (* auto-resize-ratio (frame-height))))
+           (width (floor (* auto-resize-ratio (frame-width))))
+           ;; INFO We need to calculate by how much we should enlarge
+           ;; focused window because Emacs does not allow setting the
+           ;; window dimensions directly.
+           (h-diff (max 0 (- height (window-height))))
+           (w-diff (max 0 (- width (window-width)))))
+      (enlarge-window h-diff)
+      (enlarge-window w-diff t)))
+
+  (advice-add 'other-window :after (lambda (&rest args)
+                                     (win/auto-resize)))
+
+  (advice-add 'windmove-up    :after 'win/auto-resize)
+  (advice-add 'windmove-down  :after 'win/auto-resize)
+  (advice-add 'windmove-right :after 'win/auto-resize)
+  (advice-add 'windmove-left  :after 'win/auto-resize)
 #+end_src
 
 ** Keys
