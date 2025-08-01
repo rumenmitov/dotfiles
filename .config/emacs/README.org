@@ -146,6 +146,12 @@ This will make the selected window larger. The minimum height and width are set 
   (advice-add 'windmove-down  :after 'win/auto-resize)
   (advice-add 'windmove-right :after 'win/auto-resize)
   (advice-add 'windmove-left  :after 'win/auto-resize)
+
+  (advice-add 'split-window-below :after (lambda (&rest args)
+                                           (win/auto-resize)))
+
+  (advice-add 'split-window-right :after (lambda (&rest args)
+                                           (win/auto-resize)))
 #+end_src
 
 ** Keys

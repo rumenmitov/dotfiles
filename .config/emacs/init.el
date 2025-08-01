@@ -84,6 +84,12 @@
 (advice-add 'windmove-right :after 'win/auto-resize)
 (advice-add 'windmove-left  :after 'win/auto-resize)
 
+(advice-add 'split-window-below :after (lambda (&rest args)
+                                         (win/auto-resize)))
+
+(advice-add 'split-window-right :after (lambda (&rest args)
+                                         (win/auto-resize)))
+
 (which-key-mode 1)
 
 (recentf-mode 1)
