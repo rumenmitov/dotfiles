@@ -190,18 +190,22 @@ Preview files and directories when using =find-file=.
   (defun preview/preview-file (file)
     "Open the preview for the current minibuffer selection."
     (preview/clean)
-    (if (not (get-buffer file))
-        (progn
-          (find-file-read-only file)
-          (display-buffer file '(display-buffer-full-frame . ((inhibit-same-window . nil))))
-          (rename-buffer (concat file  " - preview")))
-      (display-buffer file '(display-buffer-full-frame . ((inhibit-same-window . nil)))))
+    (let* ((basename (ff-basename file)))
+      (if (not (get-buffer basename))
+          (progn
+            (find-file-read-only file)
+            (display-buffer basename '(display-buffer-full-frame . ((inhibit-same-window . nil))))
+            (rename-buffer (concat basename  " - preview")))
+        (display-buffer basename '(display-buffer-full-frame . ((inhibit-same-window . nil))))))
     (switch-to-minibuffer))
 
   (defun preview/attach-preview(&rest args)
     "Makes sure that the filename exists and is clean (i.e. remove trailing slash from directories)."
-    (let* ((file (nth 0 (completion-all-sorted-completions (icomplete--field-beg) (icomplete--field-end))))
-           (clean-file (directory-file-name file)))
+    (let*
+        ((file (nth 0 (completion-all-sorted-completions (icomplete--field-beg) (icomplete--field-end))))
+         (file-dir (file-name-directory (minibuffer-contents)))
+         (dir (if (equal file-dir file) "" file-dir))
+         (clean-file (directory-file-name (concat dir file))))
       (when (file-exists-p file)
         (preview/preview-file clean-file))))
 
