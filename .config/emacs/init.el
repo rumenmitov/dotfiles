@@ -35,7 +35,18 @@
         window-divider-default-right-width 3
         window-divider-default-bottom-width 1)
 
+(setopt modus-themes-to-toggle '(modus-operandi-tinted modus-vivendi-tinted))
+
 (load-theme 'modus-vivendi-tinted 1)
+
+(setopt modus-themes-bold-constructs t
+        modus-themes-italic-constructs t
+        modus-themes-disable-other-themes t
+        modus-themes-custom-auto-reload t)
+
+(setopt modus-themes-common-palette-overrides
+        modus-themes-preset-overrides-intense)
+
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (custom-set-faces
