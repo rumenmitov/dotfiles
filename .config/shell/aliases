@@ -1,7 +1,9 @@
 #!/bin/sh
 
 alias nv='nvim'
-alias vim='SERVER=1 nvim'
+alias vim='nvim'
+alias e='emacsclient -nw -r'
+
 
 lsd -V &>/dev/null && alias ls='lsd'
 alias l='ls'
