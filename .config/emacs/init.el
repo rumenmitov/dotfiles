@@ -97,6 +97,36 @@
 (setopt recentf-max-saved-items 10)
 (save-place-mode 1)
 
+(setopt vc-follow-symlinks t)
+
+(defun preview/clean ()
+  "Cleanup preview buffers."
+  (kill-matching-buffers-no-ask ".* - preview"))
+
+(defun preview/preview-file (file)
+  "Open the preview for the current minibuffer selection."
+  (preview/clean)
+  (if (not (get-buffer file))
+      (progn
+        (find-file-read-only file)
+        (display-buffer file '(display-buffer-full-frame . ((inhibit-same-window . nil))))
+        (rename-buffer (concat file  " - preview")))
+    (display-buffer file '(display-buffer-full-frame . ((inhibit-same-window . nil)))))
+  (switch-to-minibuffer))
+
+(defun preview/attach-preview(&rest args)
+  "Makes sure that the filename exists and is clean (i.e. remove trailing slash from directories)."
+  (let* ((file (nth 0 (completion-all-sorted-completions (icomplete--field-beg) (icomplete--field-end))))
+         (clean-file (directory-file-name file)))
+    (when (file-exists-p file)
+      (preview/preview-file clean-file))))
+
+
+(advice-add 'icomplete-forward-completions :after 'preview/attach-preview)
+(advice-add 'icomplete-backward-completions :after 'preview/attach-preview)
+
+(add-hook 'minibuffer-exit-hook 'preview/clean)
+
 (icomplete-vertical-mode t)
 (fido-vertical-mode t)
 (global-completion-preview-mode t)
