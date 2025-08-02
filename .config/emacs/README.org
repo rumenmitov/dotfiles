@@ -61,15 +61,20 @@ Common directories:
   (setq-default mode-line-format nil)
 
   (setopt default-frame-alist '(
-                              (font . "FiraCode Nerd Font Mono 12")
-                              (vertical-scroll-bars . nil)
-                              ))
+                                (font . "FiraCode Nerd Font Mono 12")
+                                (vertical-scroll-bars . nil)
+                                ))
 
   (global-display-line-numbers-mode 1)
   (set-fringe-mode 0)
 
-  (setopt display-line-numbers-type 'relative)
-  (setopt display-line-numbers-current-absolute t)
+  (window-divider-mode t)
+
+  (setopt display-line-numbers-type 'relative
+          display-line-numbers-current-absolute t
+          window-divider-default-places t
+          window-divider-default-right-width 3
+          window-divider-default-bottom-width 1)
 #+end_src
 
 *** Theme
@@ -88,10 +93,10 @@ There should be only *one* definition to =custom-set-faces=! This is best manage
    '(line-number ((t (:inherit default :background nil))))
    '(line-number-current-line ((t (:inherit default :background nil))))
    '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
-   '(org-block ((t (:inherit shadow :extend t :background "black" :slant italic))))
+   '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic))))
    '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
    '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
-   '(org-code ((t (:inherit shadow :extend t :background "black"))))
+   '(org-code ((t (:inherit shadow :extend t :background "black" :foreground "white"))))
    '(org-inline-src-block ((t (:inherit nil))))
    '(org-meta-line ((t (:inherit font-lock-comment-face :foreground "white smoke")))))
 #+end_src
@@ -122,7 +127,7 @@ This will make the selected window larger. The minimum height and width are set 
 
 #+begin_src emacs-lisp
   (setopt window-min-height 10)
-  (setopt window-min-width 10)
+  (setopt window-min-width 30)
 
   ;; The desired ratio of the focused window's size.
   (setopt auto-resize-ratio 0.7)
