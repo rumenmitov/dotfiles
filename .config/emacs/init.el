@@ -188,8 +188,10 @@
 
 (global-set-key (kbd "C-x g.") 'flymake-goto-next-error)
 (global-set-key (kbd "C-x g,") 'flymake-goto-prev-error)
-(global-set-key (kbd "C-x gf") 'eglot-format)
-(global-set-key (kbd "C-x gr") 'eglot-rename)
+(global-set-key (kbd "C-x gd") 'xref-find-definitions)
+(global-set-key (kbd "C-x grr") 'xref-find-references)
+(global-set-key (kbd "C-x gff") 'eglot-format)
+(global-set-key (kbd "C-x grn") 'eglot-rename)
 (global-set-key (kbd "C-x ga") 'eglot-code-actions)
 
 (add-hook 'prog-mode-hook 'auto-fill-mode)
@@ -338,6 +340,8 @@
             (tags "@work /+AXED"
                   ((org-agenda-overriding-header "Cancelled")))))))
 
+(add-hook 'ses-mode-hook (lambda () (display-line-numbers-mode 0)))
+
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setopt org-capture-templates
@@ -424,7 +428,13 @@
 (require 'use-package-ensure)
 (setopt use-package-always-ensure t)
 
-(use-package evil)
+(use-package evil
+  :ensure t
+  :config
+  (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
+  (evil-set-initial-state 'newsticker-mode 'emacs)
+  (evil-set-initial-state 'ses-mode 'emacs))
+
 (evil-mode 1)
 
 (use-package beacon)
