@@ -187,7 +187,6 @@ This will make the selected window larger. The minimum height and width are set 
   (save-place-mode 1)
 #+end_src
 
-
 ** Preview Files
 
 Preview files and directories when using =find-file=.
@@ -581,6 +580,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
   (use-package evil
     :ensure t
     :config
+    (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
     (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
     (evil-set-initial-state 'newsticker-mode 'emacs)
     (evil-set-initial-state 'ses-mode 'emacs))
