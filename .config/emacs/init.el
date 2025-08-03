@@ -138,7 +138,7 @@
        (file-dir (file-name-directory (minibuffer-contents)))
        (dir (if (equal file-dir file) "" file-dir))
        (clean-file (directory-file-name (concat dir file))))
-    (when (file-exists-p file)
+    (when (file-exists-p clean-file)
       (preview/preview-file clean-file))))
 
 
