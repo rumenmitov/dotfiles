@@ -50,16 +50,20 @@
 (add-to-list 'default-frame-alist '(alpha-background . 80))
 
 (custom-set-faces
- '(viper-minibuffer-insert ((t nil)))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(line-number ((t (:inherit default :background nil))))
  '(line-number-current-line ((t (:inherit default :background nil))))
- '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
  '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
  '(org-code ((t (:inherit shadow :extend t :background "black" :foreground "white"))))
  '(org-inline-src-block ((t (:inherit nil))))
- '(org-meta-line ((t (:inherit font-lock-comment-face :foreground "white smoke")))))
+ '(org-meta-line ((t (:inherit font-lock-comment-face :foreground "white smoke"))))
+ '(viper-minibuffer-insert ((t nil))))
 
 (winner-mode 1)
 (global-set-key (kbd "C-<") 'winner-undo)
@@ -319,6 +323,10 @@
                                    ("@work" . ?W) ("@home" . ?H)
                                    (:endgroup . nil)))
 
+(setopt org-log-into-drawer t)
+
+(add-to-list 'org-modules 'org-habit)
+
 (setopt org-agenda-custom-commands
         `(("p" "Programming"
            ((todo "TODO"))
@@ -459,3 +467,9 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values '((org-archive-location . "::* Archived"))))

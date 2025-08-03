@@ -441,6 +441,10 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
                                      ("@work" . ?W) ("@home" . ?H)
                                      (:endgroup . nil)))
 
+  (setopt org-log-into-drawer t)
+
+  (add-to-list 'org-modules 'org-habit)
+
   (setopt org-agenda-custom-commands
           `(("p" "Programming"
              ((todo "TODO"))
