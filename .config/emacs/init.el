@@ -35,9 +35,9 @@
         window-divider-default-right-width 3
         window-divider-default-bottom-width 1)
 
-(setopt modus-themes-to-toggle '(modus-operandi-tinted modus-vivendi-tinted))
+(setopt modus-themes-to-toggle '(modus-operandi-tinted modus-vivendi))
 
-(load-theme 'modus-vivendi-tinted 1)
+(load-theme 'modus-vivendi 1)
 
 (setopt modus-themes-bold-constructs t
         modus-themes-italic-constructs t
@@ -355,7 +355,7 @@
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(setopt org-capture-templates
+(setq-default org-capture-templates
         `(("t"
            "Todo"
            entry
