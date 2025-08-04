@@ -322,6 +322,13 @@
 (setopt org-log-into-drawer t)
 
 (add-to-list 'org-modules 'org-habit)
+(add-to-list 'org-modules 'org-crypt)
+(add-to-list 'org-modules 'org-ctags)
+(add-to-list 'org-modules 'org-mouse)
+
+(add-to-list 'org-export-backends 'beamer)
+(add-to-list 'org-export-backends 'man)
+(add-to-list 'org-export-backends 'md)
 
 (setopt org-agenda-custom-commands
         `(("p" "Programming"
@@ -435,7 +442,7 @@
 (use-package evil
   :ensure t
   :config
-  (evil-define-key 'normal org-mode-map "TAB" 'org-cycle)
+  (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
   (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
   (evil-set-initial-state 'newsticker-mode 'emacs)
   (evil-set-initial-state 'ses-mode 'emacs))
