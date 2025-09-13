@@ -33,6 +33,8 @@
 # Window Managers and Utils
 !/.config/hypr/
 !/.config/hypr/**
+!/.config/waybar/
+!/.config/waybar/**
 !/.config/xmonad/
 !/.config/xmonad/**
 !/.config/xmobar/
