@@ -119,10 +119,17 @@
   "Cleanup preview buffers."
   (kill-matching-buffers-no-ask ".* - preview"))
 
+(defun preview/get-basename (file)
+  "Get the parent directory if the basename is `.' or `..'. Otherwise return normal basename."
+  (let* ((basename (file-name-nondirectory (directory-file-name file))))
+    (if (or (string= basename ".") (string= basename ".."))
+        (preview/get-basename (file-name-directory file))
+      basename)))
+
 (defun preview/preview-file (file)
   "Open the preview for the current minibuffer selection."
   (preview/clean)
-  (let* ((basename (ff-basename file)))
+  (let* ((basename (preview/get-basename file)))
     (if (not (get-buffer basename))
         (progn
           (find-file-read-only file)
@@ -138,7 +145,7 @@
        (file-dir (file-name-directory (minibuffer-contents)))
        (dir (if (equal file-dir file) "" file-dir))
        (clean-file (directory-file-name (concat dir file))))
-    (when (file-exists-p clean-file)
+    (when (and (file-exists-p clean-file) (file-readable-p clean-file))
       (preview/preview-file clean-file))))
 
 
