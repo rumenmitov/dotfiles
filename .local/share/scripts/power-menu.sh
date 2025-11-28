@@ -1,4 +1,6 @@
-if $(hyprctl version &>/dev/null); then
+#!/usr/bin/env bash
+
+if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
   op=$( echo -e " poweroff\n reboot\n suspend\n lock\n logout"    \
     | rofi -dmenu                                                      \
     | awk '{print tolower($2)}' )
@@ -18,7 +20,7 @@ if $(hyprctl version &>/dev/null); then
         exec hyprlock
       ;;
     logout)
-      hyprctl dispatch exit
+      hyprctl dispatch exit || pkill dwl
       ;;
   esac
 else
