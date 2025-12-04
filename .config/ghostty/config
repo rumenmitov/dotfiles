@@ -2,16 +2,22 @@
 # Rumen's  Ghostty Config #
 ###########################
 
-theme = Earthsong
+quit-after-last-window-closed = false
+gtk-single-instance = true
+
+theme = Dracula
+# theme = Iceberg Light
 
 font-family = "FiraCode Nerd Font Mono"
-font-size = 18
+font-size = 12
 background-opacity = 0.9
 
 gtk-titlebar = false
 confirm-close-surface = false
 
 shell-integration = zsh
+
+copy-on-select = clipboard
 
 keybind = ctrl+shift+,=unbind
 keybind = alt+r=reload_config
