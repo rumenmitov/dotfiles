@@ -6,20 +6,20 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export TERM=screen-256color
 export MANPAGER="less -R --use-color -Dd+m -Du+c -DP+w"
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="/usr/bin/nvim"
+export VISUAL="/usr/bin/nvim"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 eval $(dircolors "$XDG_CONFIG_HOME/shell/colors")
 . "$XDG_CONFIG_HOME/shell/aliases"
 
-export GTK_THEME=Graphite-Dark
+export GTK_THEME=WhiteSur-Dark
 export XCURSOR_THEME=macOS
 export XCURSOR_SIZE=24
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_STYLE_OVERRIDE=kvantum
 
-test $XDG_SESSION_TYPE = "x11" && setxkbmap -v &>/dev/null && setxkbmap -option caps:escape
+[ "$XDG_SESSION_TYPE" = "x11" ] && setxkbmap -v &>/dev/null && setxkbmap -option caps:escape
 
 export PATH="$HOME/.local/bin:$PATH"
 
