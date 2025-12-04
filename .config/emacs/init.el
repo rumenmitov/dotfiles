@@ -35,31 +35,31 @@
         window-divider-default-right-width 3
         window-divider-default-bottom-width 1)
 
-(setopt modus-themes-to-toggle '(modus-operandi-tinted modus-vivendi))
-
-(load-theme 'modus-vivendi 1)
+(load-theme 'leuven-dark 1)
 
 (setopt modus-themes-bold-constructs t
         modus-themes-italic-constructs t
         modus-themes-disable-other-themes t
         modus-themes-custom-auto-reload t)
 
-(setopt modus-themes-common-palette-overrides
-        modus-themes-preset-overrides-intense)
-
-(add-to-list 'default-frame-alist '(alpha-background . 80))
+(add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
- '(viper-minibuffer-insert ((t nil)))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(line-number ((t (:inherit default :background nil))))
  '(line-number-current-line ((t (:inherit default :background nil))))
- '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
+ '(minibuffer-prompt ((t (:background "#00000000" :foreground "#ffffff" :weight bold))))
  '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
  '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
  '(org-code ((t (:inherit shadow :extend t :background "black" :foreground "white"))))
  '(org-inline-src-block ((t (:inherit nil))))
- '(org-meta-line ((t (:inherit font-lock-comment-face :foreground "white smoke")))))
+ '(org-meta-line ((t (:inherit font-lock-comment-face :foreground "white smoke"))))
+ '(viper-minibuffer-insert ((t nil))))
 
 (winner-mode 1)
 (global-set-key (kbd "C-<") 'winner-undo)
@@ -193,13 +193,17 @@
 				gdb-many-windows t
 				gdb-default-window-configuration-file "~/.config/emacs/gdb-window-config")
 
-(global-set-key (kbd "C-x g.") 'flymake-goto-next-error)
-(global-set-key (kbd "C-x g,") 'flymake-goto-prev-error)
-(global-set-key (kbd "C-x gd") 'xref-find-definitions)
+(global-set-key (kbd "C-x g.")  'flymake-goto-next-error)
+(global-set-key (kbd "C-x g,")  'flymake-goto-prev-error)
+(global-set-key (kbd "C-x gO")  'imenu)
+(global-set-key (kbd "C-s")     'eldoc)
+(global-set-key (kbd "C-x grd")  'xref-find-definitions)
 (global-set-key (kbd "C-x grr") 'xref-find-references)
-(global-set-key (kbd "C-x gff") 'eglot-format)
+(global-set-key (kbd "C-x gri") 'eglot-find-implementation)
+(global-set-key (kbd "C-x grt") 'eglot-find-typeDefinition)
+(global-set-key (kbd "C-x grf") 'eglot-format)
 (global-set-key (kbd "C-x grn") 'eglot-rename)
-(global-set-key (kbd "C-x ga") 'eglot-code-actions)
+(global-set-key (kbd "C-x gra") 'eglot-code-actions)
 
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 
@@ -478,3 +482,9 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values '((org-archive-location . "::* Archived"))))
