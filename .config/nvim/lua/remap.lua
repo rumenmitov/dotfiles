@@ -16,6 +16,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Searching for words
 vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
 
 
 -- Moving lines
@@ -35,7 +36,7 @@ vim.keymap.set("n", "<C-s>", ":up!<CR>")
 vim.keymap.set("n", "<C-q>", function()
   vim.cmd("bd!")
 
-  local buffers = vim.fn.getbufinfo({ buflisted = 1 }) 
+  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
 
   if #buffers == 1 then
     if buffers[1]["name"] == "" then
@@ -45,26 +46,26 @@ vim.keymap.set("n", "<C-q>", function()
 end, { silent = true })
 
 -- LSP
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "grd", vim.lsp.buf.definition)
 
 -- Formatting
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "grf", vim.lsp.buf.format)
+
+-- Wildmenu (accept completions with Tab)
+vim.keymap.set("c", "<Tab>", function()
+  if vim.fn.pumvisible() ~= 0 then
+    return "<C-y>"
+  else
+    return "<C-z>" -- trigger wildmode
+  end
+end, { expr = true, silent = false })
 
 -- Autocomplete + Snippets
 vim.keymap.set({ "i", "s" }, "<Tab>", function()
-    local ls = require("luasnip")
-
-    if ls.expandable() then
-        vim.schedule(function() ls.expand() end)
-        return
-    end
-
     if vim.fn.pumvisible() ~= 0 then
         return "<C-y>"
     elseif vim.snippet.active({ direction = 1 }) then
         return "<esc>:lua vim.snippet.jump(1)<enter>"
-    elseif ls.jumpable(1) then
-        ls.jump(1)
     else
         return "<Tab>"
     end

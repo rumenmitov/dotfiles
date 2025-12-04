@@ -11,7 +11,7 @@ vim.opt.fillchars   = { eob = " " }
 local focused_area   = 7 / 10 -- desired area that the focused window holds
 local max_windows    = 4      -- max amount of splits allowes
 vim.opt.winwidth     = math.floor(focused_area * vim.o.columns)
-vim.opt.winminwidth  = math.floor(vim.o.columns / (max_windows + 1)) 
+vim.opt.winminwidth  = math.floor(vim.o.columns / (max_windows + 1))
 vim.opt.winheight    = math.floor(focused_area * vim.o.lines)
 vim.opt.winminheight = math.floor(vim.o.lines / (max_windows + 1))
 
@@ -34,6 +34,9 @@ vim.opt.colorcolumn = "80"
 vim.opt.hlsearch  = false
 vim.opt.incsearch = true
 
+-- Wildmenu
+vim.opt.wildmode = "longest:full"
+
 -- Version control
 vim.opt.swapfile  = false
 vim.opt.backup    = false
@@ -45,5 +48,5 @@ vim.opt.background    = "dark"
 vim.opt.termguicolors = true
 
 if vim.version.gt(vim.version(), {0, 10, 0}) then
-    vim.cmd.colorscheme("sorbet")
+    vim.cmd.colorscheme("default")
 end
