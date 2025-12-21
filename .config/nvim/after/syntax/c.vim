@@ -1,4 +1,10 @@
 syntax clear cTodo
-syntax keyword cTodo contained TODO BUG INFO
+syntax keyword cTodo contained TODO XXX
+syntax keyword cBug contained BUG FIXME
+syntax keyword cNote contained NOTE INFO
 
-highlight cTodo guibg=White guifg=Black gui=Bold 
+syntax cluster cCommentGroup add=cTodo,cBug,cNote
+
+highlight cTodo guibg=None guifg=Yellow gui=Underline
+highlight cBug  guibg=Red guifg=White gui=Bold 
+highlight cNote guibg=None guifg=Cyan gui=None

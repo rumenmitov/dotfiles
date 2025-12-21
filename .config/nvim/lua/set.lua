@@ -6,6 +6,7 @@ vim.opt.splitright  = true
 vim.opt.splitbelow  = true
 vim.opt.winborder   = "rounded"
 vim.opt.fillchars   = { eob = " " }
+vim.opt.path = "**"                   -- find files in nested sub-directories
 
 -- Window Properties
 local focused_area   = 7 / 10 -- desired area that the focused window holds
@@ -26,6 +27,7 @@ vim.opt.shiftwidth  = 2       -- autoindent 2 spaces
 vim.opt.expandtab   = true    -- spaces, no tabs
 vim.opt.smartindent = true
 
+
 -- Wrap
 vim.opt.wrap        = true
 vim.opt.colorcolumn = "80"
@@ -35,7 +37,8 @@ vim.opt.hlsearch  = false
 vim.opt.incsearch = true
 
 -- Wildmenu
-vim.opt.wildmode = "longest:full"
+vim.opt.wildmode = "longest:full" -- complete longest, then show wildmenu
+vim.opt.wildignorecase = true
 
 -- Version control
 vim.opt.swapfile  = false
