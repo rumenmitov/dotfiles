@@ -47,10 +47,10 @@
 (custom-set-faces
  '(cursor ((t (:background "PaleVioletRed3"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
- '(highlight ((t (:background "black"))))
+ '(highlight ((t (:background "black" :foreground "white"))))
  '(line-number ((t (:inherit default :background nil))))
  '(line-number-current-line ((t (:inherit default :background nil))))
- '(minibuffer-prompt ((t (:background "#00000000" :foreground "#ffffff" :weight bold))))
+ '(minibuffer-prompt ((t (:background "#00000000" :weight bold))))
  '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic :height 0.9))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
  '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
@@ -72,7 +72,8 @@
 (global-set-key (kbd "C-c C-w j") 'windmove-down)
 
 (setopt display-buffer-alist
-        '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))))
+        '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))
+          ("Org Agenda" (display-buffer-full-frame))))
 
 (setopt window-min-height 10)
 (setopt window-min-width 30)
