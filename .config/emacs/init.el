@@ -20,7 +20,7 @@
 (setq-default mode-line-format nil)
 
 (setopt default-frame-alist '(
-                              (font . "FiraCode Nerd Font Mono 12")
+                              (font . "JetBrains Mono Light 12")
                               (vertical-scroll-bars . nil)
                               ))
 
@@ -45,20 +45,20 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "PaleVioletRed3"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
+ '(highlight ((t (:background "black"))))
  '(line-number ((t (:inherit default :background nil))))
  '(line-number-current-line ((t (:inherit default :background nil))))
  '(minibuffer-prompt ((t (:background "#00000000" :foreground "#ffffff" :weight bold))))
- '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic))))
+ '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic :height 0.9))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
  '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
- '(org-code ((t (:inherit shadow :extend t :background "black" :foreground "white"))))
+ '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
  '(org-inline-src-block ((t (:inherit nil))))
- '(org-meta-line ((t (:inherit font-lock-comment-face :foreground "white smoke"))))
+ '(org-level-1 ((t (:extend nil :background "#322d37" :foreground "white" :overline "white" :weight bold :height 1.1))))
+ '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "white smoke"))))
+ '(region ((t (:extend t :background "gray" :slant italic))))
  '(viper-minibuffer-insert ((t nil))))
 
 (winner-mode 1)
@@ -482,9 +482,3 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values '((org-archive-location . "::* Archived"))))

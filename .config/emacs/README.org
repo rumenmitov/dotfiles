@@ -61,7 +61,7 @@ Common directories:
   (setq-default mode-line-format nil)
 
   (setopt default-frame-alist '(
-                                (font . "FiraCode Nerd Font Mono 12")
+                                (font . "JetBrains Mono Light 12")
                                 (vertical-scroll-bars . nil)
                                 ))
 
@@ -95,18 +95,22 @@ Common directories:
 There should be only *one* definition to =custom-set-faces=! This is best managed by the Emacs GUI Customization.
 
 #+begin_src emacs-lisp 
-  (custom-set-faces
-   '(viper-minibuffer-insert ((t nil)))
-   '(line-number ((t (:inherit default :background nil))))
-   '(line-number-current-line ((t (:inherit default :background nil))))
-   '(minibuffer-prompt ((t (:background "#00000000" :foreground "#ffffff" :weight bold))))
-   '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
-   '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic))))
-   '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
-   '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
-   '(org-code ((t (:inherit shadow :extend t :background "black" :foreground "white"))))
-   '(org-inline-src-block ((t (:inherit nil))))
-   '(org-meta-line ((t (:inherit font-lock-comment-face :foreground "white smoke")))))
+   (custom-set-faces
+    '(cursor ((t (:background "PaleVioletRed3"))))
+    '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
+    '(highlight ((t (:background "black"))))
+    '(line-number ((t (:inherit default :background nil))))
+    '(line-number-current-line ((t (:inherit default :background nil))))
+    '(minibuffer-prompt ((t (:background "#00000000" :foreground "#ffffff" :weight bold))))
+    '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic :height 0.9))))
+    '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
+    '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
+    '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
+    '(org-inline-src-block ((t (:inherit nil))))
+    '(org-level-1 ((t (:extend nil :background "#322d37" :foreground "white" :overline "white" :weight bold :height 1.1))))
+    '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "white smoke"))))
+    '(region ((t (:extend t :background "gray" :slant italic))))
+    '(viper-minibuffer-insert ((t nil))))
 #+end_src
 
 ** Windows
