@@ -7,7 +7,7 @@
 (setopt auto-save-file-name-transforms `((".*" ,(concat emacs-directory "/auto-saves/") t)))
 
 (setopt inhibit-startup-message t)
-(setopt initial-scratch-message ";; -- Welcome to Emacs--\n\n")
+(setopt initial-scratch-message ";; -- Welcome to Emacs --\n\n")
 
 (defun display-startup-echo-area-message ()
   (message nil))
@@ -51,13 +51,23 @@
  '(line-number ((t (:inherit default :background nil))))
  '(line-number-current-line ((t (:inherit default :background nil))))
  '(minibuffer-prompt ((t (:background "#00000000" :weight bold))))
+ '(org-agenda-date ((t (:foreground "#ec9d5a" :weight normal :height 1.1))))
+ '(org-agenda-date-today ((t (:background "#25205900" :weight bold :height 1.1))))
+ '(org-agenda-date-weekend ((t (:foreground "deep sky blue" :overline t :weight normal :height 1.1))))
+ '(org-agenda-diary ((t (:background "#57272300" :foreground "#ff74ff" :slant italic :weight regular))))
+ '(org-agenda-dimmed-todo-face ((t (:foreground "dim gray"))))
+ '(org-agenda-structure ((t (:foreground "#e37233" :weight bold :height 1.3))))
  '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic :height 0.9))))
  '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
  '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
  '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
+ '(org-done ((t (:background "#127921" :foreground "lawn green" :box nil :overline t :weight bold))))
  '(org-inline-src-block ((t (:inherit nil))))
  '(org-level-1 ((t (:extend nil :background "#322d37" :foreground "white" :overline "white" :weight bold :height 1.1))))
- '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "white smoke"))))
+ '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "#ff7138"))))
+ '(org-scheduled-today ((t (:background "#25205900" :weight normal))))
+ '(org-todo ((t (:background "#25374300" :foreground "red" :box nil :weight bold))))
+ '(org-warning ((t (:background "#ffffff00" :weight bold))))
  '(region ((t (:extend t :background "gray" :slant italic))))
  '(viper-minibuffer-insert ((t nil))))
 
@@ -193,6 +203,8 @@
 				gdb-show-main t
 				gdb-many-windows t
 				gdb-default-window-configuration-file "~/.config/emacs/gdb-window-config")
+
+(setopt enable-remote-dir-locals t)
 
 (global-set-key (kbd "C-x g.")  'flymake-goto-next-error)
 (global-set-key (kbd "C-x g,")  'flymake-goto-prev-error)
@@ -389,23 +401,17 @@
            (file ,(concat org-directory "/agenda/programming.org"))
            (file ,(concat emacs-directory "/templates/programming.tmpl")))))
 
+(add-hook 'eshell-mode-hook (lambda ()
+                              (eshell-cmpl-mode -1)))
+
 (setopt gnus-use-dribble-file nil)
-(setopt gnus-directory "~/.news")
+(setopt gnus-directory "~/.gnus")
 
 (require 'gnus-demon)
 (gnus-demon-init)
-(add-hook 'gnus-startup-hook
-          (apply-partially #'gnus-demon-add-handler 'gnus-demon-scan-news 5 t))
 
-(setopt
- gnus-select-method '(nntp "news.gmane.io")
- gnus-newsgroup-maximum-articles 50)
-
-(setopt gnus-secondary-select-methods
-      '((nnimap "gmail"
-                (nnimap-address "imap.gmail.com")
-                (nnimap-server-port 993)
-                (nnimap-stream ssl))))
+(setopt gnus-select-method
+      '(nnmaildir "gmail" (directory "~/Nextcloud/gmail")))
 
 (setopt user-mail-address "rumen.valmitov@gmail.com"
       user-full-name    "Rumen Mitov")
@@ -440,6 +446,15 @@
 (add-hook 'newsticker-treeview-mode-hook (lambda ()
                                            (setq-local browse-url-browser-function 'eww-browse-url)))
 
+(setopt mpc-browser-tags '(Filename))
+
+(add-hook 'mpc-mode-hook
+          (lambda ()
+            (keymap-local-set "<return>"   'mpc-play-at-point)
+            (keymap-local-set "<SPC>"      'mpc-toggle-play)
+            (keymap-local-set "/"          'mpc-songs-search)
+            (keymap-local-set "q"          'mpc-quit)))
+
 (setopt visible-bell t
 			  use-short-answers t
 			  use-dialog-box nil)
@@ -457,6 +472,7 @@
   (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
   (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
   (evil-set-initial-state 'newsticker-mode 'emacs)
+  (evil-set-initial-state 'mpc-mode 'emacs)
   (evil-set-initial-state 'ses-mode 'emacs))
 
 (evil-mode 1)
