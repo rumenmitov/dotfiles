@@ -2,6 +2,9 @@ source $HOME/.zshenv
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/prompt.zsh
 
+# Command Hotkeys
+bindkey -s '^xgc' 'git commit -m ""\e[D' # NOTE \e[D is left-arrow
+
 # History
 setopt HIST_SAVE_NO_DUPS
 
