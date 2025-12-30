@@ -45,6 +45,8 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
+ '(completions-common-part ((t (:foreground "deep sky blue"))))
+ '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white"))))
@@ -72,14 +74,14 @@
  '(viper-minibuffer-insert ((t nil))))
 
 (winner-mode 1)
-(global-set-key (kbd "C-<") 'winner-undo)
-(global-set-key (kbd "C->") 'winner-redo)
+(keymap-global-set "C-<" 'winner-undo)
+(keymap-global-set "C->" 'winner-redo)
 
 (windmove-default-keybindings)
-(global-set-key (kbd "C-c C-w h") 'windmove-left)
-(global-set-key (kbd "C-c C-w l") 'windmove-right)
-(global-set-key (kbd "C-c C-w k") 'windmove-up)
-(global-set-key (kbd "C-c C-w j") 'windmove-down)
+(keymap-global-set "C-c C-w h" 'windmove-left)
+(keymap-global-set "C-c C-w l" 'windmove-right)
+(keymap-global-set "C-c C-w k" 'windmove-up)
+(keymap-global-set "C-c C-w j" 'windmove-down)
 
 (setopt display-buffer-alist
         '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))
@@ -120,7 +122,7 @@
 (which-key-mode 1)
 
 (recentf-mode 1)
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+(keymap-global-set "C-x C-r" 'recentf-open-files)
 (setopt recentf-max-saved-items 10)
 (save-place-mode 1)
 
@@ -184,14 +186,14 @@
 			  completions-detailed t
 			  completions-sort 'historical)
 
-(define-key icomplete-vertical-mode-minibuffer-map (kbd "TAB")
+(keymap-set icomplete-vertical-mode-minibuffer-map "TAB"
             'icomplete-force-complete)
 
-(define-key icomplete-vertical-mode-minibuffer-map (kbd "RET")
+(keymap-set icomplete-vertical-mode-minibuffer-map "RET"
             'icomplete-force-complete-and-exit)
 
-(global-set-key (kbd "M-n") 'completion-preview-next-candidate)
-(global-set-key (kbd "M-p") 'completion-preview-prev-candidate)
+(keymap-global-set "M-n" 'completion-preview-next-candidate)
+(keymap-global-set "M-p" 'completion-preview-prev-candidate)
 
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
@@ -206,17 +208,17 @@
 
 (setopt enable-remote-dir-locals t)
 
-(global-set-key (kbd "C-x g.")  'flymake-goto-next-error)
-(global-set-key (kbd "C-x g,")  'flymake-goto-prev-error)
-(global-set-key (kbd "C-x gO")  'imenu)
-(global-set-key (kbd "C-s")     'eldoc)
-(global-set-key (kbd "C-x grd")  'xref-find-definitions)
-(global-set-key (kbd "C-x grr") 'xref-find-references)
-(global-set-key (kbd "C-x gri") 'eglot-find-implementation)
-(global-set-key (kbd "C-x grt") 'eglot-find-typeDefinition)
-(global-set-key (kbd "C-x grf") 'eglot-format)
-(global-set-key (kbd "C-x grn") 'eglot-rename)
-(global-set-key (kbd "C-x gra") 'eglot-code-actions)
+(keymap-global-set "C-x g ."  'flymake-goto-next-error)
+(keymap-global-set "C-x g ,"  'flymake-goto-prev-error)
+(keymap-global-set "C-x g O"  'imenu)
+(keymap-global-set "C-x g r s"   'eldoc)
+(keymap-global-set "C-x g r d" 'xref-find-definitions)
+(keymap-global-set "C-x g r r" 'xref-find-references)
+(keymap-global-set "C-x g r i" 'eglot-find-implementation)
+(keymap-global-set "C-x g r t" 'eglot-find-typeDefinition)
+(keymap-global-set "C-x g r f" 'eglot-format)
+(keymap-global-set "C-x g r n" 'eglot-rename)
+(keymap-global-set "C-x g r a" 'eglot-code-actions)
 
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 
@@ -225,7 +227,8 @@
 				  (c-toggle-auto-newline 1)))
 
 (defface font-lock/todo-face '(
-                               (t (:foreground "deep sky blue"
+                               (t (:foreground "yellow"
+                                               :background "black"
                                                :overline t
                                                :underline t
                                                :weight bold)))
@@ -240,15 +243,15 @@
   "BUG face")
 
 (defface font-lock/info-face '(
-                               (t (:foreground "white"
-                                               :overline "white"
-                                               :underline "white"
+                               (t (:foreground "deep sky blue"
+                                               :overline "deep sky blue"
+                                               :underline "deep sky blue"
                                                :slant italic)))
   "INFO face")
 
 (defvar custom/font/faces '(("\\<\\(TODO\\)" 1 'font-lock/todo-face prepend)
-                          ("\\<\\(BUG\\)" 1 'font-lock/bug-face prepend)
-                          ("\\<\\(INFO\\)" 1 'font-lock/info-face prepend)))
+                          ("\\<\\(BUG\\|FIXME\\)" 1 'font-lock/bug-face prepend)
+                          ("\\<\\(INFO\\|NOTE\\)" 1 'font-lock/info-face prepend)))
 
 (font-lock-add-keywords 'c-mode custom/font/faces)
 (font-lock-add-keywords 'c++-mode custom/font/faces)
@@ -313,7 +316,7 @@
 (setopt org-use-sub-superscripts '{})
 (setopt org-export-with-sub-superscripts '{})
 
-(global-set-key (kbd "C-c a") 'org-agenda)
+(keymap-global-set "C-c a" 'org-agenda)
 
 (setopt org-agenda-files (list
                           (concat org-directory "/agenda/")
@@ -377,7 +380,7 @@
 
 (add-hook 'ses-mode-hook (lambda () (display-line-numbers-mode 0)))
 
-(global-set-key (kbd "C-c c") 'org-capture)
+(keymap-global-set "C-c c" 'org-capture)
 
 (setq-default org-capture-templates
         `(("t"
@@ -448,12 +451,8 @@
 
 (setopt mpc-browser-tags '(Filename))
 
-(add-hook 'mpc-mode-hook
-          (lambda ()
-            (keymap-local-set "<return>"   'mpc-play-at-point)
-            (keymap-local-set "<SPC>"      'mpc-toggle-play)
-            (keymap-local-set "/"          'mpc-songs-search)
-            (keymap-local-set "q"          'mpc-quit)))
+(add-hook 'mpc-mode-hook (lambda ()
+                           (keymap-local-set "<return>"   'mpc-play-at-point)))
 
 (setopt visible-bell t
 			  use-short-answers t
@@ -466,25 +465,25 @@
 (require 'use-package-ensure)
 (setopt use-package-always-ensure t)
 
-(use-package evil
-  :ensure t
-  :config
-  (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
-  (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
-  (evil-set-initial-state 'newsticker-mode 'emacs)
-  (evil-set-initial-state 'mpc-mode 'emacs)
-  (evil-set-initial-state 'ses-mode 'emacs))
-
-(evil-mode 1)
-
 (use-package beacon)
 (beacon-mode 1)
 
-(use-package undo-tree)
-(global-undo-tree-mode)
-(setopt undo-tree-auto-save-history t
-				undo-tree-history-directory-alist `(("." . ,(concat emacs-directory "/undo")))
-				undo-tree-visualizer-diff t)
+(use-package emms
+  :config
+  (require 'emms-player-mpd)
+  (require 'emms-player-mpv)
+  (require 'emms-player-vlc)
+
+  (setopt emms-player-list '(emms-player-mpv emms-player-vlc))
+
+  (emms-all)
+  (add-hook 'emms-browser-tracks-added-hook (lambda (&rest _)
+                                              (emms-uniq )))
+
+  (keymap-set emms-playlist-mode-map "g" (lambda ()
+                                           (interactive)
+                                           (emms-playlist-mode-go)
+                                           (emms-playlist-mode-play-smart))))
 
 (use-package haskell-mode)
 (use-package go-mode)
