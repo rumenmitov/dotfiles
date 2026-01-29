@@ -10,6 +10,8 @@ export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
+[ -e $XDG_RUNTIME_DIR/gcr/ssh ] && export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+
 eval $(dircolors "$XDG_CONFIG_HOME/shell/colors")
 . "$XDG_CONFIG_HOME/shell/aliases"
 
