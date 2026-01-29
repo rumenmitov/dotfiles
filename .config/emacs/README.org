@@ -636,10 +636,10 @@ Make sure =mpd= is running.
 #+begin_src emacs-lisp
   (use-package emms
     :config
-    (require 'emms-player-mpd)
     (require 'emms-player-mpv)
     (require 'emms-player-vlc)
 
+    (setopt emms-source-file-default-directory "~/Nextcloud/music")
     (setopt emms-player-list '(emms-player-mpv emms-player-vlc))
 
     (emms-all)
@@ -660,7 +660,7 @@ Make sure =mpd= is running.
   (use-package rust-mode)
   (use-package nix-mode)
   (use-package php-mode)
-  
+
   (add-hook 'haskell-mode-hook 'eglot-ensure)
   (add-hook 'go-mode-hook 'eglot-ensure)
   (add-hook 'rust-mode-hook 'eglot-ensure)
