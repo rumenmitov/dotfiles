@@ -3,13 +3,13 @@
 wallpapersdir=$HOME/.local/share/wallpapers
 
 if [ -f /bin/mpvpaper ]; then
-  type=$( echo -e "Static\nLive" | rofi -dmenu | awk '{print $1}' )
+  type=$( echo -e "Static\nLive" | wofi --dmenu | awk '{print $1}' )
 
   if [ -z "$type" ]; then
     exit
   fi 
 
-  wallpaper=$( ls "$wallpapersdir/$type/" | rofi -dmenu )
+  wallpaper=$( ls "$wallpapersdir/$type/" | wofi --dmenu )
 
   wallpaper_path="$wallpapersdir/$type/$wallpaper"
 

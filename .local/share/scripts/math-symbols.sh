@@ -4,7 +4,7 @@ symbolfile=$HOME/.local/share/emojis/math.csv
 
 if $(wl-copy -v &>/dev/null); then
   cat $symbolfile                             \
-    | rofi -i -dmenu                          \
+    | wofi --dmenu                          \
     | awk '{print $1}'                        \
     | tr -d "\n"                              \
     | wl-copy

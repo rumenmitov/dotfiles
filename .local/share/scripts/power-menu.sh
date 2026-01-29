@@ -2,7 +2,7 @@
 
 if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
   op=$( echo -e " poweroff\n reboot\n suspend\n lock\n logout"    \
-    | rofi -dmenu                                                      \
+    | wofi --dmenu                                                      \
     | awk '{print tolower($2)}' )
 
   case $op in 

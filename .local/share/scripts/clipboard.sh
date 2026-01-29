@@ -2,7 +2,8 @@
 
 if cliphist version &>/dev/null; then
   cliphist list                                                               \
-    | rofi -i -dmenu -display-columns 2 -p "📄" --width "400" --height "500"  \
+    | awk '{ $1=""; print substr($0, 2) }' \
+    | wofi --dmenu --prompt "📄"   \
     | cliphist decode                                                         \
     | wl-copy
 else
