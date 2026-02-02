@@ -9,7 +9,7 @@ if [ -f /bin/mpvpaper ]; then
     exit
   fi 
 
-  wallpaper=$( ls "$wallpapersdir/$type/" | wofi --dmenu )
+  wallpaper=$( ls "$wallpapersdir/$type/" | wofi --dmenu --prompt "🖼️")
 
   wallpaper_path="$wallpapersdir/$type/$wallpaper"
 
