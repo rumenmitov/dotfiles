@@ -45,10 +45,6 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(completions-common-part ((t (:foreground "deep sky blue"))))
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
@@ -324,7 +320,8 @@
 
 (setopt org-agenda-files (list
                           (concat org-directory "/agenda/")
-                          "~/Nextcloud/phantomOS/org/phantomos.org"))
+                          "~/Nextcloud/phantomOS/org/phantomos.org"
+                          "~/Nextcloud/university/semester_6/thesis/thesis.org"))
 
 (setopt org-refile-targets '((org-agenda-files . (:maxlevel . 1))))
 (advice-add 'org-refile :after 'org-save-all-org-buffers)
@@ -380,7 +377,15 @@
                   ((org-agenda-overriding-header "Completed")
                    (org-agenda-max-entries 3)))
             (tags "@work /+AXED"
-                  ((org-agenda-overriding-header "Cancelled")))))))
+                  ((org-agenda-overriding-header "Cancelled")))))
+          ("T" "Thesis"
+           ((tags "ADMIN"
+                  ((org-agenda-overriding-header "Administration")))
+            (tags "RESEARCH"
+                  ((org-agenda-overriding-header "Research")))
+            (tags "BUG"
+                  ((org-agenda-overriding-header "Bugs"))))
+           ((org-agenda-files (list "~/Nextcloud/university/semester_6/thesis/thesis.org"))))))
 
 (add-hook 'ses-mode-hook (lambda () (display-line-numbers-mode 0)))
 
@@ -418,17 +423,17 @@
 (gnus-demon-init)
 
 (setopt gnus-select-method
-      '(nnmaildir "gmail" (directory "~/Nextcloud/gmail")))
+      '(nnmaildir "email" (directory "~/Nextcloud/email")))
 
-(setopt user-mail-address "rumen.valmitov@gmail.com"
+(setopt user-mail-address "rumenmitov@disroot.org"
       user-full-name    "Rumen Mitov")
 
-(setopt smtpmail-smtp-server 		     "smtp.gmail.com"
-      smtpmail-smtp-user                       "rumen.valmitov@gmail.com"
-      smtpmail-servers-requiring-authorization "smtp.gmail.com"
+(setopt smtpmail-smtp-server 		     "disroot.org"
+      smtpmail-smtp-user                       "rumenmitov@disroot.org"
+      smtpmail-servers-requiring-authorization "disroot.org"
       send-mail-function   		     'smtpmail-send-it
-      smtpmail-smtp-service                    465
-      smtpmail-stream-type                     'ssl)
+      smtpmail-smtp-service                    587
+      smtpmail-stream-type                     'starttls)
 
 (setopt auth-sources '("~/.authinfo.gpg"))
 
@@ -502,9 +507,3 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values '((org-archive-location . "::* Archived"))))
