@@ -3,10 +3,8 @@
 ###########################
 
 quit-after-last-window-closed = false
-gtk-single-instance = true
 
 theme = Dracula
-# theme = Iceberg Light
 
 font-family = "FiraCode Nerd Font Mono"
 font-size = 12
@@ -27,6 +25,10 @@ keybind = ctrl+shift+v=paste_from_clipboard
 keybind = alt+t=new_tab
 keybind = alt+tab=next_tab
 keybind = alt+shift+tab=previous_tab
+
+keybind = alt+p=jump_to_prompt:-1
+keybind = alt+n=jump_to_prompt:1
+keybind = alt+c=toggle_command_palette
 
 keybind = alt+1=goto_tab:1
 keybind = alt+2=goto_tab:2
