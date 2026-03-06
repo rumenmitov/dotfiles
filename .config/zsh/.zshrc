@@ -3,7 +3,9 @@ source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/prompt.zsh
 
 # Command Hotkeys
+bindkey -s '^xga' 'git add .'
 bindkey -s '^xgc' 'git commit -m ""\e[D' # NOTE \e[D is left-arrow
+bindkey -s '^xgp' 'git push'
 
 # History
 setopt HIST_SAVE_NO_DUPS
