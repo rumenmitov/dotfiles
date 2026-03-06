@@ -36,7 +36,7 @@ function git_modified_files() {
 }
 
 function git_others_files() {
-    local number=$(git ls-files --others | wc -l)
+    local number=$(git ls-files --others --exclude-standard | wc -l)
     if [[ $number == 0 ]]; then 
         echo ""
     else 
