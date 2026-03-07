@@ -10,14 +10,12 @@
 * Requirements
 
 - GNU Emacs 30+
-- GNU Stow
-- Git
 
 * Installation
 
 1. =rm -rf ~/.emacs*=
-2. =git clone https://gitlab.com/rumenmitov/dotfiles ~/.dotfiles=
-3. =cd ~/.dotfiles && stow .=
+2. Follow the installation instructions in the root [[file:~/.dotfiles/README.org][README]]
+3. Open this file with Emacs
 4. Refresh the configuration: =C-c C-c=
 5. Initialize configuration: =C-c C-v t=
 6. Restart Emacs 🐐

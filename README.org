@@ -1,0 +1,16 @@
+#+title: Rumen's Dotfiles
+#+author: Rumen Mitov
+#+email: rumenmitov@disroot.org
+#+options: H:3
+#+startup: overview
+
+* Requirements
+
+- Git
+- nix-shell
+
+* Installation
+
+1. =git clone https://gitlab.com/rumenmitov/dotfiles ~/.dotfiles=
+2. =cd ~/.dotfiles && nix-shell=
+
