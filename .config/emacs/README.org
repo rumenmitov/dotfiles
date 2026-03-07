@@ -1,6 +1,6 @@
 #+title: Emacs Configuration
 #+author: Rumen Mitov
-#+email: rumenmitov@protonmail.com
+#+email: rumenmitov@disroot.org
 #+options: H:3
 #+property: header-args :tangle init.el :results silent
 #+startup: overview
@@ -600,6 +600,8 @@ Music client; requires =mpd=.
   (setopt visible-bell t
   			  use-short-answers t
   			  use-dialog-box nil)
+
+  (setopt browse-url-browser-function 'eww-browse-url)
 #+end_src
 
 ** Packages

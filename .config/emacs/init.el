@@ -449,6 +449,8 @@
 			  use-short-answers t
 			  use-dialog-box nil)
 
+(setopt browse-url-browser-function 'eww-browse-url)
+
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
 (package-initialize)
