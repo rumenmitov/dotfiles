@@ -416,16 +416,21 @@
 (add-hook 'eshell-mode-hook (lambda ()
                               (eshell-cmpl-mode -1)))
 
+(setopt gnus-directory "~/Nextcloud/gnus")
+(setopt gnus-startup-file (concat gnus-directory "/newsrc"))
+(setopt nnml-directory (concat gnus-directory "/nnml"))
+
 (setopt gnus-use-dribble-file nil)
-(setopt gnus-directory "~/.gnus")
-(setopt nnml-directory "~/.gnus/nnml")
 (setopt gnus-message-archive-group nil)
+(setopt gnus-save-killed-list nil)
+(setopt gnus-check-new-newsgroups nil)
+(setopt gnus-save-newsrc-file nil)
 
 (require 'gnus-demon)
 (gnus-demon-init)
 
 (setopt gnus-select-method
-      '(nnmaildir "email" (directory "~/Nextcloud/email")))
+      '(nnmaildir "email" (directory (concat gnus-directory "/email"))))
 
 (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
 

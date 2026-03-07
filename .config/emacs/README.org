@@ -557,16 +557,21 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 Use =offlineimap= to sync mail locally, then open it with Gnus.
 
 #+begin_src emacs-lisp 
+  (setopt gnus-directory "~/Nextcloud/gnus")
+  (setopt gnus-startup-file (concat gnus-directory "/newsrc"))
+  (setopt nnml-directory (concat gnus-directory "/nnml"))
+
   (setopt gnus-use-dribble-file nil)
-  (setopt gnus-directory "~/.gnus")
-  (setopt nnml-directory "~/.gnus/nnml")
   (setopt gnus-message-archive-group nil)
+  (setopt gnus-save-killed-list nil)
+  (setopt gnus-check-new-newsgroups nil)
+  (setopt gnus-save-newsrc-file nil)
 
   (require 'gnus-demon)
   (gnus-demon-init)
 
   (setopt gnus-select-method
-        '(nnmaildir "email" (directory "~/Nextcloud/email")))
+        '(nnmaildir "email" (directory (concat gnus-directory "/email"))))
 
   (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
 
