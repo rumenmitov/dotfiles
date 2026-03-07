@@ -2,9 +2,13 @@
 
 wallpapersdir="$HOME/.local/share/wallpapers/Static"
 
-wallpaper=$( ls "$wallpapersdir" \
-  | xargs -I{} printf "img:%s/%s:text:%s\n" "$wallpapersdir" {} {} \
-  | wofi --dmenu --allow-images --prompt "🖼️" \
+wallpaper=$( ls "$wallpapersdir"                                    \
+  | xargs -I{} printf "img:%s/%s:text:%s\n" "$wallpapersdir" {} {}  \
+  | wofi --dmenu --columns 2                                        \
+    --define "width=1200px"                                         \
+    --define "height=800px"                                         \
+    --define "image_size=300"                                       \
+    --allow-images                                                  \
   | awk -F: '{ print $NF }' )
 
 test -z "$wallpaper" && exit

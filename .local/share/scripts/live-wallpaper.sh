@@ -2,7 +2,7 @@
 
 wallpapersdir="$HOME/.local/share/wallpapers/Live"
 
-wallpaper=$( ls "$wallpapersdir" | wofi --dmenu --prompt "🖼️" )
+wallpaper=$( ls "$wallpapersdir" | wofi --dmenu )
 
 [ -z "$wallpaper" ] && exit 1
 

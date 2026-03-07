@@ -4,7 +4,7 @@ emojifile=$HOME/.local/share/emojis/emojis.csv
 
 if $(wl-copy -v &>/dev/null); then
   cat  $emojifile                       \
-    | wofi --dmenu                    \
+    | wofi --dmenu                      \
     | awk '{print $1}'                  \
     | tr -d "\n"                        \
     | wl-copy
