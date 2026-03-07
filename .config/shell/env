@@ -6,7 +6,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export TERM=screen-256color
 export MANPAGER="less -R --use-color -Dd+m -Du+c -DP+w"
-export MAIL="$HOME/Nextcloud/email"
+export MAIL="$HOME/Nextcloud/gnus/email"
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
