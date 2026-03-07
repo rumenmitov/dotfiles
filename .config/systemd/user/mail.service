@@ -1,0 +1,6 @@
+[Unit]
+Description="Fetch new mail."
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env offlineimap

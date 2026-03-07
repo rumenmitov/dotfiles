@@ -6,6 +6,15 @@ function host_prompt() {
     fi
 }
 
+function mail_prompt() {
+    local maildir="$MAIL/INBOX/new"
+
+    [ -d $maildir ] || return
+    
+    local unread=$(ls -l $maildir | wc -l)
+    [ $unread -gt 0 ] && echo "$unread📩"
+}
+
 function git_prompt() {
     if [[ $(git status 2>/dev/null) != "" ]]; then
         echo -e "$(git branch --show-current)" \
@@ -76,4 +85,5 @@ zle -N zle-keymap-select
 
 function precmd() {
     PS1='%F{white}%n$(host_prompt)%f%F{magenta}  %~%f $VIMODE%F{white}  '
+    RPROMPT="$(mail_prompt)"
 }
