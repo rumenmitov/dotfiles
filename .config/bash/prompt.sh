@@ -2,17 +2,17 @@ function host_prompt() {
     if [[ $(git status 2>/dev/null) != "" ]]; then
         echo $red'  '$green$(git_prompt)' '
     else 
-        echo $cyan'🏯\H'
+      echo "$cyan$(mail_prompt)\H"
     fi
 }
 
 function mail_prompt() {
     local maildir="$MAIL/INBOX/new"
 
-    [ -d $maildir ] || return
+    [ -d $maildir ] || return "🏯"
     
     local unread=$(ls -l $maildir | wc -l)
-    [ $unread -gt 0 ] && echo "$unread📩"
+    [ $unread -gt 0 ] && echo "📩"
 }
 
 function git_prompt() {
@@ -54,7 +54,7 @@ function git_others_files() {
 }
 
 function bash_prompt() {
-    PS1="$white\u$(host_prompt)$magenta  $underline_start\W$underline_end$reset » "
+  PS1="$white\u$(host_prompt)$magenta  $underline_start\W$underline_end$reset » "
 }
 
 PROMPT_COMMAND=bash_prompt
