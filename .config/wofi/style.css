@@ -26,10 +26,6 @@
   color: white;
 }
 
-#img {
-  margin-right: 15px;
-}
-
 #img:selected {
   border: 1px solid white;
   border-radius: 5px;
