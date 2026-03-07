@@ -418,6 +418,8 @@
 
 (setopt gnus-use-dribble-file nil)
 (setopt gnus-directory "~/.gnus")
+(setopt nnfolder-directory "~/.gnus/nnfolder")
+(setopt nnml-directory "~/.gnus/nnml")
 (setopt gnus-message-archive-group nil)
 
 (require 'gnus-demon)
