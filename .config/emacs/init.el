@@ -171,6 +171,12 @@
 (fido-vertical-mode t)
 (global-completion-preview-mode t)
 
+(advice-add 'yank-pop :around (lambda (&rest r)
+                                (fido-vertical-mode 0)
+                                (unwind-protect
+                                    (apply (car r) (cdr r))
+                                  (fido-vertical-mode 1))))
+
 (setopt completion-preview-minimum-symbol-length 1
 			  completion-auto-select t
 			  completion-auto-help 'always
