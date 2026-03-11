@@ -94,29 +94,19 @@
 (setopt auto-resize-ratio 0.7)
 
 (defun win/auto-resize ()
-  (let* (
-         (height (floor (* auto-resize-ratio (frame-height))))
-         (width (floor (* auto-resize-ratio (frame-width))))
-         ;; INFO We need to calculate by how much we should enlarge
-         ;; focused window because Emacs does not allow setting the
-         ;; window dimensions directly.
-         (h-diff (max 0 (- height (window-height))))
-         (w-diff (max 0 (- width (window-width)))))
-    (enlarge-window h-diff)
-    (enlarge-window w-diff t)))
+  (if (not (minibufferp))
+      (let* (
+             (height (floor (* auto-resize-ratio (frame-height))))
+             (width (floor (* auto-resize-ratio (frame-width))))
+             ;; INFO We need to calculate by how much we should enlarge
+             ;; focused window because Emacs does not allow setting the
+             ;; window dimensions directly.
+             (h-diff (max 0 (- height (window-height))))
+             (w-diff (max 0 (- width (window-width)))))
+        (enlarge-window h-diff)
+        (enlarge-window w-diff t))))
 
-(advice-add 'other-window :after (lambda (&rest args)
-                                   (win/auto-resize)))
-
-(advice-add 'windmove-up    :after 'win/auto-resize)
-(advice-add 'windmove-down  :after 'win/auto-resize)
-(advice-add 'windmove-right :after 'win/auto-resize)
-(advice-add 'windmove-left  :after 'win/auto-resize)
-
-(advice-add 'split-window-below :after (lambda (&rest args)
-                                         (win/auto-resize)))
-
-(advice-add 'split-window-right :after (lambda (&rest args)
+(advice-add 'select-window :after (lambda (&rest args)
                                          (win/auto-resize)))
 
 (which-key-mode 1)
