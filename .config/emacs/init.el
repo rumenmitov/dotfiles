@@ -255,7 +255,8 @@
 (appt-activate 1)
 
 (setopt org-startup-with-inline-images t
-        org-tags-column 90)
+        org-tags-column 90
+        org-imenu-depth 7)
 
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
@@ -452,6 +453,8 @@
 			  use-dialog-box nil)
 
 (setopt browse-url-browser-function 'eww-browse-url)
+
+(setopt imenu-flatten 'prefix)
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
