@@ -466,6 +466,24 @@
 (use-package beacon)
 (beacon-mode 1)
 
+(use-package org-caldav
+  :ensure t
+  :config
+  (setq org-caldav-url "https://nc.rumenmitov.duckdns.org/remote.php/dav/calendars/rumenmitov"
+        org-caldav-calendars (list
+                              (list :calendar-id "personal"
+                                             :inbox (concat org-directory "/agenda/cal.org")
+                                             :files nil
+                                             :sync-todo nil)
+                              (list :calendar-id "tasks"
+                                             :inbox org-default-notes-file
+                                             :files (apply 'list
+                                                           (concat org-directory "/agenda/programming.org")
+                                                           (cdr org-agenda-files))
+                                             :sync-todo t))
+        org-icalendar-include-todo 'all
+        org-icalendar-timezone "Europe/Berlin"))
+
 (use-package emms
   :config
   (require 'emms-player-mpv)
