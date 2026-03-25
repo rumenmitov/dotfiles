@@ -1,0 +1,6 @@
+[Unit]
+Description="Sync Nextcloud"
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env nextcloudcmd -n %h/Nextcloud https://nc.rumenmitov.duckdns.org
