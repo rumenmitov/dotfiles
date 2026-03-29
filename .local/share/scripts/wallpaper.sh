@@ -23,4 +23,4 @@ if [ -f /bin/mpvpaper ]; then
   pkill mpvpaper
 fi
 
-swww img -t none "$wallpaper_path"
+awww img -t none $wallpaper_path
