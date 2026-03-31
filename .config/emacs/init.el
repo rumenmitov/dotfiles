@@ -470,6 +470,8 @@
   :ensure t
   :config
   (setq org-caldav-url "https://nc.rumenmitov.duckdns.org/remote.php/dav/calendars/rumenmitov"
+        org-caldav-inbox (concat org-directory "/agenda/cal.org")
+        org-caldav-files nil
         org-caldav-calendars (list
                               (list :calendar-id "personal"
                                              :inbox (concat org-directory "/agenda/cal.org")
