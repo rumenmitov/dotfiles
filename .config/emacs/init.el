@@ -49,7 +49,7 @@
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
- '(highlight ((t (:background "black" :foreground "white"))))
+ '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
  '(line-number ((t (:inherit default :background nil))))
  '(line-number-current-line ((t (:inherit default :background nil))))
  '(minibuffer-prompt ((t (:background "#00000000" :weight bold))))
@@ -132,7 +132,8 @@
 (defun preview/preview-file (file)
   "Open the preview for the current minibuffer selection."
   (preview/clean)
-  (let* ((basename (preview/get-basename file)))
+  (let* ((basename (preview/get-basename file))
+         (inhibit-message t))
     (if (not (get-buffer basename))
         (progn
           (find-file-read-only file)
@@ -148,7 +149,10 @@
        (file-dir (file-name-directory (minibuffer-contents)))
        (dir (if (equal file-dir file) "" file-dir))
        (clean-file (directory-file-name (concat dir file))))
-    (when (and (file-exists-p clean-file) (file-readable-p clean-file))
+    (when
+        (and
+         (ignore-errors (file-exists-p clean-file))
+         (ignore-errors (file-readable-p clean-file)))
       (preview/preview-file clean-file))))
 
 
@@ -452,13 +456,15 @@
 (add-hook 'mpc-mode-hook (lambda ()
                            (keymap-local-set "<return>"   'mpc-play-at-point)))
 
-(setopt visible-bell t
+(setopt visible-bell nil
 			  use-short-answers t
-			  use-dialog-box nil)
+			  use-dialog-box nil
+        browse-url-browser-function 'eww-browse-url
+        imenu-flatten 'prefix
+        set-mark-command-repeat-pop t
+        isearch-lazy-count t)
 
-(setopt browse-url-browser-function 'eww-browse-url)
-
-(setopt imenu-flatten 'prefix)
+(repeat-mode 1)
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
