@@ -7,8 +7,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export TERM=screen-256color
 export MANPAGER="less -R --use-color -Dd+m -Du+c -DP+w"
 export MAIL="$HOME/Nextcloud/gnus/email"
-export EDITOR="/usr/bin/nvim"
-export VISUAL="/usr/bin/nvim"
+export EDITOR="$(which nvim)"
+export VISUAL="$(which nvim)"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 [ -e $XDG_RUNTIME_DIR/gcr/ssh ] && export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
