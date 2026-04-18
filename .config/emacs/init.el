@@ -197,6 +197,10 @@
 	c-basic-offset tab-width)
 (setq-default comment-auto-fill-only-comments t)
 
+(require 'ansi-color)
+(add-hook 'compilation-filter-hook (lambda ()
+                                     (ansi-color-apply-on-region compilation-filter-start (point-max))))
+
 (setopt compile-command "make "
 				gdb-show-main t
 				gdb-many-windows t

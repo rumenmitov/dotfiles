@@ -290,6 +290,14 @@ Proper formatting:
   (setq-default comment-auto-fill-only-comments t)
 #+end_src
 
+ANSI coloring in compilation buffers:
+
+#+begin_src emacs-lisp
+  (require 'ansi-color)
+  (add-hook 'compilation-filter-hook (lambda ()
+                                       (ansi-color-apply-on-region compilation-filter-start (point-max))))
+#+end_src
+
 GDB:
 
 #+begin_src emacs-lisp 
