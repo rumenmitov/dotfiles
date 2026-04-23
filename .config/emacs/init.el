@@ -165,15 +165,7 @@
 
 (add-hook 'minibuffer-exit-hook 'preview/clean)
 
-(icomplete-vertical-mode t)
-(fido-vertical-mode t)
 (global-completion-preview-mode t)
-
-(advice-add 'yank-pop :around (lambda (&rest r)
-                                (fido-vertical-mode 0)
-                                (unwind-protect
-                                    (apply (car r) (cdr r))
-                                  (fido-vertical-mode 1))))
 
 (setopt completion-preview-minimum-symbol-length 1
 			  completion-auto-select 'second-tab
@@ -183,18 +175,11 @@
 			  read-buffer-completion-ignore-case t
 			  read-file-name-completion-ignore-case t
 			  icomplete-in-buffer t
-			  completions-max-height 10
 			  completions-format 'one-column
 			  imenu-auto-rescan t
 			  completion-fail-discreetly t
 			  completions-detailed t
 			  completions-sort 'historical)
-
-(keymap-set icomplete-vertical-mode-minibuffer-map "TAB"
-            'icomplete-force-complete)
-
-(keymap-set icomplete-vertical-mode-minibuffer-map "RET"
-            'icomplete-force-complete-and-exit)
 
 (require 'em-hist)
 (bind-key "TAB" #'completion-preview-complete eshell-hist-mode-map)
@@ -264,12 +249,20 @@
                                                :slant italic)))
   "INFO face")
 
-(defvar custom/font/faces '(("\\<\\(TODO\\)" 1 'font-lock/todo-face prepend)
-                          ("\\<\\(BUG\\|FIXME\\)" 1 'font-lock/bug-face prepend)
-                          ("\\<\\(INFO\\|NOTE\\)" 1 'font-lock/info-face prepend)))
 
-(font-lock-add-keywords 'c-mode custom/font/faces)
-(font-lock-add-keywords 'c++-mode custom/font/faces)
+(defface font-lock/safety-face '(
+                               (t (:foreground "orange"
+                                               :slant italic)))
+  "SAFETY face")
+
+
+(defvar custom/font/faces `((,(rx "TODO") 0 'font-lock/todo-face prepend)
+                            (,(rx (or "BUG" "FIXME")) 0 'font-lock/bug-face prepend)
+                            (,(rx (or "INFO" "NOTE")) 0 'font-lock/info-face prepend)
+                            (,(rx "SAFETY") 0 'font-lock/safety-face prepend)))
+
+(add-hook 'prog-mode-hook (lambda ()
+                            (font-lock-add-keywords nil custom/font/faces)))
 
 (appt-activate 1)
 
