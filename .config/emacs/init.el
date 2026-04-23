@@ -198,6 +198,8 @@
 (add-hook 'compilation-filter-hook (lambda ()
                                      (ansi-color-apply-on-region compilation-filter-start (point-max))))
 
+(setopt ediff-window-setup-function 'ediff-setup-windows-plain)
+
 (setopt compile-command "make "
 				gdb-show-main t
 				gdb-many-windows t
@@ -480,6 +482,10 @@
 
 (use-package beacon)
 (beacon-mode 1)
+
+(use-package magit
+  :config (setopt transient-display-buffer-action '(display-buffer-in-child-frame (dedicated . t)))
+  :bind ("C-x vd" . magit-status))
 
 (use-package org-caldav
   :ensure t

@@ -295,6 +295,12 @@ ANSI coloring in compilation buffers:
                                        (ansi-color-apply-on-region compilation-filter-start (point-max))))
 #+end_src
 
+Ediff:
+
+#+begin_src emacs-lisp
+  (setopt ediff-window-setup-function 'ediff-setup-windows-plain)
+#+end_src
+
 GDB:
 
 #+begin_src emacs-lisp 
@@ -638,6 +644,14 @@ Music client; requires =mpd=.
 
   (use-package beacon)
   (beacon-mode 1)
+#+end_src
+
+*** Magit
+
+#+begin_src emacs-lisp
+  (use-package magit
+    :config (setopt transient-display-buffer-action '(display-buffer-in-child-frame (dedicated . t)))
+    :bind ("C-x vd" . magit-status))
 #+end_src
 
 *** CalDAV
