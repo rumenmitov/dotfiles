@@ -84,8 +84,12 @@
 (keymap-global-set "C-c C-w j" 'windmove-down)
 
 (setopt display-buffer-alist
-        '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))
-          ("Org Agenda" (display-buffer-full-frame))))
+        `(("Org Agenda" (display-buffer-full-frame))
+          (,(rx
+             (literal "*")
+             (or "Man" "Help")
+             (literal "*"))
+           (display-buffer-full-frame))))
 
 (setopt window-min-height 10)
 (setopt window-min-width 30)
@@ -172,7 +176,7 @@
                                   (fido-vertical-mode 1))))
 
 (setopt completion-preview-minimum-symbol-length 1
-			  completion-auto-select t
+			  completion-auto-select 'second-tab
 			  completion-auto-help 'always
 			  completion-show-help nil
 			  completion-ignore-case t
@@ -192,6 +196,10 @@
 (keymap-set icomplete-vertical-mode-minibuffer-map "RET"
             'icomplete-force-complete-and-exit)
 
+(require 'em-hist)
+(bind-key "TAB" #'completion-preview-complete eshell-hist-mode-map)
+(bind-key "S-TAB" #'completion-preview-prev-candidate eshell-hist-mode-map)
+
 (keymap-global-set "M-n" 'completion-preview-next-candidate)
 (keymap-global-set "M-p" 'completion-preview-prev-candidate)
 
@@ -208,7 +216,10 @@
 (setopt compile-command "make "
 				gdb-show-main t
 				gdb-many-windows t
-				gdb-default-window-configuration-file "~/.config/emacs/gdb-window-config")
+        gdb-debuginfod-enable-setting t
+        gdb-restore-window-configuration-after-quit t
+        gdb-window-configuration-directory "~/.config/emacs/gdb-windows/"
+				gdb-default-window-configuration-file (concat gdb-window-configuration-directory "io"))
 
 (setopt enable-remote-dir-locals t)
 
@@ -465,6 +476,7 @@
         isearch-lazy-count t)
 
 (repeat-mode 1)
+(savehist-mode 1)
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)

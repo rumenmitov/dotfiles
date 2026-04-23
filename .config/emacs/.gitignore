@@ -3,7 +3,8 @@
 
 !/README.org
 
-!/gdb-window-config
+!/gdb-windows/
+!/gdb-windows/**
 
 !/assets/
 !/assets/**

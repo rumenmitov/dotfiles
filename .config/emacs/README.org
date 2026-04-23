@@ -139,8 +139,12 @@ Be careful when using escape characters (single backslash would just escape the 
   (keymap-global-set "C-c C-w j" 'windmove-down)
 
   (setopt display-buffer-alist
-          '(("\\*\\(Man*\\|Help\\*\\)" (display-buffer-full-frame))
-            ("Org Agenda" (display-buffer-full-frame))))
+          `(("Org Agenda" (display-buffer-full-frame))
+            (,(rx
+               (literal "*")
+               (or "Man" "Help")
+               (literal "*"))
+             (display-buffer-full-frame))))
 #+end_src
 
 *** Auto-Magic Resizing
@@ -258,7 +262,7 @@ prints a distracting error message.
                                     (fido-vertical-mode 1))))
 
   (setopt completion-preview-minimum-symbol-length 1
-  			  completion-auto-select t
+  			  completion-auto-select 'second-tab
   			  completion-auto-help 'always
   			  completion-show-help nil
   			  completion-ignore-case t
@@ -277,6 +281,10 @@ prints a distracting error message.
 
   (keymap-set icomplete-vertical-mode-minibuffer-map "RET"
               'icomplete-force-complete-and-exit)
+
+  (require 'em-hist)
+  (bind-key "TAB" #'completion-preview-complete eshell-hist-mode-map)
+  (bind-key "S-TAB" #'completion-preview-prev-candidate eshell-hist-mode-map)
 
   (keymap-global-set "M-n" 'completion-preview-next-candidate)
   (keymap-global-set "M-p" 'completion-preview-prev-candidate)  
@@ -308,7 +316,10 @@ GDB:
   (setopt compile-command "make "
   				gdb-show-main t
   				gdb-many-windows t
-  				gdb-default-window-configuration-file "~/.config/emacs/gdb-window-config")
+          gdb-debuginfod-enable-setting t
+          gdb-restore-window-configuration-after-quit t
+          gdb-window-configuration-directory "~/.config/emacs/gdb-windows/"
+  				gdb-default-window-configuration-file (concat gdb-window-configuration-directory "io"))
 #+end_src
 
 Enable directory-local variables in remote connections:
@@ -619,6 +630,7 @@ Music client; requires =mpd=.
           isearch-lazy-count t)
 
   (repeat-mode 1)
+  (savehist-mode 1)
 #+end_src
 
 ** Packages
