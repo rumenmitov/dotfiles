@@ -268,6 +268,51 @@
 (add-hook 'prog-mode-hook (lambda ()
                             (font-lock-add-keywords nil custom/font/faces)))
 
+(require 'vc-git)
+
+(defun git-prompt--untracked-files ()
+  "Returns the number of untracked files in the current git repository.
+If that number is zero, an empty string is returned."
+  (let* ((untracked (string-trim (shell-command-to-string "git ls-files --others --exclude-standard | wc -l"))))
+    (if (< 0 (string-to-number untracked))
+        (concat untracked "🌱 ")
+      "")))
+
+
+(defun git-prompt--changed-files ()
+  "Returns the number of changed files in the current git repository.
+If that number is zero, an empty string is returned."  
+  (let* ((changed (string-trim (shell-command-to-string "git ls-files --modified | wc -l"))))
+    (if (< 0 (string-to-number changed))
+        (concat changed "🛠️ ")
+      "")))
+
+
+(defun git-prompt--deleted-files ()
+  "Returns the number of deleted files in the current git repository.
+If that number is zero, an empty string is returned."
+  (let* ((deleted (string-trim (shell-command-to-string "git ls-files --deleted | wc -l"))))
+    (if (< 0 (string-to-number deleted))
+        (concat deleted "🗑️ ")
+      "")))
+
+
+(defun eshell-prompt--git-prompt ()
+  "Detects if current directory is in a git directory.
+If it is, returns the number of untracked, changed, and deleted files as a string."
+  (if-let* ((git-symb (propertize "  " 'face '(:foreground "orange red")))
+            (branch (car (vc-git-branches))))
+      (let* ((branch-col (propertize branch 'face '(:foreground "lawn green"))))
+        (propertize (concat git-symb branch-col " " (git-prompt--untracked-files) (git-prompt--changed-files) (git-prompt--deleted-files))))
+    (propertize "")))
+
+(setq-default eshell-banner-message "\n\n"
+              eshell-prompt-function (lambda ()
+                                       (concat
+                                        (propertize (abbreviate-file-name (eshell/pwd)) 'face '(:foreground "magenta"))
+                                        (eshell-prompt--git-prompt)
+                                        (propertize " λ  "))))
+
 (appt-activate 1)
 
 (setopt org-startup-with-inline-images t
@@ -467,6 +512,7 @@
 (setopt visible-bell nil
 			  use-short-answers t
 			  use-dialog-box nil
+        disabled-command-function nil
         browse-url-browser-function 'eww-browse-url
         imenu-flatten 'prefix
         set-mark-command-repeat-pop t
@@ -474,6 +520,10 @@
 
 (repeat-mode 1)
 (savehist-mode 1)
+
+(use-package proced
+  :config
+  (proced-toggle-auto-update 1))
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
