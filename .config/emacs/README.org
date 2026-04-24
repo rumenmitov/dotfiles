@@ -268,10 +268,6 @@ prints a distracting error message.
   			  completions-detailed t
   			  completions-sort 'historical)
 
-  (require 'em-hist)
-  (bind-key "TAB" #'completion-preview-complete eshell-hist-mode-map)
-  (bind-key "S-TAB" #'completion-preview-prev-candidate eshell-hist-mode-map)
-
   (keymap-global-set "M-n" 'completion-preview-next-candidate)
   (keymap-global-set "M-p" 'completion-preview-prev-candidate)  
 #+end_src
@@ -428,6 +424,7 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
         (let* ((branch-col (propertize branch 'face '(:foreground "lawn green"))))
           (propertize (concat git-symb branch-col " " (git-prompt--untracked-files) (git-prompt--changed-files) (git-prompt--deleted-files))))
       (propertize "")))
+
 
   (setq-default eshell-banner-message "\n\n"
                 eshell-prompt-function (lambda ()
@@ -615,13 +612,6 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
              (file ,(concat emacs-directory "/templates/programming.tmpl")))))
 #+end_src
 
-** Eshell
-
-#+begin_src emacs-lisp
-    (add-hook 'eshell-mode-hook (lambda ()
-                                  (eshell-cmpl-mode -1)))
-#+end_src
-
 ** Gnus
 
 Use =offlineimap= to sync mail locally, then open it with Gnus.
@@ -685,7 +675,7 @@ Music client; requires =mpd=.
 
   (use-package proced
     :config
-    (proced-toggle-auto-update 1))
+    (setopt proced-auto-update-flag 'visible))
 #+end_src
 
 ** Packages

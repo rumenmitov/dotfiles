@@ -182,10 +182,6 @@
 			  completions-detailed t
 			  completions-sort 'historical)
 
-(require 'em-hist)
-(bind-key "TAB" #'completion-preview-complete eshell-hist-mode-map)
-(bind-key "S-TAB" #'completion-preview-prev-candidate eshell-hist-mode-map)
-
 (keymap-global-set "M-n" 'completion-preview-next-candidate)
 (keymap-global-set "M-p" 'completion-preview-prev-candidate)
 
@@ -305,6 +301,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
       (let* ((branch-col (propertize branch 'face '(:foreground "lawn green"))))
         (propertize (concat git-symb branch-col " " (git-prompt--untracked-files) (git-prompt--changed-files) (git-prompt--deleted-files))))
     (propertize "")))
+
 
 (setq-default eshell-banner-message "\n\n"
               eshell-prompt-function (lambda ()
@@ -471,9 +468,6 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
            (file ,(concat org-directory "/agenda/programming.org"))
            (file ,(concat emacs-directory "/templates/programming.tmpl")))))
 
-(add-hook 'eshell-mode-hook (lambda ()
-                              (eshell-cmpl-mode -1)))
-
 (setopt gnus-directory "~/Nextcloud/gnus")
 (setopt gnus-startup-file (concat gnus-directory "/newsrc"))
 (setopt nnml-directory (concat gnus-directory "/nnml"))
@@ -523,7 +517,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (use-package proced
   :config
-  (proced-toggle-auto-update 1))
+  (setopt proced-auto-update-flag 'visible))
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
