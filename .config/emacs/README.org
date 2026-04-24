@@ -97,6 +97,7 @@ There should be only *one* definition to =custom-set-faces=! This is best manage
    '(completions-common-part ((t (:foreground "deep sky blue"))))
    '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
    '(cursor ((t (:background "PaleVioletRed3"))))
+   '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))   
    '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
    '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
    '(line-number ((t (:inherit default :background nil))))
@@ -646,13 +647,6 @@ Music client; requires =mpd=.
   (beacon-mode 1)
 #+end_src
 
-*** Magit
-
-#+begin_src emacs-lisp
-  (use-package magit
-    :config (setopt transient-display-buffer-action '(display-buffer-in-child-frame (dedicated . t)))
-    :bind ("C-x vd" . magit-status))
-#+end_src
 
 *** CalDAV
 

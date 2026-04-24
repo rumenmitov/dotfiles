@@ -45,9 +45,14 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(completions-common-part ((t (:foreground "deep sky blue"))))
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
+ '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
  '(line-number ((t (:inherit default :background nil))))
@@ -483,10 +488,6 @@
 (use-package beacon)
 (beacon-mode 1)
 
-(use-package magit
-  :config (setopt transient-display-buffer-action '(display-buffer-in-child-frame (dedicated . t)))
-  :bind ("C-x vd" . magit-status))
-
 (use-package org-caldav
   :ensure t
   :config
@@ -537,3 +538,12 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(bbdb-vcard beacon cmake-mode emms go-mode goto-chg haskell-mode
+                kotlin-mode markdown-mode nix-mode org-caldav php-mode
+                queue rust-mode scrollable-quick-peek)))
