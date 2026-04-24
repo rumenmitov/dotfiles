@@ -282,6 +282,7 @@ Proper formatting:
 
 #+begin_src emacs-lisp 
   (setq-default tab-width 2)
+  (setq-default tab-always-indent nil)
   (setq-default indent-tabs-mode nil)
   (setq-default c-default-style "bsd"
   	c-basic-offset tab-width)
