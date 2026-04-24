@@ -173,6 +173,7 @@
 			  completion-auto-help 'always
 			  completion-show-help nil
 			  completion-ignore-case t
+        completion-styles '(flex basic partial-completion)
 			  read-buffer-completion-ignore-case t
 			  read-file-name-completion-ignore-case t
 			  icomplete-in-buffer t
