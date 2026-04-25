@@ -433,6 +433,9 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
                                           (propertize (abbreviate-file-name (eshell/pwd)) 'face '(:foreground "magenta"))
                                           (eshell-prompt--git-prompt)
                                           (propertize " λ  "))))
+
+
+  (advice-add 'project-eshell :after #'hack-dir-local-variables-non-file-buffer)
 #+end_src
 
 ** Organization
