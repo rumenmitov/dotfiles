@@ -45,14 +45,10 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(completions-common-part ((t (:foreground "deep sky blue"))))
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
- '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
+ '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))   
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
  '(line-number ((t (:inherit default :background nil))))
@@ -268,6 +264,94 @@
 
 (add-hook 'prog-mode-hook (lambda ()
                             (font-lock-add-keywords nil custom/font/faces)))
+
+(require 'tempo)
+(setq tempo-interactive t)
+
+(keymap-global-set "C-c n" 'tempo-forward-mark)
+(keymap-global-set "C-c p" 'tempo-backward-mark)
+
+(defmacro tempo/setup-mode (MODE)
+  "Create a tags-list, a template-definition function, and a
+completion function for the symbol MODE.
+
+The generated template-definition function `tempo/MODE/define' will have the following form:
+
+	(tempo/MODE/define ELEMENTS TAG DOCUMENTATION)
+
+`tempo/MODE/define' is just a wrapper for `tempo-define-template'.
+
+Example:
+
+	(tempo/setup-mode 'c-mode)
+	;; creates the following:
+	;; => tempo/c-mode/tags    - tags alist to store the snippets
+	;; => tempo/c-mode/define  - function to define snippets for MODE
+	;; => tempo/c-mode/cmpl    - completion function, added to `completion-at-point-functions'
+	;;                           for that mode
+
+
+  ;; then, to define snippets for c-mode:
+
+	(tempo/c-mode/define
+    '(\"if (\" p \") { \" p \" }\" p)
+    \"if\"
+    \"If snippet.\") 
+"
+  (let* (
+         ;; INFO if we expect a symbol (e.g. 'foo) as a parameter,
+         ;; MODE will be ''foo. So we need to strip one quote
+         ;; to get the proper symbol name.
+         (mode      		(symbol-name (eval MODE)))
+         (tags-list 		(format "tempo/%s/tags" mode))
+         (tag-name-fmt  (concat mode "--%s"))
+         (mode-hook 		(format "%s-hook" mode))
+         (define-fn 		(format "tempo/%s/define" mode))
+         (cmpl-fn   		(format "tempo/%s/cmpl" mode)))
+    
+    `(progn
+       (defvar ,(intern tags-list) nil
+         ,(format "Auto-generated alist that will store all defined snippets for %s." mode))
+
+       (defun ,(intern define-fn) (ELEMENTS TAG DOCUMENTATION)
+         ,(format "Auto-generated wrapper for `tempo-define-template' for %s." mode)
+         (tempo-define-template (format ,tag-name-fmt TAG)
+                                ELEMENTS
+                                TAG
+                                DOCUMENTATION
+                                (quote ,(intern tags-list))))
+
+       
+       (defun ,(intern cmpl-fn) ()
+         ,(format "Auto-generated snippet completion function for %s." mode) 
+         (save-excursion
+           (let ((end (point)))
+             (backward-word)
+             (let ((beg (point)))
+               ;; we return the form expectd by
+               ;; `completion-at-point-functions'
+               (list beg end ,(intern tags-list)
+                     :exclusive 'no
+                     :exit-function (lambda (str _status)
+                                      ;; a completion was found!
+                                      ;; delete the user input and call the snippet
+                                      (backward-kill-word 1)
+                                      (funcall-interactively
+                                       (cdr (assoc str ,(intern tags-list))))))))))
+
+       
+
+
+       ;; hook completion function in MODE
+       (add-hook (quote ,(intern mode-hook)) (lambda ()
+                                               (add-hook
+                                                'completion-at-point-functions
+                                                (quote ,(intern cmpl-fn))
+                                                ;; INFO the `tempo/MODE/cmpl' should be the first function
+                                                ;; as other completion functions may not have :exclusive set
+                                                ;; to 'no.
+                                                -1
+                                                t))))))
 
 (require 'vc-git)
 
@@ -587,10 +671,3 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values
-   '((eshell-aliases-file . "/podman:phantomuserland:/aliases"))))
