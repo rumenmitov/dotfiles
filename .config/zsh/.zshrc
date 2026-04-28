@@ -19,6 +19,7 @@ zle -N edit-command-line
 
 bindkey -v
 KEYTIMEOUT=1
+bindkey "^?" backward-delete-char
 bindkey '^x^e' edit-command-line
 
 
