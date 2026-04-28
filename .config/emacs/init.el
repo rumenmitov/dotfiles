@@ -45,10 +45,14 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(completions-common-part ((t (:foreground "deep sky blue"))))
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
- '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))   
+ '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
  '(line-number ((t (:inherit default :background nil))))
@@ -212,7 +216,7 @@
 (keymap-global-set "C-x g ."  'flymake-goto-next-error)
 (keymap-global-set "C-x g ,"  'flymake-goto-prev-error)
 (keymap-global-set "C-x g O"  'imenu)
-(keymap-global-set "C-x g r s"   'eldoc)
+(keymap-global-set "C-x g r s" 'eldoc)
 (keymap-global-set "C-x g r d" 'xref-find-definitions)
 (keymap-global-set "C-x g r r" 'xref-find-references)
 (keymap-global-set "C-x g r i" 'eglot-find-implementation)
@@ -224,8 +228,9 @@
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 
 (add-hook 'c-mode-common-hook (lambda ()
-				  (electric-pair-mode 1)
-				  (c-toggle-auto-newline 1)))
+                                (setq-local indent-line-function 'c-indent-line)
+				                        (electric-pair-mode 1)
+				                        (c-toggle-auto-newline 1)))
 
 (defface font-lock/todo-face '(
                                (t (:foreground "yellow"
@@ -257,10 +262,10 @@
   "SAFETY face")
 
 
-(defvar custom/font/faces `((,(rx "TODO") 0 'font-lock/todo-face prepend)
-                            (,(rx (or "BUG" "FIXME")) 0 'font-lock/bug-face prepend)
-                            (,(rx (or "INFO" "NOTE")) 0 'font-lock/info-face prepend)
-                            (,(rx "SAFETY") 0 'font-lock/safety-face prepend)))
+(defvar custom/font/faces `((,(rx word-start "TODO" word-end) 0 'font-lock/todo-face prepend)
+                            (,(rx word-start (or "BUG" "FIXME") word-end) 0 'font-lock/bug-face prepend)
+                            (,(rx word-start (or "INFO" "NOTE") word-end) 0 'font-lock/info-face prepend)
+                            (,(rx word-start "SAFETY" word-end) 0 'font-lock/safety-face prepend)))
 
 (add-hook 'prog-mode-hook (lambda ()
                             (font-lock-add-keywords nil custom/font/faces)))
@@ -353,6 +358,51 @@ Example:
                                                 -1
                                                 t))))))
 
+(setq
+ c--main      '("int main(int argc, char *argv[]) {" n > p n "}")
+ 
+ c--docfn     '(> "/**" n
+                  > "* @brief   " p n
+                  > "*/" p)
+
+ c--docparam  '(> "* @param   " p)
+
+ c--docret    '(> "* @return  " p)
+
+ c--todo      '(> "/* TODO " p " */" p)
+ 
+ c--info      '(> "/* INFO " p " */" p)
+
+ c--bug       '(> "/* BUG " p " */" p)
+
+ c--switch    '(> "switch (" p ") {" p n> "}" p)
+
+ c--case      '(> "case " p ": " p))
+
+(tempo/setup-mode 'c-mode)
+
+(tempo/c-mode/define c--main        "main"        "Snippet for main().")
+(tempo/c-mode/define c--docfn       "docfn"   		"Snippet for docstrings.")
+(tempo/c-mode/define c--docparam    "docparam" 		"Snippet for parameters in docstrings.")
+(tempo/c-mode/define c--docret      "docret"   		"Snippet for return values in docstrings.")
+(tempo/c-mode/define c--todo        "doctodo" 		"Snippet for TODO comments.")
+(tempo/c-mode/define c--info        "docinfo" 		"Snippet for INFO comments.")
+(tempo/c-mode/define c--bug         "docbug"  		"Snippet for BUG comments.")
+(tempo/c-mode/define c--switch      "switch"  		"Snippet for switch blocks.")
+(tempo/c-mode/define c--case        "case"    		"Snippet for case blocks.")
+
+(tempo/setup-mode 'c++-mode)
+
+(tempo/c++-mode/define c--main        "main"        "Snippet for main().")
+(tempo/c++-mode/define c--docfn       "docfn"   		"Snippet for docstrings.")
+(tempo/c++-mode/define c--docparam    "docparam" 		"Snippet for parameters in docstrings.")
+(tempo/c++-mode/define c--docret      "docret"   		"Snippet for return values in docstrings.")
+(tempo/c++-mode/define c--todo        "doctodo" 		"Snippet for TODO comments.")
+(tempo/c++-mode/define c--info        "docinfo" 		"Snippet for INFO comments.")
+(tempo/c++-mode/define c--bug         "docbug"  		"Snippet for BUG comments.")
+(tempo/c++-mode/define c--switch      "switch"  		"Snippet for switch blocks.")
+(tempo/c++-mode/define c--case        "case"    		"Snippet for case blocks.")
+
 (require 'vc-git)
 
 (defun git-prompt--untracked-files ()
@@ -401,6 +451,8 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 
 (advice-add 'project-eshell :after #'hack-dir-local-variables-non-file-buffer)
+
+(require 'org)
 
 (appt-activate 1)
 
@@ -671,3 +723,11 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'php-mode-hook 'eglot-ensure)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   '((org-archive-location . "::* Archived")
+     (eshell-aliases-file . "/podman:phantomuserland:/aliases"))))
