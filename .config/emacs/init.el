@@ -53,6 +53,12 @@
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
  '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
+ '(font-lock-constant-face ((t (:inherit default :foreground "'unspecified"))))
+ '(font-lock-function-name-face ((t (:inherit default :foreground "'unspecified"))))
+ '(font-lock-keyword-face ((t (:inherit nil :foreground "'unspecified" :weight normal))))
+ '(font-lock-string-face ((t (:inherit default :foreground "'unspecified"))))
+ '(font-lock-type-face ((t (:inherit default :foreground "'unspecified"))))
+ '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
  '(line-number ((t (:inherit default :background nil))))
@@ -642,10 +648,14 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (setopt auth-sources '("~/.authinfo.gpg"))
 
-(setopt mpc-browser-tags '(Filename))
-
-(add-hook 'mpc-mode-hook (lambda ()
-                           (keymap-local-set "<return>"   'mpc-play-at-point)))
+(use-package mpc
+  :bind
+  (:map mpc-mode-map
+              ("<return>"     . mpc-select-toggle)
+              ("S-<return>"   . mpc-select-extend))
+  
+  :config
+  (setopt mpc-browser-tags '(Filename)))
 
 (setopt visible-bell nil
 			  use-short-answers t
@@ -669,65 +679,14 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (require 'use-package-ensure)
 (setopt use-package-always-ensure t)
-
-(use-package beacon)
-(beacon-mode 1)
-
-(use-package org-caldav
-  :ensure t
-  :config
-  (setq org-caldav-url "https://nc.rumenmitov.duckdns.org/remote.php/dav/calendars/rumenmitov"
-        org-caldav-inbox (concat org-directory "/agenda/cal.org")
-        org-caldav-files nil
-        org-caldav-calendars (list
-                              (list :calendar-id "personal"
-                                             :inbox (concat org-directory "/agenda/cal.org")
-                                             :files nil
-                                             :sync-todo nil)
-                              (list :calendar-id "tasks"
-                                             :inbox org-default-notes-file
-                                             :files (apply 'list
-                                                           (concat org-directory "/agenda/programming.org")
-                                                           (cdr org-agenda-files))
-                                             :sync-todo t))
-        org-icalendar-include-todo 'all
-        org-icalendar-timezone "Europe/Berlin"))
-
-(use-package emms
-  :config
-  (require 'emms-player-mpv)
-  (require 'emms-player-vlc)
-
-  (setopt emms-source-file-default-directory "~/Nextcloud/music")
-  (setopt emms-player-list '(emms-player-mpv emms-player-vlc))
-
-  (emms-all)
-  (add-hook 'emms-browser-tracks-added-hook (lambda (&rest _)
-                                              (emms-uniq )))
-
-  (keymap-set emms-playlist-mode-map "g" (lambda ()
-                                           (interactive)
-                                           (emms-playlist-mode-go)
-                                           (emms-playlist-mode-play-smart))))
-
-(use-package haskell-mode)
-(use-package go-mode)
-(use-package rust-mode)
-(use-package nix-mode)
-(use-package php-mode)
-
-(add-hook 'haskell-mode-hook 'eglot-ensure)
-(add-hook 'go-mode-hook 'eglot-ensure)
-(add-hook 'rust-mode-hook 'eglot-ensure)
-(add-hook 'nix-mode-hook 'eglot-ensure)
-(add-hook 'c-mode-hook 'eglot-ensure)
-(add-hook 'c++-mode-hook 'eglot-ensure)
-(add-hook 'php-mode-hook 'eglot-ensure)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(bbdb-vcard goto-chg markdown-mode queue scrollable-quick-peek
+                with-editor))
  '(safe-local-variable-values
    '((org-archive-location . "::* Archived")
      (eshell-aliases-file . "/podman:phantomuserland:/aliases"))))
