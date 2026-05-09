@@ -33,12 +33,17 @@ vim.opt.wrap        = true
 vim.opt.colorcolumn = "80"
 
 -- Search
-vim.opt.hlsearch    = false
+vim.opt.hlsearch    = true
 vim.opt.incsearch   = true
 vim.opt.ignorecase  = true
 vim.opt.smartcase   = true     -- case-insensitive, unless uppercase used
 
 vim.api.nvim_set_hl(0, "CurSearch", {
+  fg="#ff0000",
+  bg="NONE",
+})
+
+vim.api.nvim_set_hl(0, "Search", {
   fg="#ff0000",
   bg="NONE",
 })

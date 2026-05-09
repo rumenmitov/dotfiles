@@ -16,6 +16,11 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
+vim.keymap.set("n", "<esc>", function()
+  vim.cmd.nohlsearch()
+  return "<esc>"
+end)
+
 -- Wildmenu 
 vim.keymap.set("c", "<Tab>", function()
   if vim.fn.pumvisible() ~= 0 then
