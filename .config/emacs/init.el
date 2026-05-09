@@ -61,6 +61,8 @@
  '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
+ '(isearch ((t (:background "'unspecified" :foreground "red" :underline nil))))
+ '(lazy-highlight ((t (:background "'unspecified" :foreground "orange red"))))
  '(line-number ((t (:inherit default :background nil))))
  '(line-number-current-line ((t (:inherit default :background nil))))
  '(minibuffer-prompt ((t (:background "#00000000" :weight bold))))
@@ -99,6 +101,7 @@
           (,(rx
              (literal "*")
              (or "Man" "Help")
+             (* anychar)
              (literal "*"))
            (display-buffer-full-frame))))
 
@@ -234,9 +237,7 @@
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 
 (add-hook 'c-mode-common-hook (lambda ()
-                                (setq-local indent-line-function 'c-indent-line)
-				                        (electric-pair-mode 1)
-				                        (c-toggle-auto-newline 1)))
+                                (setq-local indent-line-function 'c-indent-line)))
 
 (defface font-lock/todo-face '(
                                (t (:foreground "yellow"
@@ -686,7 +687,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(bbdb-vcard goto-chg markdown-mode queue scrollable-quick-peek
-                with-editor))
- '(safe-local-variable-values
-   '((org-archive-location . "::* Archived")
-     (eshell-aliases-file . "/podman:phantomuserland:/aliases"))))
+                with-editor)))
+
+
+
