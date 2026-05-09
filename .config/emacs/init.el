@@ -45,10 +45,6 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(completions-common-part ((t (:foreground "deep sky blue"))))
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
@@ -58,7 +54,7 @@
  '(font-lock-keyword-face ((t (:inherit nil :foreground "'unspecified" :weight normal))))
  '(font-lock-string-face ((t (:inherit default :foreground "'unspecified"))))
  '(font-lock-type-face ((t (:inherit default :foreground "'unspecified"))))
- '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified"))))
+ '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified")))) 
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
  '(isearch ((t (:background "'unspecified" :foreground "red" :underline nil))))
@@ -134,56 +130,11 @@
 (setopt recentf-max-saved-items 10)
 (save-place-mode 1)
 
-(setopt vc-follow-symlinks t)
-
-(defun preview/clean ()
-  "Cleanup preview buffers."
-  (kill-matching-buffers-no-ask ".* - preview"))
-
-(defun preview/get-basename (file)
-  "Get the parent directory if the basename is `.' or `..'. Otherwise return normal basename."
-  (let* ((basename (file-name-nondirectory (directory-file-name file))))
-    (if (or (string= basename ".") (string= basename ".."))
-        (preview/get-basename (file-name-directory file))
-      basename)))
-
-(defun preview/preview-file (file)
-  "Open the preview for the current minibuffer selection."
-  (preview/clean)
-  (let* ((basename (preview/get-basename file))
-         (inhibit-message t))
-    (if (not (get-buffer basename))
-        (progn
-          (find-file-read-only file)
-          (display-buffer basename '(display-buffer-full-frame . ((inhibit-same-window . nil))))
-          (rename-buffer (concat basename  " - preview")))
-      (display-buffer basename '(display-buffer-full-frame . ((inhibit-same-window . nil))))))
-  (switch-to-minibuffer))
-
-(defun preview/attach-preview(&rest args)
-  "Makes sure that the filename exists and is clean (i.e. remove trailing slash from directories)."
-  (let*
-      ((file (nth 0 (completion-all-sorted-completions (icomplete--field-beg) (icomplete--field-end))))
-       (file-dir (file-name-directory (minibuffer-contents)))
-       (dir (if (equal file-dir file) "" file-dir))
-       (clean-file (directory-file-name (concat dir file))))
-    (when
-        (and
-         (ignore-errors (file-exists-p clean-file))
-         (ignore-errors (file-readable-p clean-file)))
-      (preview/preview-file clean-file))))
-
-
-(advice-add 'icomplete-forward-completions :after 'preview/attach-preview)
-(advice-add 'icomplete-backward-completions :after 'preview/attach-preview)
-
-(add-hook 'minibuffer-exit-hook 'preview/clean)
-
 (global-completion-preview-mode t)
 
 (setopt completion-preview-minimum-symbol-length 1
 			  completion-auto-select 'second-tab
-			  completion-auto-help 'always
+			  completion-auto-help nil
 			  completion-show-help nil
 			  completion-ignore-case t
         completion-styles '(flex basic partial-completion)
@@ -198,6 +149,34 @@
 
 (keymap-global-set "M-n" 'completion-preview-next-candidate)
 (keymap-global-set "M-p" 'completion-preview-prev-candidate)
+
+;; INFO We want the minibuffer to populate as much of the frame as
+;; possible.
+(setopt max-mini-window-height 10)
+
+
+(use-package icomplete
+  :bind
+  (:map icomplete-minibuffer-map
+        ("<tab>"      . 'icomplete-forward-completions)
+        ("<backtab>"  . 'icomplete-backward-completions)))
+
+
+(advice-add 'read-from-minibuffer
+            :around (lambda (oldfn &rest r)
+                      (let* ((frame (make-frame '((title . "minibuffer-float")
+                                                  (minibuffer . only)))))
+                        (unwind-protect
+                            (apply oldfn r)
+                          (delete-frame frame)))))
+
+(fido-vertical-mode t)
+
+(advice-add 'yank-pop :around (lambda (&rest r)
+                                (fido-vertical-mode 0)
+                                (unwind-protect
+                                    (apply (car r) (cdr r))
+                                  (fido-vertical-mode 1))))
 
 (setq-default tab-width 2)
 (setq-default tab-always-indent nil)
@@ -680,14 +659,3 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (require 'use-package-ensure)
 (setopt use-package-always-ensure t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(bbdb-vcard goto-chg markdown-mode queue scrollable-quick-peek
-                with-editor)))
-
-
-
