@@ -22,12 +22,20 @@ vim.keymap.set("n", "grd", vim.lsp.buf.definition)
 -- Formatting
 vim.keymap.set("n", "grf", vim.lsp.buf.format)
 
--- Wildmenu (accept completions with Tab)
+-- Wildmenu 
 vim.keymap.set("c", "<Tab>", function()
   if vim.fn.pumvisible() ~= 0 then
-    return "<C-y>"
+    return "<C-n>" -- accept completions with Tab
   else
     return "<C-z>" -- trigger wildmode
+  end
+end, { expr = true, silent = false })
+
+vim.keymap.set("c", "<enter>", function()
+  if vim.fn.pumvisible() ~= 0 then
+    return "<C-y>"  -- select completion
+  else
+    return "<enter>"
   end
 end, { expr = true, silent = false })
 
