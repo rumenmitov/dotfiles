@@ -16,12 +16,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
--- LSP
-vim.keymap.set("n", "grd", vim.lsp.buf.definition)
-
--- Formatting
-vim.keymap.set("n", "grf", vim.lsp.buf.format)
-
 -- Wildmenu 
 vim.keymap.set("c", "<Tab>", function()
   if vim.fn.pumvisible() ~= 0 then

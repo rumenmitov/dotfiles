@@ -33,8 +33,15 @@ vim.opt.wrap        = true
 vim.opt.colorcolumn = "80"
 
 -- Search
-vim.opt.hlsearch  = false
-vim.opt.incsearch = true
+vim.opt.hlsearch    = false
+vim.opt.incsearch   = true
+vim.opt.ignorecase  = true
+vim.opt.smartcase   = true     -- case-insensitive, unless uppercase used
+
+vim.api.nvim_set_hl(0, "CurSearch", {
+  fg="#ff0000",
+  bg="NONE",
+})
 
 -- Wildmenu
 vim.opt.wildmode = "longest:full" -- complete longest, then show wildmenu
@@ -49,7 +56,3 @@ vim.opt.undofile  = true
 -- Colorscheme
 vim.opt.background    = "dark"
 vim.opt.termguicolors = true
-
-if vim.version.gt(vim.version(), {0, 10, 0}) then
-    vim.cmd.colorscheme("default")
-end
