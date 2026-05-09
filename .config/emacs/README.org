@@ -240,6 +240,10 @@ The following snippet forces the minibuffer into a separate frame. You can then 
   ;; possible.
   (setopt max-mini-window-height 10)
 
+  ;; NOTE This will prevent the resize of the echo area as well as the
+  ;; minibuffer area.
+  (setopt resize-mini-windows nil)
+
 
   (use-package icomplete
     :bind
@@ -247,7 +251,7 @@ The following snippet forces the minibuffer into a separate frame. You can then 
           ("<tab>"      . 'icomplete-forward-completions)
           ("<backtab>"  . 'icomplete-backward-completions)))
 
-  
+
   (advice-add 'read-from-minibuffer
               :around (lambda (oldfn &rest r)
                         (let* ((frame (make-frame '((title . "minibuffer-float")

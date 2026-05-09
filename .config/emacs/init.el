@@ -154,6 +154,10 @@
 ;; possible.
 (setopt max-mini-window-height 10)
 
+;; NOTE This will prevent the resize of the echo area as well as the
+;; minibuffer area.
+(setopt resize-mini-windows nil)
+
 
 (use-package icomplete
   :bind
