@@ -45,6 +45,10 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(completions-common-part ((t (:foreground "deep sky blue"))))
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
@@ -54,7 +58,7 @@
  '(font-lock-keyword-face ((t (:inherit nil :foreground "'unspecified" :weight normal))))
  '(font-lock-string-face ((t (:inherit default :foreground "'unspecified"))))
  '(font-lock-type-face ((t (:inherit default :foreground "'unspecified"))))
- '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified")))) 
+ '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
  '(isearch ((t (:background "'unspecified" :foreground "red" :underline nil))))
@@ -636,7 +640,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
   :bind
   (:map mpc-mode-map
               ("<return>"     . mpc-select-toggle)
-              ("S-<return>"   . mpc-select-extend))
+              ("S-<return>"   . mpc-select-extend)
+              ("S"          . mpc-songs-search)
+              ("K"          . mpc-songs-kill-search))
   
   :config
   (setopt mpc-browser-tags '(Filename)))
@@ -663,3 +669,11 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (require 'use-package-ensure)
 (setopt use-package-always-ensure t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   '((org-archive-location . "::* Archived")
+     (eshell-aliases-file . "/podman:phantomuserland:/aliases"))))
