@@ -836,6 +836,13 @@ Use =offlineimap= to sync mail locally, then open it with Gnus.
   (setopt auth-sources '("~/.authinfo.gpg"))
 #+end_src
 
+Fetch new mail from the mail server:
+
+#+begin_src emacs-lisp
+  (add-hook 'gnus-get-new-news-hook '(lambda ()
+                                       (start-process "offlineimap" nil "offlineimap")))
+#+end_src
+
 ** MPC
 Music client; requires =mpd=.
 

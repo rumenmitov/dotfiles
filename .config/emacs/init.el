@@ -643,6 +643,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (setopt auth-sources '("~/.authinfo.gpg"))
 
+(add-hook 'gnus-get-new-news-hook '(lambda ()
+                                     (start-process "offlineimap" nil "offlineimap")))
+
 (use-package mpc
   :bind
   (:map mpc-mode-map
