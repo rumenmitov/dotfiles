@@ -45,11 +45,7 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(completions-common-part ((t (:foreground "deep sky blue"))))
+ '(completions-common-part ((t (:weight bold))))
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
  '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
@@ -58,9 +54,10 @@
  '(font-lock-keyword-face ((t (:inherit nil :foreground "'unspecified" :weight normal))))
  '(font-lock-string-face ((t (:inherit default :foreground "'unspecified"))))
  '(font-lock-type-face ((t (:inherit default :foreground "'unspecified"))))
- '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified"))))
+ '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified")))) 
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
+ '(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
  '(isearch ((t (:background "'unspecified" :foreground "red" :underline nil))))
  '(lazy-highlight ((t (:background "'unspecified" :foreground "orange red"))))
  '(line-number ((t (:inherit default :background nil))))
@@ -72,9 +69,6 @@
  '(org-agenda-diary ((t (:background "#57272300" :foreground "#ff74ff" :slant italic :weight regular))))
  '(org-agenda-dimmed-todo-face ((t (:foreground "dim gray"))))
  '(org-agenda-structure ((t (:foreground "#e37233" :weight bold :height 1.3))))
- '(org-block ((t (:inherit shadow :extend t :background "black" :foreground "white" :slant italic :height 0.9))))
- '(org-block-begin-line ((t (:inherit org-meta-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style pressed-button) :weight bold))))
- '(org-block-end-line ((t (:inherit org-block-begin-line :extend t :background "black" :box (:line-width (1 . 1) :color "grey75" :style released-button) :weight bold))))
  '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
  '(org-done ((t (:background "#127921" :foreground "lawn green" :box nil :overline t :weight bold))))
  '(org-inline-src-block ((t (:inherit nil))))
@@ -85,6 +79,26 @@
  '(org-warning ((t (:background "#ffffff00" :weight bold))))
  '(region ((t (:extend t :background "gray" :slant italic))))
  '(viper-minibuffer-insert ((t nil))))
+
+(custom-theme-set-faces
+ 'leuven-dark
+ '(org-block ((t (:inherit shadow
+                           :extend t
+                           :background "black"
+                           :foreground "white"
+                           :slant italic
+                           :height 0.9))))
+ 
+ '(org-block-begin-line ((t (:inherit org-meta-line
+                                      :extend t
+                                      :background "black"
+                                      :foreground "white"
+                                      :box (:line-width (1 . 1) :color "grey75" :style pressed-button)
+                                      :weight bold))))
+ 
+ '(org-block-end-line ((t (:inherit org-block-begin-line
+                                    :extend t
+                                    :box (:line-width (1 . 1) :color "grey75" :style released-button))))))
 
 (winner-mode 1)
 (keymap-global-set "C-<" 'winner-undo)
@@ -135,6 +149,7 @@
 (save-place-mode 1)
 
 (global-completion-preview-mode t)
+(fido-mode t)
 
 (setopt completion-preview-minimum-symbol-length 1
 			  completion-auto-select 'second-tab
@@ -177,14 +192,6 @@
                         (unwind-protect
                             (apply oldfn r)
                           (delete-frame frame)))))
-
-(fido-vertical-mode t)
-
-(advice-add 'yank-pop :around (lambda (&rest r)
-                                (fido-vertical-mode 0)
-                                (unwind-protect
-                                    (apply (car r) (cdr r))
-                                  (fido-vertical-mode 1))))
 
 (setq-default tab-width 2)
 (setq-default tab-always-indent nil)
@@ -669,11 +676,3 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (require 'use-package-ensure)
 (setopt use-package-always-ensure t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values
-   '((org-archive-location . "::* Archived")
-     (eshell-aliases-file . "/podman:phantomuserland:/aliases"))))
