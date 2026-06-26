@@ -9,7 +9,10 @@ function host_prompt() {
 function mail_prompt() {
     local maildir="$MAIL/INBOX/new"
 
-    [ -d $maildir ] || return "🏯"
+    if [[ ! -d $maildir ]]; then
+        echo "🏯"
+        return
+    fi
     
     local unread=$(ls -l $maildir | wc -l)
     [ $unread -gt 0 ] && echo "📩"
