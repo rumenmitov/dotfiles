@@ -153,7 +153,7 @@
 
 (setopt completion-preview-minimum-symbol-length 1
 			  completion-auto-select 'second-tab
-			  completion-auto-help nil
+			  completion-auto-help 't
 			  completion-show-help nil
 			  completion-ignore-case t
         completion-styles '(flex basic partial-completion)
@@ -197,7 +197,8 @@
 (setq-default tab-always-indent nil)
 (setq-default indent-tabs-mode nil)
 (setq-default c-default-style "bsd"
-	c-basic-offset tab-width)
+	            c-basic-offset tab-width
+              c-tab-always-indent nil)
 (setq-default comment-auto-fill-only-comments t)
 
 (require 'ansi-color)
@@ -453,6 +454,10 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (advice-add 'project-eshell :after #'hack-dir-local-variables-non-file-buffer)
 
+(use-package esh-module
+  :config
+  (add-to-list 'eshell-modules-list 'eshell-elecslash))
+
 (require 'org)
 
 (appt-activate 1)
@@ -468,8 +473,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook (lambda ()
                            (display-line-numbers-mode 0)
-                           (setq-local left-margin-width 20)
-                           (setq-local right-margin-width 20)))
+                           (set-window-margins nil nil 5)
+                           (when (>= (window-total-width) 140)
+                             (set-window-margins nil 20 20))))
 
 
 (setopt org-clock-persist t)
@@ -520,8 +526,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (setopt org-agenda-files (list
                           (concat org-directory "/agenda/")
-                          "~/Nextcloud/phantomOS/org/phantomos.org"
-                          "~/Nextcloud/university/semester_6/thesis/thesis.org"))
+                          "~/Nextcloud/phantomOS/org/phantomos.org"))
 
 (setopt org-refile-targets '((org-agenda-files . (:maxlevel . 1))))
 (advice-add 'org-refile :after 'org-save-all-org-buffers)
