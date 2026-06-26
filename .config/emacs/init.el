@@ -153,7 +153,7 @@
 
 (setopt completion-preview-minimum-symbol-length 1
 			  completion-auto-select 'second-tab
-			  completion-auto-help 't
+			  completion-auto-help nil
 			  completion-show-help nil
 			  completion-ignore-case t
         completion-styles '(flex basic partial-completion)
@@ -458,13 +458,20 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
   :config
   (add-to-list 'eshell-modules-list 'eshell-elecslash))
 
+(use-package em-cmpl
+  :hook (eshell-cmpl-mode . (lambda ()
+                              (setq-local completion-auto-help 't))))
+
+(require 'imenu)
 (require 'org)
 
 (appt-activate 1)
 
 (setopt org-startup-with-inline-images t
         org-tags-column 90
-        org-imenu-depth 7)
+        org-imenu-depth 7
+        org-goto-interface 'outline-path-completion
+        org-outline-path-complete-in-steps nil)
 
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
@@ -473,9 +480,8 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook (lambda ()
                            (display-line-numbers-mode 0)
-                           (set-window-margins nil nil 5)
-                           (when (>= (window-total-width) 140)
-                             (set-window-margins nil 20 20))))
+                           (setq-local left-margin-width 5)
+                           (setq-local right-margin-width 5)))
 
 
 (setopt org-clock-persist t)
@@ -654,10 +660,16 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (use-package mpc
   :bind
   (:map mpc-mode-map
-              ("<return>"     . mpc-select-toggle)
-              ("S-<return>"   . mpc-select-extend)
-              ("S"          . mpc-songs-search)
-              ("K"          . mpc-songs-kill-search))
+        ("<return>"     . mpc-select-toggle)
+        ("S-<return>"   . mpc-select-extend)
+        ("S"            . mpc-songs-search)
+        ("K"            . mpc-songs-kill-search))
+
+  (:map mpc-songs-mode-map
+        ("a" . mpc-playlist-add)
+        ("P" . mpc-playlist)
+        ("=" . mpc-play)        
+        ("d" . mpc-playlist-delete))
   
   :config
   (setopt mpc-browser-tags '(Filename)))
