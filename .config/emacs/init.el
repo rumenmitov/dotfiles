@@ -460,7 +460,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (use-package em-cmpl
   :hook (eshell-cmpl-mode . (lambda ()
-                              (setq-local completion-auto-help 't))))
+                              (setq-local completion-auto-help t))))
 
 (require 'imenu)
 (require 'org)
@@ -480,9 +480,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook (lambda ()
                            (display-line-numbers-mode 0)
+                           (setq-local completion-auto-help t)
                            (setq-local left-margin-width 5)
                            (setq-local right-margin-width 5)))
-
 
 (setopt org-clock-persist t)
 (org-clock-persistence-insinuate)
