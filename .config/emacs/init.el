@@ -45,6 +45,10 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(completions-common-part ((t (:weight bold))))
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
@@ -54,7 +58,7 @@
  '(font-lock-keyword-face ((t (:inherit nil :foreground "'unspecified" :weight normal))))
  '(font-lock-string-face ((t (:inherit default :foreground "'unspecified"))))
  '(font-lock-type-face ((t (:inherit default :foreground "'unspecified"))))
- '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified")))) 
+ '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified"))))
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
  '(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
@@ -363,13 +367,11 @@ Example:
 (setq
  c--main      '("int main(int argc, char *argv[]) {" n > p n "}")
  
- c--docfn     '(> "/**" n
-                  > "* @brief   " p n
-                  > "*/" p)
+ c--docbrief  '(> " @brief   " p)
+ 
+ c--docparam  '(> " @param   " p)
 
- c--docparam  '(> "* @param   " p)
-
- c--docret    '(> "* @return  " p)
+ c--docret    '(> " @return  " p)
 
  c--todo      '(> "/* TODO " p " */" p)
  
@@ -383,27 +385,27 @@ Example:
 
 (tempo/setup-mode 'c-mode)
 
-(tempo/c-mode/define c--main        "main"        "Snippet for main().")
-(tempo/c-mode/define c--docfn       "docfn"   		"Snippet for docstrings.")
-(tempo/c-mode/define c--docparam    "docparam" 		"Snippet for parameters in docstrings.")
-(tempo/c-mode/define c--docret      "docret"   		"Snippet for return values in docstrings.")
-(tempo/c-mode/define c--todo        "doctodo" 		"Snippet for TODO comments.")
-(tempo/c-mode/define c--info        "docinfo" 		"Snippet for INFO comments.")
-(tempo/c-mode/define c--bug         "docbug"  		"Snippet for BUG comments.")
-(tempo/c-mode/define c--switch      "switch"  		"Snippet for switch blocks.")
-(tempo/c-mode/define c--case        "case"    		"Snippet for case blocks.")
+(tempo/c-mode/define c--main              "main"            "Snippet for main().")
+(tempo/c-mode/define c--docbrief    			"docbrief" 				"Snippet for briefs in docstrings.")
+(tempo/c-mode/define c--docparam    			"docparam" 				"Snippet for parameters in docstrings.")
+(tempo/c-mode/define c--docret      			"docret"   				"Snippet for return values in docstrings.")
+(tempo/c-mode/define c--todo        			"doctodo" 				"Snippet for TODO comments.")
+(tempo/c-mode/define c--info        			"docinfo" 				"Snippet for INFO comments.")
+(tempo/c-mode/define c--bug         			"docbug"  				"Snippet for BUG comments.")
+(tempo/c-mode/define c--switch      			"switch"  				"Snippet for switch blocks.")
+(tempo/c-mode/define c--case        			"case"    				"Snippet for case blocks.")
 
 (tempo/setup-mode 'c++-mode)
 
-(tempo/c++-mode/define c--main        "main"        "Snippet for main().")
-(tempo/c++-mode/define c--docfn       "docfn"   		"Snippet for docstrings.")
-(tempo/c++-mode/define c--docparam    "docparam" 		"Snippet for parameters in docstrings.")
-(tempo/c++-mode/define c--docret      "docret"   		"Snippet for return values in docstrings.")
-(tempo/c++-mode/define c--todo        "doctodo" 		"Snippet for TODO comments.")
-(tempo/c++-mode/define c--info        "docinfo" 		"Snippet for INFO comments.")
-(tempo/c++-mode/define c--bug         "docbug"  		"Snippet for BUG comments.")
-(tempo/c++-mode/define c--switch      "switch"  		"Snippet for switch blocks.")
-(tempo/c++-mode/define c--case        "case"    		"Snippet for case blocks.")
+(tempo/c++-mode/define c--main        "main"            "Snippet for main().")
+(tempo/c++-mode/define c--docbrief    "docbrief" 				"Snippet for briefs in docstrings.")
+(tempo/c++-mode/define c--docparam    "docparam" 				"Snippet for parameters in docstrings.")
+(tempo/c++-mode/define c--docret      "docret"   				"Snippet for return values in docstrings.")
+(tempo/c++-mode/define c--todo        "doctodo" 				"Snippet for TODO comments.")
+(tempo/c++-mode/define c--info        "docinfo" 				"Snippet for INFO comments.")
+(tempo/c++-mode/define c--bug         "docbug"  				"Snippet for BUG comments.")
+(tempo/c++-mode/define c--switch      "switch"  				"Snippet for switch blocks.")
+(tempo/c++-mode/define c--case        "case"    				"Snippet for case blocks.")
 
 (require 'vc-git)
 
@@ -696,3 +698,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (require 'use-package-ensure)
 (setopt use-package-always-ensure t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values '((org-archive-location . "::* Archived"))))
