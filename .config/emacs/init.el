@@ -639,8 +639,11 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (require 'gnus-demon)
 (gnus-demon-init)
 
-(setopt gnus-select-method
-        '(nnmaildir "email" (directory (concat gnus-directory "/email"))))
+(setq gnus-select-method
+        `(nnmaildir "email" (directory ,(concat gnus-directory "/email"))
+                    (gnus-search-engine gnus-search-notmuch
+                                        (remove-prefix "/home/rumen/Nextcloud/gnus/email")
+                                        (config-file "/home/rumen/.notmuch-config"))))
 
 (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
 
