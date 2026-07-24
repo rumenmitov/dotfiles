@@ -921,3 +921,9 @@ Music client; requires =mpd=.
                   org-icalendar-timezone "Europe/Berlin"
                   org-id-search-archives nil))
 #+end_src
+
+*** BBDB
+#+begin_src emacs-lisp
+  (use-package bbdb
+    :config (setq bbdb-completion-display-record nil))
+#+end_src

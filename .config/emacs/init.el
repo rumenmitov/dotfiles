@@ -706,3 +706,6 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
                 org-caldav-files nil
                 org-icalendar-timezone "Europe/Berlin"
                 org-id-search-archives nil))
+
+(use-package bbdb
+  :config (setq bbdb-completion-display-record nil))
