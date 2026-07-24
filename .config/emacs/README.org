@@ -821,28 +821,32 @@ Use =offlineimap= to sync mail locally, then open it with Gnus.
   (setopt nnml-directory (concat gnus-directory "/nnml"))
 
   (setopt gnus-use-dribble-file nil)
-  (setopt gnus-message-archive-group nil)
   (setopt gnus-save-killed-list nil)
   (setopt gnus-check-new-newsgroups nil)
   (setopt gnus-save-newsrc-file nil)
+  (setopt mail-user-agent 'gnus-user-agent)
+  (setopt gnus-message-archive-group nil)
+
+  (setopt gnus-posting-styles '((message-mail-p
+                                 (gcc "Sent"))))
 
   (require 'gnus-demon)
   (gnus-demon-init)
 
   (setopt gnus-select-method
-        '(nnmaildir "email" (directory (concat gnus-directory "/email"))))
+          '(nnmaildir "email" (directory (concat gnus-directory "/email"))))
 
   (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
 
   (setopt user-mail-address "rumenmitov@disroot.org"
-        user-full-name    "Rumen Mitov")
+          user-full-name    "Rumen Mitov")
 
   (setopt smtpmail-smtp-server 		     "disroot.org"
-        smtpmail-smtp-user                       "rumenmitov@disroot.org"
-        smtpmail-servers-requiring-authorization "disroot.org"
-        send-mail-function   		     'smtpmail-send-it
-        smtpmail-smtp-service                    587
-        smtpmail-stream-type                     'starttls)
+          smtpmail-smtp-user                       "rumenmitov@disroot.org"
+          smtpmail-servers-requiring-authorization "disroot.org"
+          send-mail-function   		     'smtpmail-send-it
+          smtpmail-smtp-service                    587
+          smtpmail-stream-type                     'starttls)
 
   (setopt auth-sources '("~/.authinfo.gpg"))
 #+end_src
@@ -905,4 +909,15 @@ Music client; requires =mpd=.
 
   (require 'use-package-ensure)
   (setopt use-package-always-ensure t)
+#+end_src
+
+*** CalDAV
+#+begin_src emacs-lisp
+  (use-package org-caldav
+    :config (setq org-caldav-url "https://nc.rumenmitov.duckdns.org/remote.php/dav/calendars/rumenmitov"
+                  org-caldav-calendar-id "personal"
+                  org-caldav-inbox (concat org-directory "/agenda/cal.org")
+                  org-caldav-files nil
+                  org-icalendar-timezone "Europe/Berlin"
+                  org-id-search-archives nil))
 #+end_src

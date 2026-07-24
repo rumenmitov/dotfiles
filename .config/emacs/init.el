@@ -45,10 +45,6 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(completions-common-part ((t (:weight bold))))
  '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
  '(cursor ((t (:background "PaleVioletRed3"))))
@@ -58,7 +54,7 @@
  '(font-lock-keyword-face ((t (:inherit nil :foreground "'unspecified" :weight normal))))
  '(font-lock-string-face ((t (:inherit default :foreground "'unspecified"))))
  '(font-lock-type-face ((t (:inherit default :foreground "'unspecified"))))
- '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified"))))
+ '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified")))) 
  '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
  '(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
@@ -631,28 +627,32 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (setopt nnml-directory (concat gnus-directory "/nnml"))
 
 (setopt gnus-use-dribble-file nil)
-(setopt gnus-message-archive-group nil)
 (setopt gnus-save-killed-list nil)
 (setopt gnus-check-new-newsgroups nil)
 (setopt gnus-save-newsrc-file nil)
+(setopt mail-user-agent 'gnus-user-agent)
+(setopt gnus-message-archive-group nil)
+
+(setopt gnus-posting-styles '((message-mail-p
+                               (gcc "Sent"))))
 
 (require 'gnus-demon)
 (gnus-demon-init)
 
 (setopt gnus-select-method
-      '(nnmaildir "email" (directory (concat gnus-directory "/email"))))
+        '(nnmaildir "email" (directory (concat gnus-directory "/email"))))
 
 (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
 
 (setopt user-mail-address "rumenmitov@disroot.org"
-      user-full-name    "Rumen Mitov")
+        user-full-name    "Rumen Mitov")
 
 (setopt smtpmail-smtp-server 		     "disroot.org"
-      smtpmail-smtp-user                       "rumenmitov@disroot.org"
-      smtpmail-servers-requiring-authorization "disroot.org"
-      send-mail-function   		     'smtpmail-send-it
-      smtpmail-smtp-service                    587
-      smtpmail-stream-type                     'starttls)
+        smtpmail-smtp-user                       "rumenmitov@disroot.org"
+        smtpmail-servers-requiring-authorization "disroot.org"
+        send-mail-function   		     'smtpmail-send-it
+        smtpmail-smtp-service                    587
+        smtpmail-stream-type                     'starttls)
 
 (setopt auth-sources '("~/.authinfo.gpg"))
 
@@ -698,9 +698,11 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (require 'use-package-ensure)
 (setopt use-package-always-ensure t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values '((org-archive-location . "::* Archived"))))
+
+(use-package org-caldav
+  :config (setq org-caldav-url "https://nc.rumenmitov.duckdns.org/remote.php/dav/calendars/rumenmitov"
+                org-caldav-calendar-id "personal"
+                org-caldav-inbox (concat org-directory "/agenda/cal.org")
+                org-caldav-files nil
+                org-icalendar-timezone "Europe/Berlin"
+                org-id-search-archives nil))
