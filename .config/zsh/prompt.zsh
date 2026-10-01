@@ -70,8 +70,11 @@ VIMODE=""
 function vi_mode_indicator () {
   case ${KEYMAP} in
     (vicmd)      echo "🔒" ;;
-    (main|viins) echo "💬" ;;
-    (*)          ;;
+    (viins)      echo "💬" ;;
+    (main) 
+      if [[ "$EDIT_MODE" != "emacs" ]]; then
+        echo "💬"
+      fi                   ;;
   esac
 }
 

@@ -2,11 +2,6 @@ source $HOME/.zshenv
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/prompt.zsh
 
-# Command Hotkeys
-bindkey -s '^xga' 'git add .'
-bindkey -s '^xgc' 'git commit -m ""\e[D' # NOTE \e[D is left-arrow
-bindkey -s '^xgp' 'git push'
-
 # History
 setopt HIST_SAVE_NO_DUPS
 
@@ -17,20 +12,28 @@ setopt CORRECT_ALL
 autoload -z edit-command-line
 zle -N edit-command-line
 
-bindkey -v
+# Keybinds
+bindkey -e
+EDIT_MODE="emacs" # needed for prompt.zsh (set to either "emacs" or "vi")
+
 KEYTIMEOUT=1
+
 bindkey "^?" backward-delete-char
 bindkey '^x^e' edit-command-line
 
+bindkey -r '^xg'
+bindkey -s '^xga' 'git add .'
+bindkey -s '^xgc' 'git commit -m ""\e[D' # NOTE \e[D is left-arrow
+bindkey -s '^xgp' 'git push'
+
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
 
 # Completion
 autoload -Uz compinit
 compinit 
 
 _comp_options+=(globdots)
-
-bindkey '^n' menu-complete
-bindkey '^p' reverse-menu-complete
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*:default' list-colors \
