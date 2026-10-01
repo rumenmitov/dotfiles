@@ -13,6 +13,8 @@ autoload -z edit-command-line
 zle -N edit-command-line
 
 # Keybinds
+stty -ixon
+
 bindkey -e
 EDIT_MODE="emacs" # needed for prompt.zsh (set to either "emacs" or "vi")
 
