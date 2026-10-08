@@ -14,3 +14,6 @@
 
 !/snippets/
 !/snippets/**
+
+!/extra-config/
+!/extra-config/**

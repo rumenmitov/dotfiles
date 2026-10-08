@@ -1,10 +1,14 @@
-(setopt emacs-directory "~/.config/emacs")
+;;; -*- lexical-binding: t; -*-
+
+;;; -*- lexical-binding: t; -*-
+
 (setopt org-directory "~/Nextcloud/org")
 
 (auto-save-visited-mode 1)
+(global-auto-revert-mode 1)
 
-(setopt backup-directory-alist `((".*" . ,(concat emacs-directory "/backups/"))))
-(setopt auto-save-file-name-transforms `((".*" ,(concat emacs-directory "/auto-saves/") t)))
+(setopt backup-directory-alist `((".*" . ,(concat user-emacs-directory "backups/"))))
+(setopt auto-save-file-name-transforms `((".*" ,(concat user-emacs-directory "auto-saves/") t)))
 
 (setopt inhibit-startup-message t)
 (setopt initial-scratch-message ";; -- Welcome to Emacs --\n\n")
@@ -35,8 +39,6 @@
         window-divider-default-right-width 3
         window-divider-default-bottom-width 1)
 
-(load-theme 'leuven-dark 1)
-
 (setopt modus-themes-bold-constructs t
         modus-themes-italic-constructs t
         modus-themes-disable-other-themes t
@@ -44,61 +46,81 @@
 
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
-(custom-set-faces
- '(completions-common-part ((t (:weight bold))))
- '(completions-first-difference ((t (:inherit completions-common-part :underline t))))
- '(cursor ((t (:background "PaleVioletRed3"))))
- '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
- '(font-lock-constant-face ((t (:inherit default :foreground "'unspecified"))))
- '(font-lock-function-name-face ((t (:inherit default :foreground "'unspecified"))))
- '(font-lock-keyword-face ((t (:inherit nil :foreground "'unspecified" :weight normal))))
- '(font-lock-string-face ((t (:inherit default :foreground "'unspecified"))))
- '(font-lock-type-face ((t (:inherit default :foreground "'unspecified"))))
- '(font-lock-variable-name-face ((t (:inherit default :foreground "'unspecified")))) 
- '(gnus-summary-cancelled ((t (:extend t :strike-through t))))
- '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
- '(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
- '(isearch ((t (:background "'unspecified" :foreground "red" :underline nil))))
- '(lazy-highlight ((t (:background "'unspecified" :foreground "orange red"))))
- '(line-number ((t (:inherit default :background nil))))
- '(line-number-current-line ((t (:inherit default :background nil))))
- '(minibuffer-prompt ((t (:background "#00000000" :weight bold))))
- '(org-agenda-date ((t (:foreground "#ec9d5a" :weight normal :height 1.1))))
- '(org-agenda-date-today ((t (:background "#25205900" :weight bold :height 1.1))))
- '(org-agenda-date-weekend ((t (:foreground "deep sky blue" :overline t :weight normal :height 1.1))))
- '(org-agenda-diary ((t (:background "#57272300" :foreground "#ff74ff" :slant italic :weight regular))))
- '(org-agenda-dimmed-todo-face ((t (:foreground "dim gray"))))
- '(org-agenda-structure ((t (:foreground "#e37233" :weight bold :height 1.3))))
- '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
- '(org-done ((t (:background "#127921" :foreground "lawn green" :box nil :overline t :weight bold))))
- '(org-inline-src-block ((t (:inherit nil))))
- '(org-level-1 ((t (:extend nil :background "#322d37" :foreground "white" :overline "white" :weight bold :height 1.1))))
- '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "#ff7138"))))
- '(org-scheduled-today ((t (:background "#25205900" :weight normal))))
- '(org-todo ((t (:background "#25374300" :foreground "red" :box nil :weight bold))))
- '(org-warning ((t (:background "#ffffff00" :weight bold))))
- '(region ((t (:extend t :background "gray" :slant italic))))
- '(viper-minibuffer-insert ((t nil))))
+(defun themes/common-faces ()
+  '((completions-common-part ((t (:weight bold))))
+    (completions-first-difference ((t (:inherit completions-common-part :underline t))))
+    (font-lock-constant-face ((t (:inherit default :foreground unspecified))))
+    (font-lock-function-name-face ((t (:inherit default :foreground unspecified))))
+    (font-lock-keyword-face ((t (:inherit nil :foreground unspecified :weight normal))))
+    (font-lock-string-face ((t (:inherit default :foreground unspecified))))
+    (font-lock-type-face ((t (:inherit default :foreground unspecified))))
+    (font-lock-variable-name-face ((t (:inherit default :foreground unspecified))))
+    (gnus-summary-cancelled ((t (:extend t :strike-through t))))
+    (isearch ((t (:background unspecified :foreground "red" :underline nil))))
+    (lazy-highlight ((t (:background unspecified :foreground "orange red"))))
+    (line-number ((t (:inherit default :background nil))))
+    (line-number-current-line ((t (:inherit default :background nil))))
+    (minibuffer-prompt ((t (:foreground unspecified :background unspecified :weight bold))))
+    (viper-minibuffer-insert ((t nil)))))
 
-(custom-theme-set-faces
- 'leuven-dark
- '(org-block ((t (:inherit shadow
-                           :extend t
-                           :background "black"
-                           :foreground "white"
-                           :slant italic
-                           :height 0.9))))
- 
- '(org-block-begin-line ((t (:inherit org-meta-line
-                                      :extend t
-                                      :background "black"
-                                      :foreground "white"
-                                      :box (:line-width (1 . 1) :color "grey75" :style pressed-button)
-                                      :weight bold))))
- 
- '(org-block-end-line ((t (:inherit org-block-begin-line
-                                    :extend t
-                                    :box (:line-width (1 . 1) :color "grey75" :style released-button))))))
+
+(defun themes/enable-leuven-dark ()
+  (apply #'custom-theme-set-faces 'leuven-dark
+         '(cursor ((t (:background "PaleVioletRed3"))))
+         '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
+         '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
+         '(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
+         '(org-agenda-date ((t (:foreground "#ec9d5a" :weight normal :height 1.1))))
+         '(org-agenda-date-today ((t (:background "#25205900" :weight bold :height 1.1))))
+         '(org-agenda-date-weekend ((t (:foreground "deep sky blue" :overline t :weight normal :height 1.1))))
+         '(org-agenda-diary ((t (:background "#57272300" :foreground "#ff74ff" :slant italic :weight regular))))
+         '(org-agenda-dimmed-todo-face ((t (:foreground "dim gray"))))
+         '(org-agenda-structure ((t (:foreground "#e37233" :weight bold :height 1.3))))
+         '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
+         '(org-done ((t (:background "#127921" :foreground "lawn green" :box nil :overline t :weight bold))))
+         '(org-inline-src-block ((t (:inherit nil))))
+         '(org-level-1 ((t (:extend nil
+                                    :background "#322d37"
+                                    :foreground "white"
+                                    :overline "white"
+                                    :weight bold
+                                    :height 1.1))))
+         '(org-block ((t (:inherit shadow
+                                   :extend t
+                                   :background "black"
+                                   :foreground "white"
+                                   :slant italic
+                                   :height 0.9))))
+         '(org-block-begin-line ((t (:inherit org-meta-line
+                                              :extend t
+                                              :background "black"
+                                              :foreground "white"
+                                              :box (:line-width (1 . 1) :color "grey75" :style pressed-button)
+                                              :weight bold))))
+         '(org-block-end-line ((t (:inherit org-block-begin-line
+                                            :background "black"
+                                            :foreground "white"
+                                            :extend t
+                                            :box (:line-width (1 . 1) :color "grey75" :style released-button)))))
+  '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "#ff7138"))))
+  '(org-scheduled-today ((t (:background "#25205900" :weight normal))))
+  '(org-todo ((t (:background "#25374300" :foreground "red" :box nil :weight bold))))
+  '(org-warning ((t (:background "#ffffff00" :weight bold))))
+  '(region ((t (:extend t :background "gray" :slant italic))))
+  (themes/common-faces)))
+
+
+(defun themes/enable-modus-operandi ()
+    (apply #'custom-theme-set-faces 'modus-operandi (themes/common-faces)))
+
+
+(add-to-list 'enable-theme-functions (lambda (theme &rest faces)
+                                       (pcase theme
+                                         ('leuven-dark (themes/enable-leuven-dark))
+                                         ('modus-operandi (themes/enable-modus-operandi)))))
+
+(load-theme 'modus-operandi t t)
+(load-theme 'leuven-dark t)
 
 (winner-mode 1)
 (keymap-global-set "C-<" 'winner-undo)
@@ -485,7 +507,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (setopt org-clock-persist t)
 (org-clock-persistence-insinuate)
 
-(setopt org-clock-sound (concat emacs-directory "/assets/org-clock-sound.wav"))
+(setopt org-clock-sound (concat user-emacs-directory "assets/org-clock-sound.wav"))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -498,26 +520,28 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (setopt org-plantuml-exec-mode 'plantuml)
 
+(defvar custom--prettify-symbols-alist
+  '(("[#A]"        . ?🔴)
+    ("[#B]"        . ?🔵)
+    ("[#C]"        . ?🟢)
+    ("#+author:"   . ?)
+    ("#+title:"    . ?)
+    ("#+date:"     . ?)                      
+    ("#+email:"    . ?)
+    ("#+options:"  . ?)                      
+    ("#+begin_src" . ?)
+    ("#+end_src"   . ?)
+    ("#+RESULTS:"  . ?)
+    ("- [ ]"       . ?)
+    ("- [-]"       . ?)
+    ("- [X]"       . ?)
+    (":RESEARCH"    . ?📜)
+    ("BUG"         . ?🪳)
+    ("INFO"        . ?💡)))
+
 (add-hook 'org-mode-hook
           (lambda ()
-            (setopt prettify-symbols-alist
-                  '(("[#A]"        . ?🔴)
-                    ("[#B]"        . ?🔵)
-                    ("[#C]"        . ?🟢)
-                    ("#+author:"   . ?)
-                    ("#+title:"    . ?)
-                    ("#+date:"     . ?)                      
-                    ("#+email:"    . ?)
-                    ("#+options:"  . ?)                      
-                    ("#+begin_src" . ?)
-                    ("#+end_src"   . ?)
-                    ("#+RESULTS:"  . ?)
-                    ("- [ ]"       . ?)
-                    ("- [-]"       . ?)
-                    ("- [X]"       . ?)
-                    ("RESEARCH"    . ?📜)
-                    ("BUG"         . ?🪳)
-                    ("INFO"        . ?💡)))
+            (setopt prettify-symbols-alist custom--prettify-symbols-alist)
             (prettify-symbols-mode 1)))
 
 (setopt org-hide-emphasis-markers t)
@@ -528,9 +552,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (keymap-global-set "C-c a" 'org-agenda)
 
-(setopt org-agenda-files (list
-                          (concat org-directory "/agenda/")
-                          "~/Nextcloud/phantomOS/org/phantomos.org"))
+(setopt org-agenda-files (list (concat org-directory "/agenda/")))
 
 (setopt org-refile-targets '((org-agenda-files . (:maxlevel . 1))))
 (advice-add 'org-refile :after 'org-save-all-org-buffers)
@@ -586,15 +608,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
                   ((org-agenda-overriding-header "Completed")
                    (org-agenda-max-entries 3)))
             (tags "@work /+AXED"
-                  ((org-agenda-overriding-header "Cancelled")))))
-          ("T" "Thesis"
-           ((tags "ADMIN"
-                  ((org-agenda-overriding-header "Administration")))
-            (tags "RESEARCH"
-                  ((org-agenda-overriding-header "Research")))
-            (tags "BUG"
-                  ((org-agenda-overriding-header "Bugs"))))
-           ((org-agenda-files (list "~/Nextcloud/university/semester_6/thesis/thesis.org"))))))
+                  ((org-agenda-overriding-header "Cancelled")))))))
 
 (add-hook 'ses-mode-hook (lambda () (display-line-numbers-mode 0)))
 
@@ -605,22 +619,22 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
            "Todo"
            entry
            (file ,(concat org-directory "/agenda/notes.org"))
-           (file ,(concat emacs-directory "/templates/todo.tmpl")))
+           (file ,(concat user-emacs-directory "templates/todo.tmpl")))
           ("e"
            "Email"
            entry
            (file ,(concat org-directory "/agenda/notes.org"))
-           (file ,(concat emacs-directory "/templates/email.tmpl")))
+           (file ,(concat user-emacs-directory "templates/email.tmpl")))
           ("j"
            "Journal"
            plain
            (file+datetree ,(concat org-directory "/journal.org"))
-           (file ,(concat emacs-directory "/templates/journal.tmpl")))
+           (file ,(concat user-emacs-directory "templates/journal.tmpl")))
           ("p"
            "Programming"
            entry
            (file ,(concat org-directory "/agenda/programming.org"))
-           (file ,(concat emacs-directory "/templates/programming.tmpl")))))
+           (file ,(concat user-emacs-directory "templates/programming.tmpl")))))
 
 (setopt gnus-directory "~/Nextcloud/gnus")
 (setopt gnus-startup-file (concat gnus-directory "/newsrc"))
@@ -694,6 +708,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (use-package proced
   :config
   (setopt proced-auto-update-flag 'visible))
+
+(let* ((extra-config-files (list (concat user-emacs-directory "extra-config/work.el"))))
+  (mapcar #'load extra-config-files))
 
 (require 'package)
 (add-to-list 'package-archives '("meta" . "https://melpa.org/packages/") t)
