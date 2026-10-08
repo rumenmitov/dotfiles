@@ -95,13 +95,13 @@
                                               :extend t
                                               :background "black"
                                               :foreground "white"
-                                              :box (:line-width (1 . 1) :color "grey75" :style pressed-button)
+                                              :box nil
                                               :weight bold))))
          '(org-block-end-line ((t (:inherit org-block-begin-line
                                             :background "black"
                                             :foreground "white"
                                             :extend t
-                                            :box (:line-width (1 . 1) :color "grey75" :style released-button)))))
+                                            :box nil))))
   '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "#ff7138"))))
   '(org-scheduled-today ((t (:background "#25205900" :weight normal))))
   '(org-todo ((t (:background "#25374300" :foreground "red" :box nil :weight bold))))
@@ -542,8 +542,8 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
     ("#+date:"     	. ?)                      
     ("#+email:"    	. ?)
     ("#+options:"   . ?)                      
-    ("#+begin_src"  . ?)
-    ("#+end_src"    . ?)
+    ("#+begin_src"  . ?⌜)
+    ("#+end_src"    . ?⌞)
     ("#+RESULTS:"   . ?)
     (":CHORE"      	. ?🧨)
     (":APPOINTMENT" . ?📅)
