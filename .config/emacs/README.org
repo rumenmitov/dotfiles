@@ -808,22 +808,26 @@ Defined the snippet definitions separately, so that I can re-use them for differ
              "Todo"
              entry
              (file ,(concat org-directory "/agenda/notes.org"))
-             (file ,(concat user-emacs-directory "templates/todo.tmpl")))
+             (file ,(concat user-emacs-directory "templates/todo.tmpl"))
+             :unnarrowed t)
             ("e"
              "Email"
              entry
              (file ,(concat org-directory "/agenda/notes.org"))
-             (file ,(concat user-emacs-directory "templates/email.tmpl")))
+             (file ,(concat user-emacs-directory "templates/email.tmpl"))
+             :unnarrowed t)            
             ("j"
              "Journal"
              plain
              (file+datetree ,(concat org-directory "/journal.org"))
-             (file ,(concat user-emacs-directory "templates/journal.tmpl")))
+             (file ,(concat user-emacs-directory "templates/journal.tmpl"))
+             :unnarrowed t)             
             ("p"
              "Programming"
              entry
              (file ,(concat org-directory "/agenda/programming.org"))
-             (file ,(concat user-emacs-directory "templates/programming.tmpl")))))
+             (file ,(concat user-emacs-directory "templates/programming.tmpl"))
+             :unnarrowed t)))
 #+end_src
 
 ** Gnus
