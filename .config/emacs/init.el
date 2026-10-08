@@ -533,25 +533,26 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (setopt org-plantuml-exec-mode 'plantuml)
 
-(defvar custom--prettify-symbols-alist
-  '(("[#A]"        . ?🔴)
-    ("[#B]"        . ?🔵)
-    ("[#C]"        . ?🟢)
-    ("#+author:"   . ?)
-    ("#+title:"    . ?)
-    ("#+date:"     . ?)                      
-    ("#+email:"    . ?)
-    ("#+options:"  . ?)                      
-    ("#+begin_src" . ?)
-    ("#+end_src"   . ?)
-    ("#+RESULTS:"  . ?)
-    ("- [ ]"       . ?)
-    ("- [-]"       . ?)
-    ("- [X]"       . ?)))
-
+(defvar config--prettify-symbols-alist
+  '(("[#A]"         . ?🔴)
+    ("[#B]"         . ?🔵)
+    ("[#C]"        	. ?🟢)
+    ("#+author:"    . ?)
+    ("#+title:"    	. ?)
+    ("#+date:"     	. ?)                      
+    ("#+email:"    	. ?)
+    ("#+options:"   . ?)                      
+    ("#+begin_src"  . ?)
+    ("#+end_src"    . ?)
+    ("#+RESULTS:"   . ?)
+    (":CHORE"      	. ?🧨)
+    (":APPOINTMENT" . ?📅)
+    ("- [ ]"       	. ?)
+    ("- [-]"       	. ?)
+    ("- [X]"       	. ?)))
 
 (add-hook 'org-mode-hook (lambda ()
-                           (setq-local prettify-symbols-alist custom--prettify-symbols-alist)
+                           (setq-local prettify-symbols-alist config--prettify-symbols-alist)
                            (prettify-symbols-mode 1)))
 
 (setopt org-hide-emphasis-markers t)
@@ -568,8 +569,8 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (advice-add 'org-refile :after 'org-save-all-org-buffers)
 
 (setopt org-default-notes-file (concat org-directory "/agenda/notes.org")
-				diary-file (concat org-directory "/agenda/diary")
-				org-archive-location (concat org-directory "/archive/%s_archive::datetree/"))
+  			diary-file (concat org-directory "/agenda/diary")
+  			org-archive-location (concat org-directory "/archive/%s_archive::datetree/"))
 
 (setopt org-agenda-include-diary t
         calendar-date-style 'european)
@@ -584,10 +585,6 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (setopt org-enforce-todo-dependencies t
         org-enforce-todo-checkbox-dependencies t)
 
-(setopt org-tag-persistent-alist '((:startgroup . nil)
-                                   ("@work" . ?W) ("@home" . ?H)
-                                   (:endgroup . nil)))
-
 (setopt org-log-into-drawer t)
 
 (add-to-list 'org-modules 'org-habit)
@@ -600,25 +597,19 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (add-to-list 'org-export-backends 'md)
 
 (setopt org-agenda-custom-commands
-        `(("p" "Programming"
-           ((todo "TODO"))
-           ((org-agenda-files (list ,(concat org-directory "/agenda/programming.org")))))
-          ("h" "Home"
-           ((tags "@home /+TODO"
-                  ((org-agenda-overriding-header "Home Tasks")))
-            (tags "@home /+DONE"
+        `(("n" "Notes"
+           ((tags "CHORE /+TODO"
+                  ((org-agenda-overriding-header "Chores")))
+            (tags "APPOINTMENT /+TODO"
+                  ((org-agenda-overriding-header "Appointments")))
+            (tags "/+DONE"
                   ((org-agenda-overriding-header "Completed")
                    (org-agenda-max-entries 3)))
-            (tags "@home /+AXED"
-                  ((org-agenda-overriding-header "Cancelled")))))
-          ("w" "Work"
-           ((tags "@work /+TODO"
-                  ((org-agenda-overriding-header "Work Tasks")))
-            (tags "@work /+DONE"
-                  ((org-agenda-overriding-header "Completed")
-                   (org-agenda-max-entries 3)))
-            (tags "@work /+AXED"
-                  ((org-agenda-overriding-header "Cancelled")))))))
+            (tags "/+AXED"
+                  ((org-agenda-overriding-header "Cancelled")
+                   (org-agenda-max-entries 3))))
+           ((org-agenda-files (list ,(concat org-directory "/agenda/notes.org")
+                                    ,(concat org-directory "/archive/notes.org_archive")))))))
 
 (add-hook 'ses-mode-hook (lambda () (display-line-numbers-mode 0)))
 
