@@ -119,8 +119,21 @@
                                          ('leuven-dark (themes/enable-leuven-dark))
                                          ('modus-operandi (themes/enable-modus-operandi)))))
 
-(load-theme 'modus-operandi t t)
-(load-theme 'leuven-dark t)
+(defvar light-theme 'modus-operandi)
+(defvar dark-theme 'leuven-dark)
+
+(defun light-theme ()
+  (interactive)
+  (disable-theme dark-theme)
+  (enable-theme light-theme))
+
+(defun dark-theme ()
+  (interactive)
+  (disable-theme light-theme)
+  (enable-theme dark-theme))
+
+(load-theme light-theme t t)
+(load-theme dark-theme t)
 
 (winner-mode 1)
 (keymap-global-set "C-<" 'winner-undo)
