@@ -547,10 +547,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
     ("#+RESULTS:"  . ?)
     ("- [ ]"       . ?)
     ("- [-]"       . ?)
-    ("- [X]"       . ?)
-    (":RESEARCH"    . ?📜)
-    ("BUG"         . ?🪳)
-    ("INFO"        . ?💡)))
+    ("- [X]"       . ?)))
 
 
 (add-hook 'org-mode-hook (lambda ()

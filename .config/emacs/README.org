@@ -730,10 +730,7 @@ Defined the snippet definitions separately, so that I can re-use them for differ
       ("#+RESULTS:"  . ?)
       ("- [ ]"       . ?)
       ("- [-]"       . ?)
-      ("- [X]"       . ?)
-      (":RESEARCH"    . ?📜)
-      ("BUG"         . ?🪳)
-      ("INFO"        . ?💡)))
+      ("- [X]"       . ?)))
 
 
   (add-hook 'org-mode-hook (lambda ()
