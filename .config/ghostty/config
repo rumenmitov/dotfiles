@@ -5,6 +5,7 @@
 quit-after-last-window-closed = false
 
 theme = Dracula
+cursor-color = #cd6889
 
 font-family = "FiraCode Nerd Font Mono"
 font-size = 12
