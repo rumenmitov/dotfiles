@@ -539,10 +539,10 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
     ("BUG"         . ?🪳)
     ("INFO"        . ?💡)))
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (setopt prettify-symbols-alist custom--prettify-symbols-alist)
-            (prettify-symbols-mode 1)))
+
+(add-hook 'org-mode-hook (lambda ()
+                           (setq-local prettify-symbols-alist custom--prettify-symbols-alist)
+                           (prettify-symbols-mode 1)))
 
 (setopt org-hide-emphasis-markers t)
 (setopt org-pretty-entities t)
@@ -713,7 +713,8 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
   :config
   (setopt proced-auto-update-flag 'visible))
 
-(let* ((extra-config-files (list (concat user-emacs-directory "extra-config/work.el"))))
+(let* ((extra-config-dir (concat user-emacs-directory "extra-config/"))
+       (extra-config-files (directory-files extra-config-dir t ".*\.el")))
   (mapcar #'load extra-config-files))
 
 (require 'package)
