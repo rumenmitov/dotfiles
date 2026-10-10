@@ -14,7 +14,7 @@ function mail_prompt() {
         return
     fi
     
-    local unread=$(ls -l $maildir | wc -l)
+    local unread=$(ls -l $maildir | uniq | wc -l)
     [ $unread -gt 0 ] && echo "📩"
 }
 
@@ -29,7 +29,7 @@ function git_prompt() {
 }
 
 function git_deleted_files() {
-    local number=$(git ls-files --deleted | wc -l)
+    local number=$(git ls-files --deleted | uniq | wc -l)
     if [[ $number == 0 ]]; then 
         echo ""
     else 
@@ -38,7 +38,7 @@ function git_deleted_files() {
 }
 
 function git_modified_files() {
-    local number=$(git ls-files --modified | wc -l)
+    local number=$(git ls-files --modified | uniq | wc -l)
     if [[ $number == 0 ]]; then 
         echo ""
     else 
@@ -48,7 +48,7 @@ function git_modified_files() {
 }
 
 function git_others_files() {
-    local number=$(git ls-files --others --exclude-standard | wc -l)
+    local number=$(git ls-files --others --exclude-standard | uniq | wc -l)
     if [[ $number == 0 ]]; then 
         echo ""
     else 
