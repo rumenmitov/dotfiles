@@ -2,7 +2,7 @@
 
 alias nv='nvim'
 alias vim='nvim'
-alias e='emacs -nw'
+alias e='emacsclient -nw'
 
 
 lsd -V &>/dev/null && alias ls='lsd'
