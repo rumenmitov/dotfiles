@@ -927,6 +927,12 @@ Fetch new mail from the mail server:
                                        (start-process "offlineimap" nil "offlineimap")))
 #+end_src
 
+Disable color in HTML emails (sometimes text is invisible depending on the current theme):
+
+#+begin_src emacs-lisp
+  (setopt shr-use-colors nil)
+#+end_src
+
 ** MPC
 Music client; requires =mpd=.
 

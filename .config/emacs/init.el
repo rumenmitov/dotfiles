@@ -709,6 +709,8 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (add-hook 'gnus-get-new-news-hook '(lambda ()
                                      (start-process "offlineimap" nil "offlineimap")))
 
+(setopt shr-use-colors nil)
+
 (use-package mpc
   :bind
   (:map mpc-mode-map
