@@ -910,7 +910,9 @@ Music client; requires =mpd=.
           ("d" . mpc-playlist-delete))
     
     :config
-    (setopt mpc-browser-tags '(Filename)))
+    (setopt mpc-browser-tags '(Filename)
+            mpc-notifications t
+            mpc-crossfade-time 10))
 #+end_src
 
 ** Misc
@@ -923,7 +925,9 @@ Music client; requires =mpd=.
           browse-url-browser-function 'eww-browse-url
           imenu-flatten 'prefix
           set-mark-command-repeat-pop t
-          isearch-lazy-count t)
+          exchange-point-and-mark-highlight-region nil
+          isearch-lazy-count t
+          delete-trailing-whitespace-mode t)
 
   (repeat-mode 1)
   (savehist-mode 1)
