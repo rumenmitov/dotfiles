@@ -288,10 +288,14 @@ prints a distracting error message.
   			  imenu-auto-rescan t
   			  completion-fail-discreetly t
   			  completions-detailed t
-  			  completions-sort 'historical)
+  			  completions-sort 'historical
+          pcomplete-termination-string "")
 
-  (keymap-global-set "M-n" 'completion-preview-next-candidate)
-  (keymap-global-set "M-p" 'completion-preview-prev-candidate)  
+  (use-package completion-preview
+    :bind
+    (:map completion-preview-active-mode-map
+          ("M-n" . completion-preview-next-candidate)
+          ("M-p" . completion-preview-prev-candidate)))
 #+end_src
 
 ** Minibuffer
@@ -688,11 +692,8 @@ Defined the snippet definitions separately, so that I can re-use them for differ
 #+begin_src emacs-lisp
   (use-package esh-module
     :config
-    (add-to-list 'eshell-modules-list 'eshell-elecslash))
-
-  (use-package em-cmpl
-    :hook (eshell-cmpl-mode . (lambda ()
-                                (setq-local completion-auto-help t))))
+    (add-to-list 'eshell-modules-list 'eshell-elecslash)
+    (add-to-list 'eshell-modules-list 'eshell-rebind))
 #+end_src
 
 ** Org-Mode

@@ -200,10 +200,14 @@
 			  imenu-auto-rescan t
 			  completion-fail-discreetly t
 			  completions-detailed t
-			  completions-sort 'historical)
+			  completions-sort 'historical
+        pcomplete-termination-string "")
 
-(keymap-global-set "M-n" 'completion-preview-next-candidate)
-(keymap-global-set "M-p" 'completion-preview-prev-candidate)
+(use-package completion-preview
+  :bind
+  (:map completion-preview-active-mode-map
+        ("M-n" . completion-preview-next-candidate)
+        ("M-p" . completion-preview-prev-candidate)))
 
 ;; INFO We want the minibuffer to populate as much of the frame as
 ;; possible.
@@ -513,11 +517,8 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (use-package esh-module
   :config
-  (add-to-list 'eshell-modules-list 'eshell-elecslash))
-
-(use-package em-cmpl
-  :hook (eshell-cmpl-mode . (lambda ()
-                              (setq-local completion-auto-help t))))
+  (add-to-list 'eshell-modules-list 'eshell-elecslash)
+  (add-to-list 'eshell-modules-list 'eshell-rebind))
 
 (require 'imenu)
 (require 'org)
