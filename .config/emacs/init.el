@@ -61,6 +61,7 @@
     (line-number ((t (:inherit default :background nil))))
     (line-number-current-line ((t (:inherit default :background nil))))
     (minibuffer-prompt ((t (:foreground unspecified :background unspecified :weight bold))))
+    (child-frame-border ((t (:background "cyan"))))
     (viper-minibuffer-insert ((t nil)))))
 
 
@@ -222,10 +223,33 @@
 
 (advice-add 'read-from-minibuffer
             :around (lambda (oldfn &rest r)
-                      (let* ((frame (make-frame '((title . "minibuffer-float")
+                      (let* ((pos (posn-at-point))
+                             (cursor-pos (posn-x-y pos))
+                             (cursor-x (car cursor-pos))
+                             (cursor-y (cdr cursor-pos))
+                             (parent (selected-frame))
+                             (pw (frame-pixel-width parent))
+                             (ph (frame-pixel-height parent))
+                             (horizontal-padding 20)
+                             (width_in_chars 100)
+                             (height_in_chars 8)
+                             (char_w (frame-char-width parent))
+                             (char_h (frame-char-height parent))
+                             (x (min cursor-x (- pw (* width_in_chars char_w) horizontal-padding 10)))
+                             (y (min cursor-y (- ph (* height_in_chars char_h) 10)))
+                             (frame (make-frame `((left . ,x)
+                                                  (top . ,y)
+                                                  (width . ,width_in_chars)
+                                                  (height . ,height_in_chars)
+                                                  (border-color . "red")
+                                                  (child-frame-border-width . 1)
+                                                  (left-fringe . ,horizontal-padding)
+                                                  (parent-frame . ,(selected-frame))
                                                   (minibuffer . only)))))
                         (unwind-protect
-                            (apply oldfn r)
+                            (progn
+                              (select-frame-set-input-focus frame)
+                              (apply oldfn r))
                           (delete-frame frame)))))
 
 (setq-default tab-width 2)
@@ -696,7 +720,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
         ("d" . mpc-playlist-delete))
   
   :config
-  (setopt mpc-browser-tags '(Filename)))
+  (setopt mpc-browser-tags '(Filename)
+          mpc-notifications t
+          mpc-crossfade-time 10))
 
 (setopt visible-bell nil
 			  use-short-answers t
@@ -705,7 +731,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
         browse-url-browser-function 'eww-browse-url
         imenu-flatten 'prefix
         set-mark-command-repeat-pop t
-        isearch-lazy-count t)
+        exchange-point-and-mark-highlight-region nil
+        isearch-lazy-count t
+        delete-trailing-whitespace-mode t)
 
 (repeat-mode 1)
 (savehist-mode 1)
