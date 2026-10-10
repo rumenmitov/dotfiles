@@ -315,7 +315,7 @@ The following snippet forces the minibuffer into a separate frame.
   (use-package icomplete
     :bind
     (:map icomplete-minibuffer-map
-          ("<tab>"      . 'icomplete-forward-completions)
+          ("TAB"      . 'icomplete-forward-completions)
           ("<backtab>"  . 'icomplete-backward-completions)))
 
 
@@ -339,7 +339,6 @@ The following snippet forces the minibuffer into a separate frame.
                                                     (top . ,y)
                                                     (width . ,width_in_chars)
                                                     (height . ,height_in_chars)
-                                                    (border-color . "red")
                                                     (child-frame-border-width . 1)
                                                     (left-fringe . ,horizontal-padding)
                                                     (parent-frame . ,(selected-frame))
@@ -390,6 +389,12 @@ Ediff:
 
 #+begin_src emacs-lisp
   (setopt ediff-window-setup-function 'ediff-setup-windows-plain)
+#+end_src
+
+Smerge:
+
+#+begin_src emacs-lisp
+  (setopt smerge-command-prefix (kbd "C-c r"))
 #+end_src
 
 GDB:

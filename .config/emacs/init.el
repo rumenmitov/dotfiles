@@ -221,7 +221,7 @@
 (use-package icomplete
   :bind
   (:map icomplete-minibuffer-map
-        ("<tab>"      . 'icomplete-forward-completions)
+        ("TAB"      . 'icomplete-forward-completions)
         ("<backtab>"  . 'icomplete-backward-completions)))
 
 
@@ -245,7 +245,6 @@
                                                   (top . ,y)
                                                   (width . ,width_in_chars)
                                                   (height . ,height_in_chars)
-                                                  (border-color . "red")
                                                   (child-frame-border-width . 1)
                                                   (left-fringe . ,horizontal-padding)
                                                   (parent-frame . ,(selected-frame))
@@ -269,6 +268,8 @@
                                      (ansi-color-apply-on-region compilation-filter-start (point-max))))
 
 (setopt ediff-window-setup-function 'ediff-setup-windows-plain)
+
+(setopt smerge-command-prefix (kbd "C-c r"))
 
 (setopt compile-command "make "
 				gdb-show-main t
