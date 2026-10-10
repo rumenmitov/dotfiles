@@ -267,10 +267,6 @@
 (add-hook 'compilation-filter-hook (lambda ()
                                      (ansi-color-apply-on-region compilation-filter-start (point-max))))
 
-(setopt ediff-window-setup-function 'ediff-setup-windows-plain)
-
-(setopt smerge-command-prefix (kbd "C-c r"))
-
 (setopt compile-command "make "
 				gdb-show-main t
 				gdb-many-windows t
@@ -335,6 +331,12 @@
 
 (add-hook 'prog-mode-hook (lambda ()
                             (font-lock-add-keywords nil custom/font/faces)))
+
+(setopt vc-dir-auto-hide-up-to-date t)
+
+(setopt ediff-window-setup-function 'ediff-setup-windows-plain)
+
+(setopt smerge-command-prefix (kbd "C-c r"))
 
 (require 'tempo)
 (setq tempo-interactive t)
