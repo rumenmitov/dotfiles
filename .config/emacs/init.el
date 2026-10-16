@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; -*- lexical-binding: t; -*-
-
 (setopt org-directory "~/Nextcloud/org")
 
 (auto-save-visited-mode 1)
@@ -729,6 +727,18 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
   (setopt mpc-browser-tags '(Filename)
           mpc-notifications t
           mpc-crossfade-time 10))
+
+(use-package doc-view
+  :bind
+  (:map doc-view-mode-map
+        ("TAB" . 'doc-view-next-line-or-next-page)
+        ("<backtab>" . 'doc-view-previous-line-or-previous-page))
+
+  :hook ('doc-view-mode . (lambda () (display-line-numbers-mode 0)))
+  :config
+  (setopt doc-view-resolution 200)
+  (advice-add 'doc-view-next-page :after (lambda (&rest _) (image-bob)))
+  (advice-add 'doc-view-previous-page :after (lambda (&rest _) (image-bob))))
 
 (setopt visible-bell nil
 			  use-short-answers t

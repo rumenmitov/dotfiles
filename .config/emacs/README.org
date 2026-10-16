@@ -29,8 +29,6 @@
 Common directories:
 
 #+begin_src emacs-lisp
-  ;;; -*- lexical-binding: t; -*-
-  
   (setopt org-directory "~/Nextcloud/org")
 #+end_src
 
@@ -955,6 +953,21 @@ Music client; requires =mpd=.
     (setopt mpc-browser-tags '(Filename)
             mpc-notifications t
             mpc-crossfade-time 10))
+#+end_src
+
+** DocView
+#+begin_src emacs-lisp
+  (use-package doc-view
+    :bind
+    (:map doc-view-mode-map
+          ("TAB" . 'doc-view-next-line-or-next-page)
+          ("<backtab>" . 'doc-view-previous-line-or-previous-page))
+
+    :hook ('doc-view-mode . (lambda () (display-line-numbers-mode 0)))
+    :config
+    (setopt doc-view-resolution 200)
+    (advice-add 'doc-view-next-page :after (lambda (&rest _) (image-bob)))
+    (advice-add 'doc-view-previous-page :after (lambda (&rest _) (image-bob))))
 #+end_src
 
 ** Misc
