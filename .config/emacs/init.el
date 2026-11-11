@@ -245,6 +245,7 @@
                                                   (height . ,height_in_chars)
                                                   (child-frame-border-width . 1)
                                                   (left-fringe . ,horizontal-padding)
+                                                  (cursor-type . bar)
                                                   (parent-frame . ,(selected-frame))
                                                   (minibuffer . only)))))
                         (unwind-protect
