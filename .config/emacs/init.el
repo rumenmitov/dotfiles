@@ -610,7 +610,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
           (type "WAIT(w)" "|" "AXED(a)")))
 
 (setopt org-stuck-projects
-        '("+TODO=\"WAIT\"" ("TODO" "NEXT") nil ""))
+        '("+TODO=\"WAIT\"|+BLOCKED=\"t\"" ("NEXT") nil ""))
 
 (setopt org-enforce-todo-dependencies t
         org-enforce-todo-checkbox-dependencies t)

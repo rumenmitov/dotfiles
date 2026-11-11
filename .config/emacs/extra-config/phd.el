@@ -40,12 +40,19 @@
                                                    (org-agenda-max-entries 3))))
                                            ((org-agenda-files (list "~/Nextcloud/university/phd/org/phd.org")))))
 
+(defun phd--get-assignee ()
+  "Extract and return the person responsible for a task."
+  (let* ((assignee (org-entry-get (point) "assignee")))
+    (if assignee
+        (concat "👤 " assignee)
+      "")))
+
 (add-to-list 'org-agenda-custom-commands `("A" "ACCRa Agenda"
                                            agenda ""
                                            ((org-agenda-overriding-header "ACCRa")
                                             (org-agenda-category-filter-preset '("+ACCRa"))
                                             (org-agenda-prefix-format
-                                             "  %-20:(or (org-entry-get (org-element-at-point) \"assignee\") \"\") %s")
+                                             "  %-20(phd--get-assignee) %s")
                                             (org-agenda-include-diary nil)
                                             (org-agenda-span 30)
                                             (org-agenda-show-all-dates nil)

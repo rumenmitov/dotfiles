@@ -809,7 +809,7 @@ The following alist is defined in order to allow adding to it from the [[*Extra 
             (type "WAIT(w)" "|" "AXED(a)")))
 
   (setopt org-stuck-projects
-          '("+TODO=\"WAIT\"" ("TODO" "NEXT") nil ""))
+          '("+TODO=\"WAIT\"|+BLOCKED=\"t\"" ("NEXT") nil ""))
 
   (setopt org-enforce-todo-dependencies t
           org-enforce-todo-checkbox-dependencies t)
