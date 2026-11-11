@@ -472,6 +472,8 @@ Programming-modes specific tweaks (=c-mode-common-hook= is used for all C-style 
 
 #+begin_src emacs-lisp
   (setopt vc-dir-auto-hide-up-to-date t)
+
+  (add-hook 'vc-git-log-edit-mode-hook 'auto-fill-mode)
 #+end_src
 
 Ediff:

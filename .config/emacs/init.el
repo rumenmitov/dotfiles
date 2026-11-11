@@ -333,6 +333,8 @@
 
 (setopt vc-dir-auto-hide-up-to-date t)
 
+(add-hook 'vc-git-log-edit-mode-hook 'auto-fill-mode)
+
 (setopt ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (setopt smerge-command-prefix (kbd "C-c r"))
