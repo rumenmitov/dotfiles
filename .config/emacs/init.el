@@ -571,8 +571,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
     ("#+begin_src"  . ?⌜)
     ("#+end_src"    . ?⌞)
     ("#+RESULTS:"   . ?)
-    (":CHORE"      	. ?🧨)
-    (":APPOINTMENT" . ?📅)
+    (":BUG"      	  . ?🐛)
+    (":INVESTIGATE" . ?🔎)
+    (":FEATURE"    	. ?🚀)
     ("- [ ]"       	. ?)
     ("- [-]"       	. ?)
     ("- [X]"       	. ?)))
@@ -602,11 +603,11 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
         calendar-date-style 'european)
 
 (setopt org-todo-keywords
-        '((sequence "TODO(t)" "|" "DONE(d)")
-          (sequence "|" "AXED(a)")))
+        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+          (type "WAIT(w)" "|" "AXED(a)")))
 
 (setopt org-stuck-projects
-        '("+LEVEL=2/-DONE-AXED" ("TODO" "NEXT" "NEXTACTION") nil ""))
+        '("+TODO=\"WAIT\"" ("TODO" "NEXT") nil ""))
 
 (setopt org-enforce-todo-dependencies t
         org-enforce-todo-checkbox-dependencies t)
@@ -624,18 +625,41 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (setopt org-agenda-custom-commands
         `(("n" "Notes"
-           ((tags "CHORE /+TODO"
-                  ((org-agenda-overriding-header "Chores")))
-            (tags "APPOINTMENT /+TODO"
-                  ((org-agenda-overriding-header "Appointments")))
-            (tags "/+DONE"
+           ((tags-todo "+CATEGORY=\"chores\""
+                       ((org-agenda-overriding-header "Chores")))
+            (tags-todo "+CATEGORY=\"appointments\""
+                       ((org-agenda-overriding-header "Appointments")))
+            (stuck ""
+                   ((org-agenda-overriding-header "Stuck")))
+            (tags "+TODO=\"DONE\""
                   ((org-agenda-overriding-header "Completed")
                    (org-agenda-max-entries 3)))
-            (tags "/+AXED"
+            (tags "+TODO=\"AXED\""
                   ((org-agenda-overriding-header "Cancelled")
                    (org-agenda-max-entries 3))))
            ((org-agenda-files (list ,(concat org-directory "/agenda/notes.org")
                                     ,(concat org-directory "/archive/notes.org_archive")))))))
+
+(setopt org-agenda-category-icon-alist `(("Diary"
+                                          ,(concat user-emacs-directory "assets/diary.svg")
+                                          nil nil :ascent center)
+                                         ("chores"
+                                          ,(concat user-emacs-directory "assets/chores.svg")
+                                          nil nil :ascent center)
+                                         ("appointments"
+                                          ,(concat user-emacs-directory "assets/appointments.svg")
+                                          nil nil :ascent center)
+                                         ("habits"
+                                          ,(concat user-emacs-directory "assets/habits.svg")
+                                          nil nil :ascent center)))
+
+(setopt org-agenda-prefix-format '((agenda . "  %?-5i  %?-12t% s")
+                                   (todo . "  %?-5i  ")
+                                   (tags . "  %?-5i  ")
+                                   (search . "  %?-5i  ")))
+
+(setq org-agenda-exporter-settings
+      '((ps-left-header (list 'org-agenda-write-buffer-name))))
 
 (add-hook 'ses-mode-hook (lambda () (display-line-numbers-mode 0)))
 
