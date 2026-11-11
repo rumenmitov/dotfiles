@@ -533,7 +533,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
         org-tags-column 90
         org-imenu-depth 7
         org-goto-interface 'outline-path-completion
-        org-outline-path-complete-in-steps nil)
+        org-outline-path-complete-in-steps nil
+        org-blank-before-new-entry '((heading . t)
+                                     (plain-list-item . auto)))
 
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
@@ -544,7 +546,22 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
                            (display-line-numbers-mode 0)
                            (setq-local completion-auto-help t)
                            (setq-local left-margin-width 5)
-                           (setq-local right-margin-width 5)))
+                           (setq-local right-margin-width 5)
+                           
+                           (keymap-set org-mode-map "C-c u" (lambda ()
+                                                              (interactive)
+                                                              (if (org-in-item-p)
+                                                                  (org-move-item-up)
+                                                                (org-move-subtree-up))))
+                           
+                           (keymap-set org-mode-map "C-c d" (lambda ()
+                                                              (interactive)
+                                                              (if (org-in-item-p)
+                                                                  (org-move-item-down)
+                                                                (org-move-subtree-down))))
+                           
+                           (keymap-set org-mode-map "C-c C-<" 'org-shiftmetaleft)
+                           (keymap-set org-mode-map "C-c C->" 'org-shiftmetaright)))
 
 (setopt org-clock-persist t)
 (org-clock-persistence-insinuate)

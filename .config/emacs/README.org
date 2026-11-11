@@ -720,7 +720,9 @@ Defined the snippet definitions separately, so that I can re-use them for differ
           org-tags-column 90
           org-imenu-depth 7
           org-goto-interface 'outline-path-completion
-          org-outline-path-complete-in-steps nil)
+          org-outline-path-complete-in-steps nil
+          org-blank-before-new-entry '((heading . t)
+                                       (plain-list-item . auto)))
 
   (add-hook 'org-mode-hook 'org-indent-mode)
   (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
@@ -731,13 +733,34 @@ Defined the snippet definitions separately, so that I can re-use them for differ
                              (display-line-numbers-mode 0)
                              (setq-local completion-auto-help t)
                              (setq-local left-margin-width 5)
-                             (setq-local right-margin-width 5)))
+                             (setq-local right-margin-width 5)
+                             
+                             (keymap-set org-mode-map "C-c u" (lambda ()
+                                                                (interactive)
+                                                                (if (org-in-item-p)
+                                                                    (org-move-item-up)
+                                                                  (org-move-subtree-up))))
+                             
+                             (keymap-set org-mode-map "C-c d" (lambda ()
+                                                                (interactive)
+                                                                (if (org-in-item-p)
+                                                                    (org-move-item-down)
+                                                                  (org-move-subtree-down))))
+                             
+                             (keymap-set org-mode-map "C-c C-<" 'org-shiftmetaleft)
+                             (keymap-set org-mode-map "C-c C->" 'org-shiftmetaright)))
+#+end_src
 
+*** Clock
+#+begin_src
   (setopt org-clock-persist t)
   (org-clock-persistence-insinuate)
 
   (setopt org-clock-sound (concat user-emacs-directory "assets/org-clock-sound.wav"))
+#+end_src
 
+*** Babel
+#+begin_src
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((shell . t)
