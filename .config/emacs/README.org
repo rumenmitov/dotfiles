@@ -133,6 +133,12 @@ Common directories:
                                       :overline "white"
                                       :weight bold
                                       :height 1.1))))
+           '(org-quote ((t (:inherit shadow
+                                     :extend t
+                                     :background "black"
+                                     :foreground "white"
+                                     :slant italic
+                                     :height 0.9))))
            '(org-block ((t (:inherit shadow
                                      :extend t
                                      :background "black"
@@ -719,6 +725,7 @@ Defined the snippet definitions separately, so that I can re-use them for differ
   (setopt org-startup-with-inline-images t
           org-tags-column 90
           org-imenu-depth 7
+          org-fontify-quote-and-verse-blocks t
           org-goto-interface 'outline-path-completion
           org-outline-path-complete-in-steps nil
           org-blank-before-new-entry '((heading . t)
@@ -779,23 +786,25 @@ The following alist is defined in order to allow adding to it from the [[*Extra 
 
 #+begin_src emacs-lisp 
   (defvar config--prettify-symbols-alist
-    '(("[#A]"         . ?🔴)
-      ("[#B]"         . ?🔵)
-      ("[#C]"        	. ?🟢)
-      ("#+author:"    . ?)
-      ("#+title:"    	. ?)
-      ("#+date:"     	. ?)                      
-      ("#+email:"    	. ?)
-      ("#+options:"   . ?)                      
-      ("#+begin_src"  . ?⌜)
-      ("#+end_src"    . ?⌞)
-      ("#+RESULTS:"   . ?)
-      (":BUG"      	  . ?🐛)
-      (":INVESTIGATE" . ?🔎)
-      (":FEATURE"    	. ?🚀)
-      ("- [ ]"       	. ?)
-      ("- [-]"       	. ?)
-      ("- [X]"       	. ?)))
+    '(("[#A]"         		. ?🔴)
+      ("[#B]"         		. ?🔵)
+      ("[#C]"        			. ?🟢)
+      ("#+author:"    		. ?)
+      ("#+title:"    			. ?)
+      ("#+date:"     			. ?)                      
+      ("#+email:"    			. ?)
+      ("#+options:"   		. ?)
+      ("#+begin_quote"		. ?“)
+      ("#+end_quote"  		. ?”)      
+      ("#+begin_src"  		. ?⌜)
+      ("#+end_src"    		. ?⌞)
+      ("#+RESULTS:"   		. ?)
+      (":BUG"      	  		. ?🐛)
+      (":INVESTIGATE" 		. ?🔎)
+      (":FEATURE"    			. ?🚀)
+      ("- [ ]"       			. ?)
+      ("- [-]"       			. ?)
+      ("- [X]"       			. ?)))
 #+end_src
 
 #+begin_src emacs-lisp 

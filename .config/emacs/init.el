@@ -84,6 +84,12 @@
                                     :overline "white"
                                     :weight bold
                                     :height 1.1))))
+         '(org-quote ((t (:inherit shadow
+                                   :extend t
+                                   :background "black"
+                                   :foreground "white"
+                                   :slant italic
+                                   :height 0.9))))
          '(org-block ((t (:inherit shadow
                                    :extend t
                                    :background "black"
@@ -532,6 +538,7 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (setopt org-startup-with-inline-images t
         org-tags-column 90
         org-imenu-depth 7
+        org-fontify-quote-and-verse-blocks t
         org-goto-interface 'outline-path-completion
         org-outline-path-complete-in-steps nil
         org-blank-before-new-entry '((heading . t)
@@ -580,23 +587,25 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (setopt org-plantuml-exec-mode 'plantuml)
 
 (defvar config--prettify-symbols-alist
-  '(("[#A]"         . ?🔴)
-    ("[#B]"         . ?🔵)
-    ("[#C]"        	. ?🟢)
-    ("#+author:"    . ?)
-    ("#+title:"    	. ?)
-    ("#+date:"     	. ?)                      
-    ("#+email:"    	. ?)
-    ("#+options:"   . ?)                      
-    ("#+begin_src"  . ?⌜)
-    ("#+end_src"    . ?⌞)
-    ("#+RESULTS:"   . ?)
-    (":BUG"      	  . ?🐛)
-    (":INVESTIGATE" . ?🔎)
-    (":FEATURE"    	. ?🚀)
-    ("- [ ]"       	. ?)
-    ("- [-]"       	. ?)
-    ("- [X]"       	. ?)))
+  '(("[#A]"         		. ?🔴)
+    ("[#B]"         		. ?🔵)
+    ("[#C]"        			. ?🟢)
+    ("#+author:"    		. ?)
+    ("#+title:"    			. ?)
+    ("#+date:"     			. ?)                      
+    ("#+email:"    			. ?)
+    ("#+options:"   		. ?)
+    ("#+begin_quote"		. ?“)
+    ("#+end_quote"  		. ?”)      
+    ("#+begin_src"  		. ?⌜)
+    ("#+end_src"    		. ?⌞)
+    ("#+RESULTS:"   		. ?)
+    (":BUG"      	  		. ?🐛)
+    (":INVESTIGATE" 		. ?🔎)
+    (":FEATURE"    			. ?🚀)
+    ("- [ ]"       			. ?)
+    ("- [-]"       			. ?)
+    ("- [X]"       			. ?)))
 
 (add-hook 'org-mode-hook (lambda ()
                            (setq-local prettify-symbols-alist config--prettify-symbols-alist)
