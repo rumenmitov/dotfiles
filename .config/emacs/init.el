@@ -19,7 +19,6 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(setq-default mode-line-format nil)
 
 (setopt default-frame-alist '(
                               (font . "JetBrains Mono Light 12")
@@ -66,57 +65,92 @@
 (defun themes/enable-leuven-dark ()
   (apply #'custom-theme-set-faces 'leuven-dark
          '(cursor ((t (:background "PaleVioletRed3"))))
-         '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
-         '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
-         '(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
-         '(org-agenda-date ((t (:foreground "#ec9d5a" :weight normal :height 1.1))))
-         '(org-agenda-date-today ((t (:background "#25205900" :weight bold :height 1.1))))
-         '(org-agenda-date-weekend ((t (:foreground "deep sky blue" :overline t :weight normal :height 1.1))))
-         '(org-agenda-diary ((t (:background "#57272300" :foreground "#ff74ff" :slant italic :weight regular))))
-         '(org-agenda-dimmed-todo-face ((t (:foreground "dim gray"))))
-         '(org-agenda-structure ((t (:foreground "#e37233" :weight bold :height 1.3))))
-         '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
-         '(org-done ((t (:background "#127921" :foreground "lawn green" :box nil :overline t :weight bold))))
-         '(org-inline-src-block ((t (:inherit nil))))
-         '(org-level-1 ((t (:extend nil
-                                    :background "#322d37"
-                                    :foreground "white"
-                                    :overline "white"
-                                    :weight bold
-                                    :height 1.1))))
-         '(org-quote ((t (:inherit shadow
-                                   :extend t
+         '(mode-line ((t (:background "unspecified"
+                                      :foreground "white"
+                                      :box nil
+                                      :overline t
+                                      :slant oblique
+                                      :family "Iosevka"))))
+'(mode-line-emphasis ((t (:foreground "white" :weight bold))))
+'(mode-line-inactive ((t (:background "unspecified"
+                                      :foreground "gray48"
+                                      :box nil
+                                      :overline t
+                                      :slant oblique
+                                      :family "Iosevka"))))
+'(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
+'(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
+'(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
+'(org-agenda-date ((t (:foreground "#ec9d5a" :weight normal :height 1.1))))
+'(org-agenda-date-today ((t (:background "#25205900" :weight bold :height 1.1))))
+'(org-agenda-date-weekend ((t (:foreground "deep sky blue" :overline t :weight normal :height 1.1))))
+'(org-agenda-diary ((t (:background "#57272300" :font-family "Iosevka" :foreground "#ff74ff" :slant oblique :weight regular))))
+'(org-agenda-dimmed-todo-face ((t (:foreground "dim gray"))))
+'(org-agenda-structure ((t (:foreground "#e37233" :weight bold :height 1.3))))
+'(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
+'(org-done ((t (:background "#127921" :foreground "lawn green" :box nil :overline t :weight bold))))
+'(org-inline-src-block ((t (:inherit nil))))
+'(org-level-1 ((t (:extend nil
+                           :background "#322d37"
+                           :foreground "white"
+                           :overline "white"
+                           :weight bold
+                           :height 1.1))))
+'(org-quote ((t (:inherit shadow
+                          :extend t
+                          :font-family "Iosevka"
+                          :background "black"
+                          :foreground "white"
+                          :slant oblique
+                          :height 0.9))))
+'(org-block ((t (:inherit shadow
+                          :extend t
+                          :font-family "Iosevka"
+                          :background "black"
+                          :foreground "white"
+                          :slant oblique
+                          :height 0.9))))
+'(org-block-begin-line ((t (:inherit org-meta-line
+                                     :extend t
+                                     :background "black"
+                                     :foreground "white"
+                                     :box nil
+                                     :weight bold))))
+'(org-block-end-line ((t (:inherit org-block-begin-line
                                    :background "black"
                                    :foreground "white"
-                                   :slant italic
-                                   :height 0.9))))
-         '(org-block ((t (:inherit shadow
                                    :extend t
-                                   :background "black"
-                                   :foreground "white"
-                                   :slant italic
-                                   :height 0.9))))
-         '(org-block-begin-line ((t (:inherit org-meta-line
-                                              :extend t
-                                              :background "black"
-                                              :foreground "white"
-                                              :box nil
-                                              :weight bold))))
-         '(org-block-end-line ((t (:inherit org-block-begin-line
-                                            :background "black"
-                                            :foreground "white"
-                                            :extend t
-                                            :box nil))))
-  '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "#ff7138"))))
-  '(org-scheduled-today ((t (:background "#25205900" :weight normal))))
-  '(org-todo ((t (:background "#25374300" :foreground "red" :box nil :weight bold))))
-  '(org-warning ((t (:background "#ffffff00" :weight bold))))
-  '(region ((t (:extend t :background "gray" :slant italic))))
-  (themes/common-faces)))
+                                   :box nil))))
+'(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "#ff7138"))))
+'(org-scheduled-today ((t (:background "#25205900" :weight normal))))
+'(org-todo ((t (:background "#25374300" :foreground "red" :box nil :weight bold))))
+'(org-warning ((t (:background "#ffffff00" :weight bold))))
+'(region ((t (:extend t :font-family "Iosevka" :background "gray" :slant oblique))))
+(themes/common-faces)))
 
 
 (defun themes/enable-modus-operandi ()
-    (apply #'custom-theme-set-faces 'modus-operandi (themes/common-faces)))
+  (apply #'custom-theme-set-faces 'modus-operandi
+         '(appt-notification ((t (:foreground "dark violet"))))
+         '(mode-line ((t (:background "linen"
+                                      :foreground "#000000"
+                                      :box nil
+                                      :overline t
+                                      :slant oblique
+                                      :family "Iosevka"))))
+         '(mode-line-active ((t (:background "white"
+                                             :foreground "#000000"
+                                             :box nil
+                                             :overline t
+                                             :slant oblique
+                                             :family "Iosevka"))))
+         '(mode-line-inactive ((t (:background "#ffffff"
+                                               :foreground "gray62"
+                                               :box nil
+                                               :overline t
+                                               :slant oblique
+                                               :family "Iosevka"))))
+         (themes/common-faces)))
 
 
 (add-to-list 'enable-theme-functions (lambda (theme &rest faces)
@@ -522,6 +556,11 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
                                         (eshell-prompt--git-prompt)
                                         (propertize " λ  "))))
 
+(add-hook 'eshell-mode-hook (lambda ()
+                              (mode-line-invisible-mode 1)))
+
+(add-hook 'eshell-exit-hook (lambda ()
+                              (mode-line-invisible-mode -1)))
 
 (advice-add 'project-eshell :after #'hack-dir-local-variables-non-file-buffer)
 
@@ -532,8 +571,6 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (require 'imenu)
 (require 'org)
-
-(appt-activate 1)
 
 (setopt org-startup-with-inline-images t
         org-tags-column 90
@@ -738,9 +775,9 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 (gnus-demon-init)
 
 (setq gnus-select-method
-        `(nnmaildir "email" (directory ,(concat gnus-directory "/email"))
+        `(nnmaildir "email" (directory "/home/rumen/Mail")
                     (gnus-search-engine gnus-search-notmuch
-                                        (remove-prefix "/home/rumen/Nextcloud/gnus/email")
+                                        (remove-prefix "/home/rumen/Mail")
                                         (config-file "/home/rumen/.notmuch-config"))))
 
 (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
@@ -832,3 +869,41 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (use-package bbdb
   :config (setq bbdb-completion-display-record nil))
+
+(setopt project-mode-line t)
+
+(defun mode-line-utils--format-file-name ()
+  (let* ((abbrev-file-name (abbreviate-file-name (or (buffer-file-name) "")))
+         (narrow-symbol (if (buffer-narrowed-p) "[N] " "")))
+    (if (string-empty-p abbrev-file-name)
+        narrow-symbol
+      (concat abbrev-file-name " " narrow-symbol))))
+
+(setq-default mode-line-format '("%e" mode-line-front-space
+                                 (50 (-45 ("    " mode-line-misc-info)))
+                                 (project-mode-line project-mode-line-format)
+                                 (vc-mode (:eval (concat "  " (vc-git-working-branch))))
+                                 mode-line-format-right-align
+                                 (-80 ((:eval (mode-line-utils--format-file-name))
+                                       "{" "%p" "}"
+                                       "    "))))
+
+(keymap-global-set "C-c m" 'mode-line-invisible-mode)
+
+(setopt mode-line-compact 'long
+        display-time-day-and-date t
+        display-time-24hr-format t
+        display-time-default-load-average nil
+        display-time-mail-directory "/home/rumen/Mail/INBOX/cur"
+        display-time-string-forms '(24-hours ":" minutes " " dayname ", " day " " monthname " " (if mail "📬 ")))
+
+(display-time)
+
+(require 'appt)
+
+(appt-activate 1)
+(org-agenda-to-appt 1)
+
+(setopt appt-message-warning-time 360
+        appt-display-interval 60
+        appt-display-format 'echo)
