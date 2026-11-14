@@ -5,7 +5,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 export MANPAGER="less -R --use-color -Dd+m -Du+c -DP+w"
-export MAIL="$HOME/Nextcloud/gnus/email"
+export MAIL="$HOME/Mail"
 export EDITOR="$(which nvim)"
 export VISUAL="$(which nvim)"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
