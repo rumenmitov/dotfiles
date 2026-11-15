@@ -84,7 +84,7 @@
          '(org-agenda-diary ((t (:background "#57272300" :font-family "Iosevka" :foreground "#ff74ff" :slant oblique :weight regular))))
          '(org-agenda-dimmed-todo-face ((t (:foreground "dim gray"))))
          '(org-agenda-structure ((t (:foreground "#e37233" :weight bold :height 1.3))))
-         '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
+         '(org-document-info-keyword ((t (:background unspecified :foreground "#ff7138"))))
          '(org-done ((t (:background "#127921" :foreground "lawn green" :box nil :overline t :weight bold))))
          '(org-inline-src-block ((t (:inherit nil))))
          '(org-level-1 ((t (:extend nil
@@ -118,7 +118,7 @@
                                             :foreground "white"
                                             :extend t
                                             :box nil))))
-         '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "#ff7138"))))
+         '(org-meta-line ((t (:inherit font-lock-comment-face :background unspecified :foreground "#ff7138"))))
          '(org-scheduled-today ((t (:background "#25205900" :weight normal))))
          '(org-todo ((t (:background "#25374300" :foreground "red" :box nil :weight bold))))
          '(org-warning ((t (:background "#ffffff00" :weight bold))))
