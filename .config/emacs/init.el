@@ -174,6 +174,7 @@
 
 (setopt display-buffer-alist
         `(("Org Agenda" (display-buffer-full-frame))
+          ("\\*Org Links\\*" (display-buffer-no-window) . ((allow-no-window . t)))
           (,(rx
              (literal "*")
              (or "Man" "Help")
