@@ -93,7 +93,9 @@ Common directories:
 
 #+begin_src emacs-lisp 
   (defun themes/common-faces ()
-    '((completions-common-part ((t (:weight bold))))
+    '((mode-line-buffer-id ((t (:inherit mode-line-active))))
+      (mode-line-highlight ((t (:inherit mode-line-emphasis))))
+      (completions-common-part ((t (:weight bold))))
       (completions-first-difference ((t (:inherit completions-common-part :underline t))))
       (font-lock-constant-face ((t (:inherit default :foreground unspecified))))
       (font-lock-function-name-face ((t (:inherit default :foreground unspecified))))
@@ -114,91 +116,77 @@ Common directories:
   (defun themes/enable-leuven-dark ()
     (apply #'custom-theme-set-faces 'leuven-dark
            '(cursor ((t (:background "PaleVioletRed3"))))
-           '(mode-line ((t (:background "unspecified"
+           '(mode-line ((t (:background unspecified
                                         :foreground "white"
                                         :box nil
                                         :overline t
                                         :slant oblique
                                         :family "Iosevka"))))
-  '(mode-line-emphasis ((t (:foreground "white" :weight bold))))
-  '(mode-line-inactive ((t (:background "unspecified"
-                                        :foreground "gray48"
-                                        :box nil
-                                        :overline t
-                                        :slant oblique
-                                        :family "Iosevka"))))
-  '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
-  '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
-  '(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
-  '(org-agenda-date ((t (:foreground "#ec9d5a" :weight normal :height 1.1))))
-  '(org-agenda-date-today ((t (:background "#25205900" :weight bold :height 1.1))))
-  '(org-agenda-date-weekend ((t (:foreground "deep sky blue" :overline t :weight normal :height 1.1))))
-  '(org-agenda-diary ((t (:background "#57272300" :font-family "Iosevka" :foreground "#ff74ff" :slant oblique :weight regular))))
-  '(org-agenda-dimmed-todo-face ((t (:foreground "dim gray"))))
-  '(org-agenda-structure ((t (:foreground "#e37233" :weight bold :height 1.3))))
-  '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
-  '(org-done ((t (:background "#127921" :foreground "lawn green" :box nil :overline t :weight bold))))
-  '(org-inline-src-block ((t (:inherit nil))))
-  '(org-level-1 ((t (:extend nil
-                             :background "#322d37"
-                             :foreground "white"
-                             :overline "white"
-                             :weight bold
-                             :height 1.1))))
-  '(org-quote ((t (:inherit shadow
-                            :extend t
-                            :font-family "Iosevka"
-                            :background "black"
-                            :foreground "white"
-                            :slant oblique
-                            :height 0.9))))
-  '(org-block ((t (:inherit shadow
-                            :extend t
-                            :font-family "Iosevka"
-                            :background "black"
-                            :foreground "white"
-                            :slant oblique
-                            :height 0.9))))
-  '(org-block-begin-line ((t (:inherit org-meta-line
-                                       :extend t
-                                       :background "black"
-                                       :foreground "white"
-                                       :box nil
-                                       :weight bold))))
-  '(org-block-end-line ((t (:inherit org-block-begin-line
+           '(mode-line-inactive ((t (:inherit mode-line :foreground "gray48"))))
+           '(mode-line-emphasis ((t (:inherit mode-line))))
+           '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
+           '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
+           '(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
+           '(org-agenda-date ((t (:foreground "#ec9d5a" :weight normal :height 1.1))))
+           '(org-agenda-date-today ((t (:background "#25205900" :weight bold :height 1.1))))
+           '(org-agenda-date-weekend ((t (:foreground "deep sky blue" :overline t :weight normal :height 1.1))))
+           '(org-agenda-diary ((t (:background "#57272300" :font-family "Iosevka" :foreground "#ff74ff" :slant oblique :weight regular))))
+           '(org-agenda-dimmed-todo-face ((t (:foreground "dim gray"))))
+           '(org-agenda-structure ((t (:foreground "#e37233" :weight bold :height 1.3))))
+           '(org-document-info-keyword ((t (:background "#00000000" :foreground "#ff7138"))))
+           '(org-done ((t (:background "#127921" :foreground "lawn green" :box nil :overline t :weight bold))))
+           '(org-inline-src-block ((t (:inherit nil))))
+           '(org-level-1 ((t (:extend nil
+                                      :background "#322d37"
+                                      :foreground "white"
+                                      :overline "white"
+                                      :weight bold
+                                      :height 1.1))))
+           '(org-quote ((t (:inherit shadow
+                                     :extend t
+                                     :font-family "Iosevka"
                                      :background "black"
                                      :foreground "white"
+                                     :slant oblique
+                                     :height 0.9))))
+           '(org-block ((t (:inherit shadow
                                      :extend t
-                                     :box nil))))
-  '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "#ff7138"))))
-  '(org-scheduled-today ((t (:background "#25205900" :weight normal))))
-  '(org-todo ((t (:background "#25374300" :foreground "red" :box nil :weight bold))))
-  '(org-warning ((t (:background "#ffffff00" :weight bold))))
-  '(region ((t (:extend t :font-family "Iosevka" :background "gray" :slant oblique))))
-  (themes/common-faces)))
+                                     :font-family "Iosevka"
+                                     :background "black"
+                                     :foreground "white"
+                                     :slant oblique
+                                     :height 0.9))))
+           '(org-block-begin-line ((t (:inherit org-meta-line
+                                                :extend t
+                                                :background "black"
+                                                :foreground "white"
+                                                :box nil
+                                                :weight bold))))
+           '(org-block-end-line ((t (:inherit org-block-begin-line
+                                              :background "black"
+                                              :foreground "white"
+                                              :extend t
+                                              :box nil))))
+           '(org-meta-line ((t (:inherit font-lock-comment-face :background "#00000000" :foreground "#ff7138"))))
+           '(org-scheduled-today ((t (:background "#25205900" :weight normal))))
+           '(org-todo ((t (:background "#25374300" :foreground "red" :box nil :weight bold))))
+           '(org-warning ((t (:background "#ffffff00" :weight bold))))
+           '(region ((t (:extend t :font-family "Iosevka" :background "gray" :slant oblique))))
+           (themes/common-faces)))
 
 
   (defun themes/enable-modus-operandi ()
     (apply #'custom-theme-set-faces 'modus-operandi
            '(appt-notification ((t (:foreground "dark violet"))))
-           '(mode-line ((t (:background "linen"
+           '(mode-line ((t (:background "white"
                                         :foreground "#000000"
                                         :box nil
                                         :overline t
                                         :slant oblique
                                         :family "Iosevka"))))
-           '(mode-line-active ((t (:background "white"
-                                               :foreground "#000000"
-                                               :box nil
-                                               :overline t
-                                               :slant oblique
-                                               :family "Iosevka"))))
-           '(mode-line-inactive ((t (:background "#ffffff"
-                                                 :foreground "gray62"
-                                                 :box nil
-                                                 :overline t
-                                                 :slant oblique
-                                                 :family "Iosevka"))))
+           '(mode-line-active ((t (:inherit mode-line))))
+           '(mode-line-inactive ((t (:inherit mode-line :foreground "gray62"))))
+           '(mode-line-emphasis ((t (:inherit mode-line-active))))
            (themes/common-faces)))
 
 
@@ -1144,21 +1132,33 @@ Mode line is at the bottom because it depends on other configurations being alre
 #+begin_src emacs-lisp
   (setopt project-mode-line t)
 
-  (defun mode-line-utils--format-file-name ()
+  (defun mode-line-utils--format-buffer-or-file ()
     (let* ((abbrev-file-name (abbreviate-file-name (or (buffer-file-name) "")))
            (narrow-symbol (if (buffer-narrowed-p) "[N] " "")))
       (if (string-empty-p abbrev-file-name)
-          narrow-symbol
-        (concat abbrev-file-name " " narrow-symbol))))
+          "%b"
+        abbrev-file-name)))
 
-  (setq-default mode-line-format '("%e" mode-line-front-space
-                                   (50 (-45 ("    " mode-line-misc-info)))
-                                   (project-mode-line project-mode-line-format)
-                                   (vc-mode (:eval (concat "  " (vc-git-working-branch))))
+  (defun mode-line-utils--narrow-symbol ()
+    (if (buffer-narrowed-p) " [N]" ""))
+
+
+  (setq-default mode-line-format `("%e" mode-line-front-space
+                                   (60
+                                    (-60
+                                     ("    " mode-line-misc-info)))
+
+                                   (20
+                                    (-20
+                                     (project-mode-line project-mode-line-format)
+                                     (vc-mode (:eval (concat "  " (vc-git-working-branch))))))
+
                                    mode-line-format-right-align
-                                   (-80 ((:eval (mode-line-utils--format-file-name))
-                                         "{" "%p" "}"
-                                         "    "))))
+                                   (-90
+                                    (:eval (mode-line-utils--format-buffer-or-file))
+                                    (:eval (mode-line-utils--narrow-symbol))
+                                    " {" "%p" "}"
+                                    "    ")))
 
   (keymap-global-set "C-c m" 'mode-line-invisible-mode)
 #+end_src
@@ -1166,8 +1166,7 @@ Mode line is at the bottom because it depends on other configurations being alre
 *** Time
 
 #+begin_src emacs-lisp
-  (setopt mode-line-compact 'long
-          display-time-day-and-date t
+  (setopt display-time-day-and-date t
           display-time-24hr-format t
           display-time-default-load-average nil
           display-time-mail-directory "/home/rumen/Mail/INBOX/cur"
