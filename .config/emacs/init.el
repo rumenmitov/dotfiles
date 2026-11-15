@@ -862,10 +862,11 @@ If it is, returns the number of untracked, changed, and deleted files as a strin
 
 (defun mode-line-utils--format-buffer-or-file ()
   (let* ((abbrev-file-name (abbreviate-file-name (or (buffer-file-name) "")))
-         (narrow-symbol (if (buffer-narrowed-p) "[N] " "")))
-    (if (string-empty-p abbrev-file-name)
-        "%b"
-      abbrev-file-name)))
+         (project-dir (or (vc-root-dir) "")))
+    (cond
+     ((string-empty-p abbrev-file-name) "%b")
+     ((string-empty-p project-dir) abbrev-file-name)
+     ((string-replace project-dir "" abbrev-file-name)))))
 
 (defun mode-line-utils--narrow-symbol ()
   (if (buffer-narrowed-p) " [N]" ""))
