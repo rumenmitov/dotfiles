@@ -44,7 +44,9 @@
 (add-to-list 'default-frame-alist '(alpha-background . 100))
 
 (defun themes/common-faces ()
-  '((mode-line-buffer-id ((t (:inherit mode-line-active))))
+  '((mode-line-active ((t (:inherit mode-line))))
+    (mode-line-emphasis ((t (:inherit mode-line :weight bold))))
+    (mode-line-buffer-id ((t (:inherit mode-line-active))))
     (mode-line-highlight ((t (:inherit mode-line-emphasis))))
     (completions-common-part ((t (:weight bold))))
     (completions-first-difference ((t (:inherit completions-common-part :underline t))))
@@ -74,7 +76,7 @@
                                       :slant oblique
                                       :family "Iosevka"))))
          '(mode-line-inactive ((t (:inherit mode-line :foreground "gray48"))))
-         '(mode-line-emphasis ((t (:inherit mode-line))))
+         '(appt-notification ((t (:inherit mode-line-emphasis :foreground "violet"))))           
          '(ediff-current-diff-C ((t (:background "burlywood" :foreground "saddle brown"))))
          '(highlight ((t (:background "black" :foreground "white" :weight extra-bold))))
          '(icomplete-first-match ((t (:foreground "magenta" :weight bold))))
@@ -128,16 +130,14 @@
 
 (defun themes/enable-modus-operandi ()
   (apply #'custom-theme-set-faces 'modus-operandi
-         '(appt-notification ((t (:foreground "dark violet"))))
          '(mode-line ((t (:background "white"
                                       :foreground "#000000"
                                       :box nil
                                       :overline t
                                       :slant oblique
                                       :family "Iosevka"))))
-         '(mode-line-active ((t (:inherit mode-line))))
-         '(mode-line-inactive ((t (:inherit mode-line :foreground "gray62"))))
-         '(mode-line-emphasis ((t (:inherit mode-line-active))))
+         '(mode-line-inactive ((t (:inherit mode-line :foreground "gray62"))))           
+         '(appt-notification ((t (:inherit mode-line-emphasis :foreground "dark violet"))))            
          (themes/common-faces)))
 
 
